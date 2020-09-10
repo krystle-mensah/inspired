@@ -25,6 +25,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 
+  <!-- FONT AWESOME -->
+
+  <script src="https://kit.fontawesome.com/4c907bd459.js" crossorigin="anonymous"></script>
+
   <title>Inspired sound</title>
 </head>
 

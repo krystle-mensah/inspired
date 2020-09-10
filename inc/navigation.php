@@ -4,16 +4,14 @@
   // send that all in
   $select_categories_navigation = mysqli_query($connection,$query);				
 ?> 
-<div class="nav-scroller py-1 mb-2">
   <nav class="nav d-flex justify-content-between site-navigation">
-    <a class="p-2" href="#">home</a>
+    <div><a class="" href="#">home</a></div>
     <?php
     while($row = mysqli_fetch_array($select_categories_navigation)) {
       $cat_title = $row['cat_title'];
       $cat_id = $row['cat_id'];
 
-      echo "<a class='p-2' href='category.php?category=$cat_id '>{$cat_title}</a>";
+      echo "<div><a class='#' href='category.php?category=$cat_id '>{$cat_title}</a></div>";
     }
     ?>
   </nav>
-</div>
