@@ -13,42 +13,30 @@
       <!-- CAROUSEL -->
       <?php include "inc/carousel.php"; ?>
 
-      
 </div>
 
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog-main">
-          <!-- <h3 class="pb-3 mb-4 font-italic border-bottom">
-            From the Firehose
-          </h3> -->
 
           <div class="blog-post">
-            <a href="#"><h2 class="blog-post-title">Another blog post</h2></a>
-            <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-
-            <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-            <blockquote>
-              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </blockquote>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            <div class="col-md-6">
+              <div class="card box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                  <img class="card-img-right flex-auto d-none d-md-block post-image" src="main-img/place_1.jpg" alt="Card image cap">
+                </div>
+                <div class="post-content">
+                  <h3 class="mb-0">
+                    <a class="text-dark" href="#">Post title</a>
+                  </h3>
+                  <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+                  <strong class="d-inline-block mb-2 text-success">category Title</strong>
+                </div><!-- post-content -->
+              </div>
+            </div>
           </div><!-- /.blog-post -->
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">New feature</h2>
-            <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
-
-            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <ul>
-              <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-              <li>Donec id elit non mi porta gravida at eget metus.</li>
-              <li>Nulla vitae elit libero, a pharetra augue.</li>
-            </ul>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-          </div><!-- /.blog-post -->
-
+          <!-- PAGEINATION -->
           <nav class="blog-pagination">
             <a class="btn btn-outline-primary" href="#">Older</a>
             <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
@@ -64,9 +52,3 @@
     </main><!-- /.container -->
 
     <?php include "inc/footer.php"; ?>
-
-<!-- jquery this needs to go in the footer as well-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>  
-</body>
-</html>

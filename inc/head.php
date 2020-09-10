@@ -21,7 +21,7 @@
   
   <link rel="stylesheet" href="css/main.css">
 
-  <title>Document</title>
+  <title>Inspired sound</title>
 </head>
 
 <body>
