@@ -1,16 +1,19 @@
+<?php
+  //select all from table
+  $query = "SELECT * FROM categories";
+  // send that all in
+  $select_categories_navigation = mysqli_query($connection,$query);				
+?> 
 <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="#">World</a>
-          <a class="p-2 text-muted" href="#">U.S.</a>
-          <a class="p-2 text-muted" href="#">Technology</a>
-          <a class="p-2 text-muted" href="#">Design</a>
-          <a class="p-2 text-muted" href="#">Culture</a>
-          <a class="p-2 text-muted" href="#">Business</a>
-          <a class="p-2 text-muted" href="#">Politics</a>
-          <a class="p-2 text-muted" href="#">Opinion</a>
-          <a class="p-2 text-muted" href="#">Science</a>
-          <a class="p-2 text-muted" href="#">Health</a>
-          <a class="p-2 text-muted" href="#">Style</a>
-          <a class="p-2 text-muted" href="#">Travel</a>
-        </nav>
-      </div>
+  <nav class="nav d-flex justify-content-between site-navigation">
+    <a class="p-2" href="#">home</a>
+    <?php
+    while($row = mysqli_fetch_array($select_categories_navigation)) {
+      $cat_title = $row['cat_title'];
+      $cat_id = $row['cat_id'];
+
+      echo "<a class='p-2' href='category.php?category=$cat_id '>{$cat_title}</a>";
+    }
+    ?>
+  </nav>
+</div>

@@ -21,6 +21,10 @@
   
   <link rel="stylesheet" href="css/main.css">
 
+  <!-- GOOGLE FONT -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+
   <title>Inspired sound</title>
 </head>
 

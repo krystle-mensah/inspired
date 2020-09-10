@@ -1,4 +1,4 @@
-<?php //include "includes/db.php" ?>
+<?php include "inc/db.php" ?>
 
 <!-- include head.php page here -->
 <?php include "inc/head.php"; ?>
@@ -21,16 +21,16 @@
 
           <div class="blog-post">
             <div class="col-md-6">
-              <div class="card box-shadow h-md-250">
+              <div class="card box-shadow">
                 <div class="card-body d-flex flex-column align-items-start">
-                  <img class="card-img-right flex-auto d-none d-md-block post-image" src="main-img/place_1.jpg" alt="Card image cap">
+                  <img class="flex-auto d-none d-md-block post-image img-fluid" src="main-img/place_1.jpg" alt="Card image cap">
                 </div>
                 <div class="post-content">
                   <h3 class="mb-0">
                     <a class="text-dark" href="#">Post title</a>
                   </h3>
                   <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-                  <strong class="d-inline-block mb-2 text-success">category Title</strong>
+                  <p><strong class="d-inline-block mb-2 text-success">category Title</strong></p>
                 </div><!-- post-content -->
               </div>
             </div>

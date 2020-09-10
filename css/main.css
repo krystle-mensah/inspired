@@ -1,7 +1,31 @@
+body {
+  font-family: 'Merriweather', serif;
+}
+
 img.post-image {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .card-body {
   padding: 0px;
+}
+
+.post-content {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+/* navigation layout */
+
+.site-navigation a {
+  color: #000;
+  text-transform: capitalize;
+  transition: 0.3s;
+}
+
+.site-navigation a:hover {
+  background-color: #ECCE0F;
+  opacity: 1;
+  text-decoration: none;
 }
