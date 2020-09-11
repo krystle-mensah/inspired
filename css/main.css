@@ -61,6 +61,20 @@ a.sub-button {
   color: #000;
 }
 
+button.btn.btn-default {
+  margin-left: 5px;
+}
+
+
+
+/* CAROUSEL */
+
+a.carousel_button {
+  background: #000;
+}
+
+
+
 /* INDEX LAYOUT */
 
 a.post_author {

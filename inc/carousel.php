@@ -11,7 +11,7 @@
               <div class="carousel-caption text-left">
                 <h1>Category Title</h1>
                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Read More</a></p>
+                <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p>
               </div>
             </div>
           </div>

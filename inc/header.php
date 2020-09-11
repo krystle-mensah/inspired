@@ -19,13 +19,47 @@
         <a href="#"><i class="fab fa-youtube"></i></a>
       </div> -->
 
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <?php 
+      
+      //search function
+      // if( isset( $_POST['submit'] ) ){
+        
+      //   $search = $_POST['search'];
+      //   $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+      //   $search_query = mysqli_query($connection, $query);
 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      //   // try and test this when you have more posts. lecture 93.
+      //   if(!$search_query) {
+      //     die("QUERY FAILED" . mysqli_error($connection));
+      //   }
+      
+      // }
+      
+      
+      ?>
 
+      <div class="search_form">
+            <form action="" method="post">
+
+              <div class="input-group">
+                <input name="search" type="text" class="form-control" placeholder="search blog">
+                  <span class="input-group-btn">
+                      <button name="submit" class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+                  </span> <!-- input-group-btn -->
+              </div> <!-- input-group -->
+
+            </form><!-- search form -->
+
+      </div><!-- search_bar --> 
+      
     </div><!-- header_left --> 
-    
-  
+
 </header>
+
+<?php 
+// TEST - check input search.
+////check input name search
+////if( isset( $_POST['search'] ) ){echo $_POST['search'];}
+?>
