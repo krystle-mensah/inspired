@@ -77,51 +77,23 @@
 											<div class="form-group">
 												<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
 											</div><!-- form-group -->
-
 										</form><!-- form -->
 
-										<form action="" method="post">
+										<?php // UPDATE AND INCLUDE QUERY
 
-											<div class="form-group">
-												<label for="cat-title">Edit Category</label>
-												
-												<!-- EDITED CATEGORY -->
-												
-												<?php
+// DECTECT - if the edited link is declared 
+if(isset($_GET['edit'])){
 
-													// Check for edit in the url
-													if(isset($_GET['edit'])){
-														
-														// if TRUE - then catch it
-														$cat_id = $_GET['edit'];
+	// IF TRUE - ASSIGN TO cat_id. 
+	$cat_id = $_GET['edit'];
 
-														// select all from the categories table where cat_id is equal to cat_id catched.
-														$query = "SELECT * FROM categories WHERE cat_id = $cat_id ";
-																								
-														// function to send query in to the database. 
-														$select_categories_id = mysqli_query($connection,$query);
-														
-														// while the condition is true fetch the row representing the array from ($variable - see above)
-														while($row = mysqli_fetch_array($select_categories_id)) {
-															// Then assign the array to a variable
-															$cat_id = $row['cat_id'];
-															$cat_title = $row['cat_title'];
-															?>
-															<!-- if variable is detected echo it in the input -->
-															<input value="<?php if(isset($cat_title)){echo $cat_title;}?>" class="form-control" type="text" name="cat_title">
+	// PATH TO UPDATE_CATEGORIES.PHP
+	include "inc/update_categories.php";
 
-															<?php }
-														
-													}
+}
 
-												?>
-
-											</div><!-- form-group -->
-											<div class="form-group">
-												<input class="btn btn-primary" type="submit" name="submit" value="Update Category">
-											</div><!-- form-group -->
-
-										</form><!-- form -->
+?>
+									
 
 									</div><!-- alignment -->
 
