@@ -36,12 +36,12 @@ img.post-image {
 
 a.header_logo {
   display: inline-block;
-  position: relative;
-  left: 50%;
-transform: translateX(-50%);
-  font-size: 0;
-  width: 100%;
-  max-width: 260px !important;
+  /* position: relative; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* font-size: 0; */
+  /* width: 100%; */
+  /* max-width: 260px !important; */
 }
 
 .header_left {

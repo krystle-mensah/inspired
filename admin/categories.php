@@ -81,18 +81,18 @@
 
 										<?php // UPDATE AND INCLUDE QUERY
 
-// DECTECT - if the edited link is declared 
-if(isset($_GET['edit'])){
+											// DECTECT - if the edited link is declared 
+											if(isset($_GET['edit'])){
 
-	// IF TRUE - ASSIGN TO cat_id. 
-	$cat_id = $_GET['edit'];
+												// IF TRUE - ASSIGN TO cat_id. 
+												$cat_id = $_GET['edit'];
 
-	// PATH TO UPDATE_CATEGORIES.PHP
-	include "inc/update_categories.php";
+												// PATH TO UPDATE_CATEGORIES.PHP
+												include "inc/update_categories.php";
 
-}
+											}
 
-?>
+										?>
 									
 
 									</div><!-- alignment -->

@@ -11,6 +11,18 @@
 								<div class="sb-sidenav-menu-heading">Interface</div>
 								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+									Posts
+									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+								</a>
+								<!-- POST DROPDOWN -->
+								<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+									<nav class="sb-sidenav-menu-nested nav">
+										<a class="nav-link" href="./posts.php">View All Posts</a>
+										<a class="nav-link" href="layout-sidenav-light.html">Add Posts</a>
+									</nav>
+								</div>
+								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+									<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
 									Layouts
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
@@ -56,7 +68,7 @@
 									<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 									Charts
 								</a>
-								<a class="nav-link" href="categories.php">
+								<a class="nav-link" href="./categories.php">
 									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
 									Categories
 								</a>
