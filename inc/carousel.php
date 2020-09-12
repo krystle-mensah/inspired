@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="main-img/news_1.jpg" alt="Second slide">
+            <img class="second-slide" src="img/news_1.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>Category Title</h1>
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="main-img/news_1.jpg" alt="Third slide">
+            <img class="third-slide" src="img/news_1.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1>Category Title</h1>

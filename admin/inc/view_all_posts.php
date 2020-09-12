@@ -146,7 +146,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
         echo "<td>{$cat_title}</td>";
       } 
     echo "<td>$post_status</td>";
-    echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
+    echo "<td><img width='100' src='../img/$post_image' alt='image'></td>";
     echo "<td>$post_tags</td>";
     echo "<td>$post_comment_count</td>";
     echo "<td>$post_date</td>";
