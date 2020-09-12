@@ -27,7 +27,7 @@
 											</ol> -->
 									</div><!-- alignment -->	
 
-									<div class="col-xs-6 col-lg-4">
+									
 
                   <?php 
 
@@ -78,7 +78,7 @@
                   ?>
 
 								
-									</div><!-- alignment -->
+								
 								</div>
 							</div><!-- container fluid -->
 
