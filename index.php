@@ -45,7 +45,8 @@
               
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
-                    <img class="flex-auto d-none d-md-block post-image img-fluid" src="main-img/<?php echo $post_image; ?>" alt="Card image cap">
+                    <!-- / = means current directory -->
+                    <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                   </div>
                   <div class="post-content">
                     <a class="post_title" href="#"><h3><?php echo $post_title;  ?></h3></a>

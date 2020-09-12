@@ -6,7 +6,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="main-img/news_1.jpg" alt="First slide">
+            <img class="first-slide" src="img/news_1.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1>Category Title</h1>

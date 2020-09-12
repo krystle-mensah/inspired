@@ -6,8 +6,8 @@
     </div>
 
     <div class="logo_container">
-      
-        <a class="header_logo" href="#"><img src="main-img/logo.png" alt="inspired sound"></a>
+      <!-- where in the inc folder. we go out of that. then where in the root ./ img folder in the current dir -->
+        <a class="header_logo" href="#"><img src="./img/logo.png" alt="inspired sound"></a>
       
     </div>
     

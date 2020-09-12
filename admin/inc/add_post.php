@@ -2,40 +2,44 @@
 
 // if set
 if(isset($_POST['create_post'])){
-  // test 
-//   create a post test
-//   $_POST['title'];
+  // TEST - type in the title field then click update button 
+  ////echo $_POST['title'];
 
   // values form
   $post_title        = $_POST['title'];
   $post_author        = $_POST['author'];
-  // $post_category_id  = $_POST['post_category_id'];
+  $post_category_id  = $_POST['post_category_id'];
   //$post_status       = $_POST['post_status'];
-
   $post_image        = $_FILES['image']['name'];
   $post_image_temp   = $_FILES['image']['tmp_name'];
-
-
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
   $post_date         = date('d-m-y');
-  // here when we create a post we are hard coding the value
+  //  hard coding the value
   $post_comment_count = 4;
   
   // move files to new place. temp place the images folder 
-  move_uploaded_file($post_image_temp, "../img/$post_image" );
+  move_uploaded_file($post_image_temp, "../main-img/$post_image" );
 
 //   // query to insert to database
-//   $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
+//$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
+$query = "INSERT INTO posts(post_title, post_author, post_category_id, post_tags, post_content, post_date, post_comment_count) ";
 
 //   // values we are inserting from the from. we are not getting the hard code from the $post_comment_count = 4; here any more
-//   $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
+// $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') ";
+$query .= "VALUES('{$post_title}','{$post_author}',{$post_category_id},'{$post_tags}','{$post_content}', now(), '{$post_comment_count}') ";  
   
-//   // then we send the query in
-//   $create_post_query = mysqli_query($connection, $query); 
+  // then we send the query in
+  $create_post_query = mysqli_query($connection, $query); 
 
-//   // function to confirm result
-//   confirmQuery($create_post_query);
+  // function to confirm result
+  //if not a query
+  if(!$create_post_query){
+
+    // Print a message and terminate the current script:
+    die("QUERY FAILED" . mysqli_error($connection));
+
+  }
   
 //   // Test function
 //   // confirmQuery($Hello);
@@ -52,10 +56,15 @@ if(isset($_POST['create_post'])){
 
 <!-- multipart/form-data lets you send encoded data  -->
 <form action="" method="post" enctype="multipart/form-data"> 
-
+  <!-- TITLE -->
   <div class="form-group">
     <label for="title">Post Title</label>
     <input type="text" class="form-control" name="title">
+  </div>
+
+  <div class="form-group">
+    <label for="title">cat id</label>
+    <input type="text" class="form-control" name="post_category_id">
   </div>
 
   <!-- <div class="form-group"> -->
@@ -94,7 +103,7 @@ if(isset($_POST['create_post'])){
     
   <!-- </div>  -->
   <!-- form-group -->
-
+  <!-- AUTHOR -->
   <div class="form-group">
     <label for="title">Post Author</label>
     <input type="text" class="form-control" name="author">
