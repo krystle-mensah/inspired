@@ -45,7 +45,7 @@ if(isset($_POST['update_post'])){
   $post_tags           =  $_POST['post_tags'];
   
   //move file to from var then move to new location
-  move_uploaded_file($post_image_temp, "../images/$post_image");
+  move_uploaded_file($post_image_temp, "../img/$post_image");
 
   // if empty var
   if(empty($post_image)) {
@@ -168,7 +168,7 @@ if(isset($_POST['update_post'])){
   <div class="form-group">
     <!-- not sure if below code is supossed to be here -->
     <label for="post_image">Post Image</label>
-    <img width="100" src="../images/<?php echo $post_image; ?>" alt="">
+    <img width="100" src="../img/<?php echo $post_image; ?>" alt="">
     <input type="file"  name="image">
   </div>
 
