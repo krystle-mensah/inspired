@@ -3,52 +3,41 @@
 // if set
 if(isset($_POST['create_post'])){
   // TEST - type in the title field then click update button 
-  ////echo $_POST['title'];
+  //echo $_POST['title'];
 
-  // values form
+  //  form values
   $post_title        = $_POST['title'];
-  $post_author        = $_POST['author'];
+  $post_author       = $_POST['author'];
   $post_category_id  = $_POST['post_category_id'];
-  //$post_status       = $_POST['post_status'];
   $post_image        = $_FILES['image']['name'];
   $post_image_temp   = $_FILES['image']['tmp_name'];
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
   $post_date         = date('d-m-y');
-  //  hard coding the value
+  // hard coding the value
   $post_comment_count = 4;
+  //$post_status       = $_POST['post_status'];
   
-  // move files to new place. temp place the images folder 
+  // move files to post image temp to outside of admin in a root dir called img. 
   move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-//   // query to insert to database
-//$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
-$query = "INSERT INTO posts(post_title, post_author, post_category_id, post_image, post_tags, post_content, post_date, post_comment_count) ";
+  // query to insert to database
+  //$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
+  $query = "INSERT INTO posts(post_title, post_author, post_category_id, post_image, post_tags, post_content, post_date, post_comment_count) ";
 
-//   // values we are inserting from the from. we are not getting the hard code from the $post_comment_count = 4; here any more
-// $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') ";
-$query .= "VALUES('{$post_title}','{$post_author}',{$post_category_id}, '{$post_image }','{$post_tags}','{$post_content}', now(), '{$post_comment_count}') ";  
+  // values we are inserting from the from.
+  // $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') ";
+
+  $query .= "VALUES('{$post_title}','{$post_author}',{$post_category_id}, '{$post_image }','{$post_tags}','{$post_content}', now(), '{$post_comment_count}') ";  
   
-  // then we send the query in
+  // Then send query and connection
   $create_post_query = mysqli_query($connection, $query); 
 
-  // function to confirm result
-  //if not a query
-  if(!$create_post_query){
+  confirmQuery($create_post_query);
 
-    // Print a message and terminate the current script:
-    die("QUERY FAILED" . mysqli_error($connection));
+  //$the_post_id = mysqli_insert_id($connection);
 
-  }
-  
-//   // Test function
-//   // confirmQuery($Hello);
-
-//   $the_post_id = mysqli_insert_id($connection);
-
-//   // let them no it was created
-  
-//   echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
+  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
 }
 

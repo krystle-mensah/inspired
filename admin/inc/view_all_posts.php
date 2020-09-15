@@ -101,7 +101,6 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 
   <?php 
 
-  // select all from the posts table.
   $query = "SELECT * FROM posts";
 
   // mysqli_query function sends in the above query and connection. 
@@ -126,7 +125,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     ?>
       <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id ?>'></td>  
     <?php 
-       
+
     echo "<td>$post_id</td>";
     echo "<td> $post_author</td>";
     echo "<td> $post_title</td>";
@@ -136,7 +135,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
       
       // function to send query into the database. 
       $select_categories_id = mysqli_query($connection,$request_to);
-       
+
       // while the condition is true fetch the row representing the array from ($variable - see above)
       while($row = mysqli_fetch_array($select_categories_id)) {
         // Then assign the array to a variable

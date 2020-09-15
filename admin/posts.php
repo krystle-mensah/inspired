@@ -31,13 +31,13 @@
 
                   <?php 
 
-                    //check url for get url source
+                    //check url for get source
                     if(isset($_GET['source'])){
 
                       // if ture assign variable
                       $source = $_GET['source'];
 
-                    // we have to put an else because im getting an undefined variable.  
+                      // we have to put an else because im getting an undefined variable.  
                     } else {
 
                       // variable assigned to eptmy string
