@@ -13,15 +13,13 @@ foreach($db as $key => $value){
 
 }
 
-//assign variable to open a new connection to server with contants
-$connection = mysqli_connect(DB_HOST, DB_USER,DB_PASS,DB_NAME);
+// Create connection
+$connection = new mysqli(DB_HOST, DB_USER,DB_PASS,DB_NAME);
 
-// TEST - 
-// if($connection) {
-//echo "We are connected";
-// }
-
-
-
+// Check connection
+if ($connection->connect_error) {
+  die("Connection failed: " . $connection->connect_error);
+}
+echo "Connected successfully";
 
 ?>
