@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-
+<?php include "./function.php"; ?>
 <?php include "../inc/db.php"; ?>
 
 <!DOCTYPE html>
