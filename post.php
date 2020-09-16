@@ -10,14 +10,22 @@
       <!-- NAVIGATION -->
       <?php include "inc/navigation.php"; ?>
 
-      <!-- CAROUSEL -->
-      <?php include "inc/carousel.php"; ?>
+      
 
 </div>
 
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog_main">
+        <?php 
+
+        // Detact event on the index
+        if(isset($_GET['p_id'])){
+          // Each value when clicked
+          $the_post_id = $_GET['p_id'];
+        }
+
+        ?>
           <?php 
           
           // requst all the post table database. 
@@ -42,31 +50,23 @@
           ?>
           <div class="col-md-6">
             <div class="blog-post">
-              
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
                     <!-- / = means current directory -->
-                    <a href="post.php?p_id<?php echo $post_id;  ?>">
-                      <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
-                    </a>
+                    <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                   </div>
                   <div class="post-content">
-                    <a class="post_title" href="post.php?p_id<?php echo $post_id;  ?>"><h3><?php echo $post_title;  ?></h3></a>
+                    <a class="post_title" href="#"><h3><?php echo $post_title;  ?></h3></a>
+                    
                     <p class="blog-post-meta"><?php echo $post_date;  ?> by <a class="post_author" href="#"><?php echo $post_author;  ?></a></p>
                     
-                    <p><strong class="d-inline-block mb-2 text-success">category Title</strong></p>
+                    <p><strong class="d-inline-block mb-2 text-success">Category Title</strong></p>
                   </div><!-- post-content -->
                 </div>
               </div>
             </div><!-- /.blog-post -->
           <?php }   ?>
         </div><!-- alignment and main blog -->
-        
-        <!-- SIDEBAR -->
-        <aside class="col-md-4 blog-sidebar">
-          <?php include "inc/sidebar.php"; ?>
-        </aside><!-- /.blog-sidebar -->
-
       </div><!-- /.row -->
 
       <!-- PAGEINATION --> 

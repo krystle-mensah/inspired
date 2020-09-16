@@ -1,15 +1,12 @@
 <?php
 
-//if the the specific post id is dected i.e clicked
+//if the post id is set in the url
 if(isset($_GET['p_id'])){
-  // test first
-  ////$_GET['p_id'];
-
-  //then create a variable
+  
+  //GET it and save it in this variable
   $the_post_id = $_GET['p_id'];
 }
 
-// select all from the posts table.
 $query = "SELECT * FROM posts WHERE post_id = $the_post_id  ";
 
 // mysqli_query function sends in the above query and connection. 
@@ -52,8 +49,6 @@ if(isset($_POST['update_post'])){
     
     //select all where col id = var
     $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
-    
-    //send in
     $select_image = mysqli_query($connection,$query);
 
     // then loop though result set
@@ -99,38 +94,34 @@ if(isset($_POST['update_post'])){
   </div>
 
   <div class="form-group">
-    <!-- <label for="categories">Categories</label> -->
+    
     <select name="post_category" id="">
 
-    <?php
+      <!-- // SELECT ALL CATEGORIES QUERY -->
+      <?php
+          
+          $query = "SELECT * FROM categories ";
+          $select_categories = mysqli_query($connection,$query);
+          confirmQuery($select_categories);
 
-        // hold all from database table
-        $query = "SELECT * FROM categories ";
-        // HOLD and send in query and connection
-        $select_categories = mysqli_query($connection,$query);
-        // confirm variable
-        //confirmQuery($select_categories);
-
-        while($row = mysqli_fetch_assoc($select_categories )) {
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
+          while($row = mysqli_fetch_assoc($select_categories )) {
+          $cat_id = $row['cat_id'];
+          $cat_title = $row['cat_title'];
 
 
-        if($cat_id == $post_category_id) {
+          if($cat_id == $post_category_id) {
 
-      
-        echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+            echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
 
-        } else {
+          } else {
 
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
+            echo "<option value='{$cat_id}'>{$cat_title}</option>";
 
-        }
+          }
+              
+          }
 
-            
-        }
-
-    ?>
+      ?>
     
     </select>
     

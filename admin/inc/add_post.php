@@ -56,42 +56,40 @@ if(isset($_POST['create_post'])){
     <input type="text" class="form-control" name="post_category_id">
   </div>
 
-  <!-- <div class="form-group"> -->
-    <!-- <select name="post_category_id" id=""> -->
+  <div class="form-group">
+    <select name="post_category_id" id="">
 
       <?php
 
-        // // hold all from database table
-        // $query = "SELECT * FROM categories";
+        // hold all from database table
+        $query = "SELECT * FROM categories";
         
-        // // HOLD and send in query and connection
-        // $select_categories = mysqli_query($connection,$query);
+        $select_categories = mysqli_query($connection,$query);
         
-        // // CONFIRM VAR
-        // confirmQuery($select_categories);
+        confirmQuery($select_categories);
 
-        // while($row = mysqli_fetch_assoc($select_categories)) {
-        //   $cat_id = $row['cat_id'];
-        //   $cat_title = $row['cat_title'];
+        while($row = mysqli_fetch_assoc($select_categories)) {
+          $cat_id = $row['cat_id'];
+          $cat_title = $row['cat_title'];
 
-        // if($cat_id == $post_category_id) {
+        if($cat_id == $post_category_id) {
       
-        // echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+        echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
 
-        // } else {
+        } else {
 
-        //   echo "<option value='{$cat_id}'>{$cat_title}</option>";
+          echo "<option value='{$cat_id}'>{$cat_title}</option>";
 
-        // }
+        }
             
-        // }
+        }
 
       ?>
     
-    <!-- </select> -->
+    </select>
     
-  <!-- </div>  -->
-  <!-- form-group -->
+  </div><!-- form-group -->
+
   <!-- AUTHOR -->
   <div class="form-group">
     <label for="title">Post Author</label>
