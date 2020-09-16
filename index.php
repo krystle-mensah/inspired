@@ -48,12 +48,12 @@
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
                     <!-- / = means current directory -->
-                    <a href="post.php?p_id<?php echo $post_id;  ?>">
+                    <a href="post.php?p_id=<?php echo $post_id; ?>">
                       <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                     </a>
                   </div>
                   <div class="post-content">
-                    <a class="post_title" href="post.php?p_id<?php echo $post_id;  ?>"><h3><?php echo $post_title;  ?></h3></a>
+                    <a class="post_title" href="post.php?p_id=<?php echo $post_id; ?>"><h3><?php echo $post_title;  ?></h3></a>
                     <p class="blog-post-meta"><?php echo $post_date;  ?> by <a class="post_author" href="#"><?php echo $post_author;  ?></a></p>
                     <?php 
                     $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";

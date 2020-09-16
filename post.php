@@ -15,7 +15,7 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8 blog_main">
+        <div class="col-md-8">
         <?php 
 
         // Detact event on the index
@@ -28,7 +28,7 @@
           <?php 
           
           // requst all the post table database. 
-          $query = "SELECT * FROM posts";
+          $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
           //echo $query; // OUTPUT - SELECT * FROM posts
 
           // perform a query against the database and send in query and connection
@@ -39,31 +39,34 @@
           //echo $row; // Notice: Array to string conversion
 
           // Then assign the row array to a variable
-          $post_id = $row['post_id']; 
           $post_title = $row['post_title'];
           $post_author = $row['post_author'];
           $post_date = $row['post_date'];
           // reference form the database
           $post_image = $row['post_image'];
+          $post_content = $row['post_content'];
         
           ?>
-          <div class="col-md-6">
-            <div class="blog-post">
+          <h1 class="mt-4"><?php echo $post_title;  ?></h1>
+          by <a class="post_author" href="#"><?php echo $post_author;  ?></a>
+          <p class="blog-post-meta"><?php echo $post_date;  ?> </p>
+          
+            
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
                     <!-- / = means current directory -->
                     <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                   </div>
                   <div class="post-content">
-                    <a class="post_title" href="#"><h3><?php echo $post_title;  ?></h3></a>
                     
-                    <p class="blog-post-meta"><?php echo $post_date;  ?> by <a class="post_author" href="#"><?php echo $post_author;  ?></a></p>
                     
-                    <p><strong class="d-inline-block mb-2 text-success">Category Title</strong></p>
+                    
+                    
+                    <p><?php echo $post_content ?></p>
                   </div><!-- post-content -->
                 </div>
-              </div>
-            </div><!-- /.blog-post -->
+              
+            
           <?php }   ?>
         </div><!-- alignment and main blog -->
       </div><!-- /.row -->
