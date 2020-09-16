@@ -21,10 +21,13 @@
 
 							<div class="container-fluid">
 								<h1 class="mt-4">Dashboard</h1>
-								<?php //echo "anything"; ?>
+								
 								<ol class="breadcrumb mb-4">
-									<li class="breadcrumb-item active">Dashboard</li>
+									<li class="breadcrumb-item active">Hi
+										<?php echo $_SESSION['username']; ?>
+									</li>
 								</ol>
+
 								<div class="row">
 									<div class="col-xl-3 col-md-6">
 										<div class="card bg-primary text-white mb-4">

@@ -1,6 +1,22 @@
-<?php ob_start(); ?>
+<?php session_start(); ?>
 <?php include "./function.php"; ?>
 <?php include "../inc/db.php"; ?>
+
+<!-- outwould buffering -->
+<?php ob_start(); ?>
+
+<?php
+
+// this prevents user from going to admin
+// 158. Logout Page Improved Validation
+
+// if( !isset($_SESSION['user_role'] )) {
+	
+// 	header("Location: ../index.php");
+	
+// }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
