@@ -5,9 +5,12 @@
       <a class="sub-button" href="#">Subscribe</a>
     </div>
 
+    <a class="nav_container_logo" href="">
+      <img src="./img/logo.png" alt="inspired sound">
+    </a>
     <div class="logo_container">
       <!-- where in the inc folder. we go out of that. then where in the root ./ img folder in the current dir -->
-        <a class="header_logo" href="#"><img src="./img/logo.png" alt="inspired sound"></a>
+        <!-- <a class="header_logo" href="#"><img src="./img/logo.png" alt="inspired sound"></a> -->
       
     </div>
     
