@@ -7,14 +7,13 @@
 
 <?php
 
-// this prevents user from going to admin
-// 158. Logout Page Improved Validation
+// how to prevent certian users from going to admin
 
-// if( !isset($_SESSION['user_role'] )) {
+if( !isset($_SESSION['user_role'] )) {
 	
-// 	header("Location: ../index.php");
+	header("Location: ../index.php");
 	
-// }
+}
 
 ?>
 
