@@ -23,16 +23,18 @@
 										<a class="nav-link" href="posts.php?source=add_post">Add Posts</a>
 									</nav>
 								</div>
+
+								<!-- USERS -->
 								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
 									Users
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
-								<!-- USER DROPDOWN -->
+								
 								<div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<a class="nav-link" href="./posts.php">View All Users</a>
-										<a class="nav-link" href="posts.php?source=add_post">Add User</a>
+										<a class="nav-link" href="users.php">View All Users</a>
+										<a class="nav-link" href="users.php?source=add_user">Add User</a>
 									</nav>
 								</div>
 								<!-- CATEGORIES -->
