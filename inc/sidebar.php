@@ -21,12 +21,27 @@
               <li><a href="#">April 2013</a></li>
             </ol>
           </div> -->
+          <div class="search_form">
+            <form action="" method="post">
 
-          <div class="p-3">
+              <div class="input-group">
+                <input name="search" type="text" class="form-control" placeholder="search blog">
+                  <span class="input-group-btn">
+                      <button name="submit" class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+                  </span> <!-- input-group-btn -->
+              </div> <!-- input-group -->
+
+            </form><!-- search form -->
+
+      </div><!-- search_bar --> 
+
+          <!-- <div class="p-3">
             <h4 class="font-italic">Socials</h4>
             <ol class="list-unstyled">
               <li><a href="#">GitHub</a></li>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Facebook</a></li>
             </ol>
-          </div>
+          </div> -->

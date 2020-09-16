@@ -68,7 +68,7 @@
                     } 
                     ?>
                     <a href="category.php?category=<?php echo $cat_id;  ?>">
-                      <p><strong class="d-inline-block mb-2 text-success"><?php echo $cat_title;  ?></strong></p>
+                      <p class="post_cat_title"><strong><?php echo $cat_title;  ?></strong></p>
                     </a>
         
                   </div><!-- post-content -->

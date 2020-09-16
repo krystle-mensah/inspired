@@ -1,68 +1,38 @@
-<header class="blog-header py-3 site_header">
-  
+<header class="header">
+    <div class="header-container">
 
-    <div class="col-4 pt-1">
-      <a class="sub-button" href="#">Subscribe</a>
+      <div class="logo-container">
+        <img class="logo" src="img/logo.png" alt="inspired sound logo">
+      </div>
+
+      <div class="tagline-container">
+        <h3 class="header-tagline">underground music & culture</h3>
+      </div>
+      <div class="social-media">
+        <div class="social-media-container">
+          <a href="#" class="social-media-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-media-link"><i class="fab fa-spotify"></i></a>
+          <a href="#" class="social-media-link"><i class="fab fa-soundcloud"></i></a>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <div class="header-icons-container">
+          <a href="#" class="header-icon-link"><i class="fas fa-headphones"></i></a>
+          <a href="#" class="header-icon-link"><i class="fas fa-search"></i></a>
+          <a href="#" class="header-icon-link"><i class="fas fa-bars"></i></a>
+        </div>
+      </div>
+
     </div>
-
-    <a class="nav_container_logo" href="index.php">
-      <img src="./img/logo.png" alt="inspired sound">
-    </a>
-    <div class="logo_container">
-      <!-- where in the inc folder. we go out of that. then where in the root ./ img folder in the current dir -->
-        <!-- <a class="header_logo" href="#"><img src="./img/logo.png" alt="inspired sound"></a> -->
-      
-    </div>
-    
-    <div class="header_left">
-
-      <!-- <div class="header_share">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div> -->
-
-      <?php 
-      
-      //search function
-      // if( isset( $_POST['submit'] ) ){
-        
-      //   $search = $_POST['search'];
-      //   $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
-      //   $search_query = mysqli_query($connection, $query);
-
-      //   // try and test this when you have more posts. lecture 93.
-      //   if(!$search_query) {
-      //     die("QUERY FAILED" . mysqli_error($connection));
-      //   }
-      
-      // }
-      
-      
-      ?>
-
-      <div class="search_form">
-            <form action="" method="post">
-
-              <div class="input-group">
-                <input name="search" type="text" class="form-control" placeholder="search blog">
-                  <span class="input-group-btn">
-                      <button name="submit" class="btn btn-default" type="submit">
-                        <i class="fas fa-search"></i>
-                      </button>
-                  </span> <!-- input-group-btn -->
-              </div> <!-- input-group -->
-
-            </form><!-- search form -->
-
-      </div><!-- search_bar --> 
-      
-    </div><!-- header_left --> 
-
-</header>
+  </header>
 
 <?php 
 // TEST - check input search.
 ////check input name search
 ////if( isset( $_POST['search'] ) ){echo $_POST['search'];}
 ?>
+
+ <!-- <div class="col-4 pt-1">
+      <a class="sub-button" href="#">Subscribe</a>
+    </div> -->

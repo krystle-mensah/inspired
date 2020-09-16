@@ -19,48 +19,71 @@ img.post-image {
 
 /* HEADER LAYOUT */
 
-.site_header {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
+header.header {
+	padding: 2em;
 }
 
-.logo_container {
-  position: relative;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding-left: 25px;
-  padding-right: 15px;
-  float: left;
+.header-container {
+	position: relative;
+	overflow: hidden;
 }
 
-/* a.header_logo {
-  display: inline-block;
-} */
+/* LOGO */
 
-.header_left {
-  position: relative;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  float: right;
+.logo-container {
+	text-align: center;
 }
 
-a.sub-button {
+/* TAGLINE */
+
+.tagline-container {
+	text-align: center;
+}
+
+h3.header-tagline {
+	text-transform: uppercase;
+	color: #ccc;
+	font-family: 'Merriweather', serif;
+	font-weight: 300;
+}
+
+/* SOCIAL MEDIA */
+
+.social-media {
+	float: left;
+	position: absolute;
+	top: 0;
+}
+
+/* .social-media-container {} */
+
+a.social-media-link {
+	display: block;
+	cursor: pointer;
+	font-size: 25px;
   color: #000;
 }
 
-.header_share a {
-  color: #000;
+/* HEADER ICONS */
+
+.header-icons {
+	/* float: right; */
+	position: absolute;
+	top: 0px;
+	right: 0px;
 }
 
-button.btn.btn-default {
-  margin-left: 5px;
+/* .header-icons-container {} */
+
+a.header-icon-link {
+	display: block;
+	/* padding: 22px 16px; */
+	cursor: pointer;
+	font-size: 25px;
+	color: #000;
 }
+
+/* end header */
 
 
 /* CAROUSEL */
@@ -68,8 +91,6 @@ button.btn.btn-default {
 a.carousel_button {
   background: #000;
 }
-
-
 
 /* INDEX LAYOUT */
 
@@ -84,6 +105,12 @@ a.post_title:hover {
   text-decoration: none;
 }
 
+p.post_cat_title {
+  color: #000;
+  display: inline-block!important;
+  text-transform: capitalize;
+
+}
 
 /* Clearfix (clear floats) */
 .blog_main {
@@ -91,16 +118,19 @@ a.post_title:hover {
   flex-wrap: wrap;
 }
 
-/* navigation layout */
+/*============
+NAVIGATION LAYOUT
+=================================*/
+
 .site-navigation {
   padding: 10px;
 }
 
-
 .site-navigation a {
   color: #000;
-  text-transform: capitalize;
+  text-transform: uppercase;
   transition: 0.3s;
+  font-weight: 100;
 }
 
 .site-navigation a:hover {
@@ -108,3 +138,5 @@ a.post_title:hover {
   text-decoration: none;
   border-bottom: 2px solid #DE5133;
 }
+
+/* END NAVIGATION LAYOUT */
