@@ -5,7 +5,7 @@
       <a class="sub-button" href="#">Subscribe</a>
     </div>
 
-    <a class="nav_container_logo" href="">
+    <a class="nav_container_logo" href="index.php">
       <img src="./img/logo.png" alt="inspired sound">
     </a>
     <div class="logo_container">

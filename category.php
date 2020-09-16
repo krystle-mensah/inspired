@@ -11,18 +11,24 @@
   <!-- NAVIGATION -->
   <?php include "inc/navigation.php"; ?>
 
-  <!-- CAROUSEL -->
-  <?php include "inc/carousel.php"; ?>
+  
 
 </div>
 
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog_main">
-          <?php 
+          <?php
+          
+          if(isset($_GET['category'])){
+        
+            // Each value when clicked
+            $post_category_id = $_GET['category'];
+    
+          }
           
           // requst all the post table database. 
-          $query = "SELECT * FROM posts";
+          $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
           //echo $query; // OUTPUT - SELECT * FROM posts
 
           // perform a query against the database and send in query and connection
@@ -67,7 +73,7 @@
                     //echo "<td>{$cat_title}</td>";
                     } 
                     ?>
-                    <a href="category.php?category=<?php echo $cat_id;  ?>">
+                    <a href="#">
                       <p><strong class="d-inline-block mb-2 text-success"><?php echo $cat_title;  ?></strong></p>
                     </a>
         
