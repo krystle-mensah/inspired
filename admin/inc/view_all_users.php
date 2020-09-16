@@ -1,5 +1,4 @@
 <?php 
-//this is a bet strange i dont understand how the input apply is connected to the if set.
 
 // first we check for activity on the checkbox
 if( isset( $_POST['checkBoxArray'] ) ) {
@@ -73,115 +72,114 @@ if( isset( $_POST['checkBoxArray'] ) ) {
   <div class="col-xs-4">
 
     <input type="submit" name="submit" class="btn btn-success" value="Apply">
-    <a class="btn btn-primary" href="posts.php?source=add_post">New Post</a>
+    <a class="btn btn-primary" href="users.php?source=add_user">New User</a>
 
   </div>
 
-    <thead>
-      <tr>
-        <th><input id='selectAllBoxes' type='checkbox'></th>
-        <th>Id</th>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Image</th>
-        <th>Tags</th>
-        <th>Comments</th>
-        <th>Date</th>  
-        <th>Post</th>     
-        <th>Edit</th>      
-        <th>Delete</th>      
-    </thead>
-    <tbody>
-
-</form>
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
 
   <?php 
 
-  $query = "SELECT * FROM posts";
+  $query = "SELECT * FROM users";
 
-  // mysqli_query function sends in the above query and connection. 
-  $select_posts = mysqli_query($connection,$query);
+  $select_users = mysqli_query($connection,$query);
 
   //condition is true fetch the row representing the array from ($variable)
-  while($row = mysqli_fetch_array($select_posts)) {
+  while($row = mysqli_fetch_array($select_users)) {
 
     // values we bring back and assign to variable
-    $post_id = $row['post_id'];
-    $post_author = $row['post_author'];
-    $post_title = $row['post_title'];
-    $post_category_id = $row['post_category_id'];
-    $post_status = $row['post_status'];
-    $post_image = $row['post_image'];
-    $post_tags = $row['post_tags'];
-    $post_comment_count = $row['post_comment_count'];
-    $post_date = $row['post_date'];
+    $userId = $row['userId'];
+    $username = $row['username'];
+    $user_password = $row['user_password'];
+    $user_firstname = $row['user_firstname'];
+    $user_lastname = $row['user_lastname'];
+    $user_email = $row['user_email'];
+    $user_role = $row['user_role'];
     
-    //display 
-    echo "<tr>";
-    ?>
-      <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id ?>'></td>  
-    <?php 
+    echo "<tr>";    
+    echo "<td>$userId</td>";
+    echo "<td>$username</td>";
+    echo "<td>$user_firstname</td>";
+    echo "<td>$user_lastname</td>"; 
+    echo "<td>$user_email</td>";  
+    echo "<td>$user_role</td>";
 
-    echo "<td>$post_id</td>";
-    echo "<td> $post_author</td>";
-    echo "<td> $post_title</td>";
-      
-      // select ALL from the table where [column name] variable is equal to this [column name] variable.
-      $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-      
-      // function to send query into the database. 
-      $select_categories_id = mysqli_query($connection,$request_to);
+    // POPULATE URL WITH - KEY&VALUE
+    echo "<td><a href='users.php?change_to_admin=$userId'>admin</a></td>";
+    echo "<td><a href='users.php?change_to_sub=$userId'>subscriber</a></td>";
 
-      // while the condition is true fetch the row representing the array from ($variable - see above)
-      while($row = mysqli_fetch_array($select_categories_id)) {
-        // Then assign the array to a variable
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
-        // display the cat title 
-        echo "<td>{$cat_title}</td>";
-      } 
-    echo "<td>$post_status</td>";
-    echo "<td><img width='100' src='../img/$post_image' alt='image'></td>";
-    echo "<td>$post_tags</td>";
-    echo "<td>$post_comment_count</td>";
-    echo "<td>$post_date</td>";
-    
-    // go to post page, query string post id and display it.
-    echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
-    
-    //passing the page and the post id. 
-    echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-    
-    //sending post page and delete key equal to the post id
-    // 203. PHP and Javascript Confirm Before Action. so we wont to add a messge to confirm a deleted post 
-    echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
+    echo "<td><a href='users.php?source=edit_user&edit_user=$userId'>Edit</a></td>";
+    echo "<td><a href='users.php?delete=$userId'>Delete</a></td>";
     echo "</tr>";
+
   }
 
   ?>
 
   </tbody>
 </table><!-- table table-bordered table-hover -->
-
 <?php
 
-// if this is set
-if(isset($_GET['delete'])){
+//  IF SET GET [KEY] 
+if(isset($_GET['change_to_admin'])){
 
-  // then convert this into the $the_post_id variable
-  $the_post_id = $_GET['delete']; 
-
-  // delete
-  $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
-
-  // function performs a query against a database to send in. 
-  $delete_query = mysqli_query($connection,$query);
+  // CATCH THE ID
+  $the_user_id = $_GET['change_to_admin'];
   
-  // after we delete a post the page will refresh
-  header("Location: posts.php");
-
+  // UPDATE table set COL equal to this value where COL equals THE ID
+  $query="UPDATE users SET user_role = 'admin' WHERE userId = $the_user_id";
+  
+  // SEND IN 
+  $change_to_admin_query = mysqli_query($connection,$query);
+  
+  // refresh the on submited at this location
+  header("Location: users.php");
 }
+
+//  IF PRESSED
+if(isset($_GET['change_to_sub'])){
+//echo $_GET['change_to_sub']; 
+  //  CATCH change_to_sub
+  $the_user_id = $_GET['change_to_sub']; 
+  
+  // update table set col to equal this value where column equal to $var; 
+  $query = "UPDATE users SET user_role = 'subscriber' WHERE userId = {$the_user_id}";
+  
+  // function performs a query against a database to send in. 
+  $change_to_sub_query = mysqli_query($connection,$query);
+  
+  // then refresh the page everytime it is submited
+  header("Location: users.php");
+  
+}
+?>
+
+
+<!-- DELETE USER QUERY -->
+<?php
+
+  // if this is set
+  if(isset($_GET['delete'])){
+
+    $the_user_id = $_GET['delete']; 
+
+    $query = "DELETE FROM users WHERE userId = {$the_user_id} ";
+
+    $delete_query = mysqli_query($connection,$query);
+    
+    header("Location: users.php");
+
+  }
 
 ?>

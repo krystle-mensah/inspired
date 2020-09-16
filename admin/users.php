@@ -21,7 +21,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-lg-12">
-										<h1 class="mt-4">All Posts</h1>
+										<h1 class="mt-4">users</h1>
 											<!-- <ol class="breadcrumb mb-4">
 												<li class="breadcrumb-item active">Add Category</li>
 											</ol> -->
