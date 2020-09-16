@@ -1,15 +1,17 @@
 <?php 
-
+// IF SET
 if(isset($_GET['edit_user'])){
+  // then save in this varible
   $the_user_id = $_GET['edit_user'];
 
-  // select all from table.
+  // select all from table where the user id is equal to the url id
   $query = "SELECT * FROM users WHERE userId = $the_user_id ";
 
-  // SEND IN function - Perform query against a database.
+  // then Perform query against a database and send in the query and the connection
   $select_users_query = mysqli_query($connection,$query);
 
-  //condition is true fetch the row representing the array from ($variable)
+  // then loop through the varible and condition it. 
+  //true fetch the row representing the array from ($variable)
   while($row = mysqli_fetch_array($select_users_query)) {
 
     // values we bring back and assign to variable
