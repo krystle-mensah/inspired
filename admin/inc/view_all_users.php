@@ -92,10 +92,9 @@ if( isset( $_POST['checkBoxArray'] ) ) {
   <?php 
 
   $query = "SELECT * FROM users";
-
   $select_users = mysqli_query($connection,$query);
 
-  //condition is true fetch the row representing the array from ($variable)
+  //then we Fetch a result row as a numeric array and as an associative array:
   while($row = mysqli_fetch_array($select_users)) {
 
     // values we bring back and assign to variable

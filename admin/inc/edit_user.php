@@ -10,7 +10,7 @@ if(isset($_GET['edit_user'])){
   // then Perform query against a database and send in the query and the connection
   $select_users_query = mysqli_query($connection,$query);
 
-  // then loop through the varible and condition it. 
+  // then loop through the varible and condition it. NOTED.
   //true fetch the row representing the array from ($variable)
   while($row = mysqli_fetch_array($select_users_query)) {
 
