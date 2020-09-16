@@ -3,14 +3,13 @@
 <!-- include head.php page here -->
 <?php include "inc/head.php"; ?>
 
+<!-- HEADER -->
+<?php include "inc/header.php"; ?>
+
 <div class="container">
-      <!-- HEADER -->
-      <?php include "inc/header.php"; ?>
-
-      <!-- NAVIGATION -->
-      <?php include "inc/navigation.php"; ?>
-
       
+  <!-- NAVIGATION -->
+  <?php include "inc/navigation.php"; ?>
 
 </div>
 
