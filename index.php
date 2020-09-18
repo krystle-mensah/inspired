@@ -29,7 +29,7 @@
           $select_all_posts_query = mysqli_query($connection,$query);
           
           // while the condition is true fetch the row representing the array from $select_all_posts_query 
-          while($row = mysqli_fetch_array($select_all_posts_query)) {
+          while($row = mysqli_fetch_array($select_all_posts_query)):
           //echo $row; // Notice: Array to string conversion
 
           // Then assign the row array to a variable
@@ -48,34 +48,31 @@
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
                     <!-- / = means current directory -->
-                    <a href="post.php?p_id=<?php echo $post_id; ?>">
+                    <a href="post.php?p_id=<?= $post_id; ?>">
                       <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                     </a>
                   </div>
                   <div class="post-content">
-                    <a class="post_title" href="post.php?p_id=<?php echo $post_id; ?>"><h3><?php echo $post_title;  ?></h3></a>
-                    <p class="blog-post-meta"><?php echo $post_date;  ?> by <a class="post_author" href="#"><?php echo $post_author;  ?></a></p>
+                    <a class="post_title" href="post.php?p_id=<?= $post_id; ?>"><h3><?= $post_title;  ?></h3></a>
+                    <p class="blog-post-meta"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
                     <?php 
                     $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
                     $select_categories_id = mysqli_query($connection,$request_to);
                     // while the condition is true fetch the row representing the array from ($variable - see above)
-                    while($row = mysqli_fetch_array($select_categories_id)) {
-                    // Then assign the array to a variable
-                    $cat_id = $row['cat_id'];
-                    $cat_title = $row['cat_title'];
-                    // display the cat title 
-                    //echo "<td>{$cat_title}</td>";
-                    } 
+                    foreach($select_categories_id as $number_key):
+                      $cat_id = $number_key['cat_id'];
+                      $cat_title = $number_key['cat_title'];
+                    endforeach;
                     ?>
-                    <a href="category.php?category=<?php echo $cat_id;  ?>">
-                      <p class="post_cat_title"><strong><?php echo $cat_title;  ?></strong></p>
+                    <a href="category.php?category=<?= $cat_id;  ?>">
+                      <p class="post_cat_title"><strong><?= $cat_title;  ?></strong></p>
                     </a>
         
                   </div><!-- post-content -->
                 </div>
               </div>
             </div><!-- /.blog-post -->
-          <?php }   ?>
+          <?php endwhile; ?>
         </div><!-- alignment and main blog -->
         
         <!-- SIDEBAR -->
