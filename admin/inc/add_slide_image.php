@@ -18,17 +18,14 @@ if(isset($_POST['create_slide'])){
   
   move_uploaded_file($slide_image_temp, "../img/$slide_image" );
 
-  // INSERT INTO TABLE COLUMNS SET UP
-  $query = "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) ";
+  // INSERT INTO TABLE COLUMNS AND USE VALUES FROM FORM INPUT
+  $sql = $connection->query(
+    "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
+     VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image }','{$slide_content}', now(), '{$slide_tags}')
+    
+    ");
 
-  // values we are inserting from the from.
-
-  $query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image }','{$slide_content}', now(), '{$slide_tags}') ";  
-  
-  // Then send query and connection
-  $create_slide_query = mysqli_query($connection, $query); 
-
-  confirmQuery($create_slide_query);
+  confirmQuery($sql);
 
   // echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
