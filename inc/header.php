@@ -2,8 +2,10 @@
     <div class="header-container">
 
       <div class="logo-container">
-        <img class="logo" src="img/logo.png" alt="inspired sound logo">
+        <img id="logo" src="img/logo.png" alt="inspired sound logo">
       </div>
+
+      <h1 class="brand_name"> inspied sound</h1>
 
       <div class="tagline-container">
         <h3 class="header-tagline">underground music & culture</h3>

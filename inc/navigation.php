@@ -3,7 +3,8 @@
   $query = "SELECT * FROM categories";
   // send that all in
   $select_categories_navigation = mysqli_query($connection,$query);				
-?> 
+?>
+  <hr>
   <nav class="nav d-flex justify-content-between site-navigation">
     <div><a class="" href="#">home</a></div>
     <?php
@@ -15,3 +16,4 @@
     }
     ?>
   </nav>
+  <hr>

@@ -1,5 +1,4 @@
 body {
-
   font-family: 'Merriweather Sans', sans-serif;
   color: #000;
 }
@@ -18,7 +17,9 @@ img.post-image {
   /* padding: 10px 20px; */
 }
 
-/* HEADER LAYOUT */
+/*============
+HEADER LAYOUT
+=================================*/
 
 header.header {
 	padding: 2em;
@@ -29,15 +30,20 @@ header.header {
 	overflow: hidden;
 }
 
+h1.brand_name {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 800;
+}
+
 /* LOGO */
 
 .logo-container {
 	text-align: center;
 }
 
-/* #logo {
-  width: 52px;
-} */
 img#logo {
   width: 52px;
 }
@@ -49,10 +55,10 @@ img#logo {
 }
 
 h3.header-tagline {
-  font-size: 20px;
+  font-size: 11px;
 	text-transform: uppercase;
-	color: #ccc;
-  font-weight: 300;
+	color: #737373;
+  font-weight: 800;
   font-family: 'Merriweather Sans', sans-serif;
 }
 
@@ -64,13 +70,23 @@ h3.header-tagline {
 	top: 0;
 }
 
-/* .social-media-container {} */
-
 a.social-media-link {
 	display: block;
 	cursor: pointer;
 	font-size: 25px;
-  color: #000;
+  /* color: #000; */
+}
+
+i.fa-instagram {
+  color: #609;
+}
+
+i.fa-spotify {
+  color: #1ED760;
+} 
+
+i.fa-soundcloud {
+  color: #f50;
 }
 
 /* HEADER ICONS */
@@ -82,17 +98,14 @@ a.social-media-link {
 	right: 0px;
 }
 
-/* .header-icons-container {} */
-
 a.header-icon-link {
 	display: block;
-	/* padding: 22px 16px; */
 	cursor: pointer;
 	font-size: 25px;
 	color: #000;
 }
 
-/* end header */
+/* END HEADER LAYOUT */
 
 
 /* CAROUSEL */
@@ -136,18 +149,37 @@ NAVIGATION LAYOUT
 }
 
 .site-navigation a {
-  color: #000;
+  color: #595959;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  transition: 0.3s;
+  /* transition: 0.3s; */
+  display: inline-block;
+  text-decoration: none;
+}
+
+.site-navigation a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #DE5133;
+  transition: width .3s;
+
+}
+
+.site-navigation a:hover::after {
+  width: 100%;
+  transition: width .3s;
+  color: #DE5133;
 }
 
 .site-navigation a:hover {
-  opacity: 1;
-  text-decoration: none;
-  border-bottom: 2px solid #DE5133;
+  color: #DE5133;
 }
 
 /* END NAVIGATION LAYOUT */
+
 
 /*============
 SIDEBAR LAYOUT
