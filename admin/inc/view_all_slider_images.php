@@ -96,14 +96,11 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 </form>
 
   <?php 
+  //$sql = $connection->query("SELECT * FROM carousel");
+  $query = "SELECT * FROM carousel"; 
+  $data = $connection->query($query);
 
-  $sql = $connection->query("SELECT * FROM carousel");
-
-  // mysqli_query function sends in the above query and connection. 
-  //$select_posts = mysqli_query($connection,$query);
-
-  //condition is true fetch the row representing the array from ($variable)
-  while($row = mysqli_fetch_array($sql)) {
+  while($row = $data->fetch_assoc() ) {
 
     // values we bring back
 
@@ -113,7 +110,6 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     $slide_category_id = $row['carousel_cat_id'];
     $slide_image = $row['carousel_image'];
     $slide_tages = $row['carousel_tags'];
-    //$post_comment_count = $row['post_comment_count'];
     $slide_date = $row['carousel_date'];
     
     //display 
@@ -126,26 +122,20 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     echo "<td> $slide_author</td>";
     echo "<td> $slide_title</td>";
       
-      // select ALL from the table where [column name] variable is equal to this [column name] variable.
-      //$request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-
-      $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id} ");
+    //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id} ");
+    $query = "SELECT * FROM categories WHERE cat_id = {$slide_category_id} ";
+    $data = $connection->query($query); 
       
-      // function to send query into the database. 
-      //$select_categories_id = mysqli_query($connection,$request_to);
-
-      // while the condition is true fetch the row representing the array from ($variable - see above)
-      while($row = mysqli_fetch_array($sql)) {
+      while($row = $data->fetch_assoc()) {
         // Then assign the array to a variable
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
         // display the cat title 
         echo "<td>$cat_title</td>";
       } 
-    //echo "<td>$post_status</td>";
-    echo "<td><img width='100' src='../img/$slide_image' alt='image'></td>";
-    echo "<td>$slide_tages</td>";
-    echo "<td>$slide_date</td>";
+      echo "<td><img width='100' src='../img/$slide_image' alt='image'></td>";
+      echo "<td>$slide_tages</td>";
+      echo "<td>$slide_date</td>";
     
     // go to post page, query string post id and display it.
     //echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
@@ -155,7 +145,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     
     //sending post page and delete key equal to the post id
     // 203. PHP and Javascript Confirm Before Action. so we wont to add a messge to confirm a deleted post 
-    //echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
+    echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='slide_images.php?delete={$slide_id}'>Delete</a></td>";
     echo "</tr>";
   }
 
@@ -170,16 +160,19 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 if(isset($_GET['delete'])){
 
   // then convert this into the $the_post_id variable
-  $the_post_id = $_GET['delete']; 
+  $the_slide_id = $_GET['delete']; 
 
   // delete
-  $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
+  // $sql = $connection->query("DELETE FROM carousel WHERE carousel_id = {$the_slide_id} ");
+  $query = "DELETE FROM carousel WHERE carousel_id = {$the_slide_id} "; 
+  $data = $connection->query($query);
+  //$query = "DELETE FROM carousel WHERE carousel_id = {$the_slide_id} ";
 
   // function performs a query against a database to send in. 
-  $delete_query = mysqli_query($connection,$query);
+  //$delete_query = mysqli_query($connection,$query);
   
   // after we delete a post the page will refresh
-  header("Location: posts.php");
+  header("Location: slide_images.php");
 
 }
 
