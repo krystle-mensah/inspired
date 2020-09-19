@@ -42,36 +42,40 @@
           $post_image = $row['post_image'];
         
           ?>
-          <div class="col-md-6">
-            <div class="blog-post">
-              
-                <div class="card box-shadow">
-                  <div class="card-body d-flex flex-column align-items-start">
-                    <!-- / = means current directory -->
-                    <a href="post.php?p_id=<?= $post_id; ?>">
-                      <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
-                    </a>
-                  </div>
-                  <div class="post-content">
-                    <a class="post_title" href="post.php?p_id=<?= $post_id; ?>"><h3><?= $post_title;  ?></h3></a>
-                    <p class="blog-post-meta"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
-                    <?php 
-                    $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-                    $select_categories_id = mysqli_query($connection,$request_to);
-                    // while the condition is true fetch the row representing the array from ($variable - see above)
-                    foreach($select_categories_id as $number_key):
-                      $cat_id = $number_key['cat_id'];
-                      $cat_title = $number_key['cat_title'];
-                    endforeach;
-                    ?>
-                    <a href="category.php?category=<?= $cat_id;  ?>">
-                      <p class="post_cat_title"><strong><?= $cat_title;  ?></strong></p>
-                    </a>
-        
-                  </div><!-- post-content -->
-                </div>
-              </div>
-            </div><!-- /.blog-post -->
+          
+            <div class="col-md-6">
+              <a class="post_link" href="post.php?p_id=<?= $post_id; ?>">
+                <div class="blog-post">
+                    
+                    <div class="card box-shadow">
+                      <div class="card-body d-flex flex-column align-items-start">
+                        <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
+                      </div>
+                      <div class="post-content">
+                        <h1 class="post_title"><?= $post_title;  ?></h1>
+                        <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
+                        <?php 
+                        $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
+                        $select_categories_id = mysqli_query($connection,$request_to);
+            
+                        foreach($select_categories_id as $number_key):
+                          $cat_id = $number_key['cat_id'];
+                          $cat_title = $number_key['cat_title'];
+                        endforeach;
+                        ?>
+                        <a href="category.php?category=<?= $cat_id;  ?>">
+                          <p class="post_cat_title"><strong><?= $cat_title;  ?></strong></p>
+                        </a>
+            
+                      </div><!-- post-content -->
+                    </div><!-- card box-shadow -->
+
+                
+
+                </div><!-- blog-post --> 
+              </a><!-- post link -->
+            </div><!-- alignment -->
+            
           <?php endwhile; ?>
         </div><!-- alignment and main blog -->
         

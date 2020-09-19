@@ -3,11 +3,6 @@ body {
   color: #000;
 }
 
-img.post-image {
-  max-width: 100%;
-  height: auto;
-}
-
 .card-body {
   padding: 0px;
 }
@@ -114,16 +109,37 @@ a.carousel_button {
   background: #000;
 }
 
-/* INDEX LAYOUT */
+/*============
+INDEX LAYOUT
+=================================*/
+
+a.post_link {
+  text-decoration: none;
+  color: #ccc;
+}
 
 a.post_author {
   color: #000;
+  text-transform: uppercase;
+  font-size: 11px;
+  text-decoration: none;
 }
 
-a.post_title {
-  color: #000;
+p.post_date {
+  text-transform: uppercase;
+  font-size: 11px;
+ 
+
 }
-a.post_title:hover {
+
+.post_title {
+  color: #000;
+  font-size: 1.75rem;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+.post_title:hover {
   text-decoration: none;
 }
 
@@ -134,10 +150,36 @@ p.post_cat_title {
 
 }
 
+img.post-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post:hover::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #DE5133;
+  transition: .3s;
+}
+
+.card {
+  border: none;
+}
+
 /* Clearfix (clear floats) */
 .blog_main {
   display: flex;
   flex-wrap: wrap;
+}
+
+/* END INDEX  */
+
+/* post page */
+
+p.post_content {
+  font-weight: 300;
 }
 
 /*============

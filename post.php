@@ -47,9 +47,9 @@
           $post_content = $row['post_content'];
         
           ?>
-          <h1 class="mt-4"><?php echo $post_title;  ?></h1>
-          by <a class="post_author" href="#"><?php echo $post_author;  ?></a>
-          <p class="blog-post-meta"><?php echo $post_date;  ?> </p>
+          <h1 class="mt-4 post_title"><?php echo $post_title;  ?></h1>
+            <a class="post_author" href="#"><?php echo $post_author;  ?></a>
+          <p class="blog-post-meta post_date"><?php echo $post_date; ?> </p>
           
             
                 <div class="card box-shadow">
@@ -57,25 +57,46 @@
                     <!-- / = means current directory -->
                     <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
                   </div>
-                  <div class="post-content">
-                    
-                    
-                    
-                    
-                    <p><?php echo $post_content ?></p>
-                  </div><!-- post-content -->
                 </div>
-              
             
           <?php }   ?>
         </div><!-- alignment and main blog -->
+
+        
+
+
       </div><!-- /.row -->
 
+      <div class="row">
+        <div class="col-md-8">
+
+        
+
+            
+            <hr>
+
+            
+            <p class="post_content"><?php echo $post_content ?></p>
+            
+            <hr>
+
+            
+         
+            
+            
+          
+        
+        
+        </div><!-- alignment and main blog -->
+        
+      </div>
+      
+
       <!-- PAGEINATION --> 
-      <nav class="blog-pagination">
+      <!-- <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>
         <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-      </nav>
+      </nav> -->
 
     </main><!-- /.container -->
 
