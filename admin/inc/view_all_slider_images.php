@@ -44,8 +44,6 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 
       break;
 
-      
-
     } //switch
 
   } // foreach
@@ -74,7 +72,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
   <div class="col-xs-4">
 
     <input type="submit" name="submit" class="btn btn-success" value="Apply">
-    <a class="btn btn-primary" href="posts.php?source=add_post">New Post</a>
+    <a class="btn btn-primary" href="posts.php?source=add_post">New Slide</a>
 
   </div>
 
@@ -95,59 +93,52 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 
 </form>
 
-  <?php 
-  //$sql = $connection->query("SELECT * FROM carousel");
-  $query = "SELECT * FROM carousel"; 
-  $data = $connection->query($query);
+  <?php $sql = $connection->query("SELECT * FROM carousel");
 
-  while($row = $data->fetch_assoc() ) {
+    foreach($sql as $row ):
 
-    // values we bring back
+      // values we bring back
 
-    $slide_id = $row['carousel_id'];
-    $slide_author = $row['carousel_author'];
-    $slide_title = $row['carousel_title'];
-    $slide_category_id = $row['carousel_cat_id'];
-    $slide_image = $row['carousel_image'];
-    $slide_tages = $row['carousel_tags'];
-    $slide_date = $row['carousel_date'];
-    
-    //display 
-    echo "<tr>";
-    ?>
-  
-    <?php 
-
-    echo "<td>$slide_id</td>";
-    echo "<td> $slide_author</td>";
-    echo "<td> $slide_title</td>";
+      $slide_id = $row['carousel_id'];
+      $slide_author = $row['carousel_author'];
+      $slide_title = $row['carousel_title'];
+      $slide_category_id = $row['carousel_cat_id'];
+      $slide_image = $row['carousel_image'];
+      $slide_tages = $row['carousel_tags'];
+      $slide_date = $row['carousel_date'];
       
-    //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id} ");
-    $query = "SELECT * FROM categories WHERE cat_id = {$slide_category_id} ";
-    $data = $connection->query($query); 
+      //display 
+      echo "<tr>";
+
+      echo "<td>$slide_id</td>";
+      echo "<td> $slide_author</td>";
+      echo "<td> $slide_title</td>";
+        
+      $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id} ");
+        
+        foreach($sql as $row) {
+          
+          $cat_id = $row['cat_id'];
+          $cat_title = $row['cat_title'];
+          
+          echo "<td>$cat_title</td>";
+        } 
+        echo "<td><img width='100' src='../img/$slide_image' alt='image'></td>";
+        echo "<td>$slide_tages</td>";
+        echo "<td>$slide_date</td>";
       
-      while($row = $data->fetch_assoc()) {
-        // Then assign the array to a variable
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
-        // display the cat title 
-        echo "<td>$cat_title</td>";
-      } 
-      echo "<td><img width='100' src='../img/$slide_image' alt='image'></td>";
-      echo "<td>$slide_tages</td>";
-      echo "<td>$slide_date</td>";
-    
-    // go to post page, query string post id and display it.
-    //echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
-    
-    //passing the page and the post id. 
-    //echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-    
-    //sending post page and delete key equal to the post id
-    // 203. PHP and Javascript Confirm Before Action. so we wont to add a messge to confirm a deleted post 
-    echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='slide_images.php?delete={$slide_id}'>Delete</a></td>";
-    echo "</tr>";
-  }
+      // go to post page, query string post id and display it.
+      //echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
+      
+      //passing the page and the post id. 
+      echo "<td><a href='slider_images.php?source=edit_slide_image&carousel_id={$slide_id}'>Edit</a></td>";
+      
+      //sending post page and delete key equal to the post id
+      // 203. PHP and Javascript Confirm Before Action. so we wont to add a messge to confirm a deleted post 
+      echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='slider_images.php?delete={$slide_id}'>Delete</a></td>";
+      echo "</tr>";
+
+    endforeach;
 
   ?>
 
@@ -159,20 +150,12 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 // if this is set
 if(isset($_GET['delete'])){
 
-  // then convert this into the $the_post_id variable
-  $the_slide_id = $_GET['delete']; 
+  echo $the_slide_id = $_GET['delete']; 
 
-  // delete
-  // $sql = $connection->query("DELETE FROM carousel WHERE carousel_id = {$the_slide_id} ");
-  $query = "DELETE FROM carousel WHERE carousel_id = {$the_slide_id} "; 
-  $data = $connection->query($query);
-  //$query = "DELETE FROM carousel WHERE carousel_id = {$the_slide_id} ";
-
-  // function performs a query against a database to send in. 
-  //$delete_query = mysqli_query($connection,$query);
+  $delete_slide_sql = $connection->query("DELETE FROM carousel WHERE carousel_id = {$the_slide_id}");
   
   // after we delete a post the page will refresh
-  header("Location: slide_images.php");
+  header("Location: slider_images.php");
 
 }
 

@@ -44,15 +44,16 @@ $result = $connection->query("SELECT * FROM carousel");
             <img class="first-slide" src="img/<?= $row['carousel_image']; ?>">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1><?= $row['carousel_title']; ?></h1>
+                
                 <p><?= $row['carousel_content']; ?></p>
                 <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} ");  
                     foreach($sql as $number_key):
                       $cat_id = $number_key['cat_id'];
                       $cat_title = $number_key['cat_title'];
                     endforeach;?>
-                <p><?= $cat_title; ?></p>
-                <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p>
+                <a class="carousel_cat_link" href="#"><?= $cat_title; ?></a>
+                <!-- <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p> -->
+                <h1 class="carousel_title"><?= $row['carousel_title']; ?></h1>
               </div>
             </div>
           </div>
