@@ -99,15 +99,9 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 
 </form>
 
-  <?php 
+  <?php $sql = $connection->query("SELECT * FROM posts");
 
-  $query = "SELECT * FROM posts";
-
-  // mysqli_query function sends in the above query and connection. 
-  $select_posts = mysqli_query($connection,$query);
-
-  //condition is true fetch the row representing the array from ($variable)
-  while($row = mysqli_fetch_array($select_posts)) {
+  foreach($sql as $row ) {
 
     // values we bring back and assign to variable
     $post_id = $row['post_id'];
@@ -130,14 +124,10 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     echo "<td> $post_author</td>";
     echo "<td> $post_title</td>";
       
-      // select ALL from the table where [column name] variable is equal to this [column name] variable.
-      $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-      
-      // function to send query into the database. 
-      $select_categories_id = mysqli_query($connection,$request_to);
+    $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$post_category_id} ");
 
       // while the condition is true fetch the row representing the array from ($variable - see above)
-      while($row = mysqli_fetch_array($select_categories_id)) {
+      foreach($sql as $row) {
         // Then assign the array to a variable
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
@@ -169,17 +159,11 @@ if( isset( $_POST['checkBoxArray'] ) ) {
 
 <?php
 
-// if this is set
 if(isset($_GET['delete'])){
 
-  // then convert this into the $the_post_id variable
   $the_post_id = $_GET['delete']; 
 
-  // delete
-  $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
-
-  // function performs a query against a database to send in. 
-  $delete_query = mysqli_query($connection,$query);
+  $delete_post_sql = $connection->query("DELETE FROM posts WHERE post_id = {$the_post_id}");
   
   // after we delete a post the page will refresh
   header("Location: posts.php");

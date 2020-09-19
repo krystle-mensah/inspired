@@ -103,11 +103,29 @@ a.header-icon-link {
 /* END HEADER LAYOUT */
 
 
-/* CAROUSEL */
+/*============
+CAROUSEL LAYOUT
+=================================*/
 
 a.carousel_button {
   background: #000;
 }
+
+h1.carousel_title {
+  font-family: 'Merriweather Sans', sans-serif;
+  text-transform: uppercase;
+
+}
+
+a.carousel_cat_link {
+  font-family: 'Merriweather Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #DE5133;
+  font-size: 11px;
+}
+
+/* END CAROUSEL */
 
 /*============
 INDEX LAYOUT

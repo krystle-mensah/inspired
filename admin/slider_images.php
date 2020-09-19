@@ -57,10 +57,10 @@
                       break;
 
                       // if source is equal to this page
-                      case 'edit_post';
+                      case 'edit_slide_image';
 
                       //then display this
-                      include "inc/edit_post.php";
+                      include "inc/edit_slide_image.php";
                     
                       // stop
                       break;

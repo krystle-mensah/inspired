@@ -1,6 +1,5 @@
 <?php 
 
-// if set
 if(isset($_POST['create_post'])){
   // TEST - type in the title field then click update button 
   //echo $_POST['title'];
@@ -14,26 +13,20 @@ if(isset($_POST['create_post'])){
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
   $post_date         = date('d-m-y');
+
   // hard coding the value
   $post_comment_count = 4;
-  //$post_status       = $_POST['post_status'];
+  //$post_status      = $_POST['post_status'];
   
   // move files to post image temp to outside of admin in a root dir called img. 
   move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-  // query to insert to database
-  //$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
-  $query = "INSERT INTO posts(post_title, post_author, post_category_id, post_image, post_tags, post_content, post_date, post_comment_count) ";
+  $sql = $connection->query(
+    " INSERT INTO posts(post_title, post_author, post_category_id, post_image, post_tags, post_content, post_date, post_comment_count)
+    VALUES('{$post_title}','{$post_author}',{$post_category_id}, '{$post_image }','{$post_tags}','{$post_content}', now(), '{$post_comment_count}')
+    ");  
 
-  // values we are inserting from the from.
-  // $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') ";
-
-  $query .= "VALUES('{$post_title}','{$post_author}',{$post_category_id}, '{$post_image }','{$post_tags}','{$post_content}', now(), '{$post_comment_count}') ";  
-  
-  // Then send query and connection
-  $create_post_query = mysqli_query($connection, $query); 
-
-  confirmQuery($create_post_query);
+  confirmQuery($sql);
 
   //$the_post_id = mysqli_insert_id($connection);
 
@@ -51,10 +44,10 @@ if(isset($_POST['create_post'])){
     <input type="text" class="form-control" name="title">
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="title">cat id</label>
     <input type="text" class="form-control" name="post_category_id">
-  </div>
+  </div> -->
 
   <div class="form-group">
     <select name="post_category_id" id="">
