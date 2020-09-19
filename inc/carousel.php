@@ -18,6 +18,7 @@ $result = $connection->query("SELECT * FROM carousel");
 
           $i = 0;
           foreach ($result as $row):
+            $carousel_cat_id =  $row['carousel_cat_id'];
             $actives = '';
             if($i == 0) {
               $actives = 'active';
@@ -25,9 +26,7 @@ $result = $connection->query("SELECT * FROM carousel");
             
           ?>
             <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
-            <!-- <li data-target="#myCarousel" data-slide-to="1"></li> -->
-            <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
-            
+    
           <?php $i++; endforeach ?>
         </ol>
         <div class="carousel-inner">
@@ -47,8 +46,12 @@ $result = $connection->query("SELECT * FROM carousel");
               <div class="carousel-caption text-left">
                 <h1><?= $row['carousel_title']; ?></h1>
                 <p><?= $row['carousel_content']; ?></p>
-                <!-- need to out cat title -->
-                <p><?= $row['carousel_cat_id']; ?></p>
+                <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} ");  
+                    foreach($sql as $number_key):
+                      $cat_id = $number_key['cat_id'];
+                      $cat_title = $number_key['cat_title'];
+                    endforeach;?>
+                <p><?= $cat_title; ?></p>
                 <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p>
               </div>
             </div>
