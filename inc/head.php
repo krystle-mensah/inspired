@@ -23,7 +23,7 @@
 
   <!-- GOOGLE FONT -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 
   <!-- FONT AWESOME -->
 

@@ -1,5 +1,6 @@
 body {
-  font-family: 'Merriweather', serif;
+
+  font-family: 'Merriweather Sans', sans-serif;
   color: #000;
 }
 
@@ -34,6 +35,13 @@ header.header {
 	text-align: center;
 }
 
+/* #logo {
+  width: 52px;
+} */
+img#logo {
+  width: 52px;
+}
+
 /* TAGLINE */
 
 .tagline-container {
@@ -41,10 +49,11 @@ header.header {
 }
 
 h3.header-tagline {
+  font-size: 20px;
 	text-transform: uppercase;
 	color: #ccc;
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
+  font-weight: 300;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 /* SOCIAL MEDIA */
@@ -130,7 +139,6 @@ NAVIGATION LAYOUT
   color: #000;
   text-transform: uppercase;
   transition: 0.3s;
-  font-weight: 100;
 }
 
 .site-navigation a:hover {
