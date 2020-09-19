@@ -1,27 +1,30 @@
-<div class="search_form">
-  <form action="" method="post">
-    <div class="input-group">
-      <input name="search" type="text" class="form-control" placeholder="search blog">
-        <span class="input-group-btn">
-            <button name="submit" class="btn btn-default" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-        </span> <!-- input-group-btn -->
-    </div> <!-- input-group -->
-  </form><!-- search form -->
-</div><!-- search_bar -->
+<div class="p-3 mb-3 bg-light rounded">
+
+  <div class="search_form">
+    <form action="" method="post">
+      <div class="input-group">
+        <input name="search" type="text" class="form-control" placeholder="search blog">
+          <span class="input-group-btn">
+              <button name="submit" class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+          </span> <!-- input-group-btn -->
+      </div> <!-- input-group -->
+    </form><!-- search form -->
+  </div><!-- search_bar -->
+</div>
 
 <!-- SPOFITY WIDGET -->
 
 <div class="p-3 mb-3 bg-light rounded">
-  <h4 class="font-italic">Spotify</h4>
-  <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>nulla sed consectetur.</p>
+  <!-- <h4 class="side_widget_title"> Spotify</h4> -->
+  <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></p>
 </div>
 
 <!-- TWITTER WIDGET -->
 
 <div class="p-3 mb-3 bg-light rounded">
-  <h4 class="font-italic">Twitter</h4>
+  <h4 class="side_widget_title">Follow on Twitter</h4>
   <a class="twitter-timeline" href="https://twitter.com/home?ref_src=twsrc%5Etfw">Tweets by home</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 

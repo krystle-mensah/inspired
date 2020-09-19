@@ -148,3 +148,14 @@ NAVIGATION LAYOUT
 }
 
 /* END NAVIGATION LAYOUT */
+
+/*============
+SIDEBAR LAYOUT
+=================================*/
+
+h4.side_widget_title {
+  font-family: 'Merriweather Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+/* END SIDEBAR LAYOUT */
