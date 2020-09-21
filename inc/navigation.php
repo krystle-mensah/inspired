@@ -6,7 +6,7 @@
 ?>
   <hr>
   <nav class="nav d-flex justify-content-between site-navigation">
-    <div><a class="" href="#">home</a></div>
+    <div><a class="" href="index.php">home</a></div>
     <?php
     while($row = mysqli_fetch_array($select_categories_navigation)) {
       $cat_title = $row['cat_title'];

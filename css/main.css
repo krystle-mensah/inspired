@@ -3,6 +3,10 @@ body {
   color: #0d0d0d;
 }
 
+/* a {
+  color: #ccc;
+} */
+
 .card-body {
   padding: 0px;
 }
@@ -159,11 +163,10 @@ p.post_date {
   text-decoration: none;
 }
 
-p.post_cat_title {
-  color: #ECCE0F;
-  display: inline-block!important;
+a.post_cat_title {
+  color: #262626;
+  display: inline-block;
   text-transform: uppercase;
-
 }
 
 img.post-image {

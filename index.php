@@ -63,8 +63,8 @@
                           $cat_title = $number_key['cat_title'];
                         endforeach;
                         ?>
-                        <a href="category.php?category=<?= $cat_id;  ?>">
-                          <p class="post_cat_title"><strong><?= $cat_title;  ?></strong></p>
+                        <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
+                          <p><strong><?= $cat_title;  ?></strong></p>
                         </a>
             
                       </div><!-- post-content -->
