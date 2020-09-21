@@ -19,6 +19,7 @@ $result = $connection->query("SELECT * FROM carousel");
           $i = 0;
           foreach ($result as $row):
             $carousel_cat_id =  $row['carousel_cat_id'];
+            $slide_id =  $row['carousel_id'];
             $actives = '';
             if($i == 0) {
               $actives = 'active';
@@ -51,7 +52,8 @@ $result = $connection->query("SELECT * FROM carousel");
                       $cat_id = $number_key['cat_id'];
                       $cat_title = $number_key['cat_title'];
                     endforeach;?>
-                <a class="carousel_cat_link" href="#"><?= $cat_title; ?></a>
+      
+                <a class="carousel_cat_link" href="slide_post.php?s_id=<?= $slide_id; ?>"><?= $cat_title; ?></a>
                 <!-- <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p> -->
                 <h1 class="carousel_title"><?= $row['carousel_title']; ?></h1>
               </div>
