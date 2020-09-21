@@ -3,8 +3,8 @@
 $result = $connection->query("SELECT * FROM carousel"); 
 // if(!$result){
 
-//   // Print a message and terminate the current script:
-//   die("QUERY FAILED" . mysqli_error($connection));
+    // Print a message and terminate the current script:
+//  die("QUERY FAILED" . mysqli_error($connection));
 
 // } else {
 //   echo "query work";

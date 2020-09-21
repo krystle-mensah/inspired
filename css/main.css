@@ -1,6 +1,6 @@
 body {
   font-family: 'Merriweather Sans', sans-serif;
-  color: #000;
+  color: #0d0d0d;
 }
 
 .card-body {
@@ -97,7 +97,7 @@ a.header-icon-link {
 	display: block;
 	cursor: pointer;
 	font-size: 25px;
-	color: #000;
+	color: #0d0d0d;
 }
 
 /* END HEADER LAYOUT */
@@ -108,7 +108,7 @@ CAROUSEL LAYOUT
 =================================*/
 
 a.carousel_button {
-  background: #000;
+  background: #0d0d0d;
 }
 
 h1.carousel_title {
@@ -137,7 +137,7 @@ a.post_link {
 }
 
 a.post_author {
-  color: #000;
+  color: #0d0d0d;
   text-transform: uppercase;
   font-size: 11px;
   text-decoration: none;
@@ -146,12 +146,10 @@ a.post_author {
 p.post_date {
   text-transform: uppercase;
   font-size: 11px;
- 
-
 }
 
 .post_title {
-  color: #000;
+  color: #0d0d0d;
   font-size: 1.75rem;
   font-family: 'Merriweather Sans', sans-serif;
   text-transform: uppercase;
@@ -162,9 +160,9 @@ p.post_date {
 }
 
 p.post_cat_title {
-  color: #000;
+  color: #ECCE0F;
   display: inline-block!important;
-  text-transform: capitalize;
+  text-transform: uppercase;
 
 }
 

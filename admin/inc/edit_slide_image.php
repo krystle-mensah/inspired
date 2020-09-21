@@ -1,109 +1,103 @@
 <?php
 
 //if the post id is set in the url
-if(isset($_GET['carousel_id'])){
-
-  $url_carousel_id = $_GET['carousel_id'];
+if(isset($_GET['GET_carousel_id'])){
+  
+  //GET it and save it in this variable
+  $GET_carousel_id = $_GET['GET_carousel_id'];
 }
 
-$sql = $connection->query("SELECT * FROM carousel WHERE carousel_id = $url_carousel_id ");
+$query = "SELECT * FROM carousel WHERE carousel_id = $GET_carousel_id  ";
 
-foreach($sql as $row) {
+// mysqli_query function sends in the above query and connection. 
+$select_carousel_by_id = mysqli_query($connection,$query);
+
+//condition is true fetch the row representing the array from ($variable)
+while($row = mysqli_fetch_array($select_carousel_by_id)) {
 
   // ARRAY values we bring back and assign to variable
-  $carousel_id = $row['carousel_id'];
-  $carousel_title = $row['carousel_title'];
-  $carousel_author = $row['carousel_author'];
-  $carousel_image = $row['carousel_image'];
-  $carousel_tags = $row['carousel_tags'];
-  $carousel_content = $row['carousel_content'];
-  $carousel_cat_id = $row['carousel_cat_id'];
-  $carousel_date = $row['carousel_date'];
+  $slide_id          = $row['carousel_id'];
+  $slide_title       = $row['carousel_title'];
+  $slide_category_id = $row['carousel_cat_id'];
+  $slide_author      = $row['carousel_author'];
+  $slide_image       = $row['carousel_image'];
+  $slide_tags        = $row['carousel_tags'];
+  $slide_content     = $row['carousel_content'];  
+  $slide_date        = $row['carousel_date'];
   
 }
 
-if(isset($_POST['update_carousel'])){
+if(isset($_POST['update_slide'])){
+  //echo "hi";
 
-  $carousel_author         =  $_POST['carousel_author'];
-  $carousel_title          =  $_POST['carousel_title'];
-  $carousel_cat_id         =  $_POST['carousel_cat_id'];
-  $carousel_image          =  $_FILES['image']['name'];
-  $carousel_image_temp     =  $_FILES['image']['tmp_name'];
-  $carousel_content        =  $_POST['carousel_content'];
-  $carousel_tags           =  $_POST['carousel_tags'];
+  $slide_title          =  $_POST['carousel_title'];
+  $slide_category_id    =  $_POST['carousel_cat_id'];
+  $slide_author         =  $_POST['carousel_author'];
+  $slide_image          =  $_FILES['image']['name'];
+  $slide_image_temp     =  $_FILES['image']['tmp_name'];
+  $slide_content        =  $_POST['carousel_content'];
+  $slide_tags           =  $_POST['carousel_tags'];
   
-  //move file to from var then move to new location
-  move_uploaded_file($carousel_image_temp, "../img/$carousel_image");
+  move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
   // if empty var
-  if(empty($carousel_image)) {
+  if(empty($slide_image)) {
     
-    $sql = $connection->query("SELECT * FROM carousel WHERE carousel_id = $url_carousel_id ");
-    
-    foreach($sql as $row):
+    //select all where col id = var
+    $query = "SELECT * FROM carousel WHERE carousel_id = $GET_carousel_id ";
+    $select_image = mysqli_query($connection,$query);
+
+    // then loop though result set
+    while($row = mysqli_fetch_array($select_image)) {
             
-      $carousel_image = $row['carousel_image'];
+      $slide_image = $row['carousel_image'];
   
-    endforeach;
-  }
+    }
 
   }
 
   // update post then set each column in the database table equal to variable the form.
-  
-  $query = "UPDATE carousel SET ";
-  $query .="carousel_title  = '{$carousel_title}', ";
-  $query .="carousel_author  = '{$carousel_author}', ";
-  $query .="carousel_cat_id = '{$carousel_cat_id}', ";
-  $query .="carousel_date   =  now(), ";
-  $query .="carousel_tags   = '{$carousel_tags}', ";
-  $query .="carousel_content= '{$carousel_content}', ";
-  $query .="carousel_image  = '{$carousel_image}' ";
-  $query .= "WHERE carousel_id = {$url_carousel_id} ";
-
-
-  // $sql = $connection->query(
-  //   "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
-  //    VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image }','{$slide_content}', now(), '{$slide_tags}')
-    
-  //   ");
+  $query = "UPDATE carousel SET carousel_title  = '{$slide_title}', carousel_author = '{$slide_author}', carousel_cat_id = '{$slide_category_id}', carousel_date   =  now(), 
+  carousel_tags = '{$slide_tags}', carousel_content = '{$slide_content}', carousel_image = '{$slide_image}' WHERE carousel_id  = {$GET_carousel_id} ";
 
   // Then we send in the query
-  //$update_post = mysqli_query($connection,$query);
+  $update_slide = mysqli_query($connection,$query);
   
   // confirm update post
-  //confirmQuery($update_post);
+  confirmQuery($update_slide);
   
   // display this
   //echo "<p class='success-button'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
 
-
+}
 
 ?>
 
-<!-- multipart/form-data lets you send encoded data  -->
+<!-- EDIT SLIDE FORM  -->
 <form action="" method="post" enctype="multipart/form-data"> 
 
   <div class="form-group">
-    <label for="title">Slide Title</label>
-    <input value="<?= $carousel_title; ?>" type="text" class="form-control" name="post_title">
+    <label for="title">Title</label>
+    <input value="<?= $slide_title; ?>" type="text" class="form-control" name="carousel_title">
   </div>
 
   <div class="form-group">
     
-    <select name="post_category" id="">
+    <select name="carousel_cat_id">
 
       <!-- // SELECT ALL CATEGORIES QUERY -->
-      <?php $sql = $connection->query("SELECT * FROM categories");
-    
-        confirmQuery($sql);
+      <?php
+          
+          $query = "SELECT * FROM categories ";
+          $select_categories = mysqli_query($connection,$query);
+          confirmQuery($select_categories);
 
-          foreach($sql as $row) :
+          while($row = mysqli_fetch_assoc($select_categories )) {
           $cat_id = $row['cat_id'];
           $cat_title = $row['cat_title'];
 
 
-          if($cat_id == $post_category_id) {
+          if($cat_id == $slide_category_id) {
 
             echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
 
@@ -113,8 +107,7 @@ if(isset($_POST['update_carousel'])){
 
           }
               
-          endforeach;
-
+          }
 
       ?>
     
@@ -123,30 +116,28 @@ if(isset($_POST['update_carousel'])){
   </div> <!-- form-group -->
 
   <div class="form-group">
-    <label for="title">Slide Author</label>
-    <input value="<?= $carousel_author; ?>" type="text" class="form-control" name="post_author">
+    <label for="title">Post Author</label>
+    <input value="<?= $slide_author; ?>" type="text" class="form-control" name="carousel_author">
   </div>
-  
 
   <div class="form-group">
-    <!-- not sure if below code is supossed to be here -->
-    <label for="post_image">Slide Image</label>
-    <img width="100" src="../img/<?= $carousel_image; ?>" alt="">
+    <label for="image">Post Image</label>
+    <img width="100" src="../img/<?php echo $slide_image; ?>" alt="">
     <input type="file"  name="image">
   </div>
 
   <div class="form-group">
-    <label for="title">Slide Tags</label>
-    <input value="<?= $carousel_tags; ?>" type="text" class="form-control" name="post_tags">
+    <label for="title">Post Tags</label>
+    <input value="<?= $slide_tags; ?>" type="text" class="form-control" name="carousel_tags">
   </div>
 
   <div class="form-group">
-    <label for="post_content">Slide Content</label>
-    <textarea class="form-control "name="post_content" id="body" cols="30" rows="10"><?= $carousel_content; ?></textarea>
+    <label for="slide_content">Post Content</label>
+    <textarea class="form-control "name="carousel_content" id="body" cols="30" rows="10"><?= $slide_content;?></textarea>
   </div>
 
   <div class="form-group">
-    <input class="btn btn-primary" type="submit" name="update_carousel" value="Update Slide">
+    <input class="btn btn-primary" type="submit" name="update_slide" value="Update Slide">
   </div>
 
 </form>

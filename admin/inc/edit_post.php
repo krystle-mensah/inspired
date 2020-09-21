@@ -90,7 +90,7 @@ if(isset($_POST['update_post'])){
 
   <div class="form-group">
     <label for="title">Post Title</label>
-    <input value="<?php echo $post_title; ?>" type="text" class="form-control" name="post_title">
+    <input value="<?= $post_title; ?>" type="text" class="form-control" name="post_title">
   </div>
 
   <div class="form-group">
