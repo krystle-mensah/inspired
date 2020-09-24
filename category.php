@@ -28,17 +28,28 @@
           }
           
           // requst all the post table database. 
-          $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
-          //echo $query; // OUTPUT - SELECT * FROM posts
+          //$query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
+
+          $query = "SELECT posts.post_category_id AS post_category_id, carousel.carousel_cat_id AS carousel_cat_id FROM posts, carousel WHERE posts.post_category_id AND carousel.carousel_cat_id = $post_category_id";
+          //echo $query;
+
+// if ($result=mysqli_query($connection,$query))
+//   {
+//   // Return the number of rows in result set
+//   $rowcount=mysqli_num_rows($result);
+//   printf("Result set has %d rows.\n",$rowcount);
+//   // Free result set
+//   mysqli_free_result($result);
+//   }
+
+// mysqli_close($connection);
 
           // perform a query against the database and send in query and connection
           $select_all_posts_query = mysqli_query($connection,$query);
           
-          // while the condition is true fetch the row representing the array from $select_all_posts_query 
           while($row = mysqli_fetch_array($select_all_posts_query)) {
-          //echo $row; // Notice: Array to string conversion
 
-          // Then assign the row array to a variable
+          //Then assign the row array to a variable
           $post_category_id = $row['post_category_id'];
           $post_id = $row['post_id']; 
           $post_title = $row['post_title'];
@@ -49,7 +60,7 @@
         
           ?>
           <div class="col-md-6">
-            <a class="post_link" href="post.php?p_id<?php echo $post_id;  ?>">
+            <a class="post_link" href="post.php?p_id<?= $post_id;  ?>">
               <div class="blog-post">
               
                 <div class="card box-shadow">
@@ -58,7 +69,7 @@
                   </div>
                   <div class="post-content">
                     <h1 class="post_title"><?= $post_title; ?></h1>
-                    <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?php echo $post_author;  ?></a></p>
+                    <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
                     <?php 
                     $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
                     $select_categories_id = mysqli_query($connection,$request_to);
