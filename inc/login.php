@@ -22,6 +22,7 @@ if(isset($_POST['login'])){
   $login_email = mysqli_real_escape_string($connection, $login_email);
   $login_password =  mysqli_real_escape_string($connection, $login_password);
 
+
   // SELECT all from TABLE WHERE COLUMN MATCHES USER INPUT FROM FORM. 
   $query = "SELECT * FROM users WHERE  user_email = '{$login_email}' ";
 

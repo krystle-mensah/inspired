@@ -35,29 +35,23 @@ if(isset($_POST['edit_user'])){
   $user_email            = $_POST['user_email'];
   $user_password         = $_POST['user_password'];
  
-  // we need to make sure when we are editing a user that it is in crpted
   
-  // so first we query the database for the colum from the table.
-  $query = "SELECT randSalt FROM users";
+  if(!empty($user_password)) { 
 
-  //then we perform a query against the database and send in the connection and query 
-  $select_randsalt_query = mysqli_query($connection, $query);
+    $query_password = "SELECT user_password FROM users WHERE userId =  $the_user_id";
+    $get_user_query = mysqli_query($connection, $query_password);
+    confirmQuery($get_user_query);
 
-  // if this is not set
-  if(!$select_randsalt_query) {
-    //display a message  and Return the last error description and the connection
-    die('query failed' . mysqli_error($connection));
-  }
+    $row = mysqli_fetch_array($get_user_query);
 
-  //then we go inside the database
+    $db_user_password = $row['user_password'];
 
-  // fetch column from table and get the value 
-  $row = mysqli_fetch_array($select_randsalt_query);
-  // then save the colum value here
-  $salt =  $row['randSalt'];
-  // then enypted the user password with salt
-  $hashed_password = crypt($user_password, $salt);
 
+    if($db_user_password != $user_password) {
+
+      $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+
+    }
   
   
   // INSERT INTO TABLE
@@ -73,7 +67,7 @@ if(isset($_POST['edit_user'])){
   
   // display this
   echo "<p class='success-button'>User Updated. <a href='users.php'>View Users</a></p>";
-
+  }
 }
 
 ?>
