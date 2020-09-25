@@ -21,33 +21,18 @@
           <?php
           
           if(isset($_GET['category'])){
-        
             // Each value when clicked
-            $post_category_id = $_GET['category'];
+            $post_category_id = $_GET['category']; //we are getting the id
     
+          }else {
+            echo "not set";
           }
           
           // requst all the post table database. 
-          //$query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
+          $sql = $connection->query("SELECT * FROM posts WHERE post_category_id = $post_category_id "); 
 
-          $query = "SELECT posts.post_category_id AS post_category_id, carousel.carousel_cat_id AS carousel_cat_id FROM posts, carousel WHERE posts.post_category_id AND carousel.carousel_cat_id = $post_category_id";
-          //echo $query;
-
-// if ($result=mysqli_query($connection,$query))
-//   {
-//   // Return the number of rows in result set
-//   $rowcount=mysqli_num_rows($result);
-//   printf("Result set has %d rows.\n",$rowcount);
-//   // Free result set
-//   mysqli_free_result($result);
-//   }
-
-// mysqli_close($connection);
-
-          // perform a query against the database and send in query and connection
-          $select_all_posts_query = mysqli_query($connection,$query);
           
-          while($row = mysqli_fetch_array($select_all_posts_query)) {
+          foreach($sql as $row) {
 
           //Then assign the row array to a variable
           $post_category_id = $row['post_category_id'];

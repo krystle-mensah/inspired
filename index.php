@@ -49,7 +49,7 @@
                     
                     <div class="card box-shadow">
                       <div class="card-body d-flex flex-column align-items-start">
-                        <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?php echo $post_image; ?>" alt="Card image cap">
+                        <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
                       </div>
                       <div class="post-content">
                         <h1 class="post_title"><?= $post_title;  ?></h1>
