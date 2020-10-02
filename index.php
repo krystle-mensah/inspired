@@ -19,22 +19,11 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog_main">
-          <?php 
+          <?php $sql = $connection->query("SELECT * FROM posts"); 
           
-          // requst all the post table database. 
-          $query = "SELECT * FROM posts";
-          //echo $query; // OUTPUT - SELECT * FROM posts
-
-          // perform a query against the database and send in query and connection
-          $select_all_posts_query = mysqli_query($connection,$query);
+          foreach($sql as $row):
           
-          // while the condition is true fetch the row representing the array from $select_all_posts_query 
-          while($row = mysqli_fetch_array($select_all_posts_query)):
-          //echo $row; // Notice: Array to string conversion
-
-          // Then assign the row array to a variable
           $post_category_id = $row['post_category_id'];
-          $post_id = $row['post_id']; 
           $post_title = $row['post_title'];
           $post_author = $row['post_author'];
           $post_date = $row['post_date'];
@@ -44,7 +33,7 @@
           ?>
           
             <div class="col-md-6">
-              <a class="post_link" href="post.php?p_id=<?= $post_id; ?>">
+              <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
                 <div class="blog-post">
                     
                     <div class="card box-shadow">
@@ -76,7 +65,7 @@
               </a><!-- post link -->
             </div><!-- alignment -->
             
-          <?php endwhile; ?>
+          <?php endforeach; ?>
         </div><!-- alignment and main blog -->
         
         <!-- SIDEBAR -->
