@@ -23,13 +23,15 @@
 									<div class="card-body">
 										
 										<form action="../inc/login.php" method="post">
+										<!-- Email -->
 											<div class="form-group">
 												<label class="small mb-1" for="inputEmailAddress">Email address:</label>
 												<input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="login_email" />
 											</div>
+											<!-- Password -->
 											<div class="form-group">
 												<label class="small mb-1" for="inputPassword">Password</label>
-												<input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="login_password" />
+												<input class="form-control py-4" type="password" placeholder="Enter password" name="login_password" />
 											</div>
 											<div class="form-group">
 												<div class="custom-control custom-checkbox">
@@ -51,22 +53,11 @@
 						</div>
 					</div>
 				</main>
-			</div>
-			<div id="layoutAuthentication_footer">
-				<footer class="py-4 bg-light mt-auto">
-					<div class="container-fluid">
-						<div class="d-flex align-items-center justify-content-between small">
-							<div class="text-muted">Copyright &copy; Your Website 2020</div>
-							<div>
-								<a href="#">Privacy Policy</a>
-								&middot;
-								<a href="#">Terms &amp; Conditions</a>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</div>
-		</div>
-		<?php include "inc/admin_footer.php";?>
+			</div><!-- layoutAuthentication_content -->
+			<?php include "inc/admin_footer.php";?>
+			
+		</div><!-- layoutAuthentication -->
+		
+		<?php include "inc/scripts.php";?>
 	</body>
 </html>

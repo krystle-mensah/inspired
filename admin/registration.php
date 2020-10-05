@@ -13,58 +13,62 @@
 
 <?php
 
-//first check if the from is working
+include '../inc/db.php';
+
+//first Check If the from is working
 if( isset( $_POST['submit'] ) ){
 	// TEST
 	//echo 'submitted'; //output - click button and we see submitted
 
-	// Now we wont to get the values from the user
+	// now we wont to Get the values from the user
 	//TEST
-	//echo $user_firstname = $_POST['user_firstname']; output
+	$user_firstname = $_POST['user_firstname']; //output
 	$user_firstname = $_POST['user_firstname'];
 	$user_lastname 	= $_POST['user_lastname'];
 	$email 	  			= $_POST['email']; 
 	$username 			= $_POST['username'];
 	$password 			= $_POST['password'];
 
-// 	// check if field are empty
+		// check If fields are Not Empty
 
-// 	if( !empty( $user_firstname ) && !empty( $user_lastname ) && !empty( $username ) && !empty( $email ) && !empty( $password ) ){
+		//if( !empty( $user_firstname ) && !empty( $user_lastname ) && !empty( $email ) && !empty( $username ) && !empty( $password ) ){
 
-// 	// NOW CLEAN DATA
+		// now Clean the data
+		$user_firstname = mysqli_real_escape_string($connection, $user_firstname);
+		$user_lastname 	= mysqli_real_escape_string($connection, $user_lastname);
+		$email 	  			= mysqli_real_escape_string($connection, $email);
+		$username 			= mysqli_real_escape_string($connection, $username);
+		$password 			= mysqli_real_escape_string($connection, $password);
 
-// 	$user_firstname = mysqli_real_escape_string($connection, $user_firstname);
-// 	$user_lastname 	= mysqli_real_escape_string($connection, $user_lastname);
-// 	$username 			= mysqli_real_escape_string($connection, $username);
-// 	$email 	  			= mysqli_real_escape_string($connection, $email);
-// 	$password 			= mysqli_real_escape_string($connection, $password);
+		//$password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+		
+		//now Insert into this Table and these Columns
 
-// 	$password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
-	
-// 	//now Query the database for these table and theres columns.
+		// if (!mysqli_query($con,"INSERT INTO Persons (FirstName) VALUES ('Glenn')")) {
+		// 	echo("Error description: " . mysqli_error($con));
+		// }
 
-// 	$query = "INSERT INTO users (username, user_email, user_firstname, user_lastname, user_password, user_role)";
+		// $query = "INSERT INTO users (user_firstname, user_lastname, user_email, username, user_password, user_role) VALUES ('{$user_firstname}', '{$user_lastname}', '{$email}', '{$username}', '{$password}', 'subscriber')";
+		 
+		// $register_user_query = mysqli_query($connection, $query);
 
-// 	$query .= "VALUES ('{$username}', '{$email}', '{$user_firstname}', '{$user_lastname}', '{$password}', 'subscriber')";
+	 	// if(!$register_user_query) {
+	 	// 	die("QUERY FAILED " . mysqli_error($connection));
+	 	// }
 
-// 	$register_user_query = mysqli_query($connection, $query);
+		// $message = " Your registration has been submitted.";
 
-// 	if(!$register_user_query) {
-// 		die("QUERY FAILED " . mysqli_error($connection));
-// 	}
+	//} 
+	// else {
 
-// 	// messge for registion successful
+	// 	$message = " Fields cannot be empty ";
 
-// 	$message = " Your registration has been submitted.";
+	// }
 
-// 	} else {
+//} 
+//else {
 
-// 		$message = " Fields cannot be empty ";
-// 	}//if empty
-
-// } else {
-
-// 	$message = " ";
+	//$message = " ";
 
 }//isset 
 
@@ -85,11 +89,13 @@ if( isset( $_POST['submit'] ) ){
 										<form  action="registration.php" method="POST" autocomplete="off">
 											<div class="form-row">
 												<div class="col-md-6">
+													<!-- First Name -->
 													<div class="form-group">
 														<label class="small mb-1" for="inputFirstName">First Name</label>
 														<input class="form-control py-4" id="inputFirstName" type="text" name="user_firstname" placeholder="Enter first name" />
 													</div>
 												</div>
+												<!-- Last name -->
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="small mb-1" for="inputLastName">Last Name</label>
@@ -97,14 +103,15 @@ if( isset( $_POST['submit'] ) ){
 													</div>
 												</div>
 											</div>
+											<!-- Email -->
 											<div class="form-group">
 												<label class="small mb-1" for="inputEmailAddress">Email</label>
-												<input class="form-control py-4" id="inputEmailAddress" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+												<input type="email" name="email" class="form-control" placeholder="somebody@example.com">
 											</div>
 											
 											<div class="form-group">
 												<label class="small mb-1" for="inputConfirmPassword">Username</label>
-												<input class="form-control py-4" id="inputConfirmPassword" name="username" type="text" placeholder="Enter Username" />
+												<input class="form-control py-4" name="username" type="text" placeholder="Enter Username" />
 											</div>
 											<div class="form-row">
 												<div class="col-md-6">
@@ -125,17 +132,22 @@ if( isset( $_POST['submit'] ) ){
 											<input type="submit" name="submit" class="btn btn-primary btn-block form-group mt-4 mb-0" value="Create Account">
 										</form>
 									</div>
-									<div class="card-footer text-center">
-										<div class="small"><a href="index.php">Have an account? Go to login</a></div>
-									</div>
+									<footer class="footer_main">
+										<div class="card-footer text-center">
+											<div class="small"><a href="index.php">Have an account? Go to login</a></div>
+										</div>
+									</footer>
+									
 								</div>
 							</div>
 						</div>
 					</div>
 				</main>
-			</div>
+			</div><!-- layoutAuthentication_content -->
+			<?php include "inc/admin_footer.php";?>
 			
-		</div>
-		<?php include "inc/admin_footer.php";?>
+		</div><!-- layoutAuthentication -->
+
+		<?php include "inc/scripts.php";?>
 	</body>
 </html>

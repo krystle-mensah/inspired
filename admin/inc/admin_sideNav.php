@@ -9,7 +9,6 @@
 									Dashboard 
 								</a>
 
-								<!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
 								<!-- POST -->
 								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>

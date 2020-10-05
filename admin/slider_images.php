@@ -92,4 +92,5 @@
 
 		</div><!-- layoutSidenav --> 
 
-		<?php include "inc/admin_footer.php" ?>      
+		<?php include "inc/admin_footer.php" ?> 
+    <?php include "inc/scripts.php";?>      
