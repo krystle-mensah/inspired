@@ -15,64 +15,42 @@
 
 include '../inc/db.php';
 
+// check server type
+//echo phpinfo();
+
 //first Check If the from is working
 if( isset( $_POST['submit'] ) ){
 	// TEST
 	//echo 'submitted'; //output - click button and we see submitted
 
-	// now we wont to Get the values from the user
-	//TEST
-	$user_firstname = $_POST['user_firstname']; //output
-	$user_firstname = $_POST['user_firstname'];
-	$user_lastname 	= $_POST['user_lastname'];
-	$email 	  			= $_POST['email']; 
-	$username 			= $_POST['username'];
-	$password 			= $_POST['password'];
+	// now we wont to Get the values from the user and clean string
+	// if( !empty( $user_firstname ) && !empty( $user_lastname ) && !empty( $email ) && !empty( $username ) && !empty( $password ) ){
+	
+	$user_firstname				  = $connection -> real_escape_string($_POST['user_firstname']);
+	$user_lastname  				= $connection -> real_escape_string($_POST['user_lastname']);
+	$email          				= $connection -> real_escape_string($_POST['email']);
+	$username               = $connection -> real_escape_string($_POST['username']);
+	$password               = $connection -> real_escape_string($_POST['password']);
+	$confirm_password       = $connection -> real_escape_string($_POST['confirm_password']);
 
-		// check If fields are Not Empty
+	if($password != $confirm_password ){
 
-		//if( !empty( $user_firstname ) && !empty( $user_lastname ) && !empty( $email ) && !empty( $username ) && !empty( $password ) ){
+		echo "Please check your password!";
 
-		// now Clean the data
-		$user_firstname = mysqli_real_escape_string($connection, $user_firstname);
-		$user_lastname 	= mysqli_real_escape_string($connection, $user_lastname);
-		$email 	  			= mysqli_real_escape_string($connection, $email);
-		$username 			= mysqli_real_escape_string($connection, $username);
-		$password 			= mysqli_real_escape_string($connection, $password);
-
-		//$password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	} else {
 		
+		// this varible goes into the database.
+		$hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+
 		//now Insert into this Table and these Columns
+		$new_register = $connection->query("INSERT INTO users (user_firstname, user_lastname, user_email, username, user_password, user_role) 
+		VALUES ('{$user_firstname}', '{$user_lastname}', '{$email}', '{$username}', '{$hash}', 'subscriber')");
+		echo "you are now registered!";
 
-		// if (!mysqli_query($con,"INSERT INTO Persons (FirstName) VALUES ('Glenn')")) {
-		// 	echo("Error description: " . mysqli_error($con));
-		// }
-
-		// $query = "INSERT INTO users (user_firstname, user_lastname, user_email, username, user_password, user_role) VALUES ('{$user_firstname}', '{$user_lastname}', '{$email}', '{$username}', '{$password}', 'subscriber')";
-		 
-		// $register_user_query = mysqli_query($connection, $query);
-
-	 	// if(!$register_user_query) {
-	 	// 	die("QUERY FAILED " . mysqli_error($connection));
-	 	// }
-
-		// $message = " Your registration has been submitted.";
-
-	//} 
-	// else {
-
-	// 	$message = " Fields cannot be empty ";
-
-	// }
-
-//} 
-//else {
-
-	//$message = " ";
+	}
+// }
 
 }//isset 
-
-
 
 ?>
 
@@ -123,7 +101,7 @@ if( isset( $_POST['submit'] ) ){
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-														<input class="form-control py-4" id="inputConfirmPassword" name="email" type="password" placeholder="Confirm password" />
+														<input class="form-control py-4" id="inputConfirmPassword" name="confirm_password" type="password" placeholder="Confirm password" />
 													</div>
 												</div>
 											

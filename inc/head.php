@@ -31,6 +31,9 @@
 
   <script src="https://kit.fontawesome.com/4c907bd459.js" crossorigin="anonymous"></script>
 
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <title>Inspired sound</title>
 </head>
 

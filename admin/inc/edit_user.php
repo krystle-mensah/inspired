@@ -10,8 +10,6 @@ if(isset($_GET['edit_user'])){
   // then Perform query against a database and send in the query and the connection
   $select_users_query = mysqli_query($connection,$query);
 
-  // then loop through the varible and condition it. NOTED.
-  //true fetch the row representing the array from ($variable)
   while($row = mysqli_fetch_array($select_users_query)) {
 
     // values we bring back and assign to variable
@@ -39,7 +37,9 @@ if(isset($_POST['edit_user'])){
   if(!empty($user_password)) { 
 
     $query_password = "SELECT user_password FROM users WHERE userId =  $the_user_id";
+    
     $get_user_query = mysqli_query($connection, $query_password);
+    
     confirmQuery($get_user_query);
 
     $row = mysqli_fetch_array($get_user_query);
@@ -54,7 +54,7 @@ if(isset($_POST['edit_user'])){
     }
   
   
-  // INSERT INTO TABLE
+  // UPDATE DATABASE
   $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', 
   user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}', 
   user_password = '{$hashed_password}' WHERE userId = {$the_user_id} ";
@@ -67,7 +67,9 @@ if(isset($_POST['edit_user'])){
   
   // display this
   echo "<p class='success-button'>User Updated. <a href='users.php'>View Users</a></p>";
+  
   }
+
 }
 
 ?>
@@ -77,19 +79,19 @@ if(isset($_POST['edit_user'])){
 
   <div class="form-group">
     <label for="title">First Name</label>
-    <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="user_firstname">
+    <input type="text" value="<?= $user_firstname; ?>" class="form-control" name="user_firstname">
   </div>
 
   <div class="form-group">
     <label for="title">Last Name</label>
-    <input type="text" value="<?php echo $user_lastname; ?>"  class="form-control" name="user_lastname">
+    <input type="text" value="<?= $user_lastname; ?>"  class="form-control" name="user_lastname">
   </div>
 
   <div class="form-group">
    
     <select name="user_role" id="">
       <!-- static data added -->
-      <option value="subscriber"><?php echo $user_role; ?></option>
+      <option value="subscriber"><?= $user_role; ?></option>
 
       <?php if($user_role == 'admin'){
 
