@@ -31,7 +31,7 @@
 
 									<?php 
 
-										// if anything happens when add category is clicked
+										// if anything happens when adding category is clicked
 										if(isset($_POST['submit'])) {
 											////display this
 											////echo "<h1>hello</h1>";

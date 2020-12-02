@@ -7,6 +7,6 @@
       $cat_id = $row['cat_id'];
       echo "<div><a href='category.php?category=$cat_id'>{$cat_title}</a></div>";
     endforeach; ?>
-    <div><a class="" href="contact.php">contract</a></div>
+    <div><a class="" href="contact.php">contact</a></div>
   </nav>
   <hr>

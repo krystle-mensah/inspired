@@ -1,10 +1,14 @@
+<div class="col-lg-12">
+  <h1 class="mt-4">Add Posts</h1>
+</div> 
+
 <?php 
 
 if(isset($_POST['create_post'])){
   // TEST - type in the title field then click update button 
   //echo $_POST['title'];
 
-  //  form values
+  // Catch name attributes from values
   $post_title        = $_POST['title'];
   $post_author       = $_POST['author'];
   $post_category_id  = $_POST['post_category_id'];
@@ -13,28 +17,32 @@ if(isset($_POST['create_post'])){
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
   $post_date         = date('d-m-y');
+  $post_status       = $_POST['post_status'];
 
-  // hard coding the value
+  //hard coding the value
   $post_comment_count = 4;
-  //$post_status      = $_POST['post_status'];
+  
   
   // move files to post image temp to outside of admin in a root dir called img. 
   move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-  $sql = $connection->query(
-    " INSERT INTO posts(post_title, post_author, post_category_id, post_image, post_tags, post_content, post_date, post_comment_count)
-    VALUES('{$post_title}','{$post_author}',{$post_category_id}, '{$post_image }','{$post_tags}','{$post_content}', now(), '{$post_comment_count}')
-    ");  
+  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
 
-  confirmQuery($sql);
+  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
 
-  //$the_post_id = mysqli_insert_id($connection);
+  // then we send the query in
+  $create_post_query = mysqli_query($connection, $query); 
+
+  confirmQuery($query);
 
   //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
 }
 
 ?>
+
+<!-- FORM -->
+
 
 <!-- multipart/form-data lets you send encoded data  -->
 <form action="" method="post" enctype="multipart/form-data"> 
@@ -44,11 +52,12 @@ if(isset($_POST['create_post'])){
     <input type="text" class="form-control" name="title">
   </div>
 
-  <!-- <div class="form-group">
-    <label for="title">cat id</label>
-    <input type="text" class="form-control" name="post_category_id">
-  </div> -->
-
+  <!-- AUTHOR -->
+  <div class="form-group">
+    <label for="title">Post Author</label>
+    <input type="text" class="form-control" name="author">
+  </div>
+  <!-- POST CAT ID -->
   <div class="form-group">
     <select name="post_category_id" id="">
 
@@ -83,13 +92,9 @@ if(isset($_POST['create_post'])){
     
   </div><!-- form-group -->
 
-  <!-- AUTHOR -->
-  <div class="form-group">
-    <label for="title">Post Author</label>
-    <input type="text" class="form-control" name="author">
-  </div>
+  
 
-  <!-- <div class="form-group">
+  <div class="form-group">
 
     <select name="post_status" id="">
       <option value="draft">Post Status</option>
@@ -97,9 +102,7 @@ if(isset($_POST['create_post'])){
       <option value="draft">Draft</option>
     </select>
 
-    
-
-  </div> -->
+  </div>
 
   <div class="form-group">
     <label for="post_image">Post Image</label>

@@ -40,4 +40,7 @@ if( !isset($_SESSION['user_role'] )) {
 		<link rel="icon" href="/favicon.ico">
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+		<!-- POST EDITOR -->
+		<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 	</head>

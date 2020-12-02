@@ -50,17 +50,17 @@
 									</nav>
 								</div>
 								<!-- CATEGORIES -->
-								<a class="nav-link" href="./categories.php">
+								<a class="nav-link" href="categories.php">
 									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
 									Categories
 								</a>
 								<!-- COMMENTS -->
-								<a class="nav-link" href="./categories.php">
+								<a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
 									Comments
 								</a>
 								<!-- PROFILE -->
-								<a class="nav-link" href="./categories.php">
+								<a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
 									Profile
 								</a>
