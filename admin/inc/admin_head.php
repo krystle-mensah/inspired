@@ -45,6 +45,8 @@ if( !isset($_SESSION['user_role'] )) {
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
 
 		<!-- CK EDITOR 4 -->
-		<script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+		<!-- <script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
+
+		<script src="ckeditor/ckeditor.js"></script>
 
 	</head>
