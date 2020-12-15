@@ -12,8 +12,13 @@ if(isset($_POST['create_post'])){
   $post_title        = $_POST['title'];
   $post_author       = $_POST['author'];
   $post_category_id  = $_POST['post_category_id'];
+
   $post_image        = $_FILES['image']['name'];
   $post_image_temp   = $_FILES['image']['tmp_name'];
+  
+  //$post_video        = $_FILES['video']['name'];
+  //$post_video_temp   = $_FILES['video']['tmp_name'];
+  
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
   $post_date         = date('d-m-y');
@@ -26,9 +31,16 @@ if(isset($_POST['create_post'])){
   // move files to post image temp to outside of admin in a root dir called img. 
   move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags, post_comment_count, post_status) ";
+  //move_uploaded_file( $_FILES["file"]["tmp_name"], "videos/" . $_FILES["file"]["name"] );
+      
+  // $post_video = preg_replace(" #.*youtube\.com/wat`ch\?v=#", "", $post_video);
+  // //echo "the video Id " . $post_video . "<br>"; 
+  // $post_video = ' <iframe width="560" height="315" src="https://www.youtube.com/embed/' .$post_video.' " frameborder="0" allowfullscreen></iframe>';
+  // echo $post_video;
 
-  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
+  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+
+  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
 
   // then we send the query in
   $create_post_query = mysqli_query($connection, $query); 
@@ -43,8 +55,6 @@ if(isset($_POST['create_post'])){
 
 <!-- FORM -->
 
-
-<!-- multipart/form-data lets you send encoded data  -->
 <form action="" method="post" enctype="multipart/form-data"> 
   <!-- TITLE -->
   <div class="form-group">
@@ -92,8 +102,6 @@ if(isset($_POST['create_post'])){
     
   </div><!-- form-group -->
 
-  
-
   <div class="form-group">
 
     <select name="post_status" id="">
@@ -118,8 +126,12 @@ if(isset($_POST['create_post'])){
     <label for="post_content">Post Content</label>
     <textarea class="form-control "name="post_content" id="body" cols="30" rows="10">
     </textarea>
+    <!-- <div name="editor_2">
+        This is inline example
+    </div> -->
   </div>
 
+  <!-- SUBMIT BUTTON -->
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
   </div>

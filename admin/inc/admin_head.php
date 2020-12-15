@@ -33,7 +33,7 @@ if( !isset($_SESSION['user_role'] )) {
 		<title>Dashboard - SB Admin</title>
 		
 		<link href="css/styles.css" rel="stylesheet" />
-		
+		`
 		<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 		<!-- FAVICON -->
@@ -42,5 +42,9 @@ if( !isset($_SESSION['user_role'] )) {
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
 		<!-- POST EDITOR -->
-		<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
+
+		<!-- CK EDITOR 4 -->
+		<script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+
 	</head>

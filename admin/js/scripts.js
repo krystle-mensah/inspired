@@ -23,14 +23,17 @@
 
 $(document).ready(function() {
 	
-	//ck editor
-	ClassicEditor
-		.create( document.querySelector( '#body' ) )
-		.catch( error => {
-			console.error( error );
-		} );
+	// editoer 4
+	CKEDITOR.replace( 'post_content' );
+
+	// CKEDITOR.inline( 'editor_2' );
+	
+	// //ck editor
+	// ClassicEditor
+	// 	.create( document.querySelector( '#body' ) )
+	// 	.catch( error => {
+	// 		console.error( error );
+	// 	} );
 
 
 });
-
-	
