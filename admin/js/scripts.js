@@ -1,39 +1,45 @@
-/*!
-	* Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
-	* Copyright 2013-2020 Start Bootstrap
-	* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-	*/
-	(function($) {
-	"use strict";
 
-	// Add active state to sidbar nav links
-	var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-		$("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
-			if (this.href === path) {
-				$(this).addClass("active");
-			}
-		});
+	$(document).ready(function() {
+	
+		// editor 4
+		CKEDITOR.replace( 'post_content' );
+	
+		// HOW TO EDITED A TAB TOOL
+		CKEDITOR.replace( 'dialogDefinition', function(e) {
+			dialogName = e.data.name;
+			console.log(dialogName);
+	
+		} )
 
-	// Toggle the side navigation
-	$("#sidebarToggle").on("click", function(e) {
-		e.preventDefault();
-		$("body").toggleClass("sb-sidenav-toggled");
+
+
+
+		(function($) {
+			"use strict";
+		
+			// Add active state to sidbar nav links
+			var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+				$("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+					if (this.href === path) {
+						$(this).addClass("active");
+					}
+				});
+		
+			// Toggle the side navigation
+			$("#sidebarToggle").on("click", function(e) {
+				e.preventDefault();
+				$("body").toggleClass("sb-sidenav-toggled");
+			});
+		})(jQuery);
+		
+	
+	
+	
+	
+		
+	
 	});
-})(jQuery);
-
-$(document).ready(function() {
 	
-	// editoer 4
-	CKEDITOR.replace( 'post_content' );
 
-	// CKEDITOR.inline( 'editor_2' );
+
 	
-	// //ck editor
-	// ClassicEditor
-	// 	.create( document.querySelector( '#body' ) )
-	// 	.catch( error => {
-	// 		console.error( error );
-	// 	} );
-
-
-});
