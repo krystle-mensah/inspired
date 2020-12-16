@@ -31,10 +31,10 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	//You tube plugin
-	config.extraPlugins = 'youtube';
-
 	// this tells you what has been removed
 	config.removeButtons = 'About';
+
+	//You tube plugin
+	config.extraPlugins = 'youtube';
 
 };

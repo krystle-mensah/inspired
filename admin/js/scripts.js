@@ -2,14 +2,14 @@
 	$(document).ready(function() {
 	
 		// editor 4
-		CKEDITOR.replace( 'post_content' );
+		CKEDITOR.replace('post_content');
 	
 		// HOW TO EDITED A TAB TOOL
-		CKEDITOR.replace( 'dialogDefinition', function(e) {
-			dialogName = e.data.name;
-			console.log(dialogName);
+		// CKEDITOR.on( 'dialogDefinition', function(e) {
+		// 	dialogName = e.data.name;
+		// 	console.log(dialogName);
 	
-		} )
+		// } );
 
 
 
