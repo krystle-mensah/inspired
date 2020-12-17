@@ -1,7 +1,10 @@
+
+
 <div class="p-3 mb-3 bg-light rounded">
 
   <div class="search_form">
-    <form action="" method="post">
+ 
+    <form action="search.php" method="post">
       <div class="input-group">
         <input name="search" type="text" class="form-control" placeholder="search blog">
           <span class="input-group-btn">
