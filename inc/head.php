@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="css/main.css">
 
   <!-- GOOGLE FONT -->
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">

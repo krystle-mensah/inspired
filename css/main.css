@@ -1,5 +1,5 @@
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  /* font-family: 'Merriweather Sans', sans-serif; */
   color: #0d0d0d;
 }
 
@@ -198,7 +198,8 @@ img.post-image {
 /* post page */
 
 p.post_content {
-  font-weight: 300;
+  /* font-weight: 300; */
+  font-family: 'PT Sans', sans-serif;
 }
 
 /*============

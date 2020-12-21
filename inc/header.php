@@ -12,7 +12,7 @@
       </div>
       <div class="social-media">
         <div class="social-media-container">
-          <a href="#" class="social-media-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/inspiredsounduk" class="social-media-link"><i class="fab fa-twitter"></i></a>
           <a href="#" class="social-media-link"><i class="fab fa-spotify"></i></a>
           <a href="#" class="social-media-link"><i class="fab fa-soundcloud"></i></a>
         </div>
