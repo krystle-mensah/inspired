@@ -1,5 +1,5 @@
   <footer class="blog-footer">
-      <p>Kofi Yeboah Mensah <a href="#">Inspire Others</a>.</p>
+      <p>Kofi Yeboah Mensah <a href="#">Inspired Sound</a></p>
       <p>
         <a class="back-to-the-top" href="#">Back to top</a>
       </p>

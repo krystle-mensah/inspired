@@ -13,8 +13,8 @@
       <div class="social-media">
         <div class="social-media-container">
           <a href="https://twitter.com/inspiredsounduk" target="_blank" class="social-media-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-media-link"><i class="fab fa-spotify"></i></a>
-          <a href="#" class="social-media-link"><i class="fab fa-soundcloud"></i></a>
+          <a href="https://open.spotify.com/user/3a91knedfbhntn7akthnp5l84?si=mDkzbZv_T6WLzbwC9FkXmQ" target="_blank" class="social-media-link"><i class="fab fa-spotify"></i></a>
+          <a href="https://soundcloud.com/inspired-sound-167086100" target="_blank" class="social-media-link"><i class="fab fa-soundcloud"></i></a>
         </div>
       </div>
 

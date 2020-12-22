@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
       $_SESSION['user_email'] = $db_user_email;
       $_SESSION['user_role'] = $db_user_role;
     
-      header('Location: ../admin/Dashboard.php');
+      header('Location: ../admin/posts.php');
 
     } else {
     
