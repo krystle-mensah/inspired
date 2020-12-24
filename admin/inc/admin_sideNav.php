@@ -55,17 +55,17 @@
 									Categories
 								</a>
 								<!-- COMMENTS -->
-								<a class="nav-link" href="#">
+								<!-- <a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
 									Comments
-								</a>
+								</a> -->
 								<!-- PROFILE -->
 								<a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
 									Profile
 								</a>
 
-								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+								<!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 									<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
 									Pages
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -95,7 +95,7 @@
 											</nav>
 										</div>
 									</nav>
-								</div>
+								</div> -->
 								<!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
 								<!-- <a class="nav-link" href="charts.html">
 									<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

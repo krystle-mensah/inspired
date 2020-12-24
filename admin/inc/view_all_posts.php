@@ -89,7 +89,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
         <th>Status</th>
         <th>Image</th>
         <th>Tags</th>
-        <th>Comments</th>
+        <!-- <th>Comments</th> -->
         <th>Date</th>  
         <th>Post</th>     
         <th>Edit</th>      
@@ -111,7 +111,7 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     $post_status = $row['post_status'];
     $post_image = $row['post_image'];
     $post_tags = $row['post_tags'];
-    $post_comment_count = $row['post_comment_count'];
+    // $post_comment_count = $row['post_comment_count'];
     $post_date = $row['post_date'];
     
     //display 
@@ -137,7 +137,6 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     echo "<td>$post_status</td>";
     echo "<td><img width='100' src='../img/$post_image' alt='image'></td>";
     echo "<td>$post_tags</td>";
-    echo "<td>$post_comment_count</td>";
     echo "<td>$post_date</td>";
     
     // go to post page, query string post id and display it.
