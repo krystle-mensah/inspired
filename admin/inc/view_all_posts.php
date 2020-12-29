@@ -64,20 +64,18 @@ if( isset( $_POST['checkBoxArray'] ) ) {
       <option value="clone">Clone</option>
     </select>
 
-</div><!-- bulkOptionContainer --> 
+</div><!-- bulkOptionContainer -->
+<div class="col-xs-4">
+  <h1 class="mt-4">Posts</h1>
+
+  <input type="submit" name="submit" class="btn btn-success" value="Apply">
+  <a class="btn btn-primary" href="posts.php?source=add_post">New Post</a>
+
+</div> 
 
 <form class="col-lg-12" action="" method='post'>
 
   <table class="table table-bordered table-hover">
-
-  
-
-  <div class="col-xs-4">
-
-    <input type="submit" name="submit" class="btn btn-success" value="Apply">
-    <a class="btn btn-primary" href="posts.php?source=add_post">New Post</a>
-
-  </div>
 
     <thead>
       <tr>
