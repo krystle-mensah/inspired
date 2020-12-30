@@ -40,9 +40,9 @@
                 
                     <div class="blog-post">
 
-                            <img class="flex-auto d-none d-md-block post-image img-fluid card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
+                            <img class="flex-auto d-md-block post-image img-fluid card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
                             
-                            <div class="card-body d-flex flex-column align-items-start">
+                            <div class="card-body d-flex flex-column">
                               <div class="post-content">
                                 <h1 class="post_title"><?= $post_title;  ?></h1>
                                 <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>

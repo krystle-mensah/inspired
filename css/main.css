@@ -138,6 +138,7 @@ INDEX LAYOUT
 a.post_link {
   text-decoration: none;
   color: #ccc;
+  display: block;
 }
 
 a.post_author {
