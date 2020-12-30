@@ -1,5 +1,9 @@
   <footer class="blog-footer">
-      <p>Kofi Yeboah Mensah <a href="#">Inspired Sound</a></p>
+    <a href="https://twitter.com/inspiredsounduk" target="_blank" class="footerSocial_link"><i class="fab fa-twitter"></i></a>
+    <a href="https://open.spotify.com/user/3a91knedfbhntn7akthnp5l84?si=mDkzbZv_T6WLzbwC9FkXmQ" target="_blank" class="footerSocial_link"><i class="fab fa-spotify"></i></a>
+    <a href="https://soundcloud.com/inspired-sound-167086100" target="_blank" class="footerSocial_link"><i class="fab fa-soundcloud"></i></a>
+
+      <!-- <p>Kofi Yeboah Mensah <a href="#">Inspired Sound</a></p> -->
       <p>
         <a class="back-to-the-top" href="#">Back to top</a>
       </p>

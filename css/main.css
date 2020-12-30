@@ -63,7 +63,7 @@ h3.header-tagline {
 
 /* SOCIAL MEDIA */
 
-.social-media {
+.social_media {
 	float: left;
 	position: absolute;
 	top: 0;
@@ -73,7 +73,6 @@ a.social-media-link {
 	display: block;
 	cursor: pointer;
 	font-size: 25px;
-  /* color: #000; */
 }
 
 i.fa-instagram {
@@ -91,7 +90,6 @@ i.fa-soundcloud {
 /* HEADER ICONS */
 
 .header-icons {
-	/* float: right; */
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -254,3 +252,15 @@ h4.side_widget_title {
 }
 
 /* END SIDEBAR LAYOUT */
+
+/*============
+FOOTER LAYOUT
+=================================*/
+
+a.footerSocial_link {
+  font-size: 30px;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+/* END FOOTER LAYOUT */
