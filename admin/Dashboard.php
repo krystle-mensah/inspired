@@ -23,9 +23,7 @@
 								<h1 class="mt-4">Dashboard</h1>
 								
 								<ol class="breadcrumb mb-4">
-									<li class="breadcrumb-item active">Hi
-										<?php echo $_SESSION['username']; ?>
-									</li>
+									<li class="breadcrumb-item active"></li>
 								</ol>
 
 								<div class="row">
