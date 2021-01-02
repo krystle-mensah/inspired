@@ -10,7 +10,7 @@
 								</a>
 
 								<!-- POST -->
-								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="false" aria-controls="collapseLayouts">
+								<a class="nav-link collapsed" href="./posts.php" data-toggle="collapse" data-target="#collapsePosts" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
 									Posts
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -23,7 +23,7 @@
 									</nav>
 								</div>
 								<!-- IMAGE SLIDER -->
-								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+								<a class="nav-link collapsed" href="./slider_images.php" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
 									Image Slider
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -37,7 +37,7 @@
 								</div>
 
 								<!-- USERS -->
-								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseLayouts">
+								<a class="nav-link collapsed" href="users.php" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
 									Users
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
