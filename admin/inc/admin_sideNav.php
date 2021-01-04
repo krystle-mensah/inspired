@@ -54,6 +54,11 @@
 									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
 									Categories
 								</a>
+								<!-- CATEGORIES -->
+								<a class="nav-link" href="chapters.php">
+									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+									chapters
+								</a>
 								<!-- COMMENTS -->
 								<!-- <a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
