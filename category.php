@@ -63,8 +63,6 @@
                     // Then assign the array to a variable
                     $cat_id = $row['cat_id'];
                     $cat_title = $row['cat_title'];
-                    // display the cat title 
-                    //echo "<td>{$cat_title}</td>";
                     } 
                     ?>
                     <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">

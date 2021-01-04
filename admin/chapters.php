@@ -21,7 +21,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-lg-12">
-										<h1 class="mt-4">Categories</h1>
+										<h1 class="mt-4">Chapters</h1>
 											<!-- <ol class="breadcrumb mb-4">
 												<li class="breadcrumb-item active">Add Category</li>
 											</ol> -->
@@ -71,11 +71,11 @@
 										<form action="" method="post">
 
 											<div class="form-group">
-												<label for="cat-title">Add Category</label>
+												<label for="cat-title">Add a Chapter</label>
 												<input type="text" name="cat_title" class="form-control">
 											</div><!-- form-group -->
 											<div class="form-group">
-												<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+												<input class="btn btn-primary" type="submit" name="submit" value="Add Chapter">
 											</div><!-- form-group -->
 										</form><!-- form -->
 
@@ -85,10 +85,10 @@
 											if(isset($_GET['edit'])){
 
 												// IF TRUE - ASSIGN TO cat_id. 
-												$cat_id = $_GET['edit'];
+												$chapterId = $_GET['edit'];
 
 												// PATH TO UPDATE_CATEGORIES.PHP
-												include "inc/update_categories.php";
+												include "inc/update_chapters.php";
 
 											}
 
@@ -103,31 +103,31 @@
 											<thead>
 												<tr>
 													<th>Id</th>
-													<th>Category Title</th>
+													<th>Chapter Title</th>
 												</tr>
 											</thead>
 											<tbody>
 											<?php
 						
-												$query = "SELECT * FROM categories";
+												$query = "SELECT * FROM chapters";
 											
 												//function sends in the query and connection. 
-												$select_categories = mysqli_query($connection,$query);
+												$select_all_chapters = mysqli_query($connection,$query);
 
 												// while the condition is true fetch the row representing the array from ($variable)
-												while($row = mysqli_fetch_array($select_categories)) {
+												while($row = mysqli_fetch_array(	$select_all_chapters )) {
 													// Then assign the array to a variable
-													$cat_id = $row['cat_id'];
-													$cat_title = $row['cat_title'];
+													$chapterId = $row['chapterId'];
+													$chapterName = $row['chapterName'];
 
 													echo "<tr>";
 													// Then display the fetch row form the database in the browser. 
-														echo "<td>{$cat_id}</td>";
-														echo "<td>{$cat_title}</td>";
+														echo "<td>{$chapterId}</td>";
+														echo "<td>{$chapterName}</td>";
 														// delete button
-														echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+														echo "<td><a href='chapters.php?delete={$chapterId}'>Delete</a></td>";
 														// Edited link
-														echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+														echo "<td><a href='chapters.php?edit={$chapterId}'>Edit</a></td>";
 													echo "</tr>";
 												}
 
@@ -140,16 +140,16 @@
 												//check for the delete key in url
 												if(isset($_GET['delete'])) {
 													// then save it here
-													$the_cat_id = $_GET['delete'];
+													$theChapterId = $_GET['delete'];
 											
 													// query to delete from categories where, then we reference the column in the database which is called cat_id equal to the $the_cat_id
-													$query = "DELETE FROM categories WHERE cat_id = {$the_cat_id}";
+													$query = "DELETE FROM chapters WHERE chapterId = {$theChapterId}";
 											
 													// send in
 													$delete_query = mysqli_query($connection, $query);
 											
 													// once the above is done refrash in this location
-													header("Location: categories.php");
+													header("Location: chapters.php");
 													
 												}
 		
