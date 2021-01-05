@@ -93,8 +93,6 @@
 											}
 
 										?>
-									
-
 									</div><!-- alignment -->
 
 									<div class="col-xs-6 col-lg-12">
@@ -108,9 +106,8 @@
 											</thead>
 											<tbody>
 											<?php
-						
-												$query = "SELECT * FROM categories";
 											
+												$query = "SELECT * FROM categories";
 												//function sends in the query and connection. 
 												$select_categories = mysqli_query($connection,$query);
 

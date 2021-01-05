@@ -31,31 +31,36 @@
 
 									<?php 
 
-										// if anything happens when adding category is clicked
+										// if anything happens when adding chapter is clicked
 										if(isset($_POST['submit'])) {
-											////display this
-											////echo "<h1>hello</h1>";
+											//echo "<h1>hello</h1>";
+											
+											// Query the database for ALL cat
+											$query = "SELECT * FROM categories";
+											
 
-											$cat_title = $_POST['cat_title'];
+										
+											
+
+											$chapterName = $_POST['chapterName'];
 
 											//// if cat_title is equal to empty string or function to check is var is empty
-											if($cat_title == "" || empty($cat_title)) {
+											if($chapterName == "" || empty($chapterName)) {
 												//// Then display this.
 												echo "This field should not empty";
+											}	else{
 
-											}else{
-
-												// insert what user inputs to the categories table and column. 
-												$query = "INSERT INTO categories(cat_title) ";
+												// insert what user inputs to the chapters table in this column. 
+												$query = "INSERT INTO chapters(chapterName) ";
 												
 												// and assign value to variable. 
-												$query .= "VALUE('{$cat_title}')";
+												$query .= "VALUE('{$chapterName}')";
 
 												// then send to database with the connection and query. 
-												$create_category_query = mysqli_query($connection, $query);
+												$create_chapter_query = mysqli_query($connection, $query);
 											
 												// check if query was succesful
-												if(!$create_category_query) {
+												if(!$create_chapter_query) {
 													
 													// terminate script and display error with the connection. 
 													die('QUERY FAILED' . mysqli_error($connection));
@@ -72,7 +77,7 @@
 
 											<div class="form-group">
 												<label for="cat-title">Add a Chapter</label>
-												<input type="text" name="cat_title" class="form-control">
+												<input type="text" name="chapterName" class="form-control">
 											</div><!-- form-group -->
 											<div class="form-group">
 												<input class="btn btn-primary" type="submit" name="submit" value="Add Chapter">
@@ -93,8 +98,6 @@
 											}
 
 										?>
-									
-
 									</div><!-- alignment -->
 
 									<div class="col-xs-6 col-lg-12">
@@ -108,7 +111,6 @@
 											</thead>
 											<tbody>
 											<?php
-						
 												$query = "SELECT * FROM chapters";
 											
 												//function sends in the query and connection. 
@@ -119,7 +121,6 @@
 													// Then assign the array to a variable
 													$chapterId = $row['chapterId'];
 													$chapterName = $row['chapterName'];
-
 													echo "<tr>";
 													// Then display the fetch row form the database in the browser. 
 														echo "<td>{$chapterId}</td>";
@@ -141,8 +142,6 @@
 												if(isset($_GET['delete'])) {
 													// then save it here
 													$theChapterId = $_GET['delete'];
-											
-													// query to delete from categories where, then we reference the column in the database which is called cat_id equal to the $the_cat_id
 													$query = "DELETE FROM chapters WHERE chapterId = {$theChapterId}";
 											
 													// send in
@@ -150,26 +149,17 @@
 											
 													// once the above is done refrash in this location
 													header("Location: chapters.php");
-													
 												}
-		
 											?>	
-										
 											</tbody>
 										</table> <!-- table table-bordered table-hover -->
-
 									</div><!-- alignment -->
 								</div>
 							</div><!-- container fluid -->
-
 						</main><!-- main -->
-
 					</div> <!-- content -->
-
 				</div><!-- row -->
-
 			</div><!-- container --> 
-
 		</div><!-- layoutSidenav --> 
 
 		<?php include "inc/admin_footer.php" ?>      
