@@ -1,2 +1,2 @@
 # inspired
-Music Blog
+Music Blog with custom admin
