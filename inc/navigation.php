@@ -1,9 +1,9 @@
-<?php $sql = $connection->query( "SELECT * FROM categories" ); ?>
+<?php $all_categories = $connection->query( "SELECT * FROM categories" ); ?>
   <hr>
   <nav class="nav justify-content-between site-navigation">
     <a class="" href="index.php">home</a>
 
-      <?php foreach($sql as $row) {
+      <?php foreach($all_categories as $row) {
         $cat_title = $row['cat_title'];
         $cat_id = $row['cat_id'];
         $cat_sortingId = $row['sorting'];
