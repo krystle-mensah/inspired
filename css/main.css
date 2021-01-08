@@ -75,19 +75,27 @@ a.social-media-link {
 	font-size: 25px;
 }
 
-i.fa-instagram {
+i.fa-spotify {
+  color: #0d0d0d;
+}
+
+i.fa-spotify:hover {
   color: #DE5133;
 }
 
-i.fa-spotify {
+i.fa-soundcloud:hover  {
   color: #DE5133;
 } 
 
 i.fa-soundcloud {
-  color: #DE5133;
+  color: #0d0d0d
 }
 
 i.fab.fa-twitter {
+  color: #0d0d0d;
+}
+
+i.fab.fa-twitter:hover {
   color: #DE5133;
 }
 
