@@ -37,7 +37,7 @@ h1.brand_name {
   font-weight: 800;
 }
 
-/* LOGO */
+/* Logo */
 
 .logo-container {
 	text-align: center;
@@ -47,7 +47,7 @@ img#logo {
   width: 52px;
 }
 
-/* TAGLINE */
+/* Tagline */
 
 .tagline-container {
 	text-align: center;
@@ -61,7 +61,7 @@ h3.header-tagline {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-/* SOCIAL MEDIA */
+/* Social media */
 
 .social_media {
 	float: left;
@@ -76,15 +76,19 @@ a.social-media-link {
 }
 
 i.fa-instagram {
-  color: #609;
+  color: #DE5133;
 }
 
 i.fa-spotify {
-  color: #1ED760;
+  color: #DE5133;
 } 
 
 i.fa-soundcloud {
-  color: #f50;
+  color: #DE5133;
+}
+
+i.fab.fa-twitter {
+  color: #DE5133;
 }
 
 /* HEADER ICONS */
