@@ -57,7 +57,7 @@
 								<!-- CATEGORIES -->
 								<a class="nav-link" href="chapters.php">
 									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-									chapters
+									Chapters
 								</a>
 								<!-- COMMENTS -->
 								<!-- <a class="nav-link" href="#">

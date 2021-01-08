@@ -34,28 +34,24 @@
 										// if anything happens when adding chapter is clicked
 										if(isset($_POST['submit'])) {
 											//echo "<h1>hello</h1>";
+
+											// then grap user input
+											$chapterName = $_POST['chapterName'];
+											$post_category_id = $_POST['post_category_id'];
 											
 											// Query the database for ALL cat
-											$query = "SELECT * FROM categories";
+											$query = "SELECT * FROM chapters";
+
 											
-
-										
-											
-
-											$chapterName = $_POST['chapterName'];
-
-											//// if cat_title is equal to empty string or function to check is var is empty
+											// if chapter name is equal to empty string or function to check is var is empty
 											if($chapterName == "" || empty($chapterName)) {
-												//// Then display this.
+												// Then display this.
 												echo "This field should not empty";
 											}	else{
-
 												// insert what user inputs to the chapters table in this column. 
 												$query = "INSERT INTO chapters(chapterName) ";
-												
 												// and assign value to variable. 
 												$query .= "VALUE('{$chapterName}')";
-
 												// then send to database with the connection and query. 
 												$create_chapter_query = mysqli_query($connection, $query);
 											
@@ -64,22 +60,51 @@
 													
 													// terminate script and display error with the connection. 
 													die('QUERY FAILED' . mysqli_error($connection));
-
 												}
-
 											} // End else
-
 										} // isset function
-
 									?>
-
 										<form action="" method="post">
 
 											<div class="form-group">
 												<label for="cat-title">Add a Chapter</label>
 												<input type="text" name="chapterName" class="form-control">
 											</div><!-- form-group -->
+										
+											<!-- POST CAT ID -->
 											<div class="form-group">
+												<select name="post_category_id" id="">
+<?php
+
+$query = "SELECT * FROM categories";        
+$select_categories = mysqli_query($connection,$query);
+confirmQuery($select_categories);
+
+        while($row = mysqli_fetch_assoc($select_categories)) {
+          $cat_id = $row['cat_id'];
+					$cat_title = $row['cat_title'];
+					$cat_sorting = $row['sorting'];
+
+					if($cat_id == $post_category_id) {
+      
+        	echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+
+        } else {
+
+          echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+        }
+            
+        }
+
+      ?>
+    
+									</select>
+    
+  </div><!-- form-group -->
+	
+		<!-- ADD CHAPTER BUTTON -->
+		<div class="form-group">
 												<input class="btn btn-primary" type="submit" name="submit" value="Add Chapter">
 											</div><!-- form-group -->
 										</form><!-- form -->
@@ -107,6 +132,7 @@
 												<tr>
 													<th>Id</th>
 													<th>Chapter Title</th>
+													<th>Category Title</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -125,6 +151,9 @@
 													// Then display the fetch row form the database in the browser. 
 														echo "<td>{$chapterId}</td>";
 														echo "<td>{$chapterName}</td>";
+														// here we wont to display the category title
+														echo "<td>{$chapterName}</td>";
+
 														// delete button
 														echo "<td><a href='chapters.php?delete={$chapterId}'>Delete</a></td>";
 														// Edited link
@@ -133,6 +162,8 @@
 												}
 
 											?>
+
+											<!--  -->
 
 											<!-- DELETE QUERY FUNCTION -->
 											
