@@ -12,6 +12,7 @@ if(isset($_POST['create_post'])){
   $post_title        = $_POST['title'];
   $post_author       = $_POST['author'];
   $post_category_id  = $_POST['post_category_id'];
+  $post_chapter_id  = $_POST['post_chapter_id'];
 
   $post_image        = $_FILES['image']['name'];
   $post_image_temp   = $_FILES['image']['tmp_name'];
@@ -38,9 +39,9 @@ if(isset($_POST['create_post'])){
   // $post_video = ' <iframe width="560" height="315" src="https://www.youtube.com/embed/' .$post_video.' " frameborder="0" allowfullscreen></iframe>';
   // echo $post_video;
 
-  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+  $query = "INSERT INTO posts(post_category_id,post_chapter_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 
-  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
+  $query .= "VALUES('{$post_category_id}','{$post_chapter_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
 
   // then we send the query in
   $create_post_query = mysqli_query($connection, $query); 
@@ -69,6 +70,7 @@ if(isset($_POST['create_post'])){
   </div>
   <!-- POST CAT ID -->
   <div class="form-group">
+    <label for="title">select a category</label>
     <select name="post_category_id" id="">
 
       <?php
@@ -91,6 +93,41 @@ if(isset($_POST['create_post'])){
         } else {
 
           echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+        }
+            
+        }
+
+      ?>
+    
+    </select>
+    
+  </div><!-- form-group -->
+
+  <!-- POST Chapter ID -->
+  <div class="form-group">
+  <label for="title">select a chapter</label>
+    <select name="post_chapter_id" id="">
+
+      <?php
+
+        // QUERY FOR ALL TABLE
+        $query = "SELECT * FROM chapters";
+        $select_chapters = mysqli_query($connection,$query);
+        
+        confirmQuery($select_chapters);
+
+        while($row = mysqli_fetch_assoc($select_chapters)) {
+          $chapterId = $row['chapterId'];
+          $chapterName = $row['chapterName'];
+
+        if($chapterId == $post_chapter_id) {
+      
+        echo "<option selected value='{$chapterId}'>{$chapterName}</option>";
+
+        } else {
+
+          echo "<option value='{$chapterId}'>{$chapterName}</option>";
 
         }
             

@@ -1,5 +1,6 @@
-<div class="p-3 mb-3 bg-light rounded">
+<!-- SEARCH BLOG -->
 
+<div class="p-3 mb-3 bg-light rounded">
   <div class="search_form">
     <form action="search.php" method="post">
       <div class="input-group">
@@ -12,13 +13,16 @@
       </div> <!-- input-group -->
     </form><!-- search form -->
   </div><!-- search_bar -->
-  
 </div>
 
 <!-- SPOFITY WIDGET -->
 
 <div class="p-3 mb-3 bg-light rounded">
   <iframe src="https://open.spotify.com/embed/playlist/4UEW6oK9ExZqZ6UogE6UoK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+
+<div class="p-3 mb-3 bg-light rounded">
+<iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
 
 <!-- TWITTER WIDGET -->

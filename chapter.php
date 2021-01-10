@@ -20,22 +20,22 @@
         <div class="col-md-8 blog_main">
           <?php
           
-          if(isset($_GET['category'])){
+          if(isset($_GET['chapter'])){
             // Each value when clicked
-            $post_category_id = $_GET['category']; //we are getting the id
+            $post_chapter_id = $_GET['category']; //we are getting the id
     
           }else {
             echo "not set";
           }
           
           // requst all the post table database. 
-          $sql = $connection->query("SELECT * FROM posts WHERE post_category_id = $post_category_id "); 
+          $sql = $connection->query("SELECT * FROM posts WHERE post_chapter_id = $post_chapter_id "); 
 
           
           foreach($sql as $row) {
 
           //Then assign the row array to a variable
-          $post_category_id = $row['post_category_id'];
+          $post_chapter_id = $row['post_chapter_id'];
           $post_id = $row['post_id']; 
           $post_title = $row['post_title'];
           $post_author = $row['post_author'];
