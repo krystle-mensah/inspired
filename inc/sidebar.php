@@ -1,12 +1,9 @@
-
-
 <div class="p-3 mb-3 bg-light rounded">
 
   <div class="search_form">
- 
     <form action="search.php" method="post">
       <div class="input-group">
-        <input name="search" type="text" class="form-control" placeholder="search blog">
+        <input name="search" type="text" class="form-control" placeholder="Search">
           <span class="input-group-btn">
               <button name="submit" class="btn btn-default" type="submit">
                 <i class="fas fa-search"></i>
@@ -15,13 +12,13 @@
       </div> <!-- input-group -->
     </form><!-- search form -->
   </div><!-- search_bar -->
+  
 </div>
 
 <!-- SPOFITY WIDGET -->
 
 <div class="p-3 mb-3 bg-light rounded">
-  <!-- <h4 class="side_widget_title"> Spotify</h4> -->
-  <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></p>
+  <iframe src="https://open.spotify.com/embed/playlist/4UEW6oK9ExZqZ6UogE6UoK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
 
 <!-- TWITTER WIDGET -->
