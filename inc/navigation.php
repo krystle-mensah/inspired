@@ -3,10 +3,13 @@
   <nav class="nav justify-content-between site-navigation">
     <a class="" href="index.php">home</a>
 
-      <?php foreach($all_categories as $row) {
+      <?php foreach($all_categories as $row) { ?>
+      <?php 
         $cat_title = $row['cat_title'];
         $cat_id = $row['cat_id'];
         $cat_sortingId = $row['sorting'];
+        
+
             echo "<div>";
               echo" <a href='category.php?category=$cat_id'>";
                 echo "<div class='drop_down'>";
@@ -28,9 +31,7 @@
               echo "</a>";
             echo "</div>";
     }
-            
 
-      
 ?>
     <a class="" href="contact.php">contact</a>
   </nav>
