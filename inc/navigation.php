@@ -7,7 +7,7 @@
       <?php 
         $cat_title = $row['cat_title'];
         $cat_id = $row['cat_id'];
-        $cat_sortingId = $row['sorting'];
+        $cat_chapter = $row['cat_chapter'];
         
 
             echo "<div>";
@@ -18,15 +18,15 @@
 
                     $sql = $connection->query( "SELECT * FROM chapters" );
 
-                    foreach($sql as $row) {
-                      $chapterName = $row['chapterName'];
-                      $chapter_sortingId = $row['sorting'];
+                    //foreach($sql as $row) {
+                      //$chapterName = $row['chapterName'];
+                      //$chapter_sortingId = $row['sorting'];
                    
 
-                      if($chapter_sortingId ===  $cat_sortingId ){
-                        echo "<a href='chapter.php?chapter=$row[chapterId]'>$chapterName</a>";
-                      }
-                    }
+                      //if($cat_chapter ===  $chapterName ){
+                        //echo "<a href='chapter.php?chapter=$row[chapterId]'>$chapterName</a>";
+                      //}
+                    //}
                       echo "</div>";
                     echo "</div>";
               echo "</a>";

@@ -31,10 +31,12 @@
 
 									<?php 
 
-										// if anything happens when adding category is clicked
 										if(isset($_POST['submit'])) {
 											////display this
 											////echo "<h1>hello</h1>";
+											//$cat_chapter        = $_POST['cat_chapter'];
+											
+											// $_POST['cat_chapter'] = 4;
 
 											$cat_title = $_POST['cat_title'];
 
@@ -46,7 +48,7 @@
 											}else{
 
 												// insert what user inputs to the categories table and column. 
-												$query = "INSERT INTO categories(cat_title) ";
+												$query = "INSERT INTO categories(cat_title)";
 												
 												// and assign value to variable. 
 												$query .= "VALUE('{$cat_title}')";
@@ -67,7 +69,7 @@
 										} // isset function
 
 									?>
-
+										<!-- ADD CATEGORY -->
 										<form action="" method="post">
 
 											<div class="form-group">
@@ -106,9 +108,7 @@
 											</thead>
 											<tbody>
 											<?php
-											
 												$query = "SELECT * FROM categories";
-												//function sends in the query and connection. 
 												$select_categories = mysqli_query($connection,$query);
 
 												// while the condition is true fetch the row representing the array from ($variable)
@@ -121,6 +121,8 @@
 													// Then display the fetch row form the database in the browser. 
 														echo "<td>{$cat_id}</td>";
 														echo "<td>{$cat_title}</td>";
+														// ADD CHAPTER BUTTON
+														echo "<td><a href=''><select></select></a></td>";
 														// delete button
 														echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
 														// Edited link

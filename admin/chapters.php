@@ -27,8 +27,6 @@
 									<div class="col-xs-6 col-lg-4">
 
 									<?php 
-
-										// if anything happens when adding category is clicked
 										if(isset($_POST['submit'])) {
 											////display this
 											////echo "<h1>hello</h1>";
@@ -42,10 +40,9 @@
 
 											}else{
 
-												// insert what user inputs to the categories table and column. 
 												$query = "INSERT INTO chapters(chapterName) ";
 												
-												// and assign value to variable. 
+											
 												$query .= "VALUE('{$chapterName}')";
 
 												// then send to database with the connection and query. 

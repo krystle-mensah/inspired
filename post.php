@@ -68,8 +68,7 @@
                 <p class=""><?= $post_video ?></p>
 
           <?php } ?>
-          
-            
+
           <hr>
         
         </div><!-- alignment and main blog -->

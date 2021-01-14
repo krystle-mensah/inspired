@@ -101,39 +101,40 @@ if(isset($_POST['create_post'])){
   </div><!-- form-group -->
 
   <!-- POST Chapter ID -->
-  <div class="form-group">
-  <label for="title">select a chapter</label>
-    <select name="post_chapter_id" id="">
+  <!-- <div class="form-group">
+    <label for="title">select a chapter</label>
+      <select name="post_chapter_id" id="">
 
       <?php
 
         // QUERY FOR ALL TABLE
-        $query = "SELECT * FROM chapters";
-        $select_chapters = mysqli_query($connection,$query);
+        // $query = "SELECT * FROM chapters";
+        // $select_chapters = mysqli_query($connection,$query);
         
-        confirmQuery($select_chapters);
+        // confirmQuery($select_chapters);
 
-        while($row = mysqli_fetch_assoc($select_chapters)) {
-          $chapterId = $row['chapterId'];
-          $chapterName = $row['chapterName'];
+        // while($row = mysqli_fetch_assoc($select_chapters)) {
+        //   $chapterId = $row['chapterId'];
+        //   $chapterName = $row['chapterName'];
 
-        if($chapterId == $post_chapter_id) {
+        // if($chapterId == $post_chapter_id) {
       
-        echo "<option selected value='$chapterId'>$chapterName</option>";
+        // echo "<option selected value='$chapterId'>$chapterName</option>";
 
-        } else {
+        // } else {
 
-          echo "<option value='$chapterId'>$chapterName</option>";
+        //   echo "<option value='$chapterId'>$chapterName</option>";
 
-        }
+        // }
             
-        }
+        // }
 
       ?>
     
     </select>
     
-  </div><!-- form-group -->
+  </div> -->
+  <!-- form-group -->
 
   <div class="form-group">
 
