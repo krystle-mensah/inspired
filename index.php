@@ -1,19 +1,16 @@
-<?php include "inc/db.php" ?>
+<?php 
 
-<!-- include head.php page here -->
-<?php include "inc/head.php"; ?>
+include "inc/db.php"; 
+include "inc/head.php"; 
+include "inc/header.php";
 
-<!-- HEADER -->
-<?php include "inc/header.php"; ?>
+?>
 
 <div class="container">
-      
   <!-- NAVIGATION -->
   <?php include "inc/navigation.php"; ?>
-
   <!-- CAROUSEL -->
   <?php include "inc/carousel.php"; ?>
-
 </div>
 
     <main role="main" class="container">
@@ -21,9 +18,9 @@
         <div class="col-md-8 blog_main">
           <div class="row h-100">
 
-            <?php $sql = $connection->query("SELECT * FROM posts"); 
+            <?php $sql = $connection->query("SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC"); 
             
-            foreach($sql as $row):
+            foreach($sql as $row){
             
             $post_category_id = $row['post_category_id'];
             $post_title = $row['post_title'];
@@ -61,7 +58,7 @@
 
               </div><!-- card -->
             </a><!-- post link -->
-            <?php endforeach; ?>
+            <?php } ?>
           </div>
         </div><!-- alignment and main blog -->
       
