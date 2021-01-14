@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2021 at 05:14 PM
+-- Generation Time: Jan 14, 2021 at 11:28 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `cat_id` int(3) NOT NULL,
   `cat_title` varchar(255) NOT NULL,
-  `sorting` int(11) NOT NULL
+  `sorting` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -41,7 +41,8 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `sorting`) VALUES
 (1, 'new music', 1),
 (2, 'features', 2),
 (4, 'mixes', 4),
-(15, 'radio', 5);
+(15, 'radio', 5),
+(22, 'News', NULL);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +62,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `cat_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
