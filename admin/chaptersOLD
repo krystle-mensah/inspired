@@ -14,9 +14,8 @@
 					<!-- SIDE NAV -->
 					<?php include "inc/admin_sideNav.php" ?>
 			
-					<!-- CONTENT -->
+					<!-- LAYOUT SIDENAV CONTENT -->
 					<div id="layoutSidenav_content">
-
 						<main>
 							<div class="container-fluid">
 								<div class="row">
@@ -31,49 +30,70 @@
 											////display this
 											////echo "<h1>hello</h1>";
 
-											$chapterName = $_POST['chapterName'];
+											echo $chapterName = $_POST['chapterName'];
 
 											//// if cat_title is equal to empty string or function to check is var is empty
-											if($chapterName == "" || empty($chapterName)) {
-												//// Then display this.
-												echo "This field should not empty";
+											// if($chapterName == "" || empty($chapterName)) {
+											// 	//// Then display this.
+											// 	echo "This field should not empty";
 
-											}else{
+											// }else{
 
-												$query = "INSERT INTO chapters(chapterName) ";
+											// 	$query = "INSERT INTO chapters(chapterName) ";
 												
 											
-												$query .= "VALUE('{$chapterName}')";
+											// 	$query .= "VALUE('{$chapterName}')";
 
-												// then send to database with the connection and query. 
-												$create_chapter_query = mysqli_query($connection, $query);
+											// 	// then send to database with the connection and query. 
+											// 	$create_chapter_query = mysqli_query($connection, $query);
 											
-												// check if query was succesful
-												if(!$create_chapter_query) {
+											// 	// check if query was succesful
+											// 	if(!$create_chapter_query) {
 													
-													// terminate script and display error with the connection. 
-													die('QUERY FAILED' . mysqli_error($connection));
+											// 		// terminate script and display error with the connection. 
+											// 		die('QUERY FAILED' . mysqli_error($connection));
 
-												}
+											// 	}
 
-											} // End else
+											// } // End else
 
 										} // isset function
 
 									?>
 										<form action="" method="post">
 
-<div class="form-group">
-	<label for="cat-title">Add Category</label>
-	<input type="text" name="cat_title" class="form-control">
-</div><!-- form-group -->
-<div class="form-group">
-	<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
-</div><!-- form-group -->
-</form><!-- form -->
-	
-		<!-- ADD CHAPTER BUTTON -->
-		<div class="form-group">
+											<div class="form-group">
+												<label for="cat-title">Add Chapter</label>
+												<input type="text" name="cat_title" class="form-control">
+											</div><!-- form-group -->
+										</form><!-- form -->
+										<!-- ADD CATEGORY -->
+										<div class="form-group">
+											<label for="title">select a category</label>
+											<select name="post_category_id" id="">
+												<?php
+													$query = "SELECT * FROM categories";  
+													$select_categories = mysqli_query($connection,$query);
+													confirmQuery($select_categories);
+													while($row = mysqli_fetch_assoc($select_categories)) {
+														$cat_id = $row['cat_id'];
+														$cat_title = $row['cat_title'];
+
+														if($chapterId == $cat_chapter) {
+													
+															echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+
+														} else {
+
+															echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+														}
+													}
+												?>
+											</select>
+										</div><!-- form-group -->
+										<!-- ADD CHAPTER BUTTON -->
+										<div class="form-group">
 												<input class="btn btn-primary" type="submit" name="submit" value="Add Chapter">
 											</div><!-- form-group -->
 										</form><!-- form -->

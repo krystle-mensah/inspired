@@ -50,15 +50,24 @@
 									</nav>
 								</div>
 								<!-- CATEGORIES -->
-								<a class="nav-link" href="categories.php">
+								<!-- <a class="nav-link" href="categories.php">
 									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
 									Categories
-								</a>
+								</a> -->
 								<!-- CATEGORIES -->
-								<a class="nav-link" href="chapters.php">
-									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-									Chapters
+								<a class="nav-link collapsed" href="categories.php" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseLayouts">
+									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
+									Categorys
+									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
+								<!-- CATEGORIES DROPDOWN -->
+								<div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+									<nav class="sb-sidenav-menu-nested nav">
+										<!-- <a class="nav-link" href="./posts.php">Add Sub Category</a> -->
+										<!-- CHAPTER -->
+										<a class="nav-link" href="posts.php?source=add_post">Add Sub Category</a>
+									</nav>
+								</div>
 								<!-- COMMENTS -->
 								<!-- <a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
