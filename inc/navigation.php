@@ -21,9 +21,10 @@
                     foreach($sql as $row) {
                       $chapterName = $row['chapterName'];
                       $chapter_sortingId = $row['sorting'];
+                   
 
                       if($chapter_sortingId ===  $cat_sortingId ){
-                        echo "<a href='category.php?category=$cat_id&'>$chapterName</a>";
+                        echo "<a href='chapter.php?chapter=$row[chapterId]'>$chapterName</a>";
                       }
                     }
                       echo "</div>";

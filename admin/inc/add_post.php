@@ -72,12 +72,9 @@ if(isset($_POST['create_post'])){
   <div class="form-group">
     <label for="title">select a category</label>
     <select name="post_category_id" id="">
-
       <?php
 
-        // hold all from database table
-        $query = "SELECT * FROM categories";
-        
+        $query = "SELECT * FROM categories";  
         $select_categories = mysqli_query($connection,$query);
         
         confirmQuery($select_categories);
@@ -95,7 +92,6 @@ if(isset($_POST['create_post'])){
           echo "<option value='{$cat_id}'>{$cat_title}</option>";
 
         }
-            
         }
 
       ?>
@@ -123,11 +119,11 @@ if(isset($_POST['create_post'])){
 
         if($chapterId == $post_chapter_id) {
       
-        echo "<option selected value='{$chapterId}'>{$chapterName}</option>";
+        echo "<option selected value='$chapterId'>$chapterName</option>";
 
         } else {
 
-          echo "<option value='{$chapterId}'>{$chapterName}</option>";
+          echo "<option value='$chapterId'>$chapterName</option>";
 
         }
             

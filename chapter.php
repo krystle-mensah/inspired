@@ -18,11 +18,13 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog_main">
+          
+          <!--  -->
           <?php
           
           if(isset($_GET['chapter'])){
             // Each value when clicked
-            $post_chapter_id = $_GET['category']; //we are getting the id
+            $post_chapter_id = $_GET['chapter']; //we are getting the id
     
           }else {
             echo "not set";
@@ -56,17 +58,17 @@
                     <h1 class="post_title"><?= $post_title; ?></h1>
                     <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
                     <?php 
-                    $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-                    $select_categories_id = mysqli_query($connection,$request_to);
+                    $request_to = "SELECT * FROM chapters WHERE chapterId = {$post_chapter_id} ";
+                    $select_chapters_id = mysqli_query($connection,$request_to);
                     // while the condition is true fetch the row representing the array from ($variable - see above)
-                    while($row = mysqli_fetch_array($select_categories_id)) {
+                    while($row = mysqli_fetch_array($select_chapters_id)) {
                     // Then assign the array to a variable
-                    $cat_id = $row['cat_id'];
-                    $cat_title = $row['cat_title'];
+                    $chapterId = $row['chapterId'];
+                    $chapterName = $row['chapterName'];
                     } 
                     ?>
-                    <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
-                      <p><strong class="post_cat_title"><?= $cat_title;  ?></strong></p>
+                    <a class="post_cat_title" href="category.php?category=<?= $row['chapterId']?>">
+                      <p><strong class="post_cat_title"><?= $row['chapterName'] ?></strong></p>
                     </a>
         
                   </div><!-- post-content -->

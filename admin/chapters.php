@@ -22,36 +22,32 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<h1 class="mt-4">Chapters</h1>
-											<!-- <ol class="breadcrumb mb-4">
-												<li class="breadcrumb-item active">Add Category</li>
-											</ol> -->
 									</div><!-- alignment -->	
 
 									<div class="col-xs-6 col-lg-4">
 
 									<?php 
 
-										// if anything happens when adding chapter is clicked
+										// if anything happens when adding category is clicked
 										if(isset($_POST['submit'])) {
-											//echo "<h1>hello</h1>";
+											////display this
+											////echo "<h1>hello</h1>";
 
-											// then grap user input
 											$chapterName = $_POST['chapterName'];
-											$post_category_id = $_POST['post_category_id'];
-											
-											// Query the database for ALL cat
-											$query = "SELECT * FROM chapters";
 
-											
-											// if chapter name is equal to empty string or function to check is var is empty
+											//// if cat_title is equal to empty string or function to check is var is empty
 											if($chapterName == "" || empty($chapterName)) {
-												// Then display this.
+												//// Then display this.
 												echo "This field should not empty";
-											}	else{
-												// insert what user inputs to the chapters table in this column. 
+
+											}else{
+
+												// insert what user inputs to the categories table and column. 
 												$query = "INSERT INTO chapters(chapterName) ";
+												
 												// and assign value to variable. 
 												$query .= "VALUE('{$chapterName}')";
+
 												// then send to database with the connection and query. 
 												$create_chapter_query = mysqli_query($connection, $query);
 											
@@ -60,48 +56,24 @@
 													
 													// terminate script and display error with the connection. 
 													die('QUERY FAILED' . mysqli_error($connection));
+
 												}
+
 											} // End else
+
 										} // isset function
+
 									?>
 										<form action="" method="post">
 
-											<div class="form-group">
-												<label for="cat-title">Add a Chapter</label>
-												<input type="text" name="chapterName" class="form-control">
-											</div><!-- form-group -->
-										
-											<!-- POST CAT ID -->
-											<div class="form-group">
-												<select name="post_category_id" id="">
-<?php
-
-$query = "SELECT * FROM categories";        
-$select_categories = mysqli_query($connection,$query);
-confirmQuery($select_categories);
-
-        while($row = mysqli_fetch_assoc($select_categories)) {
-          $cat_id = $row['cat_id'];
-					$cat_title = $row['cat_title'];
-					$cat_sorting = $row['sorting'];
-
-					if($cat_id == $post_category_id) {
-      
-        	echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
-
-        } else {
-
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
-
-        }
-            
-        }
-
-      ?>
-    
-									</select>
-    
-  </div><!-- form-group -->
+<div class="form-group">
+	<label for="cat-title">Add Category</label>
+	<input type="text" name="cat_title" class="form-control">
+</div><!-- form-group -->
+<div class="form-group">
+	<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+</div><!-- form-group -->
+</form><!-- form -->
 	
 		<!-- ADD CHAPTER BUTTON -->
 		<div class="form-group">
