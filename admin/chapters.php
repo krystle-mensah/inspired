@@ -1,5 +1,19 @@
-<div class="col-lg-12">
-  <h1 class="mt-4">Add Posts</h1>
+<?php include "inc/admin_head.php" ?>
+	<body class="sb-nav-fixed">
+		<!-- TOP NAV -->
+		<?php include "inc/admin_nav.php" ?>
+		<!-- PAGE WRAPPER -->
+		<div id="layoutSidenav">
+		
+			<div class="container-fluid">
+				
+				<div class="row">
+					<!-- SIDE NAV -->
+					<?php include "inc/admin_sideNav.php" ?>
+          <!-- CONTENT -->
+					<div id="layoutSidenav_content">
+          <div class="col-lg-12">
+            <h1 class="mt-4">Sub category</h1>
 </div> 
 
 <?php 
@@ -168,3 +182,9 @@ if(isset($_POST['create_post'])){
   </div>
 
 </form>
+
+
+          </div><!-- layoutSidenav_content -->
+        </div><!-- row -->
+      </div><!-- container-fluid -->
+    </div><!-- layoutSidenav -->

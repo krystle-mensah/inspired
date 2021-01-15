@@ -23,13 +23,13 @@
 									</nav>
 								</div>
 								<!-- IMAGE SLIDER -->
-								<a class="nav-link collapsed" href="./slider_images.php" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+								<a class="nav-link collapsed" href="./slider_images.php" data-toggle="collapse" data-target="#collapseSlide" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
 									Image Slider
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
 								<!-- IMAGE SLIDER DROPDOWN -->
-								<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+								<div class="collapse" id="collapseSlide" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
 										<a class="nav-link" href="./slider_images.php">View All Image Slides</a>
 										<a class="nav-link" href="slider_images.php?source=add_slide_image">Add Slide Image</a>
@@ -50,11 +50,6 @@
 									</nav>
 								</div>
 								<!-- CATEGORIES -->
-								<!-- <a class="nav-link" href="categories.php">
-									<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-									Categories
-								</a> -->
-								<!-- CATEGORIES -->
 								<a class="nav-link collapsed" href="categories.php" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseLayouts">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
 									Categorys
@@ -63,9 +58,8 @@
 								<!-- CATEGORIES DROPDOWN -->
 								<div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<!-- <a class="nav-link" href="./posts.php">Add Sub Category</a> -->
 										<!-- CHAPTER -->
-										<a class="nav-link" href="posts.php?source=add_post">Add Sub Category</a>
+										<a class="nav-link" href="chapters.php">Add Sub Category</a>
 									</nav>
 								</div>
 								<!-- COMMENTS -->
