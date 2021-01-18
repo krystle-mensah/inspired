@@ -14,7 +14,7 @@
 					<div id="layoutSidenav_content">
           <div class="col-lg-12">
             <h1 class="mt-4">Sub category</h1>
-</div> 
+          </div> 
 
 <?php 
 
@@ -73,19 +73,13 @@ if(isset($_POST['create_post'])){
 <form action="" method="post" enctype="multipart/form-data"> 
   <!-- TITLE -->
   <div class="form-group">
-    <label for="title">Post Title</label>
-    <input type="text" class="form-control" name="title">
+    <label for="title">sub title name</label>
+    <input type="text" class="form-control" name="sub_title_input">
   </div>
-
-  <!-- AUTHOR -->
-  <div class="form-group">
-    <label for="title">Post Author</label>
-    <input type="text" class="form-control" name="author">
-  </div>
-  <!-- POST CAT ID -->
+  <!--  CAT ID -->
   <div class="form-group">
     <label for="title">select a category</label>
-    <select name="post_category_id" id="">
+    <select name="cat_chapter" id="">
       <?php
 
         $query = "SELECT * FROM categories";  
@@ -114,67 +108,7 @@ if(isset($_POST['create_post'])){
     
   </div><!-- form-group -->
 
-  <!-- POST Chapter ID -->
-  <!-- <div class="form-group">
-    <label for="title">select a chapter</label>
-      <select name="post_chapter_id" id="">
 
-      <?php
-
-        // QUERY FOR ALL TABLE
-        // $query = "SELECT * FROM chapters";
-        // $select_chapters = mysqli_query($connection,$query);
-        
-        // confirmQuery($select_chapters);
-
-        // while($row = mysqli_fetch_assoc($select_chapters)) {
-        //   $chapterId = $row['chapterId'];
-        //   $chapterName = $row['chapterName'];
-
-        // if($chapterId == $post_chapter_id) {
-      
-        // echo "<option selected value='$chapterId'>$chapterName</option>";
-
-        // } else {
-
-        //   echo "<option value='$chapterId'>$chapterName</option>";
-
-        // }
-            
-        // }
-
-      ?>
-    
-    </select>
-    
-  </div> -->
-  <!-- form-group -->
-
-  <div class="form-group">
-
-    <select name="post_status" id="">
-      <option value="draft">Post Status</option>
-      <option value="published">Publish</option>
-      <option value="draft">Draft</option>
-    </select>
-
-  </div>
-
-  <div class="form-group">
-    <label for="post_image">Post Image</label>
-    <input type="file"  name="image">
-  </div>
-
-  <div class="form-group">
-    <label for="title">Post Tags</label>
-    <input type="text" class="form-control" name="post_tags">
-  </div>
-
-  <div class="form-group">
-    <label for="post_content">Post Content</label>
-    <textarea class="form-control "name="post_content" id="body" cols="30" rows="10">
-    </textarea>
-  </div>
 
   <!-- SUBMIT BUTTON -->
   <div class="form-group">

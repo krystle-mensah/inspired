@@ -12,13 +12,10 @@ if(isset($_POST['create_post'])){
   $post_title        = $_POST['title'];
   $post_author       = $_POST['author'];
   $post_category_id  = $_POST['post_category_id'];
-  $post_chapter_id   = $_POST['post_chapter_id'];
+  //$post_chapter_id   = $_POST['post_chapter_id'];
 
   $post_image        = $_FILES['image']['name'];
   $post_image_temp   = $_FILES['image']['tmp_name'];
-  
-  //$post_video        = $_FILES['video']['name'];
-  //$post_video_temp   = $_FILES['video']['tmp_name'];
   
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
@@ -27,23 +24,13 @@ if(isset($_POST['create_post'])){
 
   //hard coding the value
   $post_comment_count = 4;
-  
-  
-  // move files to post image temp to outside of admin in a root dir called img. 
+
   move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-  //move_uploaded_file( $_FILES["file"]["tmp_name"], "videos/" . $_FILES["file"]["name"] );
-      
-  // $post_video = preg_replace(" #.*youtube\.com/wat`ch\?v=#", "", $post_video);
-  // //echo "the video Id " . $post_video . "<br>"; 
-  // $post_video = ' <iframe width="560" height="315" src="https://www.youtube.com/embed/' .$post_video.' " frameborder="0" allowfullscreen></iframe>';
-  // echo $post_video;
+  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 
-  $query = "INSERT INTO posts(post_category_id,post_chapter_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
 
-  $query .= "VALUES('{$post_category_id}','{$post_chapter_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
-
-  // then we send the query in
   $create_post_query = mysqli_query($connection, $query); 
 
   confirmQuery($query);
@@ -55,20 +42,18 @@ if(isset($_POST['create_post'])){
 ?>
 
 <!-- FORM -->
-
 <form action="" method="post" enctype="multipart/form-data"> 
   <!-- TITLE -->
   <div class="form-group">
     <label for="title">Post Title</label>
     <input type="text" class="form-control" name="title">
   </div>
-
   <!-- AUTHOR -->
   <div class="form-group">
     <label for="title">Post Author</label>
     <input type="text" class="form-control" name="author">
   </div>
-  <!-- POST CAT ID -->
+  <!-- CAT ID -->
   <div class="form-group">
     <label for="title">select a category</label>
     <select name="post_category_id" id="">
@@ -83,15 +68,15 @@ if(isset($_POST['create_post'])){
           $cat_id = $row['cat_id'];
           $cat_title = $row['cat_title'];
 
-        if($cat_id == $post_category_id) {
-      
-        echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+          if($cat_id == $post_category_id) {
+        
+          echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
 
-        } else {
+          } else {
 
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
+            echo "<option value='{$cat_id}'>{$cat_title}</option>";
 
-        }
+          }
         }
 
       ?>
@@ -99,42 +84,6 @@ if(isset($_POST['create_post'])){
     </select>
     
   </div><!-- form-group -->
-
-  <!-- POST Chapter ID -->
-  <!-- <div class="form-group">
-    <label for="title">select a chapter</label>
-      <select name="post_chapter_id" id="">
-
-      <?php
-
-        // QUERY FOR ALL TABLE
-        // $query = "SELECT * FROM chapters";
-        // $select_chapters = mysqli_query($connection,$query);
-        
-        // confirmQuery($select_chapters);
-
-        // while($row = mysqli_fetch_assoc($select_chapters)) {
-        //   $chapterId = $row['chapterId'];
-        //   $chapterName = $row['chapterName'];
-
-        // if($chapterId == $post_chapter_id) {
-      
-        // echo "<option selected value='$chapterId'>$chapterName</option>";
-
-        // } else {
-
-        //   echo "<option value='$chapterId'>$chapterName</option>";
-
-        // }
-            
-        // }
-
-      ?>
-    
-    </select>
-    
-  </div> -->
-  <!-- form-group -->
 
   <div class="form-group">
 
