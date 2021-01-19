@@ -58,7 +58,9 @@
 								<!-- CATEGORIES DROPDOWN -->
 								<div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 									<nav class="sb-sidenav-menu-nested nav">
-										<!-- CHAPTER -->
+										<!-- VIEW ALL CATEGORYS -->
+										<a class="nav-link" href="chapters.php">View all Sub Category</a>
+										<!-- ADD SUB CATEGORY -->
 										<a class="nav-link" href="chapters.php">Add Sub Category</a>
 									</nav>
 								</div>
