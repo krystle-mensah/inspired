@@ -7,7 +7,7 @@
       <?php 
         $cat_title = $row['cat_title'];
         $cat_id = $row['cat_id'];
-        $cat_chapter = $row['cat_chapter'];
+        //$cat_chapter = $row['cat_chapter'];
         
 
             echo "<div>";
