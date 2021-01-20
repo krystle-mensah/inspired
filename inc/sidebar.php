@@ -26,10 +26,9 @@
 </div>
 
 <!-- TWITTER WIDGET -->
-
 <div class="p-3 mb-3 bg-light rounded">
-  <h4 class="side_widget_title">Follow on Twitter</h4>
-  <a class="twitter-timeline" href="https://twitter.com/home?ref_src=twsrc%5Etfw">Tweets by home</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- <h4 class="side_widget_title">Follow on Twitter</h4> -->
+  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Listen back to our previous radio show with Olivier St Louis below<a href="https://t.co/AGSf6eowNf">https://t.co/AGSf6eowNf</a></p>&mdash; Inspiredsounduk (@inspiredsounduk) <a href="https://twitter.com/inspiredsounduk/status/1316687838465925121?ref_src=twsrc%5Etfw">October 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 
