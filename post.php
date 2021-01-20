@@ -43,15 +43,11 @@
             <a class="post_author" href="#"><?= $post_author;  ?></a>
           <p class="blog-post-meta post_date"><?= $post_date; ?> </p>
           
-            
-                <div class="card box-shadow">
-                  <div class="card-body d-flex flex-column align-items-start">
-                    <!-- / = means current directory -->
-                    <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
-                  </div>
-                </div>
-            
-          <?php }   ?>
+          <div class="card-body d-flex flex-column align-items-center">
+            <!-- / = means current directory -->
+            <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+          </div>
+          <?php } ?>
         </div><!-- alignment and main blog -->
       </div><!-- /.row -->
 
