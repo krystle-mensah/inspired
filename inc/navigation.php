@@ -7,26 +7,19 @@
       <?php 
         $cat_title = $row['cat_title'];
         $cat_id = $row['cat_id'];
-        //$cat_chapter = $row['cat_chapter'];
         
-
             echo "<div>";
               echo" <a href='category.php?category=$cat_id'>";
                 echo "<div class='drop_down'>";
                   echo "<button class='drop_btn'>$cat_title</button>";
                     echo "<div class='dropdown_content'>";
+                    $sql = $connection->query("SELECT * FROM `chapters` WHERE chapter_cat = {$row['cat_id']}"); 
 
-                    $sql = $connection->query( "SELECT * FROM chapters" );
+                    foreach($sql as $row) {
 
-                    //foreach($sql as $row) {
-                      //$chapterName = $row['chapterName'];
-                      //$chapter_sortingId = $row['sorting'];
-                   
+                      echo "<a href='category.php?category=$cat_id'>$row[chapterName]</a>";
 
-                      //if($cat_chapter ===  $chapterName ){
-                        //echo "<a href='chapter.php?chapter=$row[chapterId]'>$chapterName</a>";
-                      //}
-                    //}
+                    }
                       echo "</div>";
                     echo "</div>";
               echo "</a>";
@@ -35,6 +28,6 @@
 
 ?>
     <a class="" href="contact.php">contact</a>
-  </nav>
+  </nav><!-- site-navigation -->
   <hr>
 

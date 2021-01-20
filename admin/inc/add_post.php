@@ -1,41 +1,37 @@
 <div class="col-lg-12">
   <h1 class="mt-4">Add Posts</h1>
-</div> 
+</div><!-- alignment -->
 
+<!-- CREATE POST -->
 <?php 
-
 if(isset($_POST['create_post'])){
-  // TEST - type in the title field then click update button 
-  //echo $_POST['title'];
+    // TEST - type in the title field then click update button 
+    //echo $_POST['title'];
 
-  // Catch name attributes from values
-  $post_title        = $_POST['title'];
-  $post_author       = $_POST['author'];
-  $post_category_id  = $_POST['post_category_id'];
-  //$post_chapter_id   = $_POST['post_chapter_id'];
+    // Catch name attributes from values
+    $post_title        = $_POST['title'];
+    $post_author       = $_POST['author'];
+    $post_category_id  = $_POST['post_category_id'];
+    $post_image        = $_FILES['image']['name'];
+    $post_image_temp   = $_FILES['image']['tmp_name'];
+    $post_tags         = $_POST['post_tags'];
+    $post_content      = $_POST['post_content'];
+    $post_date         = date('d-m-y');
+    $post_status       = $_POST['post_status'];
 
-  $post_image        = $_FILES['image']['name'];
-  $post_image_temp   = $_FILES['image']['tmp_name'];
-  
-  $post_tags         = $_POST['post_tags'];
-  $post_content      = $_POST['post_content'];
-  $post_date         = date('d-m-y');
-  $post_status       = $_POST['post_status'];
+    $post_comment_count = 4;
 
-  //hard coding the value
-  $post_comment_count = 4;
+    move_uploaded_file($post_image_temp, "../img/$post_image" );
 
-  move_uploaded_file($post_image_temp, "../img/$post_image" );
+    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 
-  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+    $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
 
-  $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
+    $create_post_query = mysqli_query($connection, $query); 
 
-  $create_post_query = mysqli_query($connection, $query); 
+    confirmQuery($query);
 
-  confirmQuery($query);
-
-  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
+    //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
 }
 
@@ -81,6 +77,33 @@ if(isset($_POST['create_post'])){
 
       ?>
     
+    </select>
+  </div><!-- form-group -->
+
+  <!-- CHAPTER ID -->
+  <div class="form-group">
+    <label for="title">select a Sub cat</label>
+    <select name="chapter_cat" id="">
+      <?php $select_all_chapters = $connection->query("SELECT * FROM chapters");?>
+      <?php foreach($select_all_chapters as $row){ 
+        $chapterId = $row['chapterId'];
+        $chapterName = $row['chapterName'];
+        $chapter_cat = $row['chapter_cat'];
+        ?>
+        
+        <?php if($cat_id == $chapter_cat) { ?>
+        
+          <?php echo "<option selected value='{$chapterId}'>{$chapterName}</option>";
+
+        } else {
+
+          echo "<option value='{$chapterId}'>{$chapterName}</option>";
+
+        } ?>
+
+      <?php } ?>
+
+
     </select>
     
   </div><!-- form-group -->

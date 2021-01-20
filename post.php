@@ -22,6 +22,7 @@
         if(isset($_GET['p_id'])){
 
           $the_post_id = $_GET['p_id']; // output
+
         }
 
         ?>
@@ -36,7 +37,6 @@
             // reference form the database
             $post_image = $row['post_image'];
             $post_content = $row['post_content'];
-            // $post_video       = $row['video'];
         
           ?>
           <h1 class="mt-4 post_title"><?= $post_title;  ?></h1>
@@ -60,14 +60,7 @@
             
           <hr>
             
-          <p class="post_content"><?= $post_content ?></p>
-          
-          <?php  if(isset($_POST['video'])){
-            $post_video       = $_POST['video'];
-            ?>
-                <p class=""><?= $post_video ?></p>
-
-          <?php } ?>
+          <p class="post_content"><?php echo $post_content; ?></p>
 
           <hr>
         
