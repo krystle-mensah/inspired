@@ -1,37 +1,22 @@
-<?php include "inc/db.php" ?>
-
-<!-- include head.php page here -->
-<?php include "inc/head.php"; ?>
-
-<!-- HEADER -->
-<?php include "inc/header.php"; ?>
+<?php 
+include "inc/db.php"; 
+include "inc/head.php"; 
+include "inc/header.php"; 
+?>
 
 <div class="container">
-      
   <!-- NAVIGATION -->
   <?php include "inc/navigation.php"; ?>
-
-  
-
 </div>
 
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8 blog_main">
-          <?php
+          <!--  contion ? true else "not set" -->
+          <?php isset($_GET['category']) ? $post_category_id = $_GET['category'] : "not set";
           
-          if(isset($_GET['category'])){
-            // Each value when clicked
-            $post_category_id = $_GET['category']; //we are getting the id
-    
-          }else {
-            echo "not set";
-          }
-          
-          // requst all the post table database. 
           $sql = $connection->query("SELECT * FROM posts WHERE post_category_id = $post_category_id "); 
 
-          
           foreach($sql as $row) {
 
           //Then assign the row array to a variable
@@ -44,10 +29,9 @@
           $post_image = $row['post_image'];
         
           ?>
-          <div class="col-md-6">
-            <a class="post_link" href="post.php?p_id<?= $post_id;  ?>">
+           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
+            <div class="col-md-6">
               <div class="blog-post">
-              
                 <div class="card box-shadow">
                   <div class="card-body d-flex flex-column align-items-start">
                     <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
@@ -55,12 +39,10 @@
                   <div class="post-content">
                     <h1 class="post_title"><?= $post_title; ?></h1>
                     <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
-                    <?php 
-                    $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-                    $select_categories_id = mysqli_query($connection,$request_to);
-                    // while the condition is true fetch the row representing the array from ($variable - see above)
-                    while($row = mysqli_fetch_array($select_categories_id)) {
-                    // Then assign the array to a variable
+                    <!-- REQUST CATEGOROY TITLES -->
+                    <?php
+                    $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$post_category_id}");  
+                    foreach ($sql as $row) {
                     $cat_id = $row['cat_id'];
                     $cat_title = $row['cat_title'];
                     } 
@@ -68,14 +50,12 @@
                     <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
                       <p><strong class="post_cat_title"><?= $cat_title;  ?></strong></p>
                     </a>
-        
                   </div><!-- post-content -->
                 </div><!-- card box-shadow --> 
               </div><!-- /.blog-post -->
-            </a><!-- post link -->
-          </div><!-- alignment -->
+            </div><!-- alignment -->
+          </a><!-- post link -->
           <?php }   ?>
-
         </div><!-- alignment and main blog -->
         
         <!-- SIDEBAR -->
