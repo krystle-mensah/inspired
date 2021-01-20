@@ -1,42 +1,26 @@
 <?php include "inc/admin_head.php" ?>
 	<body class="sb-nav-fixed">
-		
 		<!-- TOP NAV -->
 		<?php include "inc/admin_nav.php" ?>
-
 		<!-- PAGE WRAPPER -->
 		<div id="layoutSidenav">
-		
 			<div class="container-fluid">
-				
 				<div class="row">
-
 					<!-- SIDE NAV -->
 					<?php include "inc/admin_sideNav.php" ?>
-			
 					<!-- CONTENT -->
 					<div id="layoutSidenav_content">
-
 						<main>
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-lg-12">
+										<!-- PAGE TITLE -->
 										<h1 class="mt-4">Categories</h1>
-											<!-- <ol class="breadcrumb mb-4">
-												<li class="breadcrumb-item active">Add Category</li>
-											</ol> -->
-									</div><!-- alignment -->	
-
-									<div class="col-xs-6 col-lg-4">
-
+									</div><!-- alignment -->
+									<!--CREATE A CATEGORY  -->
 									<?php 
 
 										if(isset($_POST['submit'])) {
-											////display this
-											////echo "<h1>hello</h1>";
-											//$cat_chapter        = $_POST['cat_chapter'];
-											
-											// $_POST['cat_chapter'] = 4;
 
 											$cat_title = $_POST['cat_title'];
 
@@ -69,6 +53,8 @@
 										} // isset function
 
 									?>
+
+									<div class="col-xs-6 col-lg-4">
 										<!-- ADD CATEGORY -->
 										<form action="" method="post">
 
@@ -76,6 +62,8 @@
 												<label for="cat-title">Add Category</label>
 												<input type="text" name="cat_title" class="form-control">
 											</div><!-- form-group -->
+											
+											<!-- SUBIT BUTTON -->
 											<div class="form-group">
 												<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
 											</div><!-- form-group -->
@@ -98,7 +86,6 @@
 									</div><!-- alignment -->
 
 									<div class="col-xs-6 col-lg-12">
-
 										<table class="table table-striped table-bordered table-hover my_table">
 											<thead>
 												<tr>
@@ -121,8 +108,6 @@
 													// Then display the fetch row form the database in the browser. 
 														echo "<td>{$cat_id}</td>";
 														echo "<td>{$cat_title}</td>";
-														// ADD CHAPTER BUTTON
-														echo "<td><a href=''><select></select></a></td>";
 														// delete button
 														echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
 														// Edited link
@@ -158,9 +143,8 @@
 										</table> <!-- table table-bordered table-hover -->
 
 									</div><!-- alignment -->
-								</div>
+								</div><!-- row -->
 							</div><!-- container fluid -->
-
 						</main><!-- main -->
 
 					</div> <!-- content -->
