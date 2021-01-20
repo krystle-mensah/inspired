@@ -60,8 +60,6 @@
 									<nav class="sb-sidenav-menu-nested nav">
 										<!-- VIEW ALL CATEGORYS -->
 										<a class="nav-link" href="chapters.php">View all Sub Category</a>
-										<!-- ADD SUB CATEGORY -->
-										<a class="nav-link" href="chapters.php">Add Sub Category</a>
 									</nav>
 								</div>
 								<!-- COMMENTS -->
