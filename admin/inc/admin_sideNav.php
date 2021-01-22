@@ -50,18 +50,15 @@
 									</nav>
 								</div>
 								<!-- CATEGORIES -->
-								<a class="nav-link collapsed" href="categories.php" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseLayouts">
+								<a class="nav-link" href="categories.php">
 									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
 									Categorys
-									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
-								<!-- CATEGORIES DROPDOWN -->
-								<div class="collapse" id="collapseCategories" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-									<nav class="sb-sidenav-menu-nested nav">
-										<!-- VIEW ALL CATEGORYS -->
-										<a class="nav-link" href="chapters.php">View all Sub Category</a>
-									</nav>
-								</div>
+									<!-- SUB CATEGORIES -->
+								<a class="nav-link" href="sub_categories.php">
+									<div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
+										Sub  Categorys
+								</a>
 								<!-- COMMENTS -->
 								<!-- <a class="nav-link" href="#">
 									<div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
