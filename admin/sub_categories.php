@@ -20,20 +20,20 @@
 
               <!-- CREATE A CHAPTER -->
               <?php 
-                if(isset($_POST['create_chapter'])){
+                if(isset($_POST['createSubCategory'])){
                 // TEST - Type in the title field then click button
                 //echo $chapter_cat = $_POST['chapter_cat'];
 
                 // Catch name attributes from values
-                $chapterName = $_POST['chapter_name'];
-                $chapter_cat = $_POST['chapter_cat'];
+                $subCategoriesTitle = $_POST['subCategoriesTitle'];
+                $subCategoriesCatID = $_POST['subCategoriesCatID'];
                 // INSERT INTO DATABASE
-                $query = "INSERT INTO chapters(chapter_cat, chapterName)";
+                $query = "INSERT INTO sub_categories(subCategoriesCatID, subCategoriesTitle)";
                 // THESE VALUSE
-                $query .= "VALUES('{$chapter_cat}','{$chapterName}')"; 
+                $query .= "VALUES('{$subCategoriesCatID}','{$subCategoriesTitle}')"; 
 
-                $create_chapter_query = mysqli_query($connection, $query); 
-                if(!$create_chapter_query){
+                $create_subCategories_query = mysqli_query($connection, $query); 
+                if(!$create_subCategories_query){
 
                 // Print a message and terminate the current script:
                 die("QUERY FAILED" . mysqli_error($connection));
@@ -50,12 +50,12 @@
                   <!-- TITLE -->
                   <div class="form-group">
                     <label for="title">Add sub Category</label>
-                    <input type="text" class="form-control" name="chapter_name">
+                    <input type="text" class="form-control" name="subCategoriesTitle">
                   </div>
                   <!--  CAT ID -->
                   <div class="form-group">
                     <label for="title">select a category</label>
-                    <select name="chapter_cat" id="">
+                    <select name="subCategoriesCatID" id="">
                       <?php
                         $query = "SELECT * FROM categories";  
                         $select_categories = mysqli_query($connection,$query);
@@ -83,7 +83,7 @@
                 </div><!-- alignment -->
                 <!-- SUBMIT BUTTON -->
                 <div class="form-group">
-                  <input class="btn btn-primary" type="submit" name="create_chapter" value="Publish Sub category">
+                  <input class="btn btn-primary" type="submit" name="createSubCategory" value="Publish Sub category">
                 </div>
               </form>
 
@@ -98,12 +98,12 @@
                           <th>Delete</th>
                         </tr>      
                       </thead>
-                      <?php $select_all_chapters = $connection->query("SELECT * FROM chapters");?>
+                      <?php $select_all_chapters = $connection->query("SELECT * FROM sub_categories");?>
                       <?php foreach($select_all_chapters as $row ) { ?>
                         <tr>
-                          <td><?= $row['chapterId']; ?></td>
-                          <td><?= $row['chapterName']; ?></td>
-                          <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$row['chapter_cat']} "); ?>
+                          <td><?= $row['subCategoriesID']; ?></td>
+                          <td><?= $row['subCategoriesTitle']; ?></td>
+                          <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$row['subCategoriesCatID']} "); ?>
                           <?php foreach($sql as $row) { ?>
                           
                             <td><?= $row['cat_title']; ?></td>
