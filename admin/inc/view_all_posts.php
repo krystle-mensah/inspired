@@ -84,10 +84,10 @@ if( isset( $_POST['checkBoxArray'] ) ) {
         <th>Author</th>
         <th>Title</th>
         <th>Category</th>
+        <th>Sub Category</th>
         <th>Status</th>
         <th>Image</th>
         <th>Tags</th>
-        <!-- <th>Comments</th> -->
         <th>Date</th>  
         <th>Post</th>     
         <th>Edit</th>      
@@ -106,10 +106,10 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     $post_author = $row['post_author'];
     $post_title = $row['post_title'];
     $post_category_id = $row['post_category_id'];
+    $postSubCatID = $row['postSubCatID'];
     $post_status = $row['post_status'];
     $post_image = $row['post_image'];
     $post_tags = $row['post_tags'];
-    // $post_comment_count = $row['post_comment_count'];
     $post_date = $row['post_date'];
     
     //display 
@@ -123,14 +123,20 @@ if( isset( $_POST['checkBoxArray'] ) ) {
     echo "<td> $post_title</td>";
       
     $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$post_category_id} ");
-
-      // while the condition is true fetch the row representing the array from ($variable - see above)
-      foreach($sql as $row) {
+    foreach($sql as $row) {
         // Then assign the array to a variable
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
         // display the cat title 
-        echo "<td>{$cat_title}</td>";
+    echo "<td>{$cat_title}</td>";
+    } 
+    //SUB CATEGORY
+      $sql = $connection->query("SELECT * FROM sub_categories WHERE subCategoriesID = {$postSubCatID} ");
+      foreach($sql as $row) {
+        $subCategoriesID = $row['subCategoriesID'];
+        $subCategoriesTitle = $row['subCategoriesTitle'];
+        // display the cat title 
+        echo "<td>{$subCategoriesTitle}</td>";
       } 
     echo "<td>$post_status</td>";
     echo "<td><img width='100' src='../img/$post_image' alt='image'></td>";

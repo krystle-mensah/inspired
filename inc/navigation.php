@@ -13,11 +13,11 @@
                 echo "<div class='drop_down'>";
                   echo "<button class='drop_btn'>$cat_title</button>";
                     echo "<div class='dropdown_content'>";
-                    $sql = $connection->query("SELECT * FROM `chapters` WHERE chapter_cat = {$row['cat_id']}"); 
+                    $sql = $connection->query("SELECT * FROM `sub_categories` WHERE subCategoriesCatID = {$row['cat_id']}"); 
 
                     foreach($sql as $row) {
 
-                      echo "<a href='category.php?category=$cat_id'>$row[chapterName]</a>";
+                      echo "<a href='sub_category.php?subCategory=$row[subCategoriesID]'>$row[subCategoriesTitle]</a>";
 
                     }
                       echo "</div>";
