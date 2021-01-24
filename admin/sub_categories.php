@@ -18,29 +18,38 @@
                 <h1 class="mt-4">Sub Category</h1>
               </div>
 
-              <!-- CREATE A CHAPTER -->
+              <!-- CREATE A SUB CATEGORY -->
               <?php 
-                if(isset($_POST['createSubCategory'])){
-                // TEST - Type in the title field then click button
-                //echo $chapter_cat = $_POST['chapter_cat'];
+                if(isset($_POST['submit'])){
+
 
                 // Catch name attributes from values
                 $subCategoriesTitle = $_POST['subCategoriesTitle'];
                 $subCategoriesCatID = $_POST['subCategoriesCatID'];
-                // INSERT INTO DATABASE
+
+                if($subCategoriesTitle == "" || empty($subCategoriesTitle)) {
+                  echo "This field should not empty";
+                } else {
+                  // INSERT INTO DATABASE
                 $query = "INSERT INTO sub_categories(subCategoriesCatID, subCategoriesTitle)";
                 // THESE VALUSE
                 $query .= "VALUES('{$subCategoriesCatID}','{$subCategoriesTitle}')"; 
 
                 $create_subCategories_query = mysqli_query($connection, $query); 
-                if(!$create_subCategories_query){
+                  if(!$create_subCategories_query){
 
-                // Print a message and terminate the current script:
-                die("QUERY FAILED" . mysqli_error($connection));
+                  // Print a message and terminate the current script:
+                  die("QUERY FAILED" . mysqli_error($connection));
 
+                  }
+                  
                 }
 
-                }
+
+
+                
+
+                } // isset function
 
               ?>
 
@@ -83,9 +92,24 @@
                 </div><!-- alignment -->
                 <!-- SUBMIT BUTTON -->
                 <div class="form-group">
-                  <input class="btn btn-primary" type="submit" name="createSubCategory" value="Publish Sub category">
+                  <input class="btn btn-primary" type="submit" name="submit" value="Publish Sub category">
                 </div>
               </form>
+
+              <?php 
+
+											// DECTECT - if the edited link is declared 
+											if(isset($_GET['edit'])){
+
+												// IF TRUE - ASSIGN TO cat_id. 
+												$subCategoriesID = $_GET['edit'];
+
+												// PATH TO UPDATE_CATEGORIES.PHP
+												include "inc/update_sub_categories.php";
+
+											}
+
+										?>
 
                   <!-- ALL SUB CATEGOGIES TABLE -->
                   <table class="table table-striped table-bordered table-hover my_table">
@@ -98,15 +122,27 @@
                           <th>Delete</th>
                         </tr>      
                       </thead>
-                      <?php $select_all_chapters = $connection->query("SELECT * FROM sub_categories");?>
-                      <?php foreach($select_all_chapters as $row ) { ?>
+                      <?php $select_all_sub_categories = $connection->query("SELECT * FROM sub_categories");?>
+                      <?php foreach($select_all_sub_categories as $row ) { 
+
+                        $subCategoriesID = $row['subCategoriesID'];
+                        
+                        
+                        ?>
                         <tr>
-                          <td><?= $row['subCategoriesID']; ?></td>
+                          <td><?php echo $subCategoriesID; ?></td>
                           <td><?= $row['subCategoriesTitle']; ?></td>
                           <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$row['subCategoriesCatID']} "); ?>
-                          <?php foreach($sql as $row) { ?>
-                          
+                          <?php foreach($sql as $row) { 
+                            //$subCategoriesID = $row['subCategoriesID'];
+                            ?>
+                            
+                            
                             <td><?= $row['cat_title']; ?></td>
+
+                            <td><a class="all_songs_edit" href="sub_categories.php?edit=<?php echo $subCategoriesID; ?>"> Edit </a></td>
+
+                           
 
                           <?php } ?>
                         </tr>

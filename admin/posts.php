@@ -20,12 +20,13 @@
 						<main>
 							<div class="container-fluid">
 								<div class="row">
-									<div class="col-lg-12">
-                    <h1 class="mt-4">Posts</h1>
+									<!-- <div class="col-lg-12"> -->
+                    <!-- <h1 class="mt-4">Posts</h1> -->
 											<!-- <ol class="breadcrumb mb-4">
 												<li class="breadcrumb-item active">Add Category</li>
 											</ol> -->
-                  </div><!-- alignment col-lg-12 -->	
+                  <!-- </div> -->
+                  <!-- alignment col-lg-12 -->	
 
                   <?php 
 
