@@ -372,9 +372,9 @@ ul{
   transition: background-color 2s ease-out;
 }
 
-
-
-
+/*============
+END FRONT CONTACT FORM
+=================================*/
 
 /*============
 SIDEBAR LAYOUT
@@ -398,3 +398,76 @@ a.footerSocial_link {
 }
 
 /* END FOOTER LAYOUT */
+
+/*============
+MOBILE LAYOUT
+=================================*/
+@media(max-width:767px){
+
+  .hide_on_small {
+    display: none;
+  }
+
+  h1.brand_name {
+    font-size: 1.5rem;
+   
+  }
+
+  /* MOBILE HEADER */
+  body {
+    overflow-x:hidden;
+  }
+  span.open-slide {
+    float: right;
+  }
+  .side-nav{
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color:#111;
+    opacity:0.9;
+    overflow-x:hidden;
+    padding-top:60px;
+    transition:0.5s;
+  }
+  .side-nav a{
+    padding:10px 10px 10px 30px;
+    text-decoration:none;
+    font-size:18px;
+    color:#ccc;
+    display:block;
+    transition:0.3s;
+    text-transform: uppercase;
+  }
+  .side-nav a:hover{
+    color:#fff;
+  }
+
+  .side-nav .btn-close{
+    position:absolute;
+    top:0;
+    right:22px;
+    font-size:36px;
+    margin-left:50px;
+  }
+  .dropdown_icon {
+    float: right;
+  padding-right: 8px;
+  }
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+}
+/* END MOBILE LAYOUT */
+
+/* media */
+@media(min-width:768px){
+  .hide_on_large {
+    display: none;
+  }
+}
