@@ -1,6 +1,6 @@
 <?php $all_categories = $connection->query( "SELECT * FROM categories" ); ?>
-  <hr>
-  <nav class="nav justify-content-between site-navigation">
+  <hr class="hide_on_small">
+  <nav class="nav justify-content-between site-navigation hide_on_small">
     <a class="nav_link" href="index.php">home</a>
 
       <?php foreach($all_categories as $row) { ?>
@@ -29,5 +29,5 @@
 ?>
     <a class="nav_link" href="contact.php">contact</a>
   </nav><!-- site-navigation -->
-  <hr>
+  <hr class="hide_on_small">
 
