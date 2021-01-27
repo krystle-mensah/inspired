@@ -1,6 +1,8 @@
 <?php
-// require 'vendor/autoload.php';
-require_once __DIR__ . 'admin/vendor/autoload.php'; 
+
+require("/Applications/XAMPP/xamppfiles/htdocs/inspired/vendor/autoload.php");
+
+//require_once __DIR__ . 'admin/vendor/autoload.php'; 
 
 
 // Using Medoo namespace
@@ -13,7 +15,7 @@ use Medoo\Medoo;
 
 //$project = "Washington University in St. Louis Build";
 //$type = "University";
-//$dbname = "inspired";
+$dbname = "inspired";
 //$url = "//dbbs-wustl.university-tour.com";
 
 //echo gethostname();

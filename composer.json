@@ -1,0 +1,12 @@
+{
+    "name": "krystlemensah/inspired",
+    "authors": [
+        {
+            "name": "krystle Mensah",
+            "email": "web-development@krystlemensah.co.uk"
+        }
+    ],
+    "require": {
+        "catfan/medoo": "^1.7"
+    }
+}
