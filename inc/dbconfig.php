@@ -13,7 +13,7 @@ use Medoo\Medoo;
 
 //$project = "Washington University in St. Louis Build";
 //$type = "University";
-$dbname = "inspired";
+//$dbname = "inspired";
 //$url = "//dbbs-wustl.university-tour.com";
 
 //echo gethostname();
