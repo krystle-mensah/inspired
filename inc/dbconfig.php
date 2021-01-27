@@ -2,9 +2,6 @@
 
 require("/Applications/XAMPP/xamppfiles/htdocs/inspired/vendor/autoload.php");
 
-//require_once __DIR__ . 'admin/vendor/autoload.php'; 
-
-
 // Using Medoo namespace
 use Medoo\Medoo;
 
