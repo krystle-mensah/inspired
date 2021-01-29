@@ -1,6 +1,7 @@
 <?php 
 
 include "inc/db.php"; 
+// include "inc/dbconfig.php"; 
 include "inc/head.php"; 
 include "inc/header.php";
 
@@ -17,7 +18,7 @@ include "inc/header.php";
       <div class="row">
         <div class="col-md-8 blog_main">
           <div class="row h-100">
-            
+         
             <?php $sql = $connection->query("SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC"); 
             
             foreach($sql as $row){

@@ -14,7 +14,6 @@
                   echo "<button class='drop_btn'>$cat_title</button>";
                     echo "<div class='dropdown_content'>";
                     $sql = $connection->query("SELECT * FROM `sub_categories` WHERE subCategoriesCatID = {$row['cat_id']}"); 
-
                     foreach($sql as $row) {
 
                       echo "<a class='dropdown_nav_link' href='sub_category.php?subCategory=$row[subCategoriesID]'>$row[subCategoriesTitle]</a>";

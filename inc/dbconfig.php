@@ -70,21 +70,19 @@ if (gethostname()=="Krystles-MBP.cust.communityfibre.co.uk"){
 
 // select all
 
-//$data = $database->select("categories", "*");
+//$data = $database->select("sub_categories", "*");
+$data = $database->query("SELECT * FROM <sub_categories>")->fetchAll();
 
-// foreach($data as $row){
+foreach($data as $row){
   
-//   echo $cat_title = $row['cat_title'];
+  echo $subCategoriesTitle = $row['subCategoriesTitle'];
 
-// }
+}
 
-
-// $data = $database->select("sub_categories", "subCategoriesCatID", [
-//   "subCategoriesCatID" => ['cat_id']
-  
-// ]);
-
-
+// $data = $database->query("SELECT *
+// 	FROM <sub_categories>
+// 	WHERE <subCategoriesID> = 1
+// ")->fetchAll();
 
 
 
