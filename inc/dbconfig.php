@@ -66,5 +66,26 @@ if (gethostname()=="Krystles-MBP.cust.communityfibre.co.uk"){
 
 //   return strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/', '/[ -]+/', '/^-|-$/'), 
 //   array('', '-', ''), remove_accent($str))); 
-// } 
+// }
+
+// select all
+
+//$data = $database->select("categories", "*");
+
+// foreach($data as $row){
+  
+//   echo $cat_title = $row['cat_title'];
+
+// }
+
+
+// $data = $database->select("sub_categories", "subCategoriesCatID", [
+//   "subCategoriesCatID" => ['cat_id']
+  
+// ]);
+
+
+
+
+
 ?>
