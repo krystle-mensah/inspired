@@ -92,9 +92,12 @@ if(isset($_POST['create_slide'])){
 
   <div class="form-group">
     <label for="post_content">Slide Content</label>
-    <textarea class="form-control "name="slide_content" id="body" cols="30" rows="10">
+    <textarea class="form-control "name="slide_content" class="body" cols="30" rows="10">
     </textarea>
   </div>
+  <script>
+    CKEDITOR.replace('slide_content');
+  </script>
 
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="create_slide" value="Publish Slide">
