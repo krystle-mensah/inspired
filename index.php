@@ -33,7 +33,7 @@ include "inc/header.php";
             ?>
             <!-- on this page I am requseting the post page -->
             <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-              <div class="card col-md-6 ">
+              <div class="card col-md-6">
                     <div class="blog-post">
                       <img class="flex-auto d-md-block post-image img-fluid card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
                       <div class="card-body d-flex flex-column">

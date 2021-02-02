@@ -32,7 +32,7 @@ include "inc/header.php";
            <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
             <div class="col-md-6">
               <div class="blog-post">
-                <div class="card box-shadow">
+                <!-- <div class="card box-shadow"> -->
                   <div class="card-body d-flex flex-column align-items-start">
                     <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
                   </div>
@@ -51,7 +51,8 @@ include "inc/header.php";
                       <p><strong class="post_cat_title"><?= $cat_title;  ?></strong></p>
                     </a>
                   </div><!-- post-content -->
-                </div><!-- card box-shadow --> 
+                <!-- </div> -->
+                <!-- card box-shadow --> 
               </div><!-- /.blog-post -->
             </div><!-- alignment -->
           </a><!-- post link -->
