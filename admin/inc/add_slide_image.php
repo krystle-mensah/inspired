@@ -98,7 +98,7 @@ if(isset($_POST['create_slide'])){
   <script>
     CKEDITOR.replace('slide_content');
   </script>
-
+  <div class="sharethis-inline-share-buttons"></div>
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="create_slide" value="Publish Slide">
   </div>

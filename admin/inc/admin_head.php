@@ -43,12 +43,9 @@ if( !isset($_SESSION['user_role'] )) {
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
-		<!-- POST EDITOR -->
-		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
-
-		<!-- CK EDITOR 4 -->
-		<!-- <script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
-
 		<script src="ckeditor/ckeditor.js"></script>
+
+		<!-- SHARE BUTTON ALL MEDIA -->
+		<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6019477b3215db0018ca6c68&product=inline-share-buttons" async="async"></script>
 
 	</head>
