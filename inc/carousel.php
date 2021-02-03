@@ -1,13 +1,19 @@
 <?php 
 
-$result = $connection->query("SELECT * FROM carousel"); 
+//include "inc/db.php"; 
+
+//$result = $connection->query("SELECT * FROM carousel");
+
+$query = "SELECT * FROM carousel";
+$result = mysqli_query($connection,$query);
+
 // if(!$result){
 
-    // Print a message and terminate the current script:
+//     //Print a message and terminate the current script:
 //  die("QUERY FAILED" . mysqli_error($connection));
 
 // } else {
-//   echo "query work";
+//   echo "query worked";
 // }
 
 ?>
@@ -17,7 +23,8 @@ $result = $connection->query("SELECT * FROM carousel");
           <?php
 
           $i = 0;
-          foreach ($result as $row):
+          while ($row = mysqli_fetch_array($result)):
+          //foreach ($result as $row):
             $carousel_cat_id =  $row['carousel_cat_id'];
             $slide_id =  $row['carousel_id'];
             $actives = '';
@@ -28,13 +35,14 @@ $result = $connection->query("SELECT * FROM carousel");
           ?>
             <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
     
-          <?php $i++; endforeach ?>
+          <?php $i++; endwhile; ?>
         </ol>
         <div class="carousel-inner">
           <?php 
           
           $i = 0;
-          foreach ($result as $row):
+          while ($row = mysqli_fetch_array($result)):
+          //foreach ($result as $row):
             $actives = '';
             if($i == 0) {
               $actives = 'active';
@@ -47,11 +55,14 @@ $result = $connection->query("SELECT * FROM carousel");
               <div class="carousel-caption text-left">
                 
                 <p><?= $row['carousel_content']; ?></p>
-                <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} ");  
-                    foreach($sql as $number_key):
+                <?php //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} "); 
+                $query = "SELECT * FROM categories WHERE cat_id = {$carousel_cat_id}";
+                $result = mysqli_query( $connection, $query ); 
+                    while ($row = mysqli_fetch_array($result)):    
+                    //foreach($sql as $number_key):
                       $cat_id = $number_key['cat_id'];
                       $cat_title = $number_key['cat_title'];
-                    endforeach;?>
+                    endwhile;?>
       
                 <a class="carousel_cat_link" href="slide_post.php?s_id=<?= $slide_id; ?>"><?= $cat_title; ?></a>
                 <!-- <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p> -->
@@ -59,7 +70,7 @@ $result = $connection->query("SELECT * FROM carousel");
               </div>
             </div>
           </div>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endwhile; ?>
 
           <!-- <div class="carousel-item">
             <img class="second-slide" src="img/news_1.jpg" alt="Second slide">

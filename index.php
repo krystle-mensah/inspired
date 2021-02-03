@@ -1,7 +1,6 @@
 <?php 
 
-include "inc/db.php"; 
-// include "inc/dbconfig.php"; 
+require 'inc/db.php'; 
 include "inc/head.php"; 
 include "inc/header.php";
 
