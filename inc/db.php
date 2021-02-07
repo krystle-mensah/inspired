@@ -6,7 +6,7 @@ $db['db_user'] = "root";
 $db['db_pass'] = "";
 $db['db_name'] = "inspired";
 
-// // foreach db array use key to loop through each value.
+// foreach db array use key to loop through each value.
 foreach($db as $key => $value){
   
   define(strtoupper($key),$value);
