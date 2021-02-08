@@ -12,36 +12,46 @@ use Medoo\Medoo;
 
 //$project = "Washington University in St. Louis Build";
 //$type = "University";
-$dbname = "inspired";
-//$url = "//dbbs-wustl.university-tour.com";
+
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'inspired';
+$charset = 'utf8mb4';
 
 //echo gethostname();
 
 if (gethostname()=="Krystles-MBP.cust.communityfibre.co.uk"){
-  //local sql
-  $db = new PDO('mysql:dbname='.$dbname.';host=localhost;charset=utf8mb4', 'root', '');
-  $database = new medoo([
-    'database_type' => 'mysql',
-    'database_name' => $dbname,
-    'server' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8mb4'
-]);
+  // SET DSN
+  $dsn = 'mysql:host=' . $host . ';$dbname'. $dbname;
+  // CREATE A PDO INSTANCE 
+  $pdo = new PDO($dsn, $user, $password, $charset);
+
+  // SET DEFAULT FETCH
+  $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+  
+  
+
 
 }else{
   //live sql
-  $db = new PDO('mysql:dbname='.$dbname.';host='.$dbconfig['host'].';port='.$dbconfig['port'].';charset=utf8mb4', $dbconfig['username'], $dbconfig['password']);
-  $database = new medoo([
-    'database_type' => 'mysql',
-    'database_name' => $dbname,
-    'server' => $dbconfig['host'],
-    'username' => $dbconfig['username'],
-    'password' => $dbconfig['password'],
-    'charset' => 'utf8mb4',
-    'port' => $dbconfig['port']
-]);
+  //$db = new PDO('mysql:dbname='.$dbname.';host='.$dbconfig['host'].';port='.$dbconfig['port'].';charset=utf8mb4', $dbconfig['username'], $dbconfig['password']);
+
 }
+
+
+// PRDO QUERY
+//$statement = $pdo->query('SELECT * FROM posts');
+
+// WHILE LOOP
+// while($row = $statement->fetch(PDO::FETCH_ASSOC)){
+
+// }
+
+
+
+
+
 
 //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -67,23 +77,6 @@ if (gethostname()=="Krystles-MBP.cust.communityfibre.co.uk"){
 //   return strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/', '/[ -]+/', '/^-|-$/'), 
 //   array('', '-', ''), remove_accent($str))); 
 // }
-
-// select all
-
-//$data = $database->select("sub_categories", "*");
-$data = $database->query("SELECT * FROM <sub_categories>")->fetchAll();
-
-foreach($data as $row){
-  
-  echo $subCategoriesTitle = $row['subCategoriesTitle'];
-
-}
-
-// $data = $database->query("SELECT *
-// 	FROM <sub_categories>
-// 	WHERE <subCategoriesID> = 1
-// ")->fetchAll();
-
 
 
 ?>
