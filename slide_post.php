@@ -8,7 +8,7 @@
 <?php include "inc/header.php"; ?>
 
 <div class="container">
-      
+
   <!-- NAVIGATION -->
   <?php include "inc/navigation.php"; ?>
 
@@ -25,7 +25,6 @@
         }
 
         ?>
-        <!-- connect to database and query for all table data where column equals the url id -->
         <?php $sql = $connection->query("SELECT * FROM carousel WHERE carousel_id = $GETslide_id "); 
           // then for each of them as row
           foreach($sql as $row) {
@@ -42,13 +41,12 @@
             <a class="post_author" href="#"><?= $slide_author;  ?></a>
           <p class="blog-post-meta post_date"><?= $slide_date; ?> </p>
           
-            
-                <div class="card box-shadow">
-                  <div class="card-body d-flex flex-column align-items-start">
-                    <!-- / = means current directory -->
-                    <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $slide_image; ?>" alt="Card image cap">
-                  </div>
-                </div>
+            <div class="card">
+              <div class="card-body d-flex flex-column align-items-start">
+                <!-- / = means current directory -->
+                <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $slide_image; ?>" alt="Card image cap">
+              </div>
+            </div><!-- card -->
             
           <?php }   ?>
         </div><!-- alignment and main blog -->
