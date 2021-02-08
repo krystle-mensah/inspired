@@ -46,8 +46,6 @@ $result = $connection->query("SELECT * FROM carousel");
           <img class="first-slide" src="img/<?= $row['carousel_image']; ?>">
           <div class="container">
             <div class="carousel-caption text-left">
-              
-              <p><?= $row['carousel_content']; ?></p>
               <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} ");  
                   foreach($sql as $number_key):
                     $cat_id = $number_key['cat_id'];

@@ -135,6 +135,9 @@ if(isset($_POST['update_slide'])){
     <label for="slide_content">Post Content</label>
     <textarea class="form-control "name="carousel_content" id="body" cols="30" rows="10"><?= $slide_content;?></textarea>
   </div>
+  <script>
+    CKEDITOR.replace('carousel_content');
+  </script>
 
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="update_slide" value="Update Slide">
