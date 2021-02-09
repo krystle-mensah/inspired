@@ -3,7 +3,7 @@
 $host =  'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'pdoPost';
+$dbname = 'test';
 
 // Set DSN
   $dsn = 'mysql:host='. $host .';dbname='. $dbname;
