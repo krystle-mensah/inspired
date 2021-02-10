@@ -126,17 +126,26 @@ a.carousel_button {
 }
 
 h1.carousel_title {
-  font-family: 'Merriweather Sans', sans-serif;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  font-size: 2.0rem;
 
 }
 
 a.carousel_cat_link {
-  font-family: 'Merriweather Sans', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   color: #DE5133;
-  font-size: 11px;
+  font-size: 1rem;
+}
+
+.container.slide_content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 100px;
 }
 
 /* END CAROUSEL */
@@ -166,7 +175,7 @@ p.post_date {
 .post_title {
   color: #0d0d0d;
   font-size: 1.5rem;
-  font-family: 'Merriweather Sans', sans-serif;
+  /* font-family: 'Merriweather Sans', sans-serif; */
   text-transform: uppercase;
 }
 
@@ -395,10 +404,11 @@ a.footerSocial_link {
 }
 
 /* END FOOTER LAYOUT */
-
-/*============
-MOBILE LAYOUT
-=================================*/
+/*
+=============== 
+Mobile Layout
+===============
+*/
 @media(max-width:767px){
 
   .hide_on_small {
@@ -459,6 +469,20 @@ MOBILE LAYOUT
     background-color: #262626;
     padding-left: 8px;
   }
+  /* 
+  Carousel 
+  */
+  h1.carousel_title {
+    font-size: 1.0rem;
+  }
+  a.carousel_cat_link {
+    font-size: 11px;
+  }
+  /* 
+  End 
+  */
+
+
 }
 /* END MOBILE LAYOUT */
 
