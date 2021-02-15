@@ -1,75 +1,86 @@
-<?php 
+<?php
 
-$result = $connection->query("SELECT * FROM carousel"); 
+$result = "SELECT * FROM carousel";
+$select_all_carousel = mysqli_query($connection, $result);
 
-// if(!$result){
+// if (!$select_all_carousel) {
 
-//     //Print a message and terminate the current script:
-//  die("QUERY FAILED" . mysqli_error($connection));
-
+//   //Print a message and terminate the current script:
+//   die("QUERY FAILED" . mysqli_error($connection));
 // } else {
-   //echo "this is working";
+//   //echo "this is working";
 // }
 
 ?>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <?php
+  <ol class="carousel-indicators">
+    <?php
 
-        $i = 0;
-        foreach ($result as $row){
-          $carousel_cat_id =  $row['carousel_cat_id'];
-          $slide_id =  $row['carousel_id'];
-          $actives = '';
-          if($i == 0) {
-            $actives = 'active';
-          }
-          
-        ?>
-          <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
-  
-        <?php $i++; } ?>
-      </ol>
-      <div class="carousel-inner">
-        <?php 
-        
-        $i = 0;
-        foreach ($result as $row):
-          $actives = '';
-          if($i == 0) {
-            $actives = 'active';
-          }
-        ?>
-        
-        <div class="carousel-item <?= $actives; ?>">
-          <img class="first-slide" src="img/<?= $row['carousel_image']; ?>">
-          <div class="container slide_content">
-            <div class="carousel-caption">
-              <?php $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$carousel_cat_id} ");  
-                  foreach($sql as $number_key):
-                    $cat_id = $number_key['cat_id'];
-                    $cat_title = $number_key['cat_title'];
-                  endforeach;?>
-    
-              <a class="carousel_cat_link" href="slide_post.php?s_id=<?= $slide_id; ?>"><?= $cat_title; ?></a>
-              <!-- <p><a class="btn btn-lg btn-primary carousel_button" href="#" role="button">Read More</a></p> -->
-              <h1 class="carousel_title"><?= $row['carousel_title']; ?></h1>
-            </div>
+    $i = 0;
+    foreach ($select_all_carousel as $row) {
+      $carousel_cat_id =  $row['carousel_cat_id'];
+      $carousel_title =  $row['carousel_title'];
+
+      $slide_id =  $row['carousel_id'];
+      $actives = '';
+      if ($i == 0) {
+        $actives = 'active';
+      }
+
+    ?>
+      <li data-target="#myCarousel" data-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
+
+    <?php $i++;
+    } ?>
+  </ol>
+  <div class="carousel-inner">
+    <?php
+
+    $i = 0;
+    foreach ($select_all_carousel as $row) {
+      $carousel_image =  $row['carousel_image'];
+      $actives = '';
+
+      if ($i == 0) {
+        $actives = 'active';
+      }
+
+    ?>
+
+      <div class="carousel-item <?= $actives; ?>">
+        <img class="first-slide" src="img/<?= $carousel_image; ?>">
+        <div class="container slide_content">
+          <div class="carousel-caption">
+
+            <?php $query = "SELECT * FROM categories WHERE cat_id = $carousel_cat_id ";
+            $select_carousel_cat_id = mysqli_query($connection, $query);
+
+
+            while ($row = mysqli_fetch_array($select_carousel_cat_id)) {
+              $cat_id = $row['cat_id'];
+              $cat_title = $row['cat_title'];
+            }; ?>
+
+            <a class="carousel_cat_link" href="slide_post.php?s_id=<?= $slide_id; ?>"><?= $cat_title; ?></a>
+            <h1 class="carousel_title"><?= $carousel_title; ?></h1>
           </div>
         </div>
-        <?php $i++; endforeach; ?>
-      </div><!-- carousel-inner -->
-      
-      <!-- CONTROLS -->
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      </div>
+    <?php $i++;
+    };
+    ?>
+  </div><!-- carousel-inner -->
+
+  <!-- CONTROLS -->
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
 </div><!-- #myCarousel -->
 
