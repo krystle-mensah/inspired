@@ -1,11 +1,8 @@
-<?php 
+<?php
 
-// if set
-if(isset($_POST['create_slide'])){
+if (isset($_POST['create_slide'])) {
   // TEST - type in the title field then click button 
   ////echo $_POST['title']; // output - we are geeting the title
-
-  //  from name values user input
 
   $slide_title        = $_POST['title'];
   $slide_category_id  = $_POST['slide_category_id'];
@@ -15,15 +12,16 @@ if(isset($_POST['create_slide'])){
   $slide_tags         = $_POST['slide_tags'];
   $slide_content      = $_POST['slide_content'];
   $slide_date         = date('d-m-y');
-  
-  move_uploaded_file($slide_image_temp, "../img/$slide_image" );
+
+  move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
   // INSERT INTO TABLE COLUMNS AND USE VALUES FROM FORM INPUT
   $sql = $connection->query(
     "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
-     VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image }','{$slide_content}', now(), '{$slide_tags}')
+     VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image}','{$slide_content}', now(), '{$slide_tags}')
     
-    ");
+    "
+  );
 
   confirmQuery($sql);
 
@@ -35,7 +33,7 @@ if(isset($_POST['create_slide'])){
 
 <!--ADD SLIDE FROM -->
 
-<form action="" method="post" enctype="multipart/form-data"> 
+<form action="" method="post" enctype="multipart/form-data">
   <!-- TITLE -->
   <div class="form-group">
     <label for="title">Slide Title</label>
@@ -47,31 +45,28 @@ if(isset($_POST['create_slide'])){
 
       <?php
 
-        $query = "SELECT * FROM categories";
-        $select_categories = mysqli_query($connection,$query);
-        
-        confirmQuery($select_categories);
+      $query = "SELECT * FROM categories";
+      $select_categories = mysqli_query($connection, $query);
 
-        while($row = mysqli_fetch_assoc($select_categories)) {
-          $cat_id = $row['cat_id'];
-          $cat_title = $row['cat_title'];
+      confirmQuery($select_categories);
 
-        if($cat_id == $slide_category_id) {
-      
-        echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+      while ($row = mysqli_fetch_assoc($select_categories)) {
+        $cat_id = $row['cat_id'];
+        $cat_title = $row['cat_title'];
 
+        if ($cat_id == $slide_category_id) {
+
+          echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
         } else {
 
           echo "<option value='{$cat_id}'>{$cat_title}</option>";
-
         }
-            
-        }
+      }
 
       ?>
-    
+
     </select>
-    
+
   </div><!-- form-group -->
 
   <!-- AUTHOR -->
@@ -82,7 +77,7 @@ if(isset($_POST['create_slide'])){
 
   <div class="form-group">
     <label for="post_image">Slide Image</label>
-    <input type="file"  name="image">
+    <input type="file" name="image">
   </div>
 
   <div class="form-group">
@@ -92,7 +87,7 @@ if(isset($_POST['create_slide'])){
 
   <div class="form-group">
     <label for="post_content">Slide Content</label>
-    <textarea class="form-control "name="slide_content" class="body" cols="30" rows="10">
+    <textarea class="form-control " name="slide_content" class="body" cols="30" rows="10">
     </textarea>
   </div>
   <script>
