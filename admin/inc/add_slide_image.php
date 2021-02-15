@@ -16,14 +16,22 @@ if (isset($_POST['create_slide'])) {
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
   // INSERT INTO TABLE COLUMNS AND USE VALUES FROM FORM INPUT
-  $sql = $connection->query(
-    "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
-     VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image}','{$slide_content}', now(), '{$slide_tags}')
-    
-    "
-  );
+  $query = "INSERT INTO carousel(carousel_title,carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) ";
 
-  confirmQuery($sql);
+  $query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}','{$slide_image}',now(),'{$slide_content}', '{$slide_tags}') ";
+
+  $create_carousel_query = mysqli_query($connection, $query);
+
+
+
+  // $sql = $connection->query(
+  //   "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
+  //    VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image}','{$slide_content}', now(), '{$slide_tags}')
+
+  //   "
+  // );
+
+  confirmQuery($query);
 
   // echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 

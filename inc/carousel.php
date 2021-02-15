@@ -62,8 +62,10 @@ $select_all_carousel = mysqli_query($connection, $result);
               $cat_title = $row['cat_title'];
             }; ?>
 
-            <a class="carousel_cat_link" href="slide_post.php?s_id=<?= $slide_id; ?>"><?= $cat_title; ?></a>
-            <h1 class="carousel_title"><?= $carousel_title; ?></h1>
+            <a class="carousel_cat_link" href="category.php?category=<?= $cat_id; ?>"><?= $cat_title; ?></a>
+            <a class="carousel_title" href="slide_post.php?s_id=<?= $slide_id; ?>">
+              <?= $carousel_title; ?>
+            </a>
           </div>
         </div>
       </div>

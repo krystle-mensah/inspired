@@ -125,10 +125,14 @@ a.carousel_button {
   background: #0d0d0d;
 }
 
-h1.carousel_title {
+a.carousel_title {
   text-transform: capitalize;
   font-size: 2.0rem;
+  color: #fff;
+}
 
+a.carousel_title:hover {
+  text-decoration: none;
 }
 
 a.carousel_cat_link {
@@ -136,6 +140,7 @@ a.carousel_cat_link {
   text-decoration: none;
   color: #DE5133;
   font-size: 1rem;
+  display: block;
 }
 
 .container.slide_content {
