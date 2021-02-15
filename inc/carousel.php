@@ -52,12 +52,14 @@ $select_all_carousel = mysqli_query($connection, $result);
         <img class="first-slide" src="img/<?= $carousel_image; ?>">
         <div class="container slide_content">
           <div class="carousel-caption">
+            <?php
+            $query = "SELECT * FROM categories WHERE cat_id = ?";
+            $statement = mysqli_prepare($connection, $query);
+            mysqli_stmt_bind_param($statement, 'i', $carousel_cat_id);
+            mysqli_stmt_execute($statement);
+            $result = mysqli_stmt_get_result($statement);
 
-            <?php $query = "SELECT * FROM categories WHERE cat_id = $carousel_cat_id ";
-            $select_carousel_cat_id = mysqli_query($connection, $query);
-
-
-            while ($row = mysqli_fetch_array($select_carousel_cat_id)) {
+            while ($row = mysqli_fetch_array($result)) {
               $cat_id = $row['cat_id'];
               $cat_title = $row['cat_title'];
             }; ?>

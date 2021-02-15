@@ -18,10 +18,14 @@
     echo "<button class='drop_btn'>$cat_title</button>";
     echo "<div class='dropdown_content'>";
 
-    $query = "SELECT * FROM sub_categories WHERE subCategoriesCatID = $cat_id";
-    $select_all_subID = mysqli_query($connection, $query);
+    $query = "SELECT * FROM sub_categories WHERE subCategoriesCatID = ?";
+    $select_all_subID = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($select_all_subID, 'i', $cat_id);
 
-    while ($row = mysqli_fetch_assoc($select_all_subID)) {
+    mysqli_stmt_execute($select_all_subID);
+    $result = mysqli_stmt_get_result($select_all_subID);
+
+    while ($row = mysqli_fetch_assoc($result)) {
       $subCategoriesTitle = $row['subCategoriesTitle'];
       $subCategoriesID = $row['subCategoriesID'];
 

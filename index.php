@@ -34,9 +34,12 @@ include "inc/header.php";
                     <h1 class="post_title"><?= $post_title;  ?></h1>
                     <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
                     <?php
-                    $request_to = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-                    $select_categories_id = mysqli_query($connection, $request_to);
-                    foreach ($select_categories_id as $number_key) :
+                    $query = "SELECT * FROM categories WHERE cat_id = ?";
+                    $statement = mysqli_prepare($connection, $query);
+                    mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+                    mysqli_stmt_execute($statement);
+                    $result = mysqli_stmt_get_result($statement);
+                    foreach ($result as $number_key) :
                       $cat_id = $number_key['cat_id'];
                       $cat_title = $number_key['cat_title'];
                     endforeach;

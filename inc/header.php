@@ -2,13 +2,13 @@
   <div class="header-container">
     <!-- HAMBURGER MOBILE -->
     <span class="open-slide hide_on_large">
-        <a href="#" onclick="openSlideMenu()">
-          <svg width="30" height="30">
-            <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
-            <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
-            <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
-          </svg>
-        </a>
+      <a href="#" onclick="openSlideMenu()">
+        <svg width="30" height="30">
+          <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+          <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+          <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+        </svg>
+      </a>
     </span>
     <!-- LOGO -->
     <div class="logo-container">
@@ -44,67 +44,72 @@
     <!-- LINKS -->
     <a class="nav_link" href="index.php">home</a>
     <!-- FETCH CATEGORIES -->
-    <?php $all_categories = $connection->query( "SELECT * FROM categories" ); ?>
+    <?php $all_categories = $connection->query("SELECT * FROM categories"); ?>
     <!-- LOOP CATEGORIES -->
-    <?php foreach($all_categories as $row) { 
+    <?php foreach ($all_categories as $row) {
       $cat_title = $row['cat_title'];
       $cat_id    = $row['cat_id'];
     ?>
-    <a class="mobile_nav_subCat_link" href="category.php?category=<?php echo $cat_id; ?>">
-    <?php echo $cat_title; ?>
-    <i class="fa fa-caret-down dropdown_icon"></i>
-    <!-- SUB CATEGORIES -->
-    <div class="dropdown-container">
-      <!-- FETCH SUB CATEGORIES WHERE THE subCategoriesCatID EQUALS $row'cat_id'  -->
-      <?php $sql = $connection->query( "SELECT * FROM `sub_categories` WHERE subCategoriesCatID = {$row['cat_id']}" ); ?>
-      <!-- LOOP SUB CATEGORIES -->
-      <?php foreach($sql as $row) { 
-        $subCategoriesID       = $row['subCategoriesID'];
-        $subCategoriesTitle    = $row['subCategoriesTitle'];
-      ?>
-        <a href="sub_category.php?subCategory=<?php echo $subCategoriesID; ?>"><?php echo $subCategoriesTitle;?></a>
-      <?php }?>
-    </div><!-- dropdown-container -->
-    </a>
+      <a class="mobile_nav_subCat_link" href="category.php?category=<?php echo $cat_id; ?>">
+        <?php echo $cat_title; ?>
+        <i class="fa fa-caret-down dropdown_icon"></i>
+        <!-- SUB CATEGORIES -->
+        <div class="dropdown-container">
+          <?php
+          $query = "SELECT * FROM `sub_categories` WHERE subCategoriesCatID = ?";
+          $statement = mysqli_prepare($connection, $query);
+          mysqli_stmt_bind_param($statement, 'i', $cat_id);
+          mysqli_stmt_execute($statement);
+          $result = mysqli_stmt_get_result($statement);
+          ?>
+          <!-- LOOP SUB CATEGORIES -->
+          <?php foreach ($result as $row) {
+            $subCategoriesID       = $row['subCategoriesID'];
+            $subCategoriesTitle    = $row['subCategoriesTitle'];
+          ?>
+            <a href="sub_category.php?subCategory=<?php echo $subCategoriesID; ?>"><?php echo $subCategoriesTitle; ?></a>
+          <?php } ?>
+        </div><!-- dropdown-container -->
+      </a>
     <?php } ?>
     <a class="nav_link" href="contact.php">contact</a>
 
   </div><!-- side-menu side-nav -->
 
   <script>
-    function openSlideMenu(){
+    function openSlideMenu() {
       document.getElementById('side-menu').style.width = '250px';
       document.getElementById('main').style.marginLeft = '250px';
     }
 
-    function closeSlideMenu(){
+    function closeSlideMenu() {
       document.getElementById('side-menu').style.width = '0';
       document.getElementById('main').style.marginLeft = '0';
     }
   </script>
 
-<script>
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("mobile_nav_subCat_link");
-var i;
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("mobile_nav_subCat_link");
+    var i;
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("mouseover", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script>
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("mouseover", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
 
 
 </header>
 
-<?php 
+<?php
 // TEST - check input search.
 ////check input name search
 ////if( isset( $_POST['search'] ) ){echo $_POST['search'];}

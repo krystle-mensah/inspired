@@ -15,9 +15,15 @@ include "inc/header.php";
       <!--  contion ? true else "not set" -->
       <?php isset($_GET['category']) ? $slide_category_id = $_GET['category'] : "not set";
 
-      $sql = $connection->query("SELECT * FROM carousel WHERE carousel_cat_id = $slide_category_id ");
+      //$sql = $connection->query("SELECT * FROM carousel WHERE carousel_cat_id = $slide_category_id ");
 
-      foreach ($sql as $row) {
+      $query = "SELECT * FROM carousel WHERE carousel_cat_id = ?";
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_bind_param($statement, 'i', $slide_category_id);
+      mysqli_stmt_execute($statement);
+      $result = mysqli_stmt_get_result($statement);
+
+      foreach ($result as $row) {
 
         $slide_category_id = $row['carousel_cat_id'];
         $carousel_id = $row['carousel_id'];
@@ -38,8 +44,15 @@ include "inc/header.php";
                 <p class="blog-post-meta post_date"><?= $carousel_date;  ?> by <a class="post_author" href="#"><?= $carousel_author;  ?></a></p>
                 <!-- REQUST CATEGOROY TITLES -->
                 <?php
-                $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id}");
-                foreach ($sql as $row) {
+                //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id}");
+
+                $query = "SELECT * FROM categories WHERE cat_id = ?";
+                $statement = mysqli_prepare($connection, $query);
+                mysqli_stmt_bind_param($statement, 'i', $slide_category_id);
+                mysqli_stmt_execute($statement);
+                $result = mysqli_stmt_get_result($statement);
+
+                foreach ($result as $row) {
                   $cat_id = $row['cat_id'];
                   $cat_title = $row['cat_title'];
                 }

@@ -13,11 +13,18 @@ foreach ($db as $key => $value) {
 // Create connection
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-//Check connection
-// if ($connection->connect_error) {
-//   die("Connection failed: " . $connection->connect_error);
-// }
-// echo "Connected successfully";
+if (mysqli_connect_errno()) {
+  printf("Connect failed: %s\n", mysqli_connect_error());
+  exit();
+} else {
+  //echo "Connected successfully";
+}
+
+////Check connection - old code
+//// if ($connection->connect_error) {
+////   die("Connection failed: " . $connection->connect_error);
+//// }
+//// echo "Connected successfully";
 
 
 // $connection = mysqli_connect("localhost", "root", "", "inspired");
