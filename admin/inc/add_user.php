@@ -1,7 +1,7 @@
 <?php
 
 // IF PRESSED
-if(isset($_POST['create_user'])){
+if (isset($_POST['create_user'])) {
 
   //pick up theres values
   $user_firstname        = $_POST['user_firstname'];
@@ -14,27 +14,21 @@ if(isset($_POST['create_user'])){
   $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
 
 
-  // INSERT INTO DATABASE, IN THESE TABLE AND THESES COLUMNS 
   $query = "INSERT INTO users(user_firstname,user_lastname,user_role, username,user_email,user_password) ";
-
-  // INSERT VALUES FROM USER
-  $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') "; 
-  
-  // SEND IN 
-  $create_user_query = mysqli_query($connection, $query); 
-
-  // CONFIRM
+  $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') ";
+  $create_user_query = mysqli_query($connection, $query);
   confirmQuery($create_user_query);
 
-  // let them no it was created
-  echo "<p class='success-button'>User Created. <a href='users.php'>View Users</a>"; 
+  // $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
+  // let them no it was created
+  echo "<p class='success-button'>User Created. <a href='users.php'>View Users</a>";
 }
 
 ?>
 
 <!-- multipart/form-data lets you send encoded data  -->
-<form action="" method="post" enctype="multipart/form-data"> 
+<form action="" method="post" enctype="multipart/form-data">
 
   <div class="form-group">
     <label for="title">First Name</label>
@@ -47,14 +41,14 @@ if(isset($_POST['create_user'])){
   </div>
 
   <div class="form-group">
-   
+
     <select name="user_role" id="">
       <!-- static data added -->
       <option value="subscriber">select option</option>
       <option value="admin">admin</option>
       <option value="subscriber">subscriber</option>
     </select>
-    
+
   </div> <!-- form-group -->
 
   <!-- <div class="form-group">

@@ -3,40 +3,53 @@
 </div><!-- alignment -->
 
 <!-- CREATE POST -->
-<?php if(isset($_POST['create_post'])){
-    // TEST - type in the title field then click update button 
-    //echo $_POST['title'];
+<?php if (isset($_POST['create_post'])) {
+  // TEST - type in the title field then click update button 
+  //echo $_POST['title'];
 
-    // SET THESE VALUES FOR THE USER
-    $post_title        = $_POST['title'];
-    $post_author       = $_POST['author'];
-    $post_category_id  = $_POST['post_category_id'];
-    $postSubCatID      = $_POST['postSubCatID'];
-    $post_image        = $_FILES['image']['name'];
-    $post_image_temp   = $_FILES['image']['tmp_name'];
-    $post_tags         = $_POST['post_tags'];
-    $post_content      = $_POST['post_content'];
-    $post_date         = date('d-m-y');
-    $post_status       = $_POST['post_status'];
+  // SET THESE VALUES FOR THE USER
+  $post_title        = $_POST['title'];
+  $post_author       = $_POST['author'];
+  $post_category_id  = $_POST['post_category_id'];
+  $postSubCatID      = $_POST['postSubCatID'];
+  $post_image        = $_FILES['image']['name'];
+  $post_image_temp   = $_FILES['image']['tmp_name'];
+  $post_tags         = $_POST['post_tags'];
+  $post_content      = $_POST['post_content'];
+  $post_date         = date('d-m-y');
+  $post_status       = $_POST['post_status'];
 
-    $post_comment_count = 4;
+  $post_comment_count = 4;
 
-    move_uploaded_file($post_image_temp, "../img/$post_image" );
+  move_uploaded_file($post_image_temp, "../img/$post_image");
 
-    $query = "INSERT INTO posts(post_category_id,postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 
-    $query .= "VALUES('{$post_category_id}','{$postSubCatID}','{$post_title}','{$post_author}',now(),'{$post_image}', '{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}') "; 
+  $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
-    $create_post_query = mysqli_query($connection, $query); 
+  if ($insertQry = mysqli_prepare($connection, $sql)) {
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($insertQry, "ssssssssss", $post_category_id, $postSubCatID, $post_title, $post_author, $post_date, $post_image, $post_content, $post_tags, $post_comment_count, $post_status);
 
-    confirmQuery($query);
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($insertQry)) {
+      echo "Records inserted successfully.";
+    } else {
+      echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
+    }
+  }
 
-    //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
+  // Close statement
+  mysqli_stmt_close($insertQry);
+
+  // Close connection
+  mysqli_close($connection);
+
+  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
 } ?>
 
 <!-- CREATE POST FORM -->
-<form action="" method="post" enctype="multipart/form-data"> 
+<form action="" method="post" enctype="multipart/form-data">
   <!-- TITLE -->
   <div class="form-group">
     <label for="title">Post Title</label>
@@ -53,25 +66,23 @@
     <select name="post_category_id" id="">
       <?php
 
-        $query = "SELECT * FROM categories";  
-        $select_categories = mysqli_query($connection,$query);
-        
-        confirmQuery($select_categories);
+      $query = "SELECT * FROM categories";
+      $select_categories = mysqli_query($connection, $query);
 
-        while($row = mysqli_fetch_assoc($select_categories)) {
-          $cat_id = $row['cat_id'];
-          $cat_title = $row['cat_title'];
+      confirmQuery($select_categories);
 
-          if($cat_id == $post_category_id) {
-        
+      while ($row = mysqli_fetch_assoc($select_categories)) {
+        $cat_id = $row['cat_id'];
+        $cat_title = $row['cat_title'];
+
+        if ($cat_id == $post_category_id) {
+
           echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+        } else {
 
-          } else {
-
-            echo "<option value='{$cat_id}'>{$cat_title}</option>";
-
-          }
+          echo "<option value='{$cat_id}'>{$cat_title}</option>";
         }
+      }
       ?>
     </select>
   </div><!-- form-group -->
@@ -82,56 +93,54 @@
     <select name="postSubCatID" id="">
       <?php
 
-        $query = "SELECT * FROM sub_categories";  
-        $selectSubCategories = mysqli_query($connection,$query);
-        confirmQuery($selectSubCategories);
+      $query = "SELECT * FROM sub_categories";
+      $selectSubCategories = mysqli_query($connection, $query);
+      confirmQuery($selectSubCategories);
 
-        while($row = mysqli_fetch_assoc($selectSubCategories)) {
-          $subCategoriesID = $row['subCategoriesID'];
-          $subCategoriesTitle = $row['subCategoriesTitle'];
+      while ($row = mysqli_fetch_assoc($selectSubCategories)) {
+        $subCategoriesID = $row['subCategoriesID'];
+        $subCategoriesTitle = $row['subCategoriesTitle'];
 
-          if($subCategoriesID == $postSubCatID) {
-        
-           echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+        if ($subCategoriesID == $postSubCatID) {
 
-          } else {
+          echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+        } else {
 
-            echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-
-          }
+          echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
         }
+      }
 
       ?>
-    
+
     </select>
-  <!-- STATUS -->
-  <div class="form-group">
-    <select name="post_status" id="">
-      <option value="draft">Post Status</option>
-      <option value="published">Publish</option>
-      <option value="draft">Draft</option>
-    </select>
-  </div>
-  <!-- IMAGE -->
-  <div class="form-group">
-    <label for="post_image">Post Image</label>
-    <input type="file"  name="image">
-  </div>
-  <!-- TAGS -->
-  <div class="form-group">
-    <label for="title">Post Tags</label>
-    <input type="text" class="form-control" name="post_tags">
-  </div>
-  <!-- CONTENT -->
-  <div class="form-group">
-    <label for="post_content">Post Content</label>
-    <textarea class="form-control "name="post_content" cols="30" rows="10">
+    <!-- STATUS -->
+    <div class="form-group">
+      <select name="post_status" id="">
+        <option value="draft">Post Status</option>
+        <option value="published">Publish</option>
+        <option value="draft">Draft</option>
+      </select>
+    </div>
+    <!-- IMAGE -->
+    <div class="form-group">
+      <label for="post_image">Post Image</label>
+      <input type="file" name="image">
+    </div>
+    <!-- TAGS -->
+    <div class="form-group">
+      <label for="title">Post Tags</label>
+      <input type="text" class="form-control" name="post_tags">
+    </div>
+    <!-- CONTENT -->
+    <div class="form-group">
+      <label for="post_content">Post Content</label>
+      <textarea class="form-control " name="post_content" cols="30" rows="10">
     </textarea>
-  </div>
-  <div class="sharethis-inline-share-buttons"></div>
-  <!-- SUBMIT BUTTON -->
-  <div class="form-group">
-    <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
-  </div>
+    </div>
+    <div class="sharethis-inline-share-buttons"></div>
+    <!-- SUBMIT BUTTON -->
+    <div class="form-group">
+      <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
+    </div>
 
 </form>
