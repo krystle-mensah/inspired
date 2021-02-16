@@ -193,9 +193,9 @@ a.post_cat_title {
   text-transform: uppercase;
 }
 
-img.post-image {
+div.post_image {
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
 }
 
 .blog-post:hover::after {
@@ -206,9 +206,15 @@ img.post-image {
   background: #DE5133;
   transition: .3s;
 }
-
+/* padding-top
+padding-right
+padding-bottom
+padding-left */
 .card {
   border: none;
+  float: left;
+  width: 50%;
+  padding: 0px 10px 10px 0px;
 }
 
 /* Clearfix (clear floats) */
@@ -484,7 +490,15 @@ Mobile Layout
   /* 
   End 
   */
-
+  /* 
+  index 
+  */
+  .card {
+    width: 100%;
+  }
+  /* 
+  End 
+  */
 
 }
 /* END MOBILE LAYOUT */

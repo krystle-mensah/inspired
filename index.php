@@ -26,9 +26,12 @@ include "inc/header.php";
 
         ?>
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-            <div class="card col-md-6 ">
+            <div class="card">
               <div class="blog-post">
-                <img class="flex-auto d-md-block post-image img-fluid card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
+                <div class="post_image">
+                  <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+                </div>
+
                 <div class="card-body d-flex flex-column">
                   <div class="post-content">
                     <h1 class="post_title"><?= $post_title;  ?></h1>
