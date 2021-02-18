@@ -11,16 +11,36 @@ if (isset($_POST['create_slide'])) {
   $slide_image_temp   = $_FILES['image']['tmp_name'];
   $slide_tags         = $_POST['slide_tags'];
   $slide_content      = $_POST['slide_content'];
-  $slide_date         = date('d-m-y');
+  // $slide_date         = date('d-m-y');
+  $slide_date         = date('Y-m-d');
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
+  $sql = "INSERT INTO carousel (carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) VALUES (?, ?, ?, ?, ?, ?, ?)";
   // INSERT INTO TABLE COLUMNS AND USE VALUES FROM FORM INPUT
-  $query = "INSERT INTO carousel(carousel_title,carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) ";
+  //$query = "INSERT INTO carousel(carousel_title,carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) ";
 
-  $query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}','{$slide_image}',now(),'{$slide_content}', '{$slide_tags}') ";
+  if ($insertQry = mysqli_prepare($connection, $sql)) {
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($insertQry, "sssssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $post_date, $slide_content, $slide_tags);
+    //$query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}','{$slide_image}',now(),'{$slide_content}', '{$slide_tags}') ";
+    //$create_carousel_query = mysqli_query($connection, $query);
 
-  $create_carousel_query = mysqli_query($connection, $query);
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($insertQry)) {
+      //echo "Records inserted successfully.";
+      echo "<p class='success-button'>Post Created.";
+    } else {
+      echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
+    }
+  }
+  // Close statement
+  mysqli_stmt_close($insertQry);
+
+  // Close connection
+  mysqli_close($connection);
+
+
 
 
 
@@ -31,7 +51,7 @@ if (isset($_POST['create_slide'])) {
   //   "
   // );
 
-  confirmQuery($query);
+  //confirmQuery($query);
 
   // echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 

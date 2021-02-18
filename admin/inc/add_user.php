@@ -13,16 +13,29 @@ if (isset($_POST['create_user'])) {
 
   $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
 
+  //$query = "INSERT INTO users(user_firstname,user_lastname,user_role, username,user_email,user_password) "6;
+  //$query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') ";
+  //$create_user_query = mysqli_query($connection, $query);
+  //confirmQuery($create_user_query);
 
-  $query = "INSERT INTO users(user_firstname,user_lastname,user_role, username,user_email,user_password) ";
-  $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') ";
-  $create_user_query = mysqli_query($connection, $query);
-  confirmQuery($create_user_query);
+  $sql = "INSERT INTO users (user_firstname, user_lastname, user_role, username, user_email, user_password) VALUES (?, ?, ?, ?, ?, ?)";
+  if ($insertQry = mysqli_prepare($connection, $sql)) {
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($insertQry, "ssssss", $user_firstname, $user_lastname, $user_role, $username, $user_email, $user_password);
 
-  // $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($insertQry)) {
+      // let them no it was created
+      echo "<p class='success-button'>User Created. <a href='users.php'>View Users</a>";
+    } else {
+      echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
+    }
+  }
+  // Close statement
+  mysqli_stmt_close($insertQry);
 
-  // let them no it was created
-  echo "<p class='success-button'>User Created. <a href='users.php'>View Users</a>";
+  // Close connection
+  mysqli_close($connection);
 }
 
 ?>

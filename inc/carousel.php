@@ -1,7 +1,9 @@
 <?php
 
 $result = "SELECT * FROM carousel";
-$select_all_carousel = mysqli_query($connection, $result);
+$Statement = mysqli_prepare($connection, $result);
+mysqli_stmt_execute($Statement);
+$getResult = mysqli_stmt_get_result($Statement);
 
 // if (!$select_all_carousel) {
 
@@ -18,7 +20,7 @@ $select_all_carousel = mysqli_query($connection, $result);
     <?php
 
     $i = 0;
-    foreach ($select_all_carousel as $row) {
+    foreach ($getResult as $row) {
       $carousel_cat_id =  $row['carousel_cat_id'];
       $carousel_title =  $row['carousel_title'];
 
@@ -38,8 +40,9 @@ $select_all_carousel = mysqli_query($connection, $result);
     <?php
 
     $i = 0;
-    foreach ($select_all_carousel as $row) {
+    foreach ($getResult as $row) {
       $carousel_image =  $row['carousel_image'];
+      $carousel_title =  $row['carousel_title'];
       $actives = '';
 
       if ($i == 0) {
@@ -59,7 +62,7 @@ $select_all_carousel = mysqli_query($connection, $result);
             mysqli_stmt_execute($statement);
             $result = mysqli_stmt_get_result($statement);
 
-            while ($row = mysqli_fetch_array($result)) {
+            foreach ($result as $row) {
               $cat_id = $row['cat_id'];
               $cat_title = $row['cat_title'];
             }; ?>
