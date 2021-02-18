@@ -16,7 +16,7 @@
   $post_image_temp   = $_FILES['image']['tmp_name'];
   $post_tags         = $_POST['post_tags'];
   $post_content      = $_POST['post_content'];
-  $post_date         = date('d-m-y');
+  $post_date         = date('Y-m-d');
   $post_status       = $_POST['post_status'];
 
   $post_comment_count = 4;
@@ -32,20 +32,19 @@
 
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($insertQry)) {
-      echo "Records inserted successfully.";
+      //echo "Records inserted successfully.";
+      echo "<p class='success-button'>Post Created.";
     } else {
       echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
     }
   }
-
   // Close statement
   mysqli_stmt_close($insertQry);
 
   // Close connection
   mysqli_close($connection);
 
-  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
-
+  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>";
 } ?>
 
 <!-- CREATE POST FORM -->

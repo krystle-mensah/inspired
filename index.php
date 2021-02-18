@@ -15,8 +15,13 @@ include "inc/header.php";
   <div class="row">
     <div class="col-md-8 blog_main">
       <div class="row h-100">
-        <?php $sql = $connection->query("SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC");
-        foreach ($sql as $row) {
+        <?php
+        $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
+        $Statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_execute($Statement);
+        $getResult = mysqli_stmt_get_result($Statement);
+
+        while ($row = mysqli_fetch_array($getResult)) {
 
           $post_category_id = $row['post_category_id'];
           $post_title = $row['post_title'];
