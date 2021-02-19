@@ -11,7 +11,6 @@ if (isset($_POST['create_slide'])) {
   $slide_image_temp   = $_FILES['image']['tmp_name'];
   $slide_tags         = $_POST['slide_tags'];
   $slide_content      = $_POST['slide_content'];
-  // $slide_date         = date('d-m-y');
   $slide_date         = date('Y-m-d');
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
@@ -22,7 +21,7 @@ if (isset($_POST['create_slide'])) {
 
   if ($insertQry = mysqli_prepare($connection, $sql)) {
     // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($insertQry, "sssssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $post_date, $slide_content, $slide_tags);
+    mysqli_stmt_bind_param($insertQry, "sssssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $slide_date, $slide_content, $slide_tags);
     //$query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}','{$slide_image}',now(),'{$slide_content}', '{$slide_tags}') ";
     //$create_carousel_query = mysqli_query($connection, $query);
 
