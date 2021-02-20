@@ -30,16 +30,7 @@ if (isset($_POST['create_slide'])) {
     }
   }
 
-  // $sql = $connection->query(
-  //   "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
-  //    VALUES ('{$slide_title}','{$slide_category_id}','{$slide_author}', '{$slide_image}','{$slide_content}', now(), '{$slide_tags}')
-
-  //   "
-  // );
-
-  //confirmQuery($query);
-
-  // echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
+  //echo "<p class='success-button'>Slide Created. <a href='slide_images.php'>Edit More Slides</a> or <a href='../slide_post.php?s_id={$GETslide_id}'>View slide</a>";
 
   // Close statement
   mysqli_stmt_close($insertQry);
@@ -67,10 +58,9 @@ if (isset($_POST['create_slide'])) {
       <?php
 
       $query = "SELECT * FROM categories";
-      $select_categories = mysqli_query($connection, $query);
-
-      //confirmQuery($select_categories);
-
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_execute($statement);
+      $select_categories = mysqli_stmt_get_result($statement);
       while ($row = mysqli_fetch_assoc($select_categories)) {
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
