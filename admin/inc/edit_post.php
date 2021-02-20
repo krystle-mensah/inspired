@@ -7,10 +7,12 @@ if (isset($_GET['p_id'])) {
   $the_post_id = $_GET['p_id'];
 }
 
-$query = "SELECT * FROM posts WHERE post_id = $the_post_id  ";
+$query = "SELECT * FROM posts WHERE post_id = ?";
 
-// mysqli_query function sends in the above query and connection. 
-$select_posts_by_id = mysqli_query($connection, $query);
+$statement = mysqli_prepare($connection, $query);
+mysqli_stmt_bind_param($statement, 'i', $the_post_id);
+mysqli_stmt_execute($statement);
+$select_posts_by_id = mysqli_stmt_get_result($statement);
 
 //condition is true fetch the row representing the array from ($variable)
 while ($row = mysqli_fetch_array($select_posts_by_id)) {
@@ -47,8 +49,12 @@ if (isset($_POST['update_post'])) {
   if (empty($post_image)) {
 
     //select all where col id = var
-    $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
-    $select_image = mysqli_query($connection, $query);
+    $query = "SELECT * FROM posts WHERE post_id = ? ";
+
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'i', $the_post_id);
+    mysqli_stmt_execute($statement);
+    $select_image = mysqli_stmt_get_result($statement);
 
     // then loop though result set
     while ($row = mysqli_fetch_array($select_image)) {
@@ -57,23 +63,19 @@ if (isset($_POST['update_post'])) {
     }
   }
 
-  // update post then set each column in the database table equal to variable the form.
-  $query = "UPDATE posts SET ";
-  $query .= "post_title  = '{$post_title}', ";
-  $query .= "post_author  = '{$post_author}', ";
-  $query .= "post_category_id = '{$post_category_id}', ";
-  $query .= "post_date   =  now(), ";
-  $query .= "post_status = '{$post_status}', ";
-  $query .= "post_tags   = '{$post_tags}', ";
-  $query .= "post_content= '{$post_content}', ";
-  $query .= "post_image  = '{$post_image}' ";
-  $query .= "WHERE post_id = {$the_post_id} ";
+  // $firstName = "Will";
+  // $lastName = "Smith";
+  // $address = 'Abc house New York';
+  // $userID = 96;
 
-  // Then we send in the query
-  $update_post = mysqli_query($connection, $query);
+  $updateQry = "UPDATE posts SET post_title  = ?, post_author  = ?, post_category_id  = ?, post_date  = ?, post_status  = ?, post_tags  = ?, post_content  = ?, post_image  = ? WHERE post_id = ?";
 
-  // confirm update post
-  confirmQuery($update_post);
+  $updateStatement = mysqli_prepare($connection, $updateQry);
+
+  mysqli_stmt_bind_param($updateStatement, 'ssssssssi', $post_title, $post_author, $post_category_id, $post_date, $post_status, $post_tags, $post_content, $post_image, $the_post_id);
+  mysqli_stmt_execute($updateStatement);
+
+  mysqli_close($connection);
 
   // display this
   echo "<p class='success-button'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
