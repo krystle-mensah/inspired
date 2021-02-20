@@ -12,12 +12,6 @@ if (isset($_POST['create_user'])) {
   $user_password         = $_POST['user_password'];
 
   $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
-
-  //$query = "INSERT INTO users(user_firstname,user_lastname,user_role, username,user_email,user_password) "6;
-  //$query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') ";
-  //$create_user_query = mysqli_query($connection, $query);
-  //confirmQuery($create_user_query);
-
   $sql = "INSERT INTO users (user_firstname, user_lastname, user_role, username, user_email, user_password) VALUES (?, ?, ?, ?, ?, ?)";
   if ($insertQry = mysqli_prepare($connection, $sql)) {
     // Bind variables to the prepared statement as parameters
