@@ -14,10 +14,8 @@ mysqli_stmt_bind_param($statement, 'i', $the_post_id);
 mysqli_stmt_execute($statement);
 $select_posts_by_id = mysqli_stmt_get_result($statement);
 
-//condition is true fetch the row representing the array from ($variable)
 while ($row = mysqli_fetch_array($select_posts_by_id)) {
 
-  // ARRAY values we bring back and assign to variable
   $post_id = $row['post_id'];
   $post_author = $row['post_author'];
   $post_title = $row['post_title'];
@@ -42,10 +40,8 @@ if (isset($_POST['update_post'])) {
   $post_content        =  $_POST['post_content'];
   $post_tags           =  $_POST['post_tags'];
 
-  //move file to from var then move to new location
   move_uploaded_file($post_image_temp, "../img/$post_image");
 
-  // if empty var
   if (empty($post_image)) {
 
     //select all where col id = var
@@ -63,11 +59,6 @@ if (isset($_POST['update_post'])) {
     }
   }
 
-  // $firstName = "Will";
-  // $lastName = "Smith";
-  // $address = 'Abc house New York';
-  // $userID = 96;
-
   $updateQry = "UPDATE posts SET post_title  = ?, post_author  = ?, post_category_id  = ?, post_date  = ?, post_status  = ?, post_tags  = ?, post_content  = ?, post_image  = ? WHERE post_id = ?";
 
   $updateStatement = mysqli_prepare($connection, $updateQry);
@@ -77,7 +68,6 @@ if (isset($_POST['update_post'])) {
 
   mysqli_close($connection);
 
-  // display this
   echo "<p class='success-button'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
 }
 
@@ -94,18 +84,17 @@ if (isset($_POST['update_post'])) {
   <div class="form-group">
 
     <select name="post_category" id="">
-
-      <!-- // SELECT ALL CATEGORIES QUERY -->
       <?php
-
+      // SELECT ALL CATEGORIES QUERY
       $query = "SELECT * FROM categories ";
-      $select_categories = mysqli_query($connection, $query);
-      confirmQuery($select_categories);
+
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_execute($statement);
+      $select_categories = mysqli_stmt_get_result($statement);
 
       while ($row = mysqli_fetch_assoc($select_categories)) {
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
-
 
         if ($cat_id == $post_category_id) {
 
@@ -143,28 +132,24 @@ if (isset($_POST['update_post'])) {
       }
 
       ?>
-
     </select><!-- post_status -->
-
   </div><!-- form-group -->
-
-
 
   <div class="form-group">
     <!-- not sure if below code is supossed to be here -->
     <label for="post_image">Post Image</label>
-    <img width="100" src="../img/<?php echo $post_image; ?>" alt="">
+    <img width="100" src="../img/<?= $post_image; ?>" alt="">
     <input type="file" name="image">
   </div>
 
   <div class="form-group">
     <label for="title">Post Tags</label>
-    <input value="<?php echo $post_tags; ?>" type="text" class="form-control" name="post_tags">
+    <input value="<?= $post_tags; ?>" type="text" class="form-control" name="post_tags">
   </div>
 
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control " name="post_content" id="body" cols="30" rows="10"><?php echo $post_content; ?></textarea>
+    <textarea class="form-control " name="post_content" id="body" cols="30" rows="10"><?= $post_content; ?></textarea>
   </div>
 
   <div class="form-group">
