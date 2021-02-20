@@ -42,7 +42,7 @@
         $post_content = $row['post_content'];
 
       ?>
-        <h1 class="mt-4 post_title"><?= $post_title;  ?></h1>
+        <h1 class="mt-4 page_post_title"><?= $post_title;  ?></h1>
         <a class="post_author" href="#"><?= $post_author;  ?></a>
         <p class="blog-post-meta post_date"><?= $post_date; ?> </p>
 

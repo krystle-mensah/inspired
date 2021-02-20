@@ -16,6 +16,14 @@ body {
   padding: 10px 20px;
 }
 
+/* post page */
+.page_post_title {
+  color: #0d0d0d;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+
+}
+
 /*============
 HEADER LAYOUT
 =================================*/
@@ -32,7 +40,6 @@ header.header {
 h1.brand_name {
   text-transform: uppercase;
   text-align: center;
-  /* font-family: 'Merriweather Sans', sans-serif; */
   font-size: 4.5rem;
   font-weight: 800;
 }
@@ -178,9 +185,9 @@ p.post_date {
 
 .post_title {
   color: #0d0d0d;
-  font-size: 1.5rem;
+  font-size: 15px;
   text-transform: capitalize;
-  font-weight: 300;
+  /* font-weight: 300; */
 }
 
 .post_title:hover {
@@ -193,12 +200,12 @@ a.post_cat_title {
   text-transform: uppercase;
 }
 
-div.post_image {
+/* div.post_image {
   max-width: 100%;
-  /* height: auto; */
-}
+  height: auto;
+} */
 
-.blog-post:hover::after {
+.card:hover::after {
   content: '';
   display: block;
   height: 2px;
@@ -214,7 +221,9 @@ padding-left */
   border: none;
   float: left;
   width: 50%;
-  padding: 0px 10px 10px 0px;
+  padding: 0px 10px 0px 0px;
+  background: white;
+	margin-bottom: 2em;	
 }
 
 /* Clearfix (clear floats) */

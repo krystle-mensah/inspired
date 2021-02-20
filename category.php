@@ -33,39 +33,37 @@ include "inc/header.php";
         $post_image = $row['post_image'];
 
       ?>
-        <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-          <div class="col-md-6">
-            <div class="blog-post">
-              <!-- <div class="card box-shadow"> -->
-              <div class="card-body d-flex flex-column align-items-start">
-                <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
-              </div>
-              <div class="post-content">
-                <h1 class="post_title"><?= $post_title; ?></h1>
-                <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
-                <!-- REQUST CATEGOROY TITLES -->
-                <?php
+        <div class="card">
+          <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
+            <!-- <div class="card-body d-flex flex-column align-items-start"> -->
+            <figure>
+              <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+            </figure>
+            <!-- </div> -->
+            <!-- img-fluid -->
+            <div class="post-content">
+              <h1 class="post_title"><?= $post_title; ?></h1>
+              <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author; ?></a></p>
 
-                $query = "SELECT * FROM categories WHERE cat_id = ?";
-                $statement = mysqli_prepare($connection, $query);
-                mysqli_stmt_bind_param($statement, 'i', $post_category_id);
-                mysqli_stmt_execute($statement);
-                $result = mysqli_stmt_get_result($statement);
+              <!-- REQUST CATEGOROY TITLES -->
+              <?php
+              $query = "SELECT * FROM categories WHERE cat_id = ?";
+              $statement = mysqli_prepare($connection, $query);
+              mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+              mysqli_stmt_execute($statement);
+              $result = mysqli_stmt_get_result($statement);
 
-                foreach ($result as $row) {
-                  $cat_id = $row['cat_id'];
-                  $cat_title = $row['cat_title'];
-                }
-                ?>
-                <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
-                  <p><strong class="post_cat_title"><?= $cat_title;  ?></strong></p>
-                </a>
-              </div><!-- post-content -->
-              <!-- </div> -->
-              <!-- card box-shadow -->
-            </div><!-- /.blog-post -->
-          </div><!-- alignment -->
-        </a><!-- post link -->
+              foreach ($result as $row) {
+                $cat_id = $row['cat_id'];
+                $cat_title = $row['cat_title'];
+              }
+              ?>
+              <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
+                <p><strong><?= $cat_title;  ?></strong></p>
+              </a>
+            </div><!-- post-content -->
+          </a><!-- post link -->
+        </div><!-- card -->
       <?php }   ?>
     </div><!-- alignment and main blog -->
 

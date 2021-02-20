@@ -12,10 +12,8 @@ include "inc/header.php";
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog_main">
-      <!--  contion ? true else "not set" -->
+      <!--  condition ? true else "not set" -->
       <?php isset($_GET['category']) ? $slide_category_id = $_GET['category'] : "not set";
-
-      //$sql = $connection->query("SELECT * FROM carousel WHERE carousel_cat_id = $slide_category_id ");
 
       $query = "SELECT * FROM carousel WHERE carousel_cat_id = ?";
       $statement = mysqli_prepare($connection, $query);
@@ -33,8 +31,9 @@ include "inc/header.php";
         $carousel_image = $row['carousel_image'];
 
       ?>
-        <a class="post_link" href="slide_post.php?s_id=<?= $carousel_id; ?>">
-          <div class="col-md-6">
+        <div class="card">
+          <a class="post_link" href="slide_post.php?s_id=<?= $carousel_id; ?>">
+            <!-- <div class="col-md-6"> -->
             <div class="blog-post ">
               <div class="card-body d-flex flex-column align-items-start">
                 <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $carousel_image; ?>" alt="Card image cap">
@@ -42,10 +41,9 @@ include "inc/header.php";
               <div class="post-content">
                 <h1 class="post_title"><?= $carousel_title; ?></h1>
                 <p class="blog-post-meta post_date"><?= $carousel_date;  ?> by <a class="post_author" href="#"><?= $carousel_author;  ?></a></p>
+
                 <!-- REQUST CATEGOROY TITLES -->
                 <?php
-                //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id}");
-
                 $query = "SELECT * FROM categories WHERE cat_id = ?";
                 $statement = mysqli_prepare($connection, $query);
                 mysqli_stmt_bind_param($statement, 'i', $slide_category_id);
@@ -62,8 +60,10 @@ include "inc/header.php";
                 </a>
               </div><!-- post-content -->
             </div><!-- /.blog-post -->
-          </div><!-- alignment -->
-        </a><!-- post link -->
+            <!-- </div> -->
+            <!-- alignment -->
+          </a><!-- post link -->
+        </div><!-- card -->
       <?php }   ?>
     </div><!-- alignment and main blog -->
 

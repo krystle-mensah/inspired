@@ -30,36 +30,35 @@ include "inc/header.php";
           $post_image = $row['post_image'];
 
         ?>
-          <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-            <div class="card">
-              <div class="blog-post">
-                <div class="post_image">
-                  <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
-                </div>
+          <div class="card">
+            <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
+              <figure>
+                <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+              </figure>
+              <!-- <div class="card-body d-flex flex-column"> -->
+              <div class="post-content">
+                <h1 class="post_title"><?= $post_title;  ?></h1>
+                <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
+                <?php
+                $query = "SELECT * FROM categories WHERE cat_id = ?";
+                $statement = mysqli_prepare($connection, $query);
+                mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+                mysqli_stmt_execute($statement);
+                $result = mysqli_stmt_get_result($statement);
+                foreach ($result as $number_key) :
+                  $cat_id = $number_key['cat_id'];
+                  $cat_title = $number_key['cat_title'];
+                endforeach;
+                ?>
+                <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
+                  <p class="card-text"><strong><?= $cat_title;  ?></strong></p>
+                </a>
+              </div><!-- post-content -->
+              <!-- </div> -->
+              <!-- card body -->
+            </a><!-- post link -->
+          </div><!-- card -->
 
-                <div class="card-body d-flex flex-column">
-                  <div class="post-content">
-                    <h1 class="post_title"><?= $post_title;  ?></h1>
-                    <p class="blog-post-meta post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
-                    <?php
-                    $query = "SELECT * FROM categories WHERE cat_id = ?";
-                    $statement = mysqli_prepare($connection, $query);
-                    mysqli_stmt_bind_param($statement, 'i', $post_category_id);
-                    mysqli_stmt_execute($statement);
-                    $result = mysqli_stmt_get_result($statement);
-                    foreach ($result as $number_key) :
-                      $cat_id = $number_key['cat_id'];
-                      $cat_title = $number_key['cat_title'];
-                    endforeach;
-                    ?>
-                    <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
-                      <p class="card-text"><strong><?= $cat_title;  ?></strong></p>
-                    </a>
-                  </div><!-- post-content -->
-                </div><!-- card body -->
-              </div><!-- blog-post -->
-            </div><!-- card -->
-          </a><!-- post link -->
         <?php } ?>
       </div><!-- row -->
     </div><!-- alignment and main blog -->

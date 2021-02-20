@@ -23,7 +23,6 @@
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
 
-
   $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
   if ($insertQry = mysqli_prepare($connection, $sql)) {
@@ -66,11 +65,11 @@
       <?php
 
       $query = "SELECT * FROM categories";
-      $select_categories = mysqli_query($connection, $query);
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_execute($statement);
+      $getResult = mysqli_stmt_get_result($statement);
 
-      confirmQuery($select_categories);
-
-      while ($row = mysqli_fetch_assoc($select_categories)) {
+      while ($row = mysqli_fetch_assoc($getResult)) {
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
 
@@ -86,17 +85,17 @@
     </select>
   </div><!-- form-group -->
   <!-- SUB CATEGORIES -->
-  <!-- CAT ID -->
   <div class="form-group">
     <label for="title">select a sub category</label>
     <select name="postSubCatID" id="">
       <?php
 
       $query = "SELECT * FROM sub_categories";
-      $selectSubCategories = mysqli_query($connection, $query);
-      confirmQuery($selectSubCategories);
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_execute($statement);
+      $getResult = mysqli_stmt_get_result($statement);
 
-      while ($row = mysqli_fetch_assoc($selectSubCategories)) {
+      while ($row = mysqli_fetch_assoc($getResult)) {
         $subCategoriesID = $row['subCategoriesID'];
         $subCategoriesTitle = $row['subCategoriesTitle'];
 
