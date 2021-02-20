@@ -54,13 +54,13 @@ if (isset($_POST['checkBoxArray'])) {
 <div id="bulkOptionContainer" class="col-xs-4 col-lg-2">
   <h1 class="mt-4">All Slides Images</h1>
 
-  <select class="form-control" name="bulk_options" id="">
+  <!-- <select class="form-control" name="bulk_options" id="">
     <option value="">Select Options</option>
     <option value="published">Publish</option>
     <option value="draft">Draft</option>
     <option value="delete">Delete</option>
     <option value="clone">Clone</option>
-  </select>
+  </select> -->
 
 </div><!-- bulkOptionContainer -->
 
@@ -71,8 +71,8 @@ if (isset($_POST['checkBoxArray'])) {
 
     <div class="col-xs-4">
 
-      <input type="submit" name="submit" class="btn btn-success" value="Apply">
-      <a class="btn btn-primary" href="posts.php?source=add_post">New Slide</a>
+      <!-- <input type="submit" name="submit" class="btn btn-success" value="Apply"> -->
+      <!-- <a class="btn btn-primary" href="posts.php?source=add_post">New Slide</a> -->
 
     </div>
 
