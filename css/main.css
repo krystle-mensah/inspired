@@ -200,6 +200,10 @@ a.post_cat_title {
   text-transform: uppercase;
 }
 
+img.img-fluid {
+  width: 100%;
+}
+
 /* div.post_image {
   max-width: 100%;
   height: auto;

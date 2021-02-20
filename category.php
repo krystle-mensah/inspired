@@ -37,7 +37,7 @@ include "inc/header.php";
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
             <!-- <div class="card-body d-flex flex-column align-items-start"> -->
             <figure>
-              <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+              <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
             <!-- </div> -->
             <!-- img-fluid -->

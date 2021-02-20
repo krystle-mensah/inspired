@@ -16,14 +16,10 @@ if (isset($_POST['create_slide'])) {
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
   $sql = "INSERT INTO carousel (carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  // INSERT INTO TABLE COLUMNS AND USE VALUES FROM FORM INPUT
-  //$query = "INSERT INTO carousel(carousel_title,carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) ";
 
   if ($insertQry = mysqli_prepare($connection, $sql)) {
     // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($insertQry, "sssssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $slide_date, $slide_content, $slide_tags);
-    //$query .= "VALUES('{$slide_title}','{$slide_category_id}','{$slide_author}','{$slide_image}',now(),'{$slide_content}', '{$slide_tags}') ";
-    //$create_carousel_query = mysqli_query($connection, $query);
+    mysqli_stmt_bind_param($insertQry, "sisssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $slide_date, $slide_content, $slide_tags);
 
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($insertQry)) {
@@ -33,15 +29,6 @@ if (isset($_POST['create_slide'])) {
       echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
     }
   }
-  // Close statement
-  mysqli_stmt_close($insertQry);
-
-  // Close connection
-  mysqli_close($connection);
-
-
-
-
 
   // $sql = $connection->query(
   //   "INSERT INTO carousel(carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) 
@@ -54,11 +41,18 @@ if (isset($_POST['create_slide'])) {
 
   // echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>"; 
 
+  // Close statement
+  mysqli_stmt_close($insertQry);
+
+  // Close connection
+  mysqli_close($connection);
 }
 
 ?>
 
 <!--ADD SLIDE FROM -->
+
+<h1 class="mt-4"> Add Slide Image</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
   <!-- TITLE -->
@@ -75,7 +69,7 @@ if (isset($_POST['create_slide'])) {
       $query = "SELECT * FROM categories";
       $select_categories = mysqli_query($connection, $query);
 
-      confirmQuery($select_categories);
+      //confirmQuery($select_categories);
 
       while ($row = mysqli_fetch_assoc($select_categories)) {
         $cat_id = $row['cat_id'];

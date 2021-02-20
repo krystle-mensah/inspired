@@ -1,94 +1,93 @@
 <?php include "inc/admin_head.php" ?>
-	<body class="sb-nav-fixed">
-		
-		<!-- TOP NAV -->
-		<?php include "inc/admin_nav.php" ?>
 
-		<!-- PAGE WRAPPER -->
-		<div id="layoutSidenav">
-		
-			<div class="container-fluid">
-				
-				<div class="row">
+<body class="sb-nav-fixed">
 
-					<!-- SIDE NAV -->
-					<?php include "inc/admin_sideNav.php" ?>
-			
-					<!-- CONTENT -->
-					<div id="layoutSidenav_content">
+  <!-- TOP NAV -->
+  <?php include "inc/admin_nav.php" ?>
 
-						<main>
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-lg-12">
-										<h1 class="mt-4">Add Slide Image</h1>
-											<!-- <ol class="breadcrumb mb-4">
+  <!-- PAGE WRAPPER -->
+  <div id="layoutSidenav">
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <!-- SIDE NAV -->
+        <?php include "inc/admin_sideNav.php" ?>
+
+        <!-- CONTENT -->
+        <div id="layoutSidenav_content">
+
+          <main>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <!-- <h1 class="mt-4">Slide Images</h1> -->
+                  <!-- <ol class="breadcrumb mb-4">
 												<li class="breadcrumb-item active">Add Category</li>
 											</ol> -->
-									</div><!-- alignment -->	
+                </div><!-- alignment -->
 
-									
 
-                  <?php 
 
-                    //check url for get source
-                    if(isset($_GET['source'])){
+                <?php
 
-                      // if ture assign variable
-                      $source = $_GET['source'];
+                //check url for get source
+                if (isset($_GET['source'])) {
 
-                      // we have to put an else because im getting an undefined variable.  
-                    } else {
+                  // if ture assign variable
+                  $source = $_GET['source'];
 
-                      // variable assigned to eptmy string
-                      $source = '';
+                  // we have to put an else because im getting an undefined variable.  
+                } else {
 
-                    }
+                  // variable assigned to eptmy string
+                  $source = '';
+                }
 
-                    // switch statement to perform different actions based on the variable condition.
-                    switch($source){
-                      // if source is equal to add post
-                      case 'add_slide_image';
+                // switch statement to perform different actions based on the variable condition.
+                switch ($source) {
+                    // if source is equal to add post
+                  case 'add_slide_image';
 
-                      //then display this
-                      include "inc/add_slide_image.php";
-                    
-                      // stop
-                      break;
+                    //then display this
+                    include "inc/add_slide_image.php";
 
-                      // if source is equal to this page
-                      case 'edit_slide_image';
+                    // stop
+                    break;
 
-                      //then display this
-                      include "inc/edit_slide_image.php";
-                    
-                      // stop
-                      break;
+                    // if source is equal to this page
+                  case 'edit_slide_image';
 
-                      // if case's fail then default to this page.
-                      default: 
+                    //then display this
+                    include "inc/edit_slide_image.php";
 
-                      include "inc/view_all_slider_images.php";
-                      
-                      // stop running  
-                      break;
+                    // stop
+                    break;
 
-                    }
+                    // if case's fail then default to this page.
+                  default:
 
-                  ?>
+                    include "inc/view_all_slider_images.php";
 
-								</div>
-							</div><!-- container fluid -->
+                    // stop running  
+                    break;
+                }
 
-						</main><!-- main -->
+                ?>
 
-					</div> <!-- content -->
+              </div>
+            </div><!-- container fluid -->
 
-				</div><!-- row -->
+          </main><!-- main -->
 
-			</div><!-- container --> 
+        </div> <!-- content -->
 
-		</div><!-- layoutSidenav --> 
+      </div><!-- row -->
 
-		<?php include "inc/admin_footer.php" ?> 
-    <?php include "inc/scripts.php";?>      
+    </div><!-- container -->
+
+  </div><!-- layoutSidenav -->
+
+  <?php include "inc/admin_footer.php" ?>
+  <?php include "inc/scripts.php"; ?>
