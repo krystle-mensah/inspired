@@ -23,24 +23,19 @@ include "inc/header.php";
 
       foreach ($result as $row) {
 
-        //Then assign the row array to a variable
         $post_category_id = $row['post_category_id'];
         $post_id = $row['post_id'];
         $post_title = $row['post_title'];
         $post_author = $row['post_author'];
         $post_date = $row['post_date'];
-        // reference form the database
         $post_image = $row['post_image'];
 
       ?>
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-            <!-- <div class="card-body d-flex flex-column align-items-start"> -->
             <figure>
               <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
-            <!-- </div> -->
-            <!-- img-fluid -->
             <div class="post-content">
               <h1 class="post_title"><?= $post_title; ?></h1>
               <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author; ?></a></p>
@@ -64,7 +59,7 @@ include "inc/header.php";
             </div><!-- post-content -->
           </a><!-- post link -->
         </div><!-- card -->
-      <?php }   ?>
+      <?php } ?>
     </div><!-- alignment and main blog -->
 
     <!-- SIDEBAR -->
