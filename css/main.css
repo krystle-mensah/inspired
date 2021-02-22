@@ -3,9 +3,15 @@ body {
   color: #0d0d0d;
 }
 
-/* a {
-  color: #ccc;
-} */
+iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new_row {
+  margin: 0 -5px;
+}
 
 .card-body {
   padding: 0px;
@@ -13,7 +19,7 @@ body {
 
 .post-content {
   text-align: center;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
 }
 
 /* post page */
@@ -200,9 +206,9 @@ a.post_cat_title {
   text-transform: uppercase;
 }
 
-img.img-fluid {
+/* img.img-fluid {
   width: 100%;
-}
+} */
 
 /* div.post_image {
   max-width: 100%;

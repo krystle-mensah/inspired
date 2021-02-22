@@ -27,12 +27,13 @@ if (isset($_POST['submit'])) {
 	// now we wont to Get the values from the user and clean string
 	// if( !empty( $user_firstname ) && !empty( $user_lastname ) && !empty( $email ) && !empty( $username ) && !empty( $password ) ){
 
-	$user_firstname				  = $connection->real_escape_string($_POST['user_firstname']);
-	$user_lastname  				= $connection->real_escape_string($_POST['user_lastname']);
-	$email          				= $connection->real_escape_string($_POST['email']);
-	$username               = $connection->real_escape_string($_POST['username']);
-	$password               = $connection->real_escape_string($_POST['password']);
-	$confirm_password       = $connection->real_escape_string($_POST['confirm_password']);
+	$user_firstname = mysqli_real_escape_string($connection, $_POST['user_firstname']);
+	$user_lastname = mysqli_real_escape_string($connection, $_POST['user_lastname']);
+	$email = mysqli_real_escape_string($connection, $_POST['email']);
+	$username = mysqli_real_escape_string($connection, $_POST['username']);
+	$password = mysqli_real_escape_string($connection, $_POST['password']);
+	$confirm_password = mysqli_real_escape_string($connection, $_POST['confirm_password']);
+
 
 	if ($password != $confirm_password) {
 
@@ -45,7 +46,14 @@ if (isset($_POST['submit'])) {
 		//now Insert into this Table and these Columns
 		$new_register = $connection->query("INSERT INTO users (user_firstname, user_lastname, user_email, username, user_password, user_role) 
 		VALUES ('{$user_firstname}', '{$user_lastname}', '{$email}', '{$username}', '{$hash}', 'subscriber')");
-		echo "you are now registered!";
+		echo "<h1>you are now registered!</h1>";
+
+
+		//$query = "INSERT INTO users(user_firstname, user_lastname, user_role,username,user_email,user_password) ";
+		//$query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}', '{$user_password}') "; 
+
+
+
 	}
 	// }
 
