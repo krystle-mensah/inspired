@@ -14,53 +14,54 @@ include "inc/header.php";
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog_main">
-      <div class="row h-100">
-        <?php
-        $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
-        $Statement = mysqli_prepare($connection, $query);
-        mysqli_stmt_execute($Statement);
-        $getResult = mysqli_stmt_get_result($Statement);
+      <!-- <div class="row h-100"> -->
+      <?php
+      $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
+      $Statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_execute($Statement);
+      $getResult = mysqli_stmt_get_result($Statement);
 
-        while ($row = mysqli_fetch_array($getResult)) {
+      while ($row = mysqli_fetch_array($getResult)) {
 
-          $post_category_id = $row['post_category_id'];
-          $post_title = $row['post_title'];
-          $post_author = $row['post_author'];
-          $post_date = $row['post_date'];
-          $post_image = $row['post_image'];
+        $post_category_id = $row['post_category_id'];
+        $post_title = $row['post_title'];
+        $post_author = $row['post_author'];
+        $post_date = $row['post_date'];
+        $post_image = $row['post_image'];
 
-        ?>
-          <div class="card">
-            <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-              <figure>
-                <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
-              </figure>
-              <!-- <div class="card-body d-flex flex-column"> -->
-              <div class="post-content">
-                <h1 class="post_title"><?= $post_title;  ?></h1>
-                <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
-                <?php
-                $query = "SELECT * FROM categories WHERE cat_id = ?";
-                $statement = mysqli_prepare($connection, $query);
-                mysqli_stmt_bind_param($statement, 'i', $post_category_id);
-                mysqli_stmt_execute($statement);
-                $result = mysqli_stmt_get_result($statement);
-                foreach ($result as $number_key) :
-                  $cat_id = $number_key['cat_id'];
-                  $cat_title = $number_key['cat_title'];
-                endforeach;
-                ?>
-                <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
-                  <p class="card-text"><strong><?= $cat_title;  ?></strong></p>
-                </a>
-              </div><!-- post-content -->
-              <!-- </div> -->
-              <!-- card body -->
-            </a><!-- post link -->
-          </div><!-- card -->
+      ?>
+        <div class="card">
+          <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
+            <figure>
+              <img class="card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
+            </figure>
+            <!-- <div class="card-body d-flex flex-column"> -->
+            <div class="post-content card-body">
+              <h1 class="post_title"><?= $post_title;  ?></h1>
+              <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
+              <?php
+              $query = "SELECT * FROM categories WHERE cat_id = ?";
+              $statement = mysqli_prepare($connection, $query);
+              mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+              mysqli_stmt_execute($statement);
+              $result = mysqli_stmt_get_result($statement);
+              foreach ($result as $number_key) :
+                $cat_id = $number_key['cat_id'];
+                $cat_title = $number_key['cat_title'];
+              endforeach;
+              ?>
+              <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
+                <p class="card-text"><strong><?= $cat_title;  ?></strong></p>
+              </a>
+            </div><!-- post-content -->
+            <!-- </div> -->
+            <!-- card body -->
+          </a><!-- post link -->
+        </div><!-- card -->
 
-        <?php } ?>
-      </div><!-- row -->
+      <?php } ?>
+      <!-- </div> -->
+      <!-- row -->
     </div><!-- alignment and main blog -->
 
     <!-- SIDEBAR -->
