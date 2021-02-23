@@ -14,7 +14,6 @@ include "inc/header.php";
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog_main">
-      <!-- <div class="row h-100"> -->
       <?php
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
       $Statement = mysqli_prepare($connection, $query);
@@ -35,7 +34,6 @@ include "inc/header.php";
             <figure>
               <img class="card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
-            <!-- <div class="card-body d-flex flex-column"> -->
             <div class="post-content card-body">
               <h1 class="post_title"><?= $post_title;  ?></h1>
               <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
@@ -54,14 +52,9 @@ include "inc/header.php";
                 <p class="card-text"><strong><?= $cat_title;  ?></strong></p>
               </a>
             </div><!-- post-content -->
-            <!-- </div> -->
-            <!-- card body -->
           </a><!-- post link -->
         </div><!-- card -->
-
       <?php } ?>
-      <!-- </div> -->
-      <!-- row -->
     </div><!-- alignment and main blog -->
 
     <!-- SIDEBAR -->

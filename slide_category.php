@@ -11,7 +11,7 @@ include "inc/header.php";
 
 <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8 blog_main">
+    <div class="col-md-8">
       <!--  condition ? true else "not set" -->
       <?php isset($_GET['category']) ? $slide_category_id = $_GET['category'] : "not set";
 
@@ -31,12 +31,12 @@ include "inc/header.php";
         $carousel_image = $row['carousel_image'];
 
       ?>
-        <div class="card">
+        <div class="card card_slide">
           <a class="post_link" href="slide_post.php?s_id=<?= $carousel_id; ?>">
             <figure>
-              <img class="img-fluid" src="img/<?= $carousel_image; ?>" alt="Card image cap">
+              <img class="card-img-top" src="img/<?= $carousel_image; ?>" alt="Card image cap">
             </figure>
-            <div class="post-content">
+            <div class="post-content card-body">
               <h1 class="post_title"><?= $carousel_title; ?></h1>
               <p class="blog-post-meta post_date"><?= $carousel_date;  ?> by <a class="post_author" href="#"><?= $carousel_author;  ?></a></p>
 
