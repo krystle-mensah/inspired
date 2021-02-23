@@ -4,39 +4,37 @@ if (isset($_POST['create_slide'])) {
   // TEST - type in the title field then click button 
   ////echo $_POST['title']; // output - we are geeting the title
 
+  //ADD THESE NAME VALUES 
   $slide_title        = $_POST['title'];
-  $slide_category_id  = $_POST['slide_category_id'];
   $slide_author       = $_POST['author'];
   $slide_image        = $_FILES['image']['name'];
   $slide_image_temp   = $_FILES['image']['tmp_name'];
-  $slide_tags         = $_POST['slide_tags'];
   $slide_content      = $_POST['slide_content'];
+  $slide_tags         = $_POST['slide_tags'];
   $slide_date         = date('Y-m-d');
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
-  $sql = "INSERT INTO carousel (carousel_title, carousel_cat_id, carousel_author, carousel_image, carousel_content, carousel_date, carousel_tags) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  $sql = "INSERT INTO carousel (carousel_title, carousel_author, carousel_image, carousel_content, carousel_tags, carousel_date) VALUES (?, ?, ?, ?, ?,?)";
 
   if ($insertQry = mysqli_prepare($connection, $sql)) {
     // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($insertQry, "sisssss", $slide_title, $slide_category_id, $slide_author, $slide_image, $slide_date, $slide_content, $slide_tags);
+    mysqli_stmt_bind_param($insertQry, "ssssss", $slide_title, $slide_author, $slide_image, $slide_content, $slide_tags, $slide_date);
 
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($insertQry)) {
-      //echo "Records inserted successfully.";
-      echo "<p class='success-button'>Post Created.";
+      echo "Records inserted successfully.";
     } else {
       echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
     }
+    // Close statement
+    mysqli_stmt_close($insertQry);
   }
+  // Close connection
+  mysqli_close($connection);
 
   //echo "<p class='success-button'>Slide Created. <a href='slide_images.php'>Edit More Slides</a> or <a href='../slide_post.php?s_id={$GETslide_id}'>View slide</a>";
 
-  // Close statement
-  mysqli_stmt_close($insertQry);
-
-  // Close connection
-  mysqli_close($connection);
 }
 
 ?>
@@ -51,34 +49,6 @@ if (isset($_POST['create_slide'])) {
     <label for="title">Slide Title</label>
     <input type="text" class="form-control" name="title">
   </div>
-
-  <div class="form-group">
-    <select name="slide_category_id" id="">
-
-      <?php
-
-      $query = "SELECT * FROM categories";
-      $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_execute($statement);
-      $select_categories = mysqli_stmt_get_result($statement);
-      while ($row = mysqli_fetch_assoc($select_categories)) {
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
-
-        if ($cat_id == $slide_category_id) {
-
-          echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
-        } else {
-
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
-        }
-      }
-
-      ?>
-
-    </select>
-
-  </div><!-- form-group -->
 
   <!-- AUTHOR -->
   <div class="form-group">
