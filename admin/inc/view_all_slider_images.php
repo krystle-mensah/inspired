@@ -92,7 +92,11 @@ if (isset($_GET['delete'])) {
 
   echo $the_slide_id = $_GET['delete'];
 
-  $delete_slide_sql = $connection->query("DELETE FROM carousel WHERE carousel_id = {$the_slide_id}");
+
+  $delete_slide_sql = "DELETE FROM carousel WHERE carousel_id = ?";
+  $deleteStatement = mysqli_prepare($connection, $delete_slide_sql);
+  mysqli_stmt_bind_param($deleteStatement, 'i', $the_slide_id);
+  mysqli_stmt_execute($deleteStatement);
 
   // after we delete a post the page will refresh
   header("Location: slider_images.php");
