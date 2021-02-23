@@ -1,56 +1,3 @@
-<?php
-//this is a bet strange i dont understand how the input apply is connected to the if set.
-
-// first we check for activity on the checkbox
-if (isset($_POST['checkBoxArray'])) {
-  //echo 'receving data'; // output - there is output when the apply button is clicked
-
-  // now we wont to loop around the checkbox
-
-  foreach ($_POST['checkBoxArray'] as $postValueId) {
-
-    //print_r($_POST['checkBoxArray']); // OUTPUTS - Key and value
-    //print_r($checkBoxValue);// OUTPUTS - Value  
-
-    //echo $bulk_options = $_POST['bulk_options']; // output - option values
-
-    $bulk_options = $_POST['bulk_options'];
-
-    switch ($bulk_options) {
-      case 'published':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'draft':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'delete':
-        $query = "DELETE FROM posts WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        if (!$update_to_published_status) {
-
-          // Print a message and terminate the current script:
-          die("QUERY FAILED" . mysqli_error($connection));
-        }
-
-        break;
-    } //switch
-
-  } // foreach
-
-} // isset
-
-?>
-
-
 <div id="bulkOptionContainer" class="col-xs-4 col-lg-2">
   <h1 class="mt-4">All Slides Images</h1>
 
@@ -100,9 +47,9 @@ foreach ($sql as $row) :
   // values we bring back
 
   $slide_id = $row['carousel_id'];
-  $slide_author = $row['carousel_author'];
+  $slide_cat_title = $row['carouselCat_title'];
   $slide_title = $row['carousel_title'];
-  $slide_category_id = $row['carousel_cat_id'];
+  $slide_author = $row['carousel_author'];
   $slide_image = $row['carousel_image'];
   $slide_tages = $row['carousel_tags'];
   $slide_date = $row['carousel_date'];
@@ -114,15 +61,8 @@ foreach ($sql as $row) :
   echo "<td> $slide_author</td>";
   echo "<td> $slide_title</td>";
 
-  $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$slide_category_id} ");
+  echo "<td>$slide_cat_title</td>";
 
-  foreach ($sql as $row) {
-
-    $cat_id = $row['cat_id'];
-    $cat_title = $row['cat_title'];
-
-    echo "<td>$cat_title</td>";
-  }
   echo "<td><img width='100' src='../img/$slide_image' alt='image'></td>";
   echo "<td>$slide_tages</td>";
   echo "<td>$slide_date</td>";

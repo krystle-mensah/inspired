@@ -21,7 +21,7 @@ $getResult = mysqli_stmt_get_result($Statement);
 
     $i = 0;
     foreach ($getResult as $row) {
-      $carousel_cat_id =  $row['carousel_cat_id'];
+      $carouselCat_title =  $row['carouselCat_title'];
       $carousel_title =  $row['carousel_title'];
 
       $slide_id =  $row['carousel_id'];
@@ -55,18 +55,6 @@ $getResult = mysqli_stmt_get_result($Statement);
         <img class="first-slide" src="img/<?= $carousel_image; ?>">
         <div class="container slide_content">
           <div class="carousel-caption">
-            <?php
-            $query = "SELECT * FROM categories WHERE cat_id = ?";
-            $statement = mysqli_prepare($connection, $query);
-            mysqli_stmt_bind_param($statement, 'i', $carousel_cat_id);
-            mysqli_stmt_execute($statement);
-            $result = mysqli_stmt_get_result($statement);
-
-            foreach ($result as $row) {
-              $cat_id = $row['cat_id'];
-              $cat_title = $row['cat_title'];
-            }; ?>
-
             <a class="carousel_cat_link" href="slide_category.php?category=<?= $cat_id; ?>"><?= $cat_title; ?></a>
             <a class="carousel_title" href="slide_post.php?s_id=<?= $slide_id; ?>">
               <?= $carousel_title; ?>
