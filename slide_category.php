@@ -12,18 +12,15 @@ include "inc/header.php";
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8">
-      <!--  condition ? true else "not set" -->
-      <?php isset($_GET['category']) ? $slide_category_id = $_GET['category'] : "not set";
-
-      $query = "SELECT * FROM carousel WHERE carousel_cat_id = ?";
+      <?php
+      $query = "SELECT * FROM carousel";
       $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_bind_param($statement, 'i', $slide_category_id);
       mysqli_stmt_execute($statement);
       $result = mysqli_stmt_get_result($statement);
 
       foreach ($result as $row) {
 
-        $slide_category_id = $row['carousel_cat_id'];
+        $carouselCat_title = $row['carouselCat_title'];
         $carousel_id = $row['carousel_id'];
         $carousel_title = $row['carousel_title'];
         $carousel_author = $row['carousel_author'];
@@ -39,22 +36,8 @@ include "inc/header.php";
             <div class="post-content card-body">
               <h1 class="post_title"><?= $carousel_title; ?></h1>
               <p class="blog-post-meta post_date"><?= $carousel_date;  ?> by <a class="post_author" href="#"><?= $carousel_author;  ?></a></p>
-
-              <!-- REQUST CATEGOROY TITLES -->
-              <?php
-              $query = "SELECT * FROM categories WHERE cat_id = ?";
-              $statement = mysqli_prepare($connection, $query);
-              mysqli_stmt_bind_param($statement, 'i', $slide_category_id);
-              mysqli_stmt_execute($statement);
-              $result = mysqli_stmt_get_result($statement);
-
-              foreach ($result as $row) {
-                $cat_id = $row['cat_id'];
-                $cat_title = $row['cat_title'];
-              }
-              ?>
-              <a class="post_cat_title" href="category.php?category=<?= $cat_id;  ?>">
-                <p><strong class="post_cat_title"><?= $cat_title;  ?></strong></p>
+              <a class="post_cat_title" href="#">
+                <p><strong class="post_cat_title"><?= $carouselCat_title;  ?></strong></p>
               </a>
             </div><!-- post-content -->
           </a><!-- post link -->
