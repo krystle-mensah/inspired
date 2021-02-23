@@ -43,8 +43,6 @@ if (isset($_POST['update_post'])) {
   move_uploaded_file($post_image_temp, "../img/$post_image");
 
   if (empty($post_image)) {
-
-    //select all where col id = var
     $query = "SELECT * FROM posts WHERE post_id = ? ";
 
     $statement = mysqli_prepare($connection, $query);
