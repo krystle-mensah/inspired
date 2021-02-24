@@ -43,6 +43,7 @@ $getResult = mysqli_stmt_get_result($Statement);
     foreach ($getResult as $row) {
       $carousel_image =  $row['carousel_image'];
       $carousel_title =  $row['carousel_title'];
+      $carouselCat_title =  $row['carouselCat_title'];
       $actives = '';
 
       if ($i == 0) {
@@ -55,7 +56,7 @@ $getResult = mysqli_stmt_get_result($Statement);
         <img class="first-slide" src="img/<?= $carousel_image; ?>">
         <div class="container slide_content">
           <div class="carousel-caption">
-            <a class="carousel_cat_link" href="slide_category.php?category=<?= $cat_id; ?>"><?= $cat_title; ?></a>
+            <a class="carousel_cat_link" href="slide_category.php?category=<?= $cat_id; ?>">News</a>
             <a class="carousel_title" href="slide_post.php?s_id=<?= $slide_id; ?>">
               <?= $carousel_title; ?>
             </a>
@@ -93,7 +94,5 @@ KEEP
     </div>
   </div>
 </div> 
-
-
 
 -->
