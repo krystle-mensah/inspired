@@ -96,9 +96,21 @@ if (isset($_POST['checkBoxArray'])) {
 
 </form>
 
-<?php $sql = $connection->query("SELECT * FROM posts");
+<?php //$sql = $connection->query("SELECT * FROM posts");
 
-foreach ($sql as $row) {
+$qry = "SELECT * FROM posts";
+
+$allPostStatment = mysqli_prepare($connection, $qry);
+
+mysqli_stmt_execute($allPostStatment);
+
+$getResult = mysqli_stmt_get_result($allPostStatment);
+
+// while ($rows = mysqli_fetch_assoc($getResult)) {
+//   print_r($rows);
+// }
+
+foreach ($getResult as $row) {
 
   // values we bring back and assign to variable
   $post_id = $row['post_id'];
@@ -114,15 +126,25 @@ foreach ($sql as $row) {
   //display 
   echo "<tr>";
 ?>
-  <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id ?>'></td>
+  <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?= $post_id ?>'></td>
 <?php
 
   echo "<td>$post_id</td>";
   echo "<td> $post_author</td>";
   echo "<td> $post_title</td>";
 
-  $sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$post_category_id} ");
-  foreach ($sql as $row) {
+  //$sql = $connection->query("SELECT * FROM categories WHERE cat_id = {$post_category_id} ");
+
+  $query = "SELECT * FROM categories WHERE cat_id = ?";
+  $statement = mysqli_prepare($connection, $query);
+  mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+  mysqli_stmt_execute($statement);
+  $result = mysqli_stmt_get_result($statement);
+
+  // while ($rows = mysqli_fetch_assoc($getResult)) {
+  //   print_r($rows);
+  // }
+  foreach ($result as $row) {
     // Then assign the array to a variable
     $cat_id = $row['cat_id'];
     $cat_title = $row['cat_title'];
@@ -130,8 +152,14 @@ foreach ($sql as $row) {
     echo "<td>{$cat_title}</td>";
   }
   //SUB CATEGORY
-  $sql = $connection->query("SELECT * FROM sub_categories WHERE subCategoriesID = {$postSubCatID} ");
-  foreach ($sql as $row) {
+  //$sql = $connection->query("SELECT * FROM sub_categories WHERE subCategoriesID = {$postSubCatID} ");
+  $query = "SELECT * FROM sub_categories WHERE subCategoriesID = ?";
+  $statement = mysqli_prepare($connection, $query);
+  mysqli_stmt_bind_param($statement, 'i', $postSubCatID);
+  mysqli_stmt_execute($statement);
+  $result = mysqli_stmt_get_result($statement);
+
+  foreach ($result as $row) {
     $subCategoriesID = $row['subCategoriesID'];
     $subCategoriesTitle = $row['subCategoriesTitle'];
     // display the cat title 
