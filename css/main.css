@@ -270,9 +270,14 @@ NAVIGATION LAYOUT
 	display: inline-block;
 	text-decoration: none;
 }
+
 .drop_btn {
 	background-color: #fff;
 	border: none;
+}
+
+button:focus {
+	outline: none;
 }
 
 .site-navigation a.nav_link::after {
