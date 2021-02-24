@@ -31,7 +31,7 @@ include "inc/header.php";
       ?>
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-            <figure>
+            <figure class="d-flex flex-column">
               <img class="card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
             <div class="post-content card-body">

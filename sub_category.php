@@ -35,7 +35,7 @@ include "inc/header.php";
         <a class="post_link" href="post.php?p_id=<?= $post_id; ?>">
           <div class="col-md-6">
             <div class="blog-post">
-              <div class="card-body d-flex flex-column align-items-start">
+              <div class="card-body d-flex flex-column">
                 <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
               </div>
               <div class="post-content">
