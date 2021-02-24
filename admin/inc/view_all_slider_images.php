@@ -92,7 +92,6 @@ if (isset($_GET['delete'])) {
 
   echo $the_slide_id = $_GET['delete'];
 
-
   $delete_slide_sql = "DELETE FROM carousel WHERE carousel_id = ?";
   $deleteStatement = mysqli_prepare($connection, $delete_slide_sql);
   mysqli_stmt_bind_param($deleteStatement, 'i', $the_slide_id);
