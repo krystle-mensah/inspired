@@ -9,17 +9,8 @@ iframe {
 	margin-right: auto;
 }
 
-.new_row {
-	margin: 0 -5px;
-}
-
-/* .card-body {
-	padding: 0px;
-} */
-
 .post-content {
 	text-align: center;
-	/* padding: 10px 20px; */
 }
 
 /* post page */
@@ -205,7 +196,7 @@ a.post_cat_title {
 }
 
 .post_img {
-	height: 300px;
+	height: 300px; /* images need a fixed height*/
 }
 
 .card:hover::after {
