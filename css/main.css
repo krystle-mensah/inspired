@@ -212,7 +212,7 @@ padding-right
 padding-bottom
 padding-left */
 .card {
-	float: left; /*postion to left*/
+	display: inline-flex;
 	width: 45%;
 	margin: 0 1rem 1rem 1rem; /*space around this element*/
 	background: white;
@@ -228,6 +228,7 @@ padding-left */
 .blog_main {
 	display: flex;
 	flex-wrap: wrap;
+	height: 300px;
 }
 
 /* END INDEX  */
