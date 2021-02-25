@@ -1,3 +1,4 @@
-1.) change the hover stat on navigation/DONE
-2.) pagenation/DONE 
-3.) redesign the cards/DONE 
+1.) add pageination to all pages 
+2.) twitter elelment is to long/DONE 
+3.) remove page number from index page 
+4.) check mobile
