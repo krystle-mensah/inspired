@@ -32,7 +32,7 @@ include "inc/header.php";
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
             <figure class="d-flex flex-column">
-              <img class="card-img-top" src="img/<?= $post_image; ?>" alt="Card image cap">
+              <img class="card-img-top post_img" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
             <div class="post-content card-body">
               <h1 class="post_title"><?= $post_title;  ?></h1>

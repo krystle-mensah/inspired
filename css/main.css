@@ -204,14 +204,9 @@ a.post_cat_title {
 	text-transform: uppercase;
 }
 
-/* img.img-fluid {
-  width: 100%;
-} */
-
-/* div.post_image {
-  max-width: 100%;
-  height: auto;
-} */
+.post_img {
+	height: 300px;
+}
 
 .card:hover::after {
 	content: '';
@@ -226,12 +221,12 @@ padding-right
 padding-bottom
 padding-left */
 .card {
-	border: none;
-	float: left;
-	width: 50%;
-	padding: 0px 10px 0px 0px;
+	float: left; /*postion to left*/
+	width: 45%;
+	margin: 0 1rem 1rem 1rem; /*space around this element*/
 	background: white;
-	margin-bottom: 2em;
+	box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+	border: none;
 }
 
 .card_slide {

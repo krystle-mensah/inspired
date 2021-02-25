@@ -33,10 +33,10 @@ include "inc/header.php";
       ?>
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
-            <figure>
-              <img class="img-fluid" src="img/<?= $post_image; ?>" alt="Card image cap">
+            <figure class="d-flex flex-column">
+              <img class="card-img-top post_img" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
-            <div class="post-content">
+            <div class="post-content card-body">
               <h1 class="post_title"><?= $post_title; ?></h1>
               <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author; ?></a></p>
 
