@@ -13,14 +13,12 @@ include "inc/header.php";
 
 <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 blog_main">
 
       <?php
-      $per_page = 5;
+      $per_page = 4;
 
       if (isset($_GET['page'])) {
-
-
 
         $page = $_GET['page'];
       } else {
@@ -32,28 +30,14 @@ include "inc/header.php";
         $page_1 = ($page *  $per_page) -  $per_page;
       }
 
-
-      ?>
-
-
-      <?php
-
       // first find out how many posts you have
       $post_query_count = "SELECT * FROM `posts` ";
-      $find_count = mysqli_query($connection, $post_query_count);
+      $statement = mysqli_prepare($connection, $post_query_count);
+      mysqli_stmt_execute($statement);
+      $find_count = mysqli_stmt_get_result($statement);
       $count = mysqli_num_rows($find_count);
 
       $count =  ceil($count / $per_page);
-
-      ?>
-
-      <p><?php echo $count; ?></p>
-
-
-      <?php
-
-
-
 
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT $page_1, $per_page";
       //$query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
@@ -97,29 +81,29 @@ include "inc/header.php";
         </div><!-- card -->
       <?php } ?>
 
-      <div class="custom_pagination">
-        <!-- <ul class="pagination"> -->
-        <?php
-
-        // first display each number
-        for ($i = 1; $i <= $count; $i++) {
-
-          //if ($i == $page) {
-          echo "<a href='index.php?page={$i}'>{$i}</a>";
-          //} else {
-          //}
-        }
-
-        ?>
-        <!-- </ul> -->
-      </div><!-- pagination -->
-
     </div><!-- alignment and main blog -->
 
     <!-- SIDEBAR -->
     <aside class="col-md-4 blog-sidebar">
       <?php include "inc/sidebar.php"; ?>
     </aside><!-- /.blog-sidebar -->
+
+    <div class="custom_pagination">
+      <!-- <ul class="pagination"> -->
+      <?php
+
+      // first display each number
+      for ($i = 1; $i <= $count; $i++) {
+
+        //if ($i == $page) {
+        echo "<a href='index.php?page={$i}'>{$i}</a>";
+        //} else {
+        //}
+      }
+
+      ?>
+      <!-- </ul> -->
+    </div><!-- pagination -->
 
   </div><!-- /.row -->
 

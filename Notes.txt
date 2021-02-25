@@ -1,4 +1,4 @@
 1.) DONE
 2.) twitter elelment is to long/DONE 
 3.) remove page number from index page/DONE  
-4.) check mobile
+4.) check mobile/DONE 
