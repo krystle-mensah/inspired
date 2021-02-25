@@ -13,50 +13,9 @@ include "inc/header.php";
 
 <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8">
-
+    <div class="col-md-8 blog_main">
       <?php
-      $per_page = 5;
-
-      if (isset($_GET['page'])) {
-
-
-
-        $page = $_GET['page'];
-      } else {
-        $page = "";
-      }
-      if ($page == "" || $page == 1) {
-        $page_1 = 0;
-      } else {
-        $page_1 = ($page *  $per_page) -  $per_page;
-      }
-
-
-      ?>
-
-
-      <?php
-
-      // first find out how many posts you have
-      $post_query_count = "SELECT * FROM `posts` ";
-      $find_count = mysqli_query($connection, $post_query_count);
-      $count = mysqli_num_rows($find_count);
-
-      $count =  ceil($count / $per_page);
-
-      ?>
-
-      <p><?php echo $count; ?></p>
-
-
-      <?php
-
-
-
-
-      $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT $page_1, $per_page";
-      //$query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
+      $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
       $Statement = mysqli_prepare($connection, $query);
       mysqli_stmt_execute($Statement);
       $getResult = mysqli_stmt_get_result($Statement);
@@ -96,24 +55,6 @@ include "inc/header.php";
           </a><!-- post link -->
         </div><!-- card -->
       <?php } ?>
-
-      <div class="custom_pagination">
-        <!-- <ul class="pagination"> -->
-        <?php
-
-        // first display each number
-        for ($i = 1; $i <= $count; $i++) {
-
-          //if ($i == $page) {
-          echo "<a href='index.php?page={$i}'>{$i}</a>";
-          //} else {
-          //}
-        }
-
-        ?>
-        <!-- </ul> -->
-      </div><!-- pagination -->
-
     </div><!-- alignment and main blog -->
 
     <!-- SIDEBAR -->
@@ -123,7 +64,11 @@ include "inc/header.php";
 
   </div><!-- /.row -->
 
-
+  <!-- PAGEINATION -->
+  <nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+  </nav>
 
 </main><!-- /.container -->
 
