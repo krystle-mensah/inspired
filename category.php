@@ -16,7 +16,34 @@ include "inc/header.php";
       <!--  contion ? true else "not set" -->
       <?php isset($_GET['category']) ? $post_category_id = $_GET['category'] : "not set";
 
-      $query = "SELECT * FROM posts WHERE post_category_id = ?";
+      // if (isset($_GET['category_page'])) {
+      //   echo $page = $_GET['category_page'];
+      // } else {
+      //   echo $page = "";
+      // }
+
+      // if ($page == "" || $page == 1) {
+      //   $category_page_1 = 0;
+      // } else {
+      //   $category_page_1 = ($page *  5) -  5;
+      // }
+
+
+      // CATEGORY COUNT FOR PAGE
+      // $categoryID_query_count = "SELECT * FROM `posts` WHERE post_category_id = ?";
+      // $statement = mysqli_prepare($connection, $categoryID_query_count);
+      // mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+      // mysqli_stmt_execute($statement);
+      // $find_count = mysqli_stmt_get_result($statement);
+      // $count = mysqli_num_rows($find_count);
+
+
+      //$count =  ceil($count / 5);
+
+      //$count =  $count / 5;
+
+      // FETCH QUERY 
+      $query = "SELECT * FROM `posts` WHERE post_category_id = ? ORDER BY `posts`.`post_date` DESC LIMIT  6";
       $statement = mysqli_prepare($connection, $query);
       mysqli_stmt_bind_param($statement, 'i', $post_category_id);
       mysqli_stmt_execute($statement);
@@ -32,6 +59,7 @@ include "inc/header.php";
         $post_image = $row['post_image'];
 
       ?>
+
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
             <figure class="d-flex flex-column">
@@ -67,6 +95,27 @@ include "inc/header.php";
     <aside class="col-md-4 blog-sidebar">
       <?php include "inc/sidebar.php"; ?>
     </aside><!-- /.blog-sidebar -->
+
+    <!-- PAGEINATION -->
+    <div class="custom_pagination">
+
+      <!-- <p> -->
+      <!-- echo $count  -->
+      <!-- </p> -->
+
+      <?php
+
+      // first display each number
+      //for ($i = 1; $i <= $count; $i++) {
+
+      // if ($i == $page) {
+      //echo "<a href='category.php?category_page={$i}'>{$i}</a>";
+      // } else {
+      // }
+      //}
+
+      ?>
+    </div><!-- pagination -->
 
   </div><!-- /.row -->
 
