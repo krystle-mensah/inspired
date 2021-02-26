@@ -90,7 +90,6 @@ include "inc/header.php";
 
     <!-- PAGEINATION -->
     <div class="custom_pagination">
-      <!-- <ul class="pagination"> -->
       <?php
 
       // first display each number
@@ -103,7 +102,6 @@ include "inc/header.php";
       }
 
       ?>
-      <!-- </ul> -->
     </div><!-- pagination -->
 
   </div><!-- /.row -->
