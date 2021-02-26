@@ -1,4 +1,5 @@
-1.) add a limit in sub cat page/DONE  
-2.) and news page - limit /DONE 
-3.) fix the footer on the category page/DONE  
-4.) 
+1.) make the carsoul title smaller/done 
+2.) Remove old pagenation for slide 
+3.) change the post title weight 
+4.) styling pagenationd
+pass limiter in as a varible 
