@@ -52,12 +52,6 @@ include "inc/header.php";
 
   </div><!-- /.row -->
 
-  <!-- PAGEINATION -->
-  <nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-  </nav>
-
 </main><!-- /.container -->
 
 <?php include "inc/footer.php"; ?>
