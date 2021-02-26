@@ -95,10 +95,11 @@ include "inc/header.php";
       // first display each number
       for ($i = 1; $i <= $count; $i++) {
 
-        //if ($i == $page) {
-        echo "<a href='index.php?page={$i}'>{$i}</a>";
-        //} else {
-        //}
+        if ($i == $page) {
+          echo "<a class='active' href='index.php?page={$i}'>{$i}</a>";
+        } else {
+          echo "<a href='index.php?page={$i}'>{$i}</a>";
+        }
       }
 
       ?>

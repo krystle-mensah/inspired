@@ -187,7 +187,8 @@ p.post_date {
 	color: #0d0d0d;
 	font-size: 15px;
 	text-transform: capitalize;
-	/* font-weight: 300; */
+	font-weight: 300;
+	line-height: 1.5;
 }
 
 .post_title:hover {
@@ -444,7 +445,7 @@ PAGINATION LAYOUT
 }
 
 .custom_pagination a.active {
-	background-color: #4caf50;
+	background-color: #de5133;
 	color: white;
 	border-radius: 5px;
 }
