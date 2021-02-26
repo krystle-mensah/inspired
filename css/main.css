@@ -160,6 +160,11 @@ a.carousel_cat_link {
 INDEX LAYOUT
 =================================*/
 
+main.container {
+	padding-bottom: 30px;
+	margin-bottom: 45px;
+}
+
 a.post_link {
 	text-decoration: none;
 	color: #ccc;

@@ -1,6 +1,7 @@
 <?php
 
-$result = "SELECT * FROM carousel";
+$result = "SELECT * FROM carousel ORDER BY `carousel`.`carousel_date` DESC LIMIT  6";
+
 $Statement = mysqli_prepare($connection, $result);
 mysqli_stmt_execute($Statement);
 $getResult = mysqli_stmt_get_result($Statement);

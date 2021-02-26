@@ -16,7 +16,7 @@ include "inc/header.php";
       <?php isset($_GET['subCategory']) ? $postSubCatID = $_GET['subCategory'] : "not set";
 
 
-      $query = "SELECT * FROM posts WHERE postSubCatID = ?";
+      $query = "SELECT * FROM posts WHERE postSubCatID = ? ORDER BY `posts`.`post_date` DESC LIMIT 6";
       $statement = mysqli_prepare($connection, $query);
       mysqli_stmt_bind_param($statement, 'i', $postSubCatID);
       mysqli_stmt_execute($statement);

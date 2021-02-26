@@ -1,4 +1,4 @@
-1.) DONE
-2.) twitter elelment is to long/DONE 
-3.) remove page number from index page/DONE  
-4.) check mobile/DONE 
+1.) add a limit in sub cat page/DONE  
+2.) and news page - limit /DONE 
+3.) fix the footer on the category page/DONE  
+4.) 
