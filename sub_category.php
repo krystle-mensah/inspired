@@ -15,10 +15,10 @@ include "inc/header.php";
 
       <?php isset($_GET['subCategory']) ? $postSubCatID = $_GET['subCategory'] : "not set";
 
-
-      $query = "SELECT * FROM posts WHERE postSubCatID = ? ORDER BY `posts`.`post_date` DESC LIMIT 6";
+      $limit =  6;
+      $query = "SELECT * FROM posts WHERE postSubCatID = ? ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_bind_param($statement, 'i', $postSubCatID);
+      mysqli_stmt_bind_param($statement, 'ii', $postSubCatID,  $limit);
       mysqli_stmt_execute($statement);
       $result = mysqli_stmt_get_result($statement);
 

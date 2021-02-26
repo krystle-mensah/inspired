@@ -13,8 +13,10 @@ include "inc/header.php";
   <div class="row">
     <div class="col-md-8">
       <?php
-      $query = "SELECT * FROM carousel ORDER BY `carousel`.`carousel_date` DESC LIMIT  6";
+      $limit =  6;
+      $query = "SELECT * FROM carousel ORDER BY `carousel`.`carousel_date` DESC LIMIT  ?";
       $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_bind_param($statement, 'i', $limit);
       mysqli_stmt_execute($statement);
       $result = mysqli_stmt_get_result($statement);
 

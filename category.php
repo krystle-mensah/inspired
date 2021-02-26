@@ -44,9 +44,9 @@ include "inc/header.php";
 
       // FETCH QUERY
       $limit =  6;
-      $query = "SELECT * FROM `posts` WHERE post_category_id = ? ORDER BY `posts`.`post_date` DESC LIMIT $limit";
+      $query = "SELECT * FROM `posts` WHERE post_category_id = ? ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+      mysqli_stmt_bind_param($statement, 'ii', $post_category_id, $limit);
       mysqli_stmt_execute($statement);
       $result = mysqli_stmt_get_result($statement);
 
