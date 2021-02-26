@@ -12,6 +12,7 @@ include "inc/header.php";
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog_main">
+
       <!--  contion ? true else "not set" -->
       <?php isset($_GET['category']) ? $post_category_id = $_GET['category'] : "not set";
 
@@ -68,12 +69,6 @@ include "inc/header.php";
     </aside><!-- /.blog-sidebar -->
 
   </div><!-- /.row -->
-
-  <!-- PAGEINATION -->
-  <nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-  </nav>
 
 </main><!-- /.container -->
 

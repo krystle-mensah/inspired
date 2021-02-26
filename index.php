@@ -88,6 +88,7 @@ include "inc/header.php";
       <?php include "inc/sidebar.php"; ?>
     </aside><!-- /.blog-sidebar -->
 
+    <!-- PAGEINATION -->
     <div class="custom_pagination">
       <!-- <ul class="pagination"> -->
       <?php
@@ -106,8 +107,6 @@ include "inc/header.php";
     </div><!-- pagination -->
 
   </div><!-- /.row -->
-
-
 
 </main><!-- /.container -->
 
