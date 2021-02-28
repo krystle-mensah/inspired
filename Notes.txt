@@ -1,1 +1,3 @@
-1.) pass limiter in as a varible /DONE
+1.) Add check boxes to post page  
+
+2.) 

@@ -1,19 +1,22 @@
 <?php
 
-//if the post id is set in the url
+//if the edit button is clicked pick up that ID
 if (isset($_GET['p_id'])) {
 
   //GET it and save it in this variable
   $the_post_id = $_GET['p_id'];
 }
-
+//then query the database
 $query = "SELECT * FROM posts WHERE post_id = ?";
-
+// then prepare a statement
 $statement = mysqli_prepare($connection, $query);
+// then bind the parms
 mysqli_stmt_bind_param($statement, 'i', $the_post_id);
+// then excute the statment
 mysqli_stmt_execute($statement);
+// then return the result
 $select_posts_by_id = mysqli_stmt_get_result($statement);
-
+// then loop through the result
 while ($row = mysqli_fetch_array($select_posts_by_id)) {
 
   $post_id = $row['post_id'];
@@ -52,7 +55,7 @@ if (isset($_POST['update_post'])) {
 
     // then loop though result set
     while ($row = mysqli_fetch_array($select_image)) {
-      // assign thid var      
+      // assign to var      
       $post_image = $row['post_image'];
     }
   }

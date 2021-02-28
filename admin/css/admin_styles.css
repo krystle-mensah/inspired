@@ -1,3 +1,8 @@
 #bulkOptionContainer {
-  padding-bottom: 0.75rem;
+	padding-bottom: 0.75rem;
+}
+
+/* add post */
+.table_header {
+	padding: 20px;
 }
