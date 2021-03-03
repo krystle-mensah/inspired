@@ -28,7 +28,7 @@
 <!-- TWITTER WIDGET -->
 
 <div class="p-3 mb-3 bg-light rounded ">
-  <a class="twitter-timeline" data-lang="en" data-height="500" data-theme="dark" href="https://twitter.com/inspiredsounduk?ref_src=twsrc%5Etfw">Tweets by inspiredsounduk</a>
+  <a class="twitter-timeline" data-lang="en" data-height="550" data-theme="dark" href="https://twitter.com/inspiredsounduk?ref_src=twsrc%5Etfw">Tweets by inspiredsounduk</a>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
