@@ -1,5 +1,5 @@
 <hr class="hide_on_small">
-<nav class="nav justify-content-between site-navigation hide_on_small">
+<nav class="nav site-navigation hide_on_small">
   <a class="nav_link" href="index.php">home</a>
   <?php
 
@@ -10,9 +10,9 @@
   <?php
     $cat_title = $row['cat_title'];
     $cat_id = $row['cat_id'];
-    echo "<div>";
+    echo "<a class='nav_link' href='category.php?category=$cat_id'>";
 
-    echo " <a class='nav_link' href='category.php?category=$cat_id'>";
+    echo " <div>";
 
     echo "<div class='drop_down'>";
     echo "<button class='drop_btn'>$cat_title</button>";
@@ -33,8 +33,8 @@
     }
     echo "</div>";
     echo "</div>";
-    echo "</a>";
     echo "</div>";
+    echo "</a>";
   }
   ?>
   <a class="nav_link" href="contact.php">contact</a>
