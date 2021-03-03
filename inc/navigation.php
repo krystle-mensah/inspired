@@ -1,6 +1,6 @@
 <hr class="hide_on_small">
 <nav class="nav site-navigation hide_on_small">
-  <a class="nav_link" href="index.php">home</a>
+  <div><a class="nav_link" href="index.php">home</a></div>
   <?php
 
   $query = "SELECT * FROM categories";
@@ -10,9 +10,9 @@
   <?php
     $cat_title = $row['cat_title'];
     $cat_id = $row['cat_id'];
-    echo "<a class='nav_link' href='category.php?category=$cat_id'>";
+    echo "<div>";
 
-    echo " <div>";
+    echo " <a class='nav_link' href='category.php?category=$cat_id'>";
 
     echo "<div class='drop_down'>";
     echo "<button class='drop_btn'>$cat_title</button>";
@@ -33,10 +33,10 @@
     }
     echo "</div>";
     echo "</div>";
-    echo "</div>";
     echo "</a>";
+    echo "</div>";
   }
   ?>
-  <a class="nav_link" href="contact.php">contact</a>
+  <div><a class="nav_link" href="contact.php">contact</a></div>
 </nav><!-- site-navigation -->
 <hr class="hide_on_small">

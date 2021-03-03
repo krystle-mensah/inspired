@@ -160,13 +160,13 @@ a.carousel_cat_link {
 NAVIGATION LAYOUT
 =================================*/
 
-hr {
-	margin: 0;
-}
-
 .site-navigation {
 	justify-content: center;
 	align-items: center;
+}
+
+.site-navigation div {
+	margin: 0px 5px 0px 5px;
 }
 
 .site-navigation a.nav_link,
@@ -178,7 +178,6 @@ hr {
 	display: inline-block;
 	text-decoration: none;
 	cursor: pointer;
-	margin: 10px 12px;
 }
 
 .drop_btn {
@@ -234,7 +233,7 @@ button:focus {
 	text-transform: uppercase;
 	font-family: 'Merriweather Sans', sans-serif;
 }
-/* the content the links inside */
+/* The content the links inside */
 .dropdown_content a.dropdown_nav_link:hover {
 	background-color: #ddd;
 	/* transition: 1.0s; */
@@ -324,10 +323,6 @@ padding-left */
 	width: 100%;
 }
 
-/* .cdp_i {
-	display: none;
-} */
-
 /* END INDEX  */
 
 /* post page */
@@ -410,9 +405,10 @@ ul {
 
 .contact form button:hover,
 .contact form button:focus {
-	background: #737373;
 	color: #fff;
 	outline: 0;
+	/* When the button is hovered change background colour and take 2s to ease-out */
+	background: #737373;
 	transition: background-color 2s ease-out;
 }
 
