@@ -67,13 +67,33 @@
 
   </div><!-- row -->
 
-  <!-- PAGEINATION -->
-  <!-- <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-      </nav> -->
-
 </main><!-- /.container -->
 
-<?php include "inc/footer.php"; ?>
+<section class="post_footer">
+
+  <!-- LOGO -->
+  <div>
+    <img class="logo_post_footer" src="img/logo.png" alt="inspired sound logo">
+  </div>
+
+  <!-- SOCIAL MEDIA -->
+  <div>
+    <a href="https://soundcloud.com/inspired-sound-167086100">Soundcloud</a>
+    <a href="https://www.instagram.com/inspiredsound.uk/">Instagram</a>
+    <a href="https://open.spotify.com/user/3a91knedfbhntn7akthnp5l84?si=U4q094EUQaqPIvqhpWI8xQ&nd=1">Spotify</a>
+    <a href="https://www.youtube.com/channel/UCRLOZeuW161QsWkDx7qSvYg">Youtube</a>
+    <a href="https://www.mixcloud.com/Inspiredsounduk/">Mixcloud</a>
+    <a class="nav_link" href="contact.php">contact</a>
+  </div>
+
+  <!-- copyright -->
+  <div>
+    <p>inspired sound, copyright <span class="copyright">&copy;</span></p>
+  </div>
+
+
+</section>
+
+</footer>
+
 <?php include "inc/scripts.php"; ?>

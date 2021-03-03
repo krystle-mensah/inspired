@@ -40,7 +40,6 @@ include "inc/header.php";
       $count =  ceil($count / $per_page);
 
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT $page_1, $per_page";
-      //$query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC";
       $Statement = mysqli_prepare($connection, $query);
       mysqli_stmt_execute($Statement);
       $getResult = mysqli_stmt_get_result($Statement);
@@ -90,19 +89,26 @@ include "inc/header.php";
 
     <!-- PAGEINATION -->
     <div class="custom_pagination">
+      <a href="#">&laquo;</a>
       <?php
 
       // first display each number
       for ($i = 1; $i <= $count; $i++) {
-
+        //the reason I have an if statement is for the active class if it is active we dispply the page
         if ($i == $page) {
+          // display number which is active
           echo "<a class='active' href='index.php?page={$i}'>{$i}</a>";
         } else {
+          // I want to do something on a number at page 5. I want the arrow links to appear. so if i is 5 then display this
           echo "<a href='index.php?page={$i}'>{$i}</a>";
         }
+        // if ($i ==  5) {
+        //   echo "<a class='display_none' href='index.php?page={$i}'>{$i}</a>";
+        // }
       }
 
       ?>
+      <a href="#">&raquo;</a>
     </div><!-- pagination -->
 
   </div><!-- /.row -->
