@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-  <h1 class="mt-4">Add Posts</h1>
+  <h1 class="mt-4 admin_page_title">Add Posts</h1>
 </div><!-- alignment -->
 
 <!-- CREATE POST -->

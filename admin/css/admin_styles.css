@@ -6,3 +6,19 @@
 .table_header {
 	padding: 20px;
 }
+
+.admin_page_title {
+	text-align: center;
+}
+
+/* .success-button {
+	background-color: #ecffe6;
+	border-radius: 2px;
+	color: #000;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+} */
