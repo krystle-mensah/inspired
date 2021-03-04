@@ -25,25 +25,29 @@
 
   $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
-  if ($insertQry = mysqli_prepare($connection, $sql)) {
-    // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($insertQry, "ssssssssss", $post_category_id, $postSubCatID, $post_title, $post_author, $post_date, $post_image, $post_content, $post_tags, $post_comment_count, $post_status);
+  $insertQry = mysqli_prepare($connection, $sql);
 
-    // Attempt to execute the prepared statement
-    if (mysqli_stmt_execute($insertQry)) {
-      //echo "Records inserted successfully.";
-      echo "<p class='success-button'>Post Created.";
-    } else {
-      echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
-    }
+  // Bind variables to the prepared statement as parameters
+  mysqli_stmt_bind_param($insertQry, "ssssssssss", $post_category_id, $postSubCatID, $post_title, $post_author, $post_date, $post_image, $post_content, $post_tags, $post_comment_count, $post_status);
+
+  // Attempt to execute the prepared statement
+  mysqli_stmt_execute($insertQry);
+
+  if (!$insertQry) {
+    //send me a message with why it faild
+    die('Query FAILED' . mysqli_error($connection));
+  } else {
+    //echo "<script>alert('post successful')</script>"; //KEEP
+    // this well get the ID from the last post
+    $the_post_id = mysqli_insert_id($connection);
+    echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>";
   }
+
   // Close statement
   mysqli_stmt_close($insertQry);
 
   // Close connection
   mysqli_close($connection);
-
-  //echo "<p class='success-button'>Post Created. <a href='posts.php'>Edit More Posts</a> or <a href='../post.php?p_id={$the_post_id}'>View Post</a>";
 } ?>
 
 <!-- CREATE POST FORM -->
