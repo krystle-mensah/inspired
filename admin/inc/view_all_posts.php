@@ -177,7 +177,8 @@ foreach ($getResult as $row) {
 
   //sending post page and delete key equal to the post id
   // 203. PHP and Javascript Confirm Before Action. so we wont to add a messge to confirm a deleted post 
-  echo "<td><a onClick=\"javascript: return confirm('Are you want to delete')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
+  echo "<td><a onClick=\"javascript: return confirm('Are you sure want to delete')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
+
   echo "</tr>";
 }
 
