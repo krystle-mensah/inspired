@@ -163,6 +163,7 @@ NAVIGATION LAYOUT
 .site-navigation {
 	align-items: center;
 	justify-content: space-between;
+	height: 50px;
 }
 
 /* .site-navigation div {
