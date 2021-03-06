@@ -86,6 +86,12 @@
     <a class="nav_link" href="contact.php">contact</a>
   </div>
 
+  <!-- Create a button that will take the user to the top of the page when clicked on: -->
+  <div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  </div>
+
+
   <!-- copyright -->
   <div>
     <p>inspired sound, copyright <span class="copyright">&copy;</span></p>

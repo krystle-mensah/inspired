@@ -4,9 +4,9 @@
     <a href="https://soundcloud.com/inspired-sound-167086100" target="_blank" class="footerSocial_link"><i class="fab fa-soundcloud"></i></a>
 
     <!-- BACK TO THE TOP -->
-    <p>
-      <a class="back-to-the-top" href="#">Back to top</a>
-    </p>
+    <div>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    </div>
 
     <!-- jquery this needs to go in the footer as well-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
