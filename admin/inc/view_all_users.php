@@ -166,13 +166,22 @@ if (isset($_POST['checkBoxArray'])) {
     // if this is set
     if (isset($_GET['delete'])) {
 
-      $the_user_id = $_GET['delete'];
+      // to prevent someone form going to the url and deleteing a user
+      // first we need to validate our code
+      // check user role is set
+      if (isset($_SESSION['user_role'])) {
+        // check user role is an admin user 
+        if ($_SESSION['user_role'] == 'admin') {
 
-      $query = "DELETE FROM users WHERE userId = {$the_user_id} ";
+          $the_user_id = mysqli_real_escape_string($connection, $_GET['delete']);
 
-      $delete_query = mysqli_query($connection, $query);
+          $query = "DELETE FROM users WHERE userId = {$the_user_id} ";
 
-      header("Location: users.php");
-    }
+          $delete_query = mysqli_query($connection, $query);
+
+          header("Location: users.php");
+        } // close user role is equal to admin
+      } // close user role
+    } // close is delete
 
     ?>
