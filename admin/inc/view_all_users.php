@@ -173,11 +173,17 @@ if (isset($_POST['checkBoxArray'])) {
         // check user role is an admin user 
         if ($_SESSION['user_role'] == 'admin') {
 
-          $the_user_id = mysqli_real_escape_string($connection, $_GET['delete']);
+          //$the_user_id = mysqli_real_escape_string($connection, $_GET['delete']);
 
-          $query = "DELETE FROM users WHERE userId = {$the_user_id} ";
+          $the_user_id       = $connection->real_escape_string($_GET['delete']);
 
-          $delete_query = mysqli_query($connection, $query);
+          $query = "DELETE FROM users WHERE userId = ? ";
+
+          $deleteStatement = mysqli_prepare($connection, $query);
+          mysqli_stmt_bind_param($deleteStatement, 'i', $the_user_id);
+          mysqli_stmt_execute($deleteStatement);
+
+          //$delete_query = mysqli_query($connection, $query);
 
           header("Location: users.php");
         } // close user role is equal to admin
