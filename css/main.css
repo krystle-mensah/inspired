@@ -314,7 +314,7 @@ padding-left */
 .card {
 	display: inline-flex;
 	width: 45%;
-	margin: 0 1rem 1rem 1rem; /*space around this element*/
+
 	background: white;
 	box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 	border: none;
@@ -527,7 +527,7 @@ span.copyright {
 
 /*============
 FOOTER LAYOUT
-=================================*/
+===============*/
 
 a.footerSocial_link {
 	font-size: 30px;
@@ -620,6 +620,7 @@ Mobile Layout
   */
 	.card {
 		width: 100%;
+		margin-bottom: 20px;
 	}
 	/* 
   End 
@@ -637,5 +638,8 @@ Mobile Layout
 		display: flex;
 		flex-wrap: wrap;
 		height: 300px;
+	}
+	.card {
+		margin: 0 1rem 1rem 1rem; /*space around this element*/
 	}
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 23, 2021 at 05:33 PM
+-- Generation Time: Mar 08, 2021 at 09:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `cat_id` int(3) NOT NULL,
-  `cat_title` varchar(255) NOT NULL
+  `cat_title` varchar(255) DEFAULT 'No cat'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,8 +40,7 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (1, 'new music'),
 (2, 'features'),
 (4, 'mixes'),
-(15, 'radio'),
-(34, 'News');
+(15, 'radio');
 
 --
 -- Indexes for dumped tables
