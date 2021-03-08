@@ -22,7 +22,7 @@ iframe {
 
 /*============
 HEADER LAYOUT
-=================================*/
+===============*/
 
 header.header {
 	padding: 2em;
@@ -41,7 +41,6 @@ h1.brand_name {
 }
 
 /* Logo */
-
 .logo-container {
 	text-align: center;
 }
@@ -63,7 +62,7 @@ h3.header-tagline {
 	font-weight: 800;
 }
 
-/* Social media */
+/* header social media */
 
 .social_media {
 	float: left;
@@ -101,7 +100,7 @@ i.fab.fa-twitter:hover {
 	color: #de5133;
 }
 
-/* HEADER ICONS */
+/* header icons */
 
 .header-icons {
 	position: absolute;
@@ -120,7 +119,7 @@ a.header-icon-link {
 
 /*============
 CAROUSEL LAYOUT
-=================================*/
+===============*/
 
 a.carousel_button {
 	background: #0d0d0d;
@@ -158,17 +157,13 @@ a.carousel_cat_link {
 
 /*============
 NAVIGATION LAYOUT
-=================================*/
+==================*/
 
 .site-navigation {
 	align-items: center;
 	justify-content: space-between;
 	height: 50px;
 }
-
-/* .site-navigation div {
-	margin: 0px 5px 0px 5px;
-} */
 
 .site-navigation a.nav_link,
 .drop_btn {
