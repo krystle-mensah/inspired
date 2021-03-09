@@ -22,3 +22,11 @@
 	margin: 4px 2px;
 	cursor: pointer;
 } */
+
+/* dashboard */
+.dashboard_card {
+	display: inline-flex;
+}
+.dashboard_card_number {
+	margin-left: 10px;
+}
