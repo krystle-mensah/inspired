@@ -1,10 +1,10 @@
 <!-- SEARCH BLOG -->
 
-<div class="p-3 mb-3 bg-light rounded">
+<div class="p-3 mb-3 bg-light rounded search_mobile">
   <div class="search_form">
     <form action="search.php" method="post">
       <div class="input-group">
-        <input name="search" type="text" class="form-control" placeholder="Search">
+        <input name="search" type="text" class="form-control" placeholder="Type to Search">
         <span class="input-group-btn">
           <button name="submit" class="btn btn-default" type="submit">
             <i class="fas fa-search"></i>
@@ -27,7 +27,7 @@
 
 <!-- TWITTER WIDGET -->
 
-<div class="p-3 mb-3 bg-light rounded ">
+<div class="p-3 mb-3 bg-light rounded twitter_widget">
   <a class="twitter-timeline" data-lang="en" data-height="550" data-theme="dark" href="https://twitter.com/inspiredsounduk?ref_src=twsrc%5Etfw">Tweets by inspiredsounduk</a>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
