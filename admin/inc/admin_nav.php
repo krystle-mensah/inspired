@@ -1,13 +1,12 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 	<div>
-		<a class="navbar-brand" href="index.php">Welcome to Admin |
-		<?php echo $_SESSION['username']; ?>
+		<a class="navbar-brand" href="index.php">Admin
 		</a>
 	</div>
 	<!-- VIEW SITE -->
 	<a class="nav-link" target="_blank" href="../index.php">
 		<div class="sb-nav-link-icon"></div>
-			View Site 
+		View Site
 	</a>
 
 	<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
