@@ -37,10 +37,10 @@
 										$statement = mysqli_prepare($connection, $query);
 										mysqli_stmt_execute($statement);
 										$get_statement = mysqli_stmt_get_result($statement);
-										$count = mysqli_num_rows($get_statement);
+										$post_count = mysqli_num_rows($get_statement);
 										?>
 										<div class="card-body dashboard_card">posts
-											<div class="dashboard_card_number"><?= $count; ?></div>
+											<div class="dashboard_card_number"><?= $post_count; ?></div>
 										</div>
 
 										<div class="card-footer d-flex align-items-center justify-content-between">
@@ -56,10 +56,10 @@
 										$statement = mysqli_prepare($connection, $query);
 										mysqli_stmt_execute($statement);
 										$get_statement = mysqli_stmt_get_result($statement);
-										$count = mysqli_num_rows($get_statement);
+										$categories_count = mysqli_num_rows($get_statement);
 										?>
 										<div class="card-body dashboard_card">categorys
-											<div class="dashboard_card_number"><?= $count; ?></div>
+											<div class="dashboard_card_number"><?= $categories_count; ?></div>
 										</div>
 										<div class="card-footer d-flex align-items-center justify-content-between">
 											<a class="small text-white stretched-link" href="categories.php">View Details</a>
@@ -75,10 +75,10 @@
 										$statement = mysqli_prepare($connection, $query);
 										mysqli_stmt_execute($statement);
 										$get_statement = mysqli_stmt_get_result($statement);
-										$count = mysqli_num_rows($get_statement);
+										$carousel_count = mysqli_num_rows($get_statement);
 										?>
 										<div class="card-body dashboard_card">carousels
-											<div class="dashboard_card_number"><?= $count; ?></div>
+											<div class="dashboard_card_number"><?= $carousel_count; ?></div>
 										</div>
 										<div class="card-footer d-flex align-items-center justify-content-between">
 											<a class="small text-white stretched-link" href="./slider_images.php">View Details</a>
@@ -93,10 +93,10 @@
 										$statement = mysqli_prepare($connection, $query);
 										mysqli_stmt_execute($statement);
 										$get_statement = mysqli_stmt_get_result($statement);
-										$count = mysqli_num_rows($get_statement);
+										$sub_categories_count = mysqli_num_rows($get_statement);
 										?>
 										<div class="card-body dashboard_card">sub categorys
-											<div class="dashboard_card_number"><?= $count; ?></div>
+											<div class="dashboard_card_number"><?= $sub_categories_count; ?></div>
 										</div>
 										<div class="card-footer d-flex align-items-center justify-content-between">
 											<a class="small text-white stretched-link" href="sub_categories.php">View Details</a>
@@ -106,16 +106,67 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xl-6">
-									<div class="card mb-4">
-										<div class="card-header">
-											<i class="fas fa-chart-area mr-1"></i>
-											Area Chart Example
-										</div>
-										<div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+								<!-- <div class="col-xl-6"> -->
+								<div class="card mb-4 col-lg-12 table_card">
+									<div class="card-header admin_table_header">
+										<i class="fas fa-chart-area mr-1"></i>
+										Chart Example
 									</div>
+									<div class="card-body">
+										<!-- <canvas id="myAreaChart" width="100%" height="40"> -->
+										<script type="text/javascript">
+											google.charts.load('current', {
+												'packages': ['bar']
+											});
+											google.charts.setOnLoadCallback(drawChart);
+
+											function drawChart() {
+												var data = google.visualization.arrayToDataTable([
+													['Data', 'Count'],
+
+													<?php
+
+													$element_text = ['Active Posts', 'Categories', 'Carousels', 'Sub_categories'];
+													$element_count = [$post_count, $categories_count, $carousel_count, $sub_categories_count];
+
+													// for each element text 
+
+													for ($i = 0; $i < 4; $i++) {
+														//attach and display element text 
+														echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+													}
+
+													?>
+
+
+
+													//['Posts', 1000],
+
+
+
+												]);
+												// string options
+												var options = {
+													chart: {
+														title: 'Inspired Performance',
+														subtitle: '',
+													}
+												};
+
+												var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+												chart.draw(data, google.charts.Bar.convertOptions(options));
+											}
+										</script>
+										<div>
+											<div id="columnchart_material"></div>
+										</div>
+
+										<!-- </canvas> -->
+									</div>
+									<!-- </div> -->
 								</div>
-								<div class="col-xl-6">
+								<!-- <div class="col-xl-6">
 									<div class="card mb-4">
 										<div class="card-header">
 											<i class="fas fa-chart-bar mr-1"></i>
@@ -124,8 +175,8 @@
 										<div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
 									</div>
 								</div>
-							</div>
-							<!-- <div class="card mb-4">
+							</div> -->
+								<!-- <div class="card mb-4">
 								<div class="card-header">
 									<i class="fas fa-table mr-1"></i>
 									DataTable Example
@@ -615,7 +666,7 @@
 									</div>
 								</div>
 							</div> -->
-						</div>
+							</div>
 
 					</main>
 

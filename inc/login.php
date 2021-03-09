@@ -45,8 +45,11 @@ if (isset($_POST['login'])) {
       $_SESSION['user_lastname'] = $db_user_lastname;
       $_SESSION['user_email'] = $db_user_email;
       $_SESSION['user_role'] = $db_user_role;
-
-      header('Location: ../admin/posts.php');
+      /*Starting with “/” returns to the root directory and starts there
+        Starting with “../” moves one directory backwards and starts there
+        Starting with “../../” moves two directories backwards and starts there
+      */
+      header('Location: ../admin/Dashboard.php');
     } else {
 
       header("Location: ../index.php");

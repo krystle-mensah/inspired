@@ -30,3 +30,16 @@
 .dashboard_card_number {
 	margin-left: 10px;
 }
+
+.admin_table_header {
+	text-align: center;
+}
+
+.table_card {
+	padding: 0;
+}
+
+#columnchart_material {
+	width: auto;
+	height: 600px;
+}
