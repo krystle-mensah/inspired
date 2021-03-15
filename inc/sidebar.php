@@ -4,6 +4,7 @@
   <div class="search_form">
     <form action="search.php" method="post">
       <div class="input-group">
+        <!-- input -->
         <input name="search" type="text" class="form-control" placeholder="Type to Search">
         <span class="input-group-btn">
           <button name="submit" class="btn btn-default" type="submit">
@@ -11,8 +12,8 @@
           </button>
         </span> <!-- input-group-btn -->
       </div> <!-- input-group -->
-    </form><!-- search form -->
-  </div><!-- search_bar -->
+    </form><!-- form -->
+  </div><!-- search_form -->
 </div>
 
 <!-- SPOFITY WIDGET -->

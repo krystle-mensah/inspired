@@ -49,100 +49,108 @@
   // Close connection
   mysqli_close($connection);
 } ?>
+<div class="page_container">
+  <div class="col-xl-12">
+    <!-- CREATE POST FORM -->
+    <form action="" method="post" enctype="multipart/form-data">
+      <!-- TITLE -->
+      <div class="form-group">
+        <label for="title">Post Title</label>
+        <input type="text" class="form-control" name="title">
+      </div>
+      <!-- AUTHOR -->
+      <div class="form-group">
+        <label for="title">Post Author</label>
+        <input type="text" class="form-control" name="author">
+      </div>
+      <!-- CAT ID -->
+      <div class="form-group">
+        <label for="title">select a category</label>
+        <select name="post_category_id" id="">
+          <?php
 
-<!-- CREATE POST FORM -->
-<form action="" method="post" enctype="multipart/form-data">
-  <!-- TITLE -->
-  <div class="form-group">
-    <label for="title">Post Title</label>
-    <input type="text" class="form-control" name="title">
-  </div>
-  <!-- AUTHOR -->
-  <div class="form-group">
-    <label for="title">Post Author</label>
-    <input type="text" class="form-control" name="author">
-  </div>
-  <!-- CAT ID -->
-  <div class="form-group">
-    <label for="title">select a category</label>
-    <select name="post_category_id" id="">
-      <?php
+          $query = "SELECT * FROM categories";
+          $statement = mysqli_prepare($connection, $query);
+          mysqli_stmt_execute($statement);
+          $getResult = mysqli_stmt_get_result($statement);
 
-      $query = "SELECT * FROM categories";
-      $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_execute($statement);
-      $getResult = mysqli_stmt_get_result($statement);
+          while ($row = mysqli_fetch_assoc($getResult)) {
+            $cat_id = $row['cat_id'];
+            $cat_title = $row['cat_title'];
 
-      while ($row = mysqli_fetch_assoc($getResult)) {
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
+            if ($cat_id == $post_category_id) {
 
-        if ($cat_id == $post_category_id) {
+              echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+            } else {
 
-          echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
-        } else {
+              echo "<option value='{$cat_id}'>{$cat_title}</option>";
+            }
+          }
+          ?>
+        </select>
+      </div><!-- form-group -->
+      <!-- SUB CATEGORIES -->
+      <div class="form-group">
+        <label for="title">select a sub category</label>
+        <select name="postSubCatID" id="">
+          <?php
 
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
-        }
-      }
-      ?>
-    </select>
-  </div><!-- form-group -->
-  <!-- SUB CATEGORIES -->
-  <div class="form-group">
-    <label for="title">select a sub category</label>
-    <select name="postSubCatID" id="">
-      <?php
+          $query = "SELECT * FROM sub_categories";
+          $statement = mysqli_prepare($connection, $query);
+          mysqli_stmt_execute($statement);
+          $getResult = mysqli_stmt_get_result($statement);
 
-      $query = "SELECT * FROM sub_categories";
-      $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_execute($statement);
-      $getResult = mysqli_stmt_get_result($statement);
+          while ($row = mysqli_fetch_assoc($getResult)) {
+            $subCategoriesID = $row['subCategoriesID'];
+            $subCategoriesTitle = $row['subCategoriesTitle'];
 
-      while ($row = mysqli_fetch_assoc($getResult)) {
-        $subCategoriesID = $row['subCategoriesID'];
-        $subCategoriesTitle = $row['subCategoriesTitle'];
+            if ($subCategoriesID == $postSubCatID) {
 
-        if ($subCategoriesID == $postSubCatID) {
+              echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+            } else {
 
-          echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-        } else {
+              echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+            }
+          }
 
-          echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-        }
-      }
+          ?>
 
-      ?>
-
-    </select>
-    <!-- STATUS -->
-    <div class="form-group">
-      <select name="post_status" id="">
-        <option value="draft">Post Status</option>
-        <option value="published">Publish</option>
-        <option value="draft">Draft</option>
-      </select>
-    </div>
-    <!-- IMAGE -->
-    <div class="form-group">
-      <label for="post_image">Post Image</label>
-      <input type="file" name="image">
-    </div>
-    <!-- TAGS -->
-    <div class="form-group">
-      <label for="title">Post Tags</label>
-      <input type="text" class="form-control" name="post_tags">
-    </div>
-    <!-- CONTENT -->
-    <div class="form-group">
-      <label for="post_content">Post Content</label>
-      <textarea class="form-control " name="post_content" cols="30" rows="10">
+        </select>
+      </div>
+      <!-- STATUS -->
+      <div class="form-group">
+        <select name="post_status" id="">
+          <option value="draft">Post Status</option>
+          <option value="published">Publish</option>
+          <option value="draft">Draft</option>
+        </select>
+      </div>
+      <!-- IMAGE -->
+      <div class="form-group">
+        <label for="post_image">Post Image</label>
+        <input type="file" name="image">
+      </div>
+      <!-- TAGS -->
+      <div class="form-group">
+        <label for="title">Post Tags</label>
+        <input type="text" class="form-control" name="post_tags">
+      </div>
+      <!-- CONTENT -->
+      <div class="form-group">
+        <label for="post_content">Post Content</label>
+        <textarea class="form-control " name="post_content" cols="30" rows="10">
     </textarea>
-    </div>
-    <div class="sharethis-inline-share-buttons"></div>
-    <!-- SUBMIT BUTTON -->
-    <div class="form-group">
-      <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
-    </div>
+      </div>
+      <div class="form-group">
+        <div class="sharethis-inline-share-buttons"></div>
+      </div>
+      <!-- SUBMIT BUTTON -->
+      <div class="form-group">
+        <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
+      </div>
 
-</form>
+    </form>
+
+  </div>
+
+</div>

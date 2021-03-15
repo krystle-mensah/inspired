@@ -115,6 +115,39 @@ a.header-icon-link {
 	color: #0d0d0d;
 }
 
+/* MOBILE HEADER */
+button:focus {
+	outline: 0;
+}
+
+.input_button_mobile {
+	width: 200px;
+	/* -webkit-transition: width 0.4s ease-in-out;
+	transition: width 2s; */
+	background: transparent;
+	/* border-radius: 5px; */
+	border: none;
+}
+
+.input_button_mobile::before {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	content: '\f002';
+	/* position: absolute; */
+}
+/* 
+.input_button_mobile:hover {
+	width: 100%;
+} */
+
+/* input:focus,
+input {
+	border: none;
+	padding: 0;
+	width: 100%;
+	outline: none;
+} */
+
 /* END HEADER LAYOUT */
 
 /*============
@@ -182,7 +215,7 @@ NAVIGATION LAYOUT
 }
 
 button:focus {
-	outline: none;
+	outline: 0;
 }
 
 .site-navigation a.nav_link::after {
