@@ -563,6 +563,15 @@ a.footerSocial_link {
 	padding-left: 0.5em;
 }
 
+#mc_embed_signup {
+	clear: left;
+	width: 100%;
+}
+
+#mc_embed_signup .button {
+	background-color: #de5133 !important;
+}
+
 /* END FOOTER LAYOUT */
 
 /*
@@ -576,7 +585,7 @@ Mobile Layout
 	}
 
 	h1.brand_name {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 	.twitter_widget {
@@ -587,11 +596,27 @@ Mobile Layout
 	body {
 		overflow-x: hidden;
 	}
+
 	span.open-slide {
 		float: right;
 		position: relative;
-		top: 7px;
+		top: 3px;
 	}
+
+	header.header {
+		padding: 1em;
+	}
+
+	/* search button */
+	.search_button {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		float: right;
+		padding-right: 22px;
+		font-size: 22px;
+	}
+
 	.side-nav {
 		height: 100%;
 		width: 0;
