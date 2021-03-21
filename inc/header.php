@@ -12,6 +12,26 @@
     </span>
     <!-- SEARCH BUTTON -->
     <button onclick="openSearch()" class="search_button hide_on_large open_search"><i class="fas fa-search"></i></button>
+    <!-- SEARCH SIDE MENU - This is what I well grap onto in javascript -->
+    <div id="search_side_menu" class="side_search">
+      <!-- close button -->
+      <a href="#" class="btn-close hide_on_large" onclick="closeSearch()">&times;</a>
+      <div class="search_container">
+        <div class="search_form hide_on_large">
+          <form action="search.php" method="post">
+            <div class="input-group">
+              <input name="search" type="text" class="form-control" placeholder="Type to Search">
+              <span class="input-group-btn">
+                <button onclick="closeSearch()" name="submit" class="btn btn-default" type="submit">search</button>
+              </span> <!-- input-group-btn -->
+            </div> <!-- input-group -->
+          </form><!-- form -->
+        </div><!-- search_form -->
+      </div>
+
+    </div><!-- search_side_menu -->
+
+
     <!-- LOGO -->
     <div class="logo-container">
       <img class="hide_on_small" id="logo" src="img/logo.png" alt="inspired sound logo">

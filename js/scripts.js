@@ -21,12 +21,11 @@ function topFunction() {
 // MOBILE MENU
 function openSlideMenu() {
   document.getElementById('side-menu').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
 }
 
 function closeSlideMenu() {
   document.getElementById('side-menu').style.width = '0';
-  document.getElementById('main').style.marginLeft = '0';
+  // document.getElementById('main').style.marginLeft = '0';
 }
 
 // MOBILE DROPDOWN
@@ -46,3 +45,13 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
+
+// MOBILE SEARCH - when the button openSearch() is clicked the search_side_menu widths will be 250px.
+function openSearch() {
+  document.getElementById('search_side_menu').style.width = '100%';
+}
+
+function closeSearch() {
+  document.getElementById('search_side_menu').style.width = '0px';
+}
+

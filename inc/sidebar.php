@@ -1,6 +1,6 @@
 <!-- SEARCH BLOG -->
 
-<div class="p-3 mb-3 bg-light rounded search_mobile">
+<div class="p-3 mb-3 bg-light rounded hide_on_small">
   <div class="search_form">
     <form action="search.php" method="post">
       <div class="input-group">
@@ -14,7 +14,7 @@
       </div> <!-- input-group -->
     </form><!-- form -->
   </div><!-- search_form -->
-</div>
+</div><!-- -->
 
 <!-- SPOFITY WIDGET -->
 

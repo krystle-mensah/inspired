@@ -607,6 +607,34 @@ Mobile Layout
 		padding: 1em;
 	}
 
+	.side_search {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #111;
+		opacity: 0.9;
+		overflow-x: hidden;
+		padding-top: 60px;
+		transition: 0.5s;
+	}
+
+	.side_search a.btn-close {
+		position: absolute;
+		top: 0;
+		right: 22px;
+		font-size: 36px;
+		margin-left: 50px;
+		text-decoration: none;
+		color: #ccc;
+	}
+
+	.search_container {
+		padding: 5px;
+	}
+
 	/* search button */
 	.search_button {
 		border: none;
