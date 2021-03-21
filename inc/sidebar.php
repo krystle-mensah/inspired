@@ -16,6 +16,8 @@
   </div><!-- search_form -->
 </div><!-- -->
 
+<h4 class="spotify_title hide_on_small">spotify playlists</h4>
+
 <!-- SPOFITY WIDGET -->
 <div class="spofity_widget">
   <div class="mb-3">
