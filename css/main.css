@@ -456,7 +456,7 @@ h4.side_widget_title {
 
 h4.spotify_title {
 	text-align: center;
-	text-transform: capitalize;
+	text-transform: uppercase;
 }
 
 /* END SIDEBAR LAYOUT */
