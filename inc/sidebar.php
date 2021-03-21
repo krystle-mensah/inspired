@@ -18,17 +18,17 @@
 
 <!-- SPOFITY WIDGET -->
 
-<div class="p-3 mb-3 bg-light rounded">
+<div class="mb-3">
   <iframe src="https://open.spotify.com/embed/playlist/4UEW6oK9ExZqZ6UogE6UoK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
 
-<div class="p-3 mb-3 bg-light rounded">
+<div class="mb-3">
   <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
 
 <!-- TWITTER WIDGET -->
 
-<div class="p-3 mb-3 bg-light rounded twitter_widget">
+<div class="mb-3 twitter_widget">
   <a class="twitter-timeline" data-lang="en" data-height="550" data-theme="dark" href="https://twitter.com/inspiredsounduk?ref_src=twsrc%5Etfw">Tweets by inspiredsounduk</a>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>

@@ -10,6 +10,8 @@
         </svg>
       </a>
     </span>
+    <!-- SEARCH BUTTON -->
+    <button onclick="openSearch()" class="search_button hide_on_large open_search"><i class="fas fa-search"></i></button>
     <!-- LOGO -->
     <div class="logo-container">
       <img class="hide_on_small" id="logo" src="img/logo.png" alt="inspired sound logo">
@@ -18,7 +20,7 @@
     <h1 class="brand_name"> inspied sound</h1>
     <!-- TAGLINE -->
     <div class="tagline-container">
-      <h3 class="header-tagline">underground music & culture</h3>
+      <h3 class="header-tagline hide_on_small">underground music & culture</h3>
     </div>
     <!-- SOCIAL MEDIA -->
     <div class="social_media hide_on_small">
@@ -76,37 +78,6 @@
 
   </div><!-- side-menu side-nav -->
 
-  <script>
-    function openSlideMenu() {
-      document.getElementById('side-menu').style.width = '250px';
-      document.getElementById('main').style.marginLeft = '250px';
-    }
-
-    function closeSlideMenu() {
-      document.getElementById('side-menu').style.width = '0';
-      document.getElementById('main').style.marginLeft = '0';
-    }
-  </script>
-
-  <script>
-    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-    var dropdown = document.getElementsByClassName("mobile_nav_subCat_link");
-    var i;
-
-    for (i = 0; i < dropdown.length; i++) {
-      dropdown[i].addEventListener("mouseover", function() {
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-          dropdownContent.style.display = "none";
-        } else {
-          dropdownContent.style.display = "block";
-        }
-      });
-    }
-  </script>
-
-
 </header>
 
 <?php
@@ -115,7 +86,7 @@
 ////if( isset( $_POST['search'] ) ){echo $_POST['search'];}
 ?>
 
-<!-- 
+<!-- SUBCRIBE BOOTRAP CODE 
 <div class="col-4 pt-1">
   <a class="sub-button" href="#">Subscribe</a>
 </div> 
