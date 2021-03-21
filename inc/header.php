@@ -31,14 +31,14 @@
 
     </div><!-- search_side_menu -->
 
-
     <!-- LOGO -->
     <div class="logo-container">
       <img class="hide_on_small" id="logo" src="img/logo.png" alt="inspired sound logo">
     </div>
     <!-- BRAND NAME -->
-    <h1 class="brand_name"> inspied sound</h1>
+    <h1 class="brand_name"> inspired sound</h1>
     <!-- TAGLINE -->
+
     <div class="tagline-container">
       <h3 class="header-tagline hide_on_small">underground music & culture</h3>
     </div>

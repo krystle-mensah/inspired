@@ -17,14 +17,17 @@
 </div><!-- -->
 
 <!-- SPOFITY WIDGET -->
+<div class="spofity_widget">
+  <div class="mb-3">
+    <iframe src="https://open.spotify.com/embed/playlist/4UEW6oK9ExZqZ6UogE6UoK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+</div><!-- spofity_widget -->
 
-<div class="mb-3">
-  <iframe src="https://open.spotify.com/embed/playlist/4UEW6oK9ExZqZ6UogE6UoK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</div>
-
-<div class="mb-3">
-  <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</div>
+<div class="spofity_widget">
+  <div class="mb-3">
+    <iframe src="https://open.spotify.com/embed/playlist/1ynZLfYv6B9nrWM3gxVIA0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+</div><!-- spofity_widget -->
 
 <!-- TWITTER WIDGET -->
 
@@ -33,6 +36,16 @@
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
+<!-- SOUNDCLOUD WIDGET -->
+<div class="soundcloud_widget hide_on_large">
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/833014655&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+  <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/inspired-sound-167086100" title="Inspired Sound UK" target="_blank" style="color: #cccccc; text-decoration: none;">Inspired Sound UK</a> · <a href="https://soundcloud.com/inspired-sound-167086100/sets/radio" title="Radio" target="_blank" style="color: #cccccc; text-decoration: none;">Radio</a></div>
+</div>
+
+<div class="soundcloud_widget hide_on_large">
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/714631491&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+  <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/inspired-sound-167086100" title="Inspired Sound UK" target="_blank" style="color: #cccccc; text-decoration: none;">Inspired Sound UK</a> · <a href="https://soundcloud.com/inspired-sound-167086100/sets/inspired-dj-mix" title="Guest Mixes" target="_blank" style="color: #cccccc; text-decoration: none;">Guest Mixes</a></div>
+</div>
 
 <!-- KEEP -->
 

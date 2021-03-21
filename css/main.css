@@ -712,6 +712,10 @@ Mobile Layout
 	/* 
   End 
   */
+	/* sidebar */
+	.spofity_widget iframe {
+		width: 100%;
+	}
 }
 /* END MOBILE LAYOUT */
 
