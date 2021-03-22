@@ -733,7 +733,6 @@ Mobile Layout
 	.blog_main {
 		display: flex;
 		flex-wrap: wrap;
-		height: 300px;
 	}
 	.card {
 		margin: 0 1rem 1rem 1rem; /*space around this element*/
