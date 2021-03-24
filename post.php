@@ -87,10 +87,7 @@
   </div>
 
   <!-- Create a button that will take the user to the top of the page when clicked on: -->
-  <div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-  </div>
-
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- copyright -->
   <div>

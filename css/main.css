@@ -200,7 +200,7 @@ NAVIGATION LAYOUT
 
 .site-navigation a.nav_link,
 .drop_btn {
-	color: #595959;
+	color: #0d0d0d;
 	font-family: 'Merriweather Sans', sans-serif;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -377,14 +377,14 @@ ul {
 }
 
 .wrapper {
-	box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+	box-shadow: 0 0 1px 0 rgb(72 94 116 / 66%);
 }
 
 .wrapper > * {
 	padding: 1em;
 }
 
-.company-info {
+.contact_message_box {
 	background: #fff;
 	/* opacity: 0.5; */
 }
@@ -398,6 +398,11 @@ ul {
 .contact {
 	background: #fff;
 }
+
+.contact h3 {
+	color: #262626;
+}
+
 /* FORM STYLES */
 .contact form {
 	display: grid;
@@ -407,6 +412,7 @@ ul {
 
 .contact form label {
 	display: block;
+	color: #262626;
 }
 
 .contact form p {
@@ -425,11 +431,12 @@ ul {
 	border: 1px solid #de5133;
 }
 
-.contact form button {
+.contact form .contact_form_submit_button {
 	background: #de5133;
 	border: 0;
 	text-transform: uppercase;
 	color: #595959;
+	cursor: pointer;
 }
 
 .contact form button:hover,
