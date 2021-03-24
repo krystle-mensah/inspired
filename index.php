@@ -42,8 +42,8 @@ include "inc/header.php";
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);
       mysqli_stmt_bind_param($statement, 'i', $limit);
-      mysqli_stmt_execute($Statement);
-      $getResult = mysqli_stmt_get_result($Statement);
+      mysqli_stmt_execute($statement);
+      $getResult = mysqli_stmt_get_result($statement);
 
       while ($row = mysqli_fetch_array($getResult)) {
 

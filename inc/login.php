@@ -40,15 +40,12 @@ if (isset($_POST['login'])) {
     if (password_verify($login_password, $row['user_password'])) {
       //echo "You have been logged in";
       $_SESSION['user_firstname'] = $db_user_firstname;
-      $_SESSION['username'] = $db_username;
-      $_SESSION['user_password'] = $db_user_password;
-      $_SESSION['user_lastname'] = $db_user_lastname;
-      $_SESSION['user_email'] = $db_user_email;
-      $_SESSION['user_role'] = $db_user_role;
-      /*Starting with “/” returns to the root directory and starts there
-        Starting with “../” moves one directory backwards and starts there
-        Starting with “../../” moves two directories backwards and starts there
-      */
+      $_SESSION['username']       = $db_username;
+      $_SESSION['user_password']  = $db_user_password;
+      $_SESSION['user_lastname']  = $db_user_lastname;
+      $_SESSION['user_email']     = $db_user_email;
+      $_SESSION['user_role']      = $db_user_role;
+
       header('Location: ../admin/Dashboard.php');
     } else {
 
