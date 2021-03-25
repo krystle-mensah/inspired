@@ -5,13 +5,14 @@ if (isset($_POST['create_slide'])) {
   ////echo $_POST['title']; // output - we are geeting the title
 
   //ADD THESE NAME VALUES 
-  $slide_title        = $_POST['title'];
-  $slide_author       = $_POST['author'];
-  $slide_image        = $_FILES['image']['name'];
-  $slide_image_temp   = $_FILES['image']['tmp_name'];
+  $slide_title        = $connection->real_escape_string($_POST['title']);
+  $slide_author       = $connection->real_escape_string($_POST['author']);
+  $slide_image        = $connection->real_escape_string($_FILES['image']['name']);
+  $slide_image_temp   = $connection->real_escape_string($_FILES['image']['tmp_name']);
+  //$slide_content      = $connection->real_escape_string($_POST['slide_content']);
   $slide_content      = $_POST['slide_content'];
-  $slide_tags         = $_POST['slide_tags'];
-  $slide_date         = date('Y-m-d');
+  $slide_tags         = $connection->real_escape_string($_POST['slide_tags']);
+  $slide_date         = $connection->real_escape_string(date('Y-m-d'));
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 
@@ -23,7 +24,7 @@ if (isset($_POST['create_slide'])) {
 
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($insertQry)) {
-      echo "Records inserted successfully.";
+      echo "Record inserted successfully.";
     } else {
       echo "ERROR: Could not execute query: $sql. " . mysqli_error($connection);
     }

@@ -4,12 +4,12 @@
 if (isset($_POST['create_user'])) {
 
   //pick up theres values
-  $user_firstname        = $_POST['user_firstname'];
-  $user_lastname         = $_POST['user_lastname'];
-  $user_role             = $_POST['user_role'];
-  $username              = $_POST['username'];
-  $user_email            = $_POST['user_email'];
-  $user_password         = $_POST['user_password'];
+  $user_firstname        = $connection->real_escape_string($_POST['user_firstname']);
+  $user_lastname         = $connection->real_escape_string($_POST['user_lastname']);
+  $user_role             = $connection->real_escape_string($_POST['user_role']);
+  $username              = $connection->real_escape_string($_POST['username']);
+  $user_email            = $connection->real_escape_string($_POST['user_email']);
+  $user_password         = $connection->real_escape_string($_POST['user_password']);
 
   $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
   $sql = "INSERT INTO users (user_firstname, user_lastname, user_role, username, user_email, user_password) VALUES (?, ?, ?, ?, ?, ?)";

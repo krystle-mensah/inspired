@@ -6,20 +6,19 @@
 <?php if (isset($_POST['create_post'])) {
   // TEST - type in the title field then click update button 
   //echo $_POST['title'];
-
   // SET THESE VALUES FOR THE USER
-  $post_title        = $_POST['title'];
-  $post_author       = $_POST['author'];
-  $post_category_id  = $_POST['post_category_id'];
-  $postSubCatID      = $_POST['postSubCatID'];
-  $post_image        = $_FILES['image']['name'];
-  $post_image_temp   = $_FILES['image']['tmp_name'];
-  $post_tags         = $_POST['post_tags'];
-  $post_content      = $_POST['post_content'];
-  $post_date         = date('Y-m-d');
-  $post_status       = $_POST['post_status'];
-
-  $post_comment_count = 4;
+  $post_title        = $connection->real_escape_string($_POST['title']);
+  $post_author       = $connection->real_escape_string($_POST['author']);
+  $post_category_id  = $connection->real_escape_string($_POST['post_category_id']);
+  $postSubCatID      = $connection->real_escape_string($_POST['postSubCatID']);
+  $post_image        = $connection->real_escape_string($_FILES['image']['name']);
+  $post_image_temp   = $connection->real_escape_string($_FILES['image']['tmp_name']);
+  $post_tags         = $connection->real_escape_string($_POST['post_tags']);
+  //$post_content      = $connection->real_escape_string($_POST['post_content']);
+  $post_content = $_POST['post_content'];
+  $post_date         = $connection->real_escape_string(date('Y-m-d'));
+  $post_status       = $connection->real_escape_string($_POST['post_status']);
+  $post_comment_count = $connection->real_escape_string(4);
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
 
@@ -139,7 +138,7 @@
       <div class="form-group">
         <label for="post_content">Post Content</label>
         <textarea class="form-control " name="post_content" cols="30" rows="10">
-    </textarea>
+        </textarea>
       </div>
       <div class="form-group">
         <div class="sharethis-inline-share-buttons"></div>
