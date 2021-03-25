@@ -3,19 +3,6 @@ include "inc/db.php";
 include "inc/head.php";
 include "inc/header.php";
 ?>
-<?php
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
-
-// require 'vendor/autoload.php';
-
-// require 'includes/PHPMailer.php';
-// require 'includes/SMTP.php';
-// require 'phpmailer/Exception.php';
-
-?>
 
 <div class="container">
   <!-- NAVIGATION -->
@@ -27,7 +14,6 @@ include "inc/header.php";
     <div class="col-md-8 blog_main">
       <!-- CONTACT FORM -->
       <div class="contact_container">
-        <!-- <h1 class="brand"><span>Acme</span> Web Design</h1> -->
         <div class="wrapper animated bounceInLeft">
           <div class="contact_message_box">
 
@@ -54,20 +40,12 @@ include "inc/header.php";
             <form method="post" action="mail.php">
               <p>
                 <label>Name</label>
-                <input type="text" name="name" id="first_name" value="<?php echo isset($_POST['name']) ? $name : '' ?>" />
+                <input type="text" name="name" id="first_name" value="<?php echo isset($_POST['name']) ? $name : '' ?>" required />
               </p>
-              <!-- <p>
-                <label>Company</label>
-                <input type="text" name="company">
-              </p> -->
               <p>
                 <label>Email Address</label>
-                <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $email : '' ?>" />
+                <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $email : '' ?>" required />
               </p>
-              <!-- <p>
-                    <label>Phone Number</label>
-                    <input type="text" name="phone">
-                  </p> -->
               <p class="full">
                 <label>Message</label>
                 <textarea name="message" value="<?php echo isset($_POST['message']) ? $message : '' ?>"></textarea>
@@ -75,8 +53,8 @@ include "inc/header.php";
               <p class="full">
                 <input class="contact_form_submit_button" type="submit" name="submit" value="Submit" />
               </p>
-            </form>
-          </div>
+            </form><!-- form -->
+          </div><!-- contact -->
         </div><!-- wrapper animated bounceInLeft -->
       </div><!-- contact_container -->
     </div><!-- alignment and main blog -->
