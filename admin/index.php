@@ -29,35 +29,35 @@
 										<!-- Email -->
 										<div class="form-group">
 											<label class="small mb-1" for="inputEmailAddress">Email address:</label>
-											<input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="login_email" />
+											<input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="login_email" required />
 										</div>
 										<!-- Password -->
 										<div class="form-group">
 											<label class="small mb-1" for="inputPassword">Password</label>
-											<input class="form-control py-4" type="password" placeholder="Enter password" name="login_password" />
+											<input class="form-control py-4" type="password" placeholder="Enter password" name="login_password" required />
 										</div>
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<div class="custom-control custom-checkbox">
 												<input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
 												<label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
 											</div>
 										</div>
 										<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-											<a class="small" href="password.html">Forgot Password?</a>
-											<button class="btn btn-primary" name="login" type="submit">Login</button>
-										</div>
-									</form>
+											<a class="small" href="password.html">Forgot Password?</a> -->
+										<button class="btn btn-primary" name="login" type="submit">Login</button>
 								</div>
-								<!-- <div class="card-footer text-center">
+								</form>
+							</div>
+							<!-- <div class="card-footer text-center">
 										<div class="small"><a href="registration.php">Need an account? Sign up!</a></div>
 									</div> -->
-							</div>
 						</div>
 					</div>
 				</div>
-			</main>
-		</div><!-- layoutAuthentication_content -->
-		<?php include "inc/admin_footer.php"; ?>
+		</div>
+		</main>
+	</div><!-- layoutAuthentication_content -->
+	<?php include "inc/admin_footer.php"; ?>
 
 	</div><!-- layoutAuthentication -->
 
