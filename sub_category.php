@@ -65,7 +65,7 @@ include "inc/header.php";
               }
               ?>
               <a class="post_cat_title" href="sub_category.php?subCategory=<?= $subCategoriesID;  ?>">
-                <p><strong class="post_cat_title"><?= $subCategoriesTitle;  ?></strong></p>
+                <p><strong class="post_cat_title"><?= $subCategoriesTitle; ?></strong></p>
               </a>
             </div><!-- post-content -->
             <!-- </div> -->
