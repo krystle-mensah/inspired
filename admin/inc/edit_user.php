@@ -1,20 +1,17 @@
 <?php
-// IF SET
-if (isset($_GET['edit_user'])) {
-  // then save in this varible
-  $the_user_id = $_GET['edit_user'];
 
-  //SELECT ALL BY
+if (isset($_GET['edit_user'])) {
+
+  $the_user_id = $connection->real_escape_string($_GET['edit_user']);
+
+  //fetch users by id
   $query = "SELECT * FROM users WHERE userId = ?";
 
   $statement = mysqli_prepare($connection, $query);
   mysqli_stmt_bind_param($statement, 'i', $the_user_id);
   mysqli_stmt_execute($statement);
   $select_users_query = mysqli_stmt_get_result($statement);
-
-  // then Perform query against a database and send in the query and the connection
-  //$select_users_query = mysqli_query($connection, $query);
-
+  //loop users by id
   while ($row = mysqli_fetch_array($select_users_query)) {
 
     // values we bring back and assign to variable
@@ -28,7 +25,6 @@ if (isset($_GET['edit_user'])) {
   }
 }
 
-// IF PRESSED
 if (isset($_POST['edit_user'])) {
   // PICK UP VAULES
   $user_firstname        = $_POST['user_firstname'];
@@ -41,39 +37,34 @@ if (isset($_POST['edit_user'])) {
 
   if (!empty($user_password)) {
 
+    $query_password = "SELECT user_password FROM users WHERE userId =  ?";
 
-    $query_password = "SELECT user_password FROM users WHERE userId =  $the_user_id";
-    $get_user_query = mysqli_query($connection, $query_password);
-    confirmQuery($get_user_query);
-    $row = mysqli_fetch_array($get_user_query);
+    $statement = mysqli_prepare($connection, $query_password);
+    mysqli_stmt_bind_param($statement, 'i', $the_user_id);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+
+    confirmQuery($result);
+    $row = mysqli_fetch_array($result);
     $db_user_password = $row['user_password'];
-
-    //Fetch Single record without bind_result:
-    // $qry_password = "SELECT user_password FROM users WHERE userId =  $the_user_id";
-    // $statement = mysqli_prepare($connection, $qry_password);
-    // mysqli_stmt_bind_param($statement, 'i', $the_user_id);
-    // mysqli_stmt_execute($statement);
-    // $result = mysqli_stmt_get_result($statement);
-    // $getData = mysqli_fetch_assoc($result);
-    // $db_user_password = $row['user_password'];
-
 
     if ($db_user_password != $user_password) {
 
       $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
     }
 
+    $updateQry = "UPDATE users SET username  = ?, user_password  = ?, user_firstname  = ?, user_lastname  = ?, user_email  = ?, user_role  = ? WHERE userId = ?";
 
-    // UPDATE DATABASE
-    $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', 
-  user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}', 
-  user_password = '{$hashed_password}' WHERE userId = {$the_user_id} ";
+    $updateStatement = mysqli_prepare($connection, $updateQry);
 
-    //SEND IT IN
-    $edit_user_query = mysqli_query($connection, $query);
+    mysqli_stmt_bind_param($updateStatement, 'ssssssi', $username, $hashed_password, $user_firstname, $user_lastname, $user_email, $user_role, $the_user_id);
+
+    mysqli_stmt_execute($updateStatement);
+
+    mysqli_close($connection);
 
     // CONFIRM QUERY
-    confirmQuery($edit_user_query);
+    //confirmQuery($updateQry);
 
     // display this
     echo "<p class='success-button'>User Updated. <a href='users.php'>View Users</a></p>";

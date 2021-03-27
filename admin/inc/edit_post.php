@@ -39,7 +39,8 @@ if (isset($_POST['update_post'])) {
   $post_status         =  $connection->real_escape_string($_POST['post_status']);
   $post_image          =  $connection->real_escape_string($_FILES['image']['name']);
   $post_image_temp     =  $connection->real_escape_string($_FILES['image']['tmp_name']);
-  $post_content        =  $connection->real_escape_string($_POST['post_content']);
+  //$post_content        =  $connection->real_escape_string($_POST['post_content']);
+  $post_content = $_POST['post_content'];
   $post_tags           =  $connection->real_escape_string($_POST['post_tags']);
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
@@ -113,7 +114,7 @@ if (isset($_POST['update_post'])) {
 
   <div class="form-group">
     <label for="title">Post Author</label>
-    <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author">
+    <input value="<?= $post_author; ?>" type="text" class="form-control" name="post_author">
   </div>
 
   <div class="form-group">
