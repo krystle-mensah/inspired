@@ -13,8 +13,19 @@ include "inc/header.php";
   <div class="row">
     <div class="col-md-8 blog_main">
 
-      <!--  contion ? true else "not set" -->
-      <?php isset($_GET['category']) ? $post_category_id = $_GET['category'] : "not set";
+
+      <?php
+
+      if (isset($_GET['category'])) {
+
+        $post_category_id = $connection->real_escape_string($_GET['category']);
+      } else {
+
+        echo "not set";
+      }
+
+      //<!--  contion ? true else "not set" -->
+      //isset($_GET['category']) ? $post_category_id = $_GET['category'] : "not set";
 
       // if (isset($_GET['category_page'])) {
       //   echo $page = $_GET['category_page'];

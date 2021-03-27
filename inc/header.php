@@ -66,14 +66,22 @@
     <!-- LINKS -->
     <a class="nav_link" href="index.php">home</a>
     <!-- FETCH CATEGORIES -->
-    <?php $all_categories = $connection->query("SELECT * FROM categories"); ?>
+    <?php
+
+    $qrySelect = "SELECT * FROM categories";
+    $select_all_statement = mysqli_prepare($connection, $qrySelect);
+    mysqli_stmt_execute($select_all_statement);
+    $all_categories = mysqli_stmt_get_result($select_all_statement);
+
+    ?>
+
     <!-- LOOP CATEGORIES -->
     <?php foreach ($all_categories as $row) {
       $cat_title = $row['cat_title'];
       $cat_id    = $row['cat_id'];
     ?>
-      <a class="mobile_nav_subCat_link" href="category.php?category=<?php echo $cat_id; ?>">
-        <?php echo $cat_title; ?>
+      <a class="mobile_nav_subCat_link" href="category.php?category=<?= $cat_id; ?>">
+        <?= $cat_title; ?>
         <i class="fa fa-caret-down dropdown_icon"></i>
         <!-- SUB CATEGORIES -->
         <div class="dropdown-container">
@@ -105,9 +113,3 @@
 ////check input name search
 ////if( isset( $_POST['search'] ) ){echo $_POST['search'];}
 ?>
-
-<!-- SUBCRIBE BOOTRAP CODE 
-<div class="col-4 pt-1">
-  <a class="sub-button" href="#">Subscribe</a>
-</div> 
--->

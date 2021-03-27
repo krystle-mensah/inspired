@@ -1,18 +1,11 @@
 <?php
+$limit =  6;
+$result = "SELECT * FROM carousel ORDER BY `carousel`.`carousel_date` DESC LIMIT  ?";
 
-$result = "SELECT * FROM carousel ORDER BY `carousel`.`carousel_date` DESC LIMIT  6";
-
-$Statement = mysqli_prepare($connection, $result);
-mysqli_stmt_execute($Statement);
-$getResult = mysqli_stmt_get_result($Statement);
-
-// if (!$select_all_carousel) {
-
-//   //Print a message and terminate the current script:
-//   die("QUERY FAILED" . mysqli_error($connection));
-// } else {
-//   //echo "this is working";
-// }
+$statement = mysqli_prepare($connection, $result);
+mysqli_stmt_bind_param($statement, 'i', $limit);
+mysqli_stmt_execute($statement);
+$getResult = mysqli_stmt_get_result($statement);
 
 ?>
 

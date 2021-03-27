@@ -16,28 +16,28 @@ include "inc/header.php";
     <div class="col-md-8 blog_main">
 
       <?php
-      $per_page = 4;
+      // $per_page = 4;
 
-      if (isset($_GET['page'])) {
+      // if (isset($_GET['page'])) {
 
-        $page = $_GET['page'];
-      } else {
-        $page = "";
-      }
-      if ($page == "" || $page == 1) {
-        $page_1 = 0;
-      } else {
-        $page_1 = ($page *  $per_page) -  $per_page;
-      }
+      //   $page = $_GET['page'];
+      // } else {
+      //   $page = "";
+      // }
+      // if ($page == "" || $page == 1) {
+      //   $page_1 = 0;
+      // } else {
+      //   $page_1 = ($page *  $per_page) -  $per_page;
+      // }
 
       // first find out how many posts you have
-      $post_query_count = "SELECT * FROM `posts` ";
-      $statement = mysqli_prepare($connection, $post_query_count);
-      mysqli_stmt_execute($statement);
-      $find_count = mysqli_stmt_get_result($statement);
-      $count = mysqli_num_rows($find_count);
+      // $post_query_count = "SELECT * FROM `posts` ";
+      // $statement = mysqli_prepare($connection, $post_query_count);
+      // mysqli_stmt_execute($statement);
+      // $find_count = mysqli_stmt_get_result($statement);
+      // $count = mysqli_num_rows($find_count);
 
-      $count =  ceil($count / $per_page);
+      //$count =  ceil($count / $per_page);
       $limit =  20;
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);

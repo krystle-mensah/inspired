@@ -20,6 +20,7 @@ include "inc/header.php";
             <?php
             $Msg = "";
             if (isset($_GET['success'])) {
+
               $Msg = "Message has been sent";
               echo  $Msg;
             }

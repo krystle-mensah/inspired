@@ -21,8 +21,7 @@
       //Check whether this variable is empty or set/declared on the index.
       if (isset($_GET['p_id'])) {
 
-        $the_post_id = $_GET['p_id']; // output
-
+        $the_post_id =  $connection->real_escape_string($_GET['p_id']);
       }
 
       ?>
@@ -59,7 +58,7 @@
 
       <hr>
 
-      <p class="post_content"><?php echo $post_content; ?></p>
+      <p class="post_content"><?= $post_content; ?></p>
 
       <hr>
 
