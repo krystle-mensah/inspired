@@ -13,8 +13,18 @@ include "inc/header.php";
   <div class="row">
     <div class="col-md-8 blog_main">
 
-      <?php isset($_GET['subCategory']) ? $postSubCatID = $_GET['subCategory'] : "not set";
+      <?php
+      //check get sub category is set
+      if (isset($_GET['subCategory'])) {
+        // TRUE - GET sub category
+        $postSubCatID =  $connection->real_escape_string($_GET['subCategory']);
+      } else {
+        echo "not set";
+      }
 
+      ?>
+
+      <?php
       $limit =  6;
       $query = "SELECT * FROM posts WHERE postSubCatID = ? ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);

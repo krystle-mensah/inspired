@@ -21,12 +21,12 @@
       //Check whether this variable is empty or set/declared on the index.
       if (isset($_GET['s_id'])) {
         // if it is get it.
-        $GETslide_id = $_GET['s_id']; // output
+        $GETslide_id =  $connection->real_escape_string($_GET['s_id']); // output
       }
-
       ?>
-      <?php
 
+      <!-- FETCH CAROUSEL WHERE ID -->
+      <?php
       $query = "SELECT * FROM carousel WHERE carousel_id = ?";
       $statement = mysqli_prepare($connection, $query);
       mysqli_stmt_bind_param($statement, 'i', $GETslide_id);
