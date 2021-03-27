@@ -10,11 +10,10 @@
     // Check for edit in the url
     if (isset($_GET['edit'])) {
 
-      // if TRUE - then catch it
-      $cat_id = $_GET['edit'];
+      // TRUE - Get the cat id
+      $cat_id = $connection->real_escape_string($_GET['edit']);
 
-      // select all from the categories table where cat_id is equal to cat_id catched.
-      //Fetch all records:
+      //Fetch record:
       $query = "SELECT * FROM categories WHERE cat_id = ?";
 
       $statement = mysqli_prepare($connection, $query);
@@ -22,12 +21,9 @@
       mysqli_stmt_execute($statement);
       $select_categories_id = mysqli_stmt_get_result($statement);
 
-      // function to send query in to the database. 
-      //$select_categories_id = mysqli_query($connection, $query);
-
       // while the condition is true fetch the row representing the array from ($variable - see above)
       while ($row = mysqli_fetch_array($select_categories_id)) {
-        // Then assign the array to a variable
+        // fetch values
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
     ?>
@@ -45,16 +41,11 @@
 
     // UPDATE CATEGORY QUERY
 
-    // If post because we are posting a value form submit
+    //check post update detection 
     if (isset($_POST['update_category'])) {
 
-      // then we get the cat_title
+      // TRUE - Post the cat title
       $the_cat_title = $_POST['cat_title'];
-
-      // query to update categories and set cat title to variable from form
-      //$query = "UPDATE categories SET cat_title = '{$the_cat_title}' WHERE cat_id = {$cat_id} ";
-      // send in. function to perfrom agasint the database
-      //$update_query = mysqli_query($connection, $query);
 
       //Update Multiple Columns:
       $updateQry = "UPDATE categories SET cat_title = ? WHERE cat_id = ?";
@@ -63,16 +54,13 @@
       mysqli_stmt_bind_param($updateStatement, 'si', $the_cat_title, $cat_id);
       mysqli_stmt_execute($updateStatement);
 
-      // if NOT
       if (!$updateStatement) {
 
         // kill script and return error.
         die("QUERY FAILED" . mysqli_error($connection));
       }
-
-      mysqli_close($connection);
     }
-
+    //mysqli_close($connection);
     ?>
 
   </div><!-- form-group -->

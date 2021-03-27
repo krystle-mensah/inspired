@@ -40,9 +40,14 @@
 
 </form>
 
-<?php $sql = $connection->query("SELECT * FROM carousel");
+<?php
 
-foreach ($sql as $row) :
+$qry = "SELECT * FROM carousel";
+$all_statement = mysqli_prepare($connection, $qry);
+mysqli_stmt_execute($all_statement);
+$select_all = mysqli_stmt_get_result($all_statement);
+
+foreach ($select_all as $row) :
 
   // values we bring back
 
@@ -90,7 +95,7 @@ endforeach;
 // if this is set
 if (isset($_GET['delete'])) {
 
-  echo $the_slide_id = $_GET['delete'];
+  $the_slide_id = $connection->real_escape_string($_GET['delete']);
 
   $delete_slide_sql = "DELETE FROM carousel WHERE carousel_id = ?";
   $deleteStatement = mysqli_prepare($connection, $delete_slide_sql);

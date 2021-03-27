@@ -1,10 +1,12 @@
 <?php
 
-//GET - ID
+//GET - ID form url
 if (isset($_GET['GET_carousel_id'])) {
   //AND SAVE HERE
   $GET_carousel_id = $connection->real_escape_string($_GET['GET_carousel_id']);
 }
+
+// then look for the id in the database
 
 $query = "SELECT * FROM carousel WHERE carousel_id = ? ";
 
@@ -13,9 +15,10 @@ mysqli_stmt_bind_param($statement, 'i', $GET_carousel_id);
 mysqli_stmt_execute($statement);
 $select_carousel_by_id = mysqli_stmt_get_result($statement);
 
+// then loop through everything 
+
 while ($row = mysqli_fetch_array($select_carousel_by_id)) {
 
-  // ARRAY values we bring back and assign to variable
   $slide_id          = $row['carousel_id'];
   $slide_title       = $row['carousel_title'];
   $carouselCat_title = $row['carouselCat_title'];
@@ -28,7 +31,7 @@ while ($row = mysqli_fetch_array($select_carousel_by_id)) {
 
 if (isset($_POST['update_slide'])) {
   //echo "hi";
-  $slide_title          =  $connection->real_escape_string($_POST['carousel_title']);
+  $slide_title          =   $connection->real_escape_string($_POST['carousel_title']);
   $slide_author         =   $connection->real_escape_string($_POST['carousel_author']);
   $slide_image          =   $connection->real_escape_string($_FILES['image']['name']);
   $slide_image_temp     =   $connection->real_escape_string($_FILES['image']['tmp_name']);

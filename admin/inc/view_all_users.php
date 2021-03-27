@@ -1,54 +1,3 @@
-<?php
-
-// first we check for activity on the checkbox
-if (isset($_POST['checkBoxArray'])) {
-  //echo 'receving data'; // output - there is output when the apply button is clicked
-
-  // now we wont to loop around the checkbox
-
-  foreach ($_POST['checkBoxArray'] as $postValueId) {
-
-    //print_r($_POST['checkBoxArray']); // OUTPUTS - Key and value
-    //print_r($checkBoxValue);// OUTPUTS - Value  
-
-    //echo $bulk_options = $_POST['bulk_options']; // output - option values
-
-    $bulk_options = $_POST['bulk_options'];
-
-    switch ($bulk_options) {
-      case 'published':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'draft':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'delete':
-        $query = "DELETE FROM posts WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        if (!$update_to_published_status) {
-
-          // Print a message and terminate the current script:
-          die("QUERY FAILED" . mysqli_error($connection));
-        }
-
-        break;
-    } //switch
-
-  } // foreach
-
-} // isset
-
-?>
-
 <div id="bulkOptionContainer" class="col-xs-4 col-lg-2">
 
   <select class="form-control" name="bulk_options" id="">
@@ -127,38 +76,40 @@ if (isset($_POST['checkBoxArray'])) {
     </table><!-- table table-bordered table-hover -->
     <?php
 
-    //  IF SET GET [KEY] 
+    // check Get varible is set
     if (isset($_GET['change_to_admin'])) {
 
-      // CATCH THE ID
-      $the_user_id = $_GET['change_to_admin'];
-
+      // True - get the varible here
+      $the_user_id = $connection->real_escape_string($_GET['change_to_admin']);
+      // save string here
+      $admin = 'admin';
       // UPDATE table set COL equal to this value where COL equals THE ID
-      $query = "UPDATE users SET user_role = 'admin' WHERE userId = $the_user_id";
-      // SEND IN 
-      $change_to_admin_query = mysqli_query($connection, $query);
+      $updateQry = "UPDATE users SET user_role =  ? WHERE userId = ?";
+
+      //$change_to_admin_query = mysqli_query($connection, $query);
+      $updateStatement = mysqli_prepare($connection, $updateQry);
+      mysqli_stmt_bind_param($updateStatement, 'si', $admin, $the_user_id);
+
+      mysqli_stmt_execute($updateStatement);
 
       // refresh the on submited at this location
       header("Location: users.php");
     }
 
-    //  IF PRESSED
     if (isset($_GET['change_to_sub'])) {
-      //echo $_GET['change_to_sub']; 
-      //  CATCH change_to_sub
-      $the_user_id = $_GET['change_to_sub'];
 
-      // update table set col to equal this value where column equal to $var; 
-      $query = "UPDATE users SET user_role = 'subscriber' WHERE userId = {$the_user_id}";
+      $the_user_id = $connection->real_escape_string($_GET['change_to_sub']);
+      $subscriber = 'subscriber';
 
-      // function performs a query against a database to send in. 
-      $change_to_sub_query = mysqli_query($connection, $query);
+      $updateQry = "UPDATE users SET user_role = ? WHERE userId = ?";
+      $updateStatement = mysqli_prepare($connection, $updateQry);
+      mysqli_stmt_bind_param($updateStatement, 'si', $subscriber, $the_user_id);
+      mysqli_stmt_execute($updateStatement);
 
       // then refresh the page everytime it is submited
       header("Location: users.php");
     }
     ?>
-
 
     <!-- DELETE USER QUERY -->
     <?php
@@ -172,7 +123,7 @@ if (isset($_POST['checkBoxArray'])) {
       if (isset($_SESSION['user_role'])) {
         // check user role is an admin user 
         if ($_SESSION['user_role'] == 'admin') {
-
+          //TRUE - Get the user id who is set to admin delete user
           $the_user_id       = $connection->real_escape_string($_GET['delete']);
 
           $query = "DELETE FROM users WHERE userId = ? ";

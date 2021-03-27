@@ -20,14 +20,14 @@
 								</div><!-- alignment -->
 								<!--CREATE A CATEGORY  -->
 								<?php
-
+								//check POST submit is set
 								if (isset($_POST['submit'])) {
-
+									// Post the cat title
 									$cat_title = $_POST['cat_title'];
 
-									//// if cat_title is equal to empty string or function to check is var is empty
+									// check the cat_title is equal to an empty string or function to check is var is empty
 									if ($cat_title == "" || empty($cat_title)) {
-										//// Then display this.
+										//if true display this message
 										echo "This field should not empty";
 									} else {
 
@@ -37,9 +37,8 @@
 										mysqli_stmt_execute($insertStatement);
 
 										if (!$insertStatement) {
-
-											// terminate script and display error with the connection. 
-											die('QUERY FAILED' . mysqli_error($connection));
+											printf("Error: %s\n", mysqli_error($connection));
+											exit();
 										}
 									} // End else
 
@@ -64,11 +63,11 @@
 
 									<?php // UPDATE AND INCLUDE QUERY
 
-									// DECTECT - if the edited link is declared 
+									// check url is set to Get edit
 									if (isset($_GET['edit'])) {
 
-										// IF TRUE - ASSIGN TO cat_id. 
-										$cat_id = $_GET['edit'];
+										// get the cat id
+										$cat_id = $connection->real_escape_string($_GET['edit']);
 
 										// PATH TO UPDATE_CATEGORIES.PHP
 										include "inc/update_categories.php";
@@ -88,11 +87,11 @@
 										<tbody>
 											<?php
 											$query = "SELECT * FROM categories";
-											$select_categories = mysqli_query($connection, $query);
+											$statement = mysqli_prepare($connection, $query);
+											mysqli_stmt_execute($statement);
+											$select_categories = mysqli_stmt_get_result($statement);
 
-											// while the condition is true fetch the row representing the array from ($variable)
 											while ($row = mysqli_fetch_array($select_categories)) {
-												// Then assign the array to a variable
 												$cat_id = $row['cat_id'];
 												$cat_title = $row['cat_title'];
 
@@ -100,10 +99,10 @@
 												// Then display the fetch row form the database in the browser. 
 												echo "<td>{$cat_id}</td>";
 												echo "<td>{$cat_title}</td>";
-												// delete button
-												echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
 												// Edited link
 												echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+												// delete button
+												echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
 												echo "</tr>";
 											}
 
@@ -112,9 +111,10 @@
 											<!-- DELETE QUERY FUNCTION -->
 
 											<?php
-
+											// check url for get delete
 											if (isset($_GET['delete'])) {
-												$the_cat_id = $_GET['delete'];
+												// get the id to delete
+												$the_cat_id = $connection->real_escape_string($_GET['delete']);
 
 												$deleteQry = "DELETE FROM categories WHERE cat_id = ?";
 												$deleteStatement = mysqli_prepare($connection, $deleteQry);

@@ -1,55 +1,3 @@
-<?php
-//this is a bet strange i dont understand how the input apply is connected to the if set.
-
-// first we check for activity on the checkbox
-if (isset($_POST['checkBoxArray'])) {
-  //echo 'receving data'; // output - there is output when the apply button is clicked
-
-  // now we wont to loop around the checkbox
-
-  foreach ($_POST['checkBoxArray'] as $postValueId) {
-
-    //print_r($_POST['checkBoxArray']); // OUTPUTS - Key and value
-    //print_r($checkBoxValue);// OUTPUTS - Value  
-
-    //echo $bulk_options = $_POST['bulk_options']; // output - option values
-
-    $bulk_options = $_POST['bulk_options'];
-
-    switch ($bulk_options) {
-      case 'published':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'draft':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        break;
-
-      case 'delete':
-        $query = "DELETE FROM posts WHERE post_id = {$postValueId} ";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-
-        if (!$update_to_published_status) {
-
-          // Print a message and terminate the current script:
-          die("QUERY FAILED" . mysqli_error($connection));
-        }
-
-        break;
-    } //switch
-
-  } // foreach
-
-} // isset
-
-?>
-
 <div class="table_header">
   <div class="col-xs-4">
     <h1 class="mt-4">Posts</h1>
@@ -72,10 +20,7 @@ if (isset($_POST['checkBoxArray'])) {
 
   </div>
 
-
-
 </div>
-
 
 <form class="col-lg-12" action="" method='post'>
 
@@ -101,19 +46,12 @@ if (isset($_POST['checkBoxArray'])) {
 
 </form>
 
-<?php //$sql = $connection->query("SELECT * FROM posts");
+<?php
 
 $qry = "SELECT * FROM posts";
-
 $allPostStatment = mysqli_prepare($connection, $qry);
-
 mysqli_stmt_execute($allPostStatment);
-
 $getResult = mysqli_stmt_get_result($allPostStatment);
-
-// while ($rows = mysqli_fetch_assoc($getResult)) {
-//   print_r($rows);
-// }
 
 foreach ($getResult as $row) {
 
@@ -128,7 +66,6 @@ foreach ($getResult as $row) {
   $post_tags = $row['post_tags'];
   $post_date = $row['post_date'];
 
-  //display 
   echo "<tr>";
 ?>
   <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?= $post_id ?>'></td>
@@ -191,7 +128,7 @@ foreach ($getResult as $row) {
 
 if (isset($_GET['delete'])) {
 
-  $the_post_id = $_GET['delete'];
+  $the_post_id = $connection->real_escape_string($_GET['delete']);
 
   $delete_post_sql = "DELETE FROM posts WHERE post_id = ?";
   $deleteStatement = mysqli_prepare($connection, $delete_post_sql);
