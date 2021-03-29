@@ -15,8 +15,8 @@ if (isset($_POST['login'])) {
 
   //catch user login details and clean Escapes special characters in a string for use in an SQL query, taking into account the current character set of the connection.
 
-  $login_email          = $connection->real_escape_string($_POST['login_email']);
-  $login_password       = $connection->real_escape_string($_POST['login_password']);
+  $login_email = mysqli_real_escape_string($connection, $_POST['login_email']);
+  $login_password = mysqli_real_escape_string($connection, $_POST['login_password']);
 
   $query = "SELECT * FROM users WHERE  user_email = ?";
   $statement = mysqli_prepare($connection, $query);
