@@ -27,12 +27,12 @@ if (isset($_GET['edit_user'])) {
 
 if (isset($_POST['edit_user'])) {
   // PICK UP VAULES
-  $user_firstname        = $_POST['user_firstname'];
-  $user_lastname         = $_POST['user_lastname'];
-  $user_role             = $_POST['user_role'];
-  $username              = $_POST['username'];
-  $user_email            = $_POST['user_email'];
-  $user_password         = $_POST['user_password'];
+  $user_firstname        = $connection->real_escape_string($_POST['user_firstname']);
+  $user_lastname         = $connection->real_escape_string($_POST['user_lastname']);
+  $user_role             = $connection->real_escape_string($_POST['user_role']);
+  $username              = $connection->real_escape_string($_POST['username']);
+  $user_email            = $connection->real_escape_string($_POST['user_email']);
+  $user_password         = $connection->real_escape_string($_POST['user_password']);
 
 
   if (!empty($user_password)) {
