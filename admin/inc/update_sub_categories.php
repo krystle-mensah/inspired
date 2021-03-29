@@ -11,7 +11,7 @@
     if (isset($_GET['edit'])) {
 
       // TRUE - Get the sub category
-      $Get_sub_categories = $connection->real_escape_string($_GET['edit']);
+      $Get_sub_categories = mysqli_real_escape_string($connection, $_GET['edit']);
 
       //Fetch record:
       $query = "SELECT * FROM sub_categories WHERE subCategoriesID = ?";

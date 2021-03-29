@@ -11,7 +11,7 @@
     if (isset($_GET['edit'])) {
 
       // TRUE - Get the cat id
-      $cat_id = $connection->real_escape_string($_GET['edit']);
+      $cat_id =  mysqli_real_escape_string($connection, $_GET['edit']);
 
       //Fetch record:
       $query = "SELECT * FROM categories WHERE cat_id = ?";

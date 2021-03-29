@@ -5,14 +5,15 @@ if (isset($_POST['create_slide'])) {
   ////echo $_POST['title']; // output - we are geeting the title
 
   //ADD THESE NAME VALUES 
-  $slide_title        = $connection->real_escape_string($_POST['title']);
-  $slide_author       = $connection->real_escape_string($_POST['author']);
-  $slide_image        = $connection->real_escape_string($_FILES['image']['name']);
-  $slide_image_temp   = $connection->real_escape_string($_FILES['image']['tmp_name']);
+  //$post_tags         = mysqli_real_escape_string($connection, $_POST['post_tags']);
+  $slide_title        = mysqli_real_escape_string($connection, $_POST['title']);
+  $slide_author       =  mysqli_real_escape_string($connection, $_POST['author']);
+  $slide_image        =  mysqli_real_escape_string($connection, $_FILES['image']['name']);
+  $slide_image_temp   =  mysqli_real_escape_string($connection, $_FILES['image']['tmp_name']);
   //$slide_content      = $connection->real_escape_string($_POST['slide_content']);
   $slide_content      = $_POST['slide_content'];
-  $slide_tags         = $connection->real_escape_string($_POST['slide_tags']);
-  $slide_date         = $connection->real_escape_string(date('Y-m-d'));
+  $slide_tags         =  mysqli_real_escape_string($connection, $_POST['slide_tags']);
+  $slide_date         =  mysqli_real_escape_string($connection, date('Y-m-d'));
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 

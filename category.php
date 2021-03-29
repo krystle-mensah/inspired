@@ -18,7 +18,8 @@ include "inc/header.php";
 
       if (isset($_GET['category'])) {
 
-        $post_category_id = $connection->real_escape_string($_GET['category']);
+        // $post_category_id = $connection->real_escape_string($_GET['category']);
+        $post_category_id = mysqli_real_escape_string($connection, $_GET['category']);
       } else {
 
         echo "not set";

@@ -17,7 +17,8 @@ include "inc/header.php";
       //check get sub category is set
       if (isset($_GET['subCategory'])) {
         // TRUE - GET sub category
-        $postSubCatID =  $connection->real_escape_string($_GET['subCategory']);
+        //$postSubCatID =  $connection->real_escape_string($_GET['subCategory']);
+        $postSubCatID = mysqli_real_escape_string($connection, $_GET['subCategory']);
       } else {
         echo "not set";
       }

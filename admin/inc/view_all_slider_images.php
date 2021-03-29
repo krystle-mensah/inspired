@@ -95,7 +95,7 @@ endforeach;
 // if this is set
 if (isset($_GET['delete'])) {
 
-  $the_slide_id = $connection->real_escape_string($_GET['delete']);
+  $the_slide_id =  mysqli_real_escape_string($connection, $_GET['delete']);
 
   $delete_slide_sql = "DELETE FROM carousel WHERE carousel_id = ?";
   $deleteStatement = mysqli_prepare($connection, $delete_slide_sql);

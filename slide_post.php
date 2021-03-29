@@ -21,7 +21,8 @@
       //Check whether this variable is empty or set/declared on the index.
       if (isset($_GET['s_id'])) {
         // if it is get it.
-        $GETslide_id =  $connection->real_escape_string($_GET['s_id']); // output
+        //$GETslide_id =  $connection->real_escape_string($_GET['p_id']); // output
+        $GETslide_id = mysqli_real_escape_string($connection, $_GET['p_id']);
       }
       ?>
 

@@ -3,7 +3,7 @@
 //GET - ID form url
 if (isset($_GET['GET_carousel_id'])) {
   //AND SAVE HERE
-  $GET_carousel_id = $connection->real_escape_string($_GET['GET_carousel_id']);
+  $GET_carousel_id =  mysqli_real_escape_string($connection, $_GET['GET_carousel_id']);
 }
 
 // then look for the id in the database
@@ -31,12 +31,12 @@ while ($row = mysqli_fetch_array($select_carousel_by_id)) {
 
 if (isset($_POST['update_slide'])) {
   //echo "hi";
-  $slide_title          =   $connection->real_escape_string($_POST['carousel_title']);
-  $slide_author         =   $connection->real_escape_string($_POST['carousel_author']);
-  $slide_image          =   $connection->real_escape_string($_FILES['image']['name']);
-  $slide_image_temp     =   $connection->real_escape_string($_FILES['image']['tmp_name']);
-  $slide_content        =   $connection->real_escape_string($_POST['carousel_content']);
-  $slide_tags           =   $connection->real_escape_string($_POST['carousel_tags']);
+  $slide_title          =    mysqli_real_escape_string($connection, $_POST['carousel_title']);
+  $slide_author         =    mysqli_real_escape_string($connection, $_POST['carousel_author']);
+  $slide_image          =    mysqli_real_escape_string($connection, $_FILES['image']['name']);
+  $slide_image_temp     =    mysqli_real_escape_string($connection, $_FILES['image']['tmp_name']);
+  $slide_content        =    mysqli_real_escape_string($connection, $_POST['carousel_content']);
+  $slide_tags           =    mysqli_real_escape_string($connection, $_POST['carousel_tags']);
 
   move_uploaded_file($slide_image_temp, "../img/$slide_image");
 

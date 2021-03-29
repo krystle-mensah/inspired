@@ -38,6 +38,7 @@ include "inc/header.php";
       // $count = mysqli_num_rows($find_count);
 
       //$count =  ceil($count / $per_page);
+
       $limit =  20;
       $query = "SELECT * FROM `posts` ORDER BY `posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);

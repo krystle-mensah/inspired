@@ -7,18 +7,18 @@
   // TEST - type in the title field then click update button 
   //echo $_POST['title'];
   // SET THESE VALUES FOR THE USER
-  $post_title        = $connection->real_escape_string($_POST['title']);
-  $post_author       = $connection->real_escape_string($_POST['author']);
-  $post_category_id  = $connection->real_escape_string($_POST['post_category_id']);
-  $postSubCatID      = $connection->real_escape_string($_POST['postSubCatID']);
-  $post_image        = $connection->real_escape_string($_FILES['image']['name']);
-  $post_image_temp   = $connection->real_escape_string($_FILES['image']['tmp_name']);
-  $post_tags         = $connection->real_escape_string($_POST['post_tags']);
+  $post_title        = mysqli_real_escape_string($connection, $_POST['title']);
+  $post_author       = mysqli_real_escape_string($connection, $_POST['author']);
+  $post_category_id  = mysqli_real_escape_string($connection, $_POST['post_category_id']);
+  $postSubCatID      = mysqli_real_escape_string($connection, $_POST['postSubCatID']);
+  $post_image        = mysqli_real_escape_string($connection, $_FILES['image']['name']);
+  $post_image_temp   = mysqli_real_escape_string($connection, $_FILES['image']['tmp_name']);
+  $post_tags         = mysqli_real_escape_string($connection, $_POST['post_tags']);
   //$post_content      = $connection->real_escape_string($_POST['post_content']);
-  $post_content = $_POST['post_content'];
-  $post_date         = $connection->real_escape_string(date('Y-m-d'));
-  $post_status       = $connection->real_escape_string($_POST['post_status']);
-  $post_comment_count = $connection->real_escape_string(4);
+  $post_content      = $_POST['post_content'];
+  $post_date         = mysqli_real_escape_string($connection, date('Y-m-d'));
+  $post_status       = mysqli_real_escape_string($connection, $_POST['post_status']);
+  $post_comment_count = mysqli_real_escape_string($connection, 4);
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
 

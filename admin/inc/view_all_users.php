@@ -80,7 +80,7 @@
     if (isset($_GET['change_to_admin'])) {
 
       // True - get the varible here
-      $the_user_id = $connection->real_escape_string($_GET['change_to_admin']);
+      $the_user_id =  mysqli_real_escape_string($connection, $_GET['change_to_admin']);
       // save string here
       $admin = 'admin';
       // UPDATE table set COL equal to this value where COL equals THE ID
@@ -98,7 +98,7 @@
 
     if (isset($_GET['change_to_sub'])) {
 
-      $the_user_id = $connection->real_escape_string($_GET['change_to_sub']);
+      $the_user_id =  mysqli_real_escape_string($connection, $_GET['change_to_sub']);
       $subscriber = 'subscriber';
 
       $updateQry = "UPDATE users SET user_role = ? WHERE userId = ?";
@@ -124,7 +124,7 @@
         // check user role is an admin user 
         if ($_SESSION['user_role'] == 'admin') {
           //TRUE - Get the user id who is set to admin delete user
-          $the_user_id       = $connection->real_escape_string($_GET['delete']);
+          $the_user_id       =  mysqli_real_escape_string($connection, $_GET['delete']);
 
           $query = "DELETE FROM users WHERE userId = ? ";
 

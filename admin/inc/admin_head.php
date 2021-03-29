@@ -1,9 +1,13 @@
-<?php session_start(); ?>
-<?php include "./function.php"; ?>
-<?php include "../inc/db.php"; ?>
+<?php
 
-<!-- outwould buffering -->
-<?php ob_start(); ?>
+session_start();
+
+include "../inc/db.php";
+
+// outwould buffering
+ob_start();
+
+?>
 
 <?php
 

@@ -34,7 +34,8 @@
                 if (isset($_GET['source'])) {
 
                   // if ture assign variable
-                  $source = $connection->real_escape_string($_GET['source']);
+                  //$source = $connection->real_escape_string($_GET['source']);
+                  $source = mysqli_real_escape_string($connection, $_GET['source']);
 
                   // we have to put an else because im getting an undefined variable.  
                 } else {

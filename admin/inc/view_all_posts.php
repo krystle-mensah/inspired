@@ -128,7 +128,7 @@ foreach ($getResult as $row) {
 
 if (isset($_GET['delete'])) {
 
-  $the_post_id = $connection->real_escape_string($_GET['delete']);
+  $the_post_id =  mysqli_real_escape_string($connection, $_GET['delete']);
 
   $delete_post_sql = "DELETE FROM posts WHERE post_id = ?";
   $deleteStatement = mysqli_prepare($connection, $delete_post_sql);

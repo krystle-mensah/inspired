@@ -2,9 +2,9 @@
 
 //if the edit button is clicked pick up that ID
 if (isset($_GET['p_id'])) {
-  //$user_firstname        = $connection->real_escape_string($_POST['user_firstname']);
+  //$user_firstname        =  mysqli_real_escape_string($connection,$_POST['user_firstname']);
   //GET it and save it in this variable
-  $the_post_id = $connection->real_escape_string($_GET['p_id']);
+  $the_post_id =  mysqli_real_escape_string($connection, $_GET['p_id']);
 }
 //then query the database
 $query = "SELECT * FROM posts WHERE post_id = ?";
@@ -33,15 +33,15 @@ while ($row = mysqli_fetch_array($select_posts_by_id)) {
 
 if (isset($_POST['update_post'])) {
   //echo "hi";
-  $post_author         =  $connection->real_escape_string($_POST['post_author']);
-  $post_title          =  $connection->real_escape_string($_POST['post_title']);
-  $post_category_id    =  $connection->real_escape_string($_POST['post_category']);
-  $post_status         =  $connection->real_escape_string($_POST['post_status']);
-  $post_image          =  $connection->real_escape_string($_FILES['image']['name']);
-  $post_image_temp     =  $connection->real_escape_string($_FILES['image']['tmp_name']);
-  //$post_content        =  $connection->real_escape_string($_POST['post_content']);
+  $post_author         =   mysqli_real_escape_string($connection, $_POST['post_author']);
+  $post_title          =   mysqli_real_escape_string($connection, $_POST['post_title']);
+  $post_category_id    =   mysqli_real_escape_string($connection, $_POST['post_category']);
+  $post_status         =   mysqli_real_escape_string($connection, $_POST['post_status']);
+  $post_image          =   mysqli_real_escape_string($connection, $_FILES['image']['name']);
+  $post_image_temp     =   mysqli_real_escape_string($connection, $_FILES['image']['tmp_name']);
+  //$post_content        =   mysqli_real_escape_string($connection,$_POST['post_content']);
   $post_content = $_POST['post_content'];
-  $post_tags           =  $connection->real_escape_string($_POST['post_tags']);
+  $post_tags           =   mysqli_real_escape_string($connection, $_POST['post_tags']);
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
 

@@ -2,7 +2,7 @@
 
 if (isset($_GET['edit_user'])) {
 
-  $the_user_id = $connection->real_escape_string($_GET['edit_user']);
+  $the_user_id =  mysqli_real_escape_string($connection, $_GET['edit_user']);
 
   //fetch users by id
   $query = "SELECT * FROM users WHERE userId = ?";
@@ -27,12 +27,12 @@ if (isset($_GET['edit_user'])) {
 
 if (isset($_POST['edit_user'])) {
   // PICK UP VAULES
-  $user_firstname        = $connection->real_escape_string($_POST['user_firstname']);
-  $user_lastname         = $connection->real_escape_string($_POST['user_lastname']);
-  $user_role             = $connection->real_escape_string($_POST['user_role']);
-  $username              = $connection->real_escape_string($_POST['username']);
-  $user_email            = $connection->real_escape_string($_POST['user_email']);
-  $user_password         = $connection->real_escape_string($_POST['user_password']);
+  $user_firstname        =  mysqli_real_escape_string($connection, $_POST['user_firstname']);
+  $user_lastname         =  mysqli_real_escape_string($connection, $_POST['user_lastname']);
+  $user_role             =  mysqli_real_escape_string($connection, $_POST['user_role']);
+  $username              =  mysqli_real_escape_string($connection, $_POST['username']);
+  $user_email            =  mysqli_real_escape_string($connection, $_POST['user_email']);
+  $user_password         =  mysqli_real_escape_string($connection, $_POST['user_password']);
 
 
   if (!empty($user_password)) {

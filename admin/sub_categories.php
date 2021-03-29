@@ -94,7 +94,8 @@
 
                 if (isset($_GET['edit'])) {
 
-                  $subCategoriesID = $connection->real_escape_string($_GET['edit']);
+                  //$subCategoriesID = $connection->real_escape_string($_GET['edit']);
+                  $subCategoriesID = mysqli_real_escape_string($connection, $_GET['edit']);
 
                   include "inc/update_sub_categories.php";
                 }
@@ -152,7 +153,8 @@
                     //check get delete is set
                     if (isset($_GET['delete'])) {
                       //get delete and make it the cat id
-                      $the_sub_cat_id = $connection->real_escape_string($_GET['delete']);
+                      //$the_sub_cat_id = $connection->real_escape_string($_GET['delete']);
+                      $the_sub_cat_id = mysqli_real_escape_string($connection, $_GET['delete']);
 
                       $deleteQry = "DELETE FROM sub_categories WHERE subCategoriesID = ?";
                       $deleteStatement = mysqli_prepare($connection, $deleteQry);
