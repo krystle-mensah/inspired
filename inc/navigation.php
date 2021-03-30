@@ -3,10 +3,12 @@
   <div><a class="nav_link" href="index.php">home</a></div>
   <?php
 
-  $query = "SELECT * FROM categories";
-  $selectFromCategories = mysqli_query($connection, $query);
+  $fetchQry = "SELECT * FROM categories";
+  $select_all_statement = mysqli_prepare($connection, $fetchQry);
+  mysqli_stmt_execute($select_all_statement);
+  $all_categories = mysqli_stmt_get_result($select_all_statement);
 
-  while ($row = mysqli_fetch_array($selectFromCategories)) { ?>
+  while ($row = mysqli_fetch_array($all_categories)) { ?>
   <?php
     $cat_title = $row['cat_title'];
     $cat_id = $row['cat_id'];
