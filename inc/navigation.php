@@ -23,7 +23,6 @@
     $query = "SELECT * FROM sub_categories WHERE subCategoriesCatID = ?";
     $select_all_subID = mysqli_prepare($connection, $query);
     mysqli_stmt_bind_param($select_all_subID, 'i', $cat_id);
-
     mysqli_stmt_execute($select_all_subID);
     $result = mysqli_stmt_get_result($select_all_subID);
 

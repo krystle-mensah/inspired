@@ -90,31 +90,31 @@
       </div><!-- form-group -->
       <!-- SUB CATEGORIES -->
       <div class="form-group">
-        <label for="title">select a sub category</label>
-        <select name="postSubCatID" id="">
+        <!-- <label for="title">select a sub category</label> -->
+        <!-- <select name="postSubCatID" id="">
           <?php
 
-          $query = "SELECT * FROM sub_categories";
-          $statement = mysqli_prepare($connection, $query);
-          mysqli_stmt_execute($statement);
-          $getResult = mysqli_stmt_get_result($statement);
+          // $query = "SELECT * FROM sub_categories";
+          // $statement = mysqli_prepare($connection, $query);
+          // mysqli_stmt_execute($statement);
+          // $getResult = mysqli_stmt_get_result($statement);
 
-          while ($row = mysqli_fetch_assoc($getResult)) {
-            $subCategoriesID = $row['subCategoriesID'];
-            $subCategoriesTitle = $row['subCategoriesTitle'];
+          // while ($row = mysqli_fetch_assoc($getResult)) {
+          //   $subCategoriesID = $row['subCategoriesID'];
+          //   $subCategoriesTitle = $row['subCategoriesTitle'];
 
-            if ($subCategoriesID == $postSubCatID) {
+          //   if ($subCategoriesID == $postSubCatID) {
 
-              echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-            } else {
+          //     echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+          //   } else {
 
-              echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-            }
-          }
+          //     echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
+          //   }
+          // }
 
           ?>
 
-        </select>
+        </select> -->
       </div>
       <!-- STATUS -->
       <div class="form-group">
