@@ -243,8 +243,8 @@ th {
 }
 
 label {
-	/* display: inline-block; */
-	display: block;
+	display: inline-block;
+	/* display: block; */
 	margin-bottom: 0.5rem;
 }
 
