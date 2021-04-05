@@ -10,7 +10,6 @@
   $post_title        = mysqli_real_escape_string($connection, $_POST['title']);
   $post_author       = mysqli_real_escape_string($connection, $_POST['author']);
   $post_category_id  = mysqli_real_escape_string($connection, $_POST['post_category_id']);
-  $postSubCatID      = mysqli_real_escape_string($connection, $_POST['postSubCatID']);
   $post_image        = mysqli_real_escape_string($connection, $_FILES['image']['name']);
   $post_image_temp   = mysqli_real_escape_string($connection, $_FILES['image']['tmp_name']);
   $post_tags         = mysqli_real_escape_string($connection, $_POST['post_tags']);
@@ -22,12 +21,12 @@
 
   move_uploaded_file($post_image_temp, "../img/$post_image");
 
-  $sql = "INSERT INTO posts (post_category_id, postSubCatID, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+  $sql = "INSERT INTO posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   $insertQry = mysqli_prepare($connection, $sql);
 
   // Bind variables to the prepared statement as parameters
-  mysqli_stmt_bind_param($insertQry, "ssssssssss", $post_category_id, $postSubCatID, $post_title, $post_author, $post_date, $post_image, $post_content, $post_tags, $post_comment_count, $post_status);
+  mysqli_stmt_bind_param($insertQry, "sssssssss", $post_category_id, $post_title, $post_author, $post_date, $post_image, $post_content, $post_tags, $post_comment_count, $post_status);
 
   // Attempt to execute the prepared statement
   mysqli_stmt_execute($insertQry);
@@ -88,34 +87,7 @@
           ?>
         </select>
       </div><!-- form-group -->
-      <!-- SUB CATEGORIES -->
-      <div class="form-group">
-        <!-- <label for="title">select a sub category</label> -->
-        <!-- <select name="postSubCatID" id="">
-          <?php
 
-          // $query = "SELECT * FROM sub_categories";
-          // $statement = mysqli_prepare($connection, $query);
-          // mysqli_stmt_execute($statement);
-          // $getResult = mysqli_stmt_get_result($statement);
-
-          // while ($row = mysqli_fetch_assoc($getResult)) {
-          //   $subCategoriesID = $row['subCategoriesID'];
-          //   $subCategoriesTitle = $row['subCategoriesTitle'];
-
-          //   if ($subCategoriesID == $postSubCatID) {
-
-          //     echo "<option selected value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-          //   } else {
-
-          //     echo "<option value='{$subCategoriesID}'>{$subCategoriesTitle}</option>";
-          //   }
-          // }
-
-          ?>
-
-        </select> -->
-      </div>
       <!-- STATUS -->
       <div class="form-group">
         <select name="post_status" id="">
