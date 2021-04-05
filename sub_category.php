@@ -14,11 +14,10 @@ include "inc/header.php";
     <div class="col-md-8 blog_main">
 
       <?php
-      //check get sub category is set
+      //check get sub category is set in url
       if (isset($_GET['subCategory'])) {
-        // TRUE - GET sub category
-        //$postSubCatID =  $connection->real_escape_string($_GET['subCategory']);
-        $postSubCatID = mysqli_real_escape_string($connection, $_GET['subCategory']);
+        // then GET sub category id
+        $subCategoryID = mysqli_real_escape_string($connection, $_GET['subCategory']);
       } else {
         echo "not set";
       }
@@ -27,16 +26,16 @@ include "inc/header.php";
 
       <?php
       $limit =  6;
-      $query = "SELECT * FROM posts WHERE postSubCatID = ? ORDER BY `posts`.`post_date` DESC LIMIT ?";
+      $query = "SELECT * FROM sub_categories_posts WHERE subCategoryID = ? ORDER BY `sub_categories_posts`.`post_date` DESC LIMIT ?";
       $statement = mysqli_prepare($connection, $query);
-      mysqli_stmt_bind_param($statement, 'ii', $postSubCatID,  $limit);
+      mysqli_stmt_bind_param($statement, 'ii', $subCategoryID,  $limit);
       mysqli_stmt_execute($statement);
       $result = mysqli_stmt_get_result($statement);
 
       foreach ($result as $row) {
 
-        $postSubCatID = $row['postSubCatID'];
-        $post_id = $row['post_id'];
+        $subCategoryID = $row['subCategoryID'];
+        $subCategoryPostID = $row['subCategoryPostID'];
         $post_title = $row['post_title'];
         $post_author = $row['post_author'];
         $post_date = $row['post_date'];
@@ -45,7 +44,6 @@ include "inc/header.php";
       ?>
         <div class="card">
           <a class="post_link" href="post.php?p_id=<?= $post_id; ?>">
-            <!-- <div class="blog-post"> -->
             <figure class="d-flex flex-column">
               <img class="card-img-top post_img" src="img/<?= $post_image; ?>" alt="Card image cap">
             </figure>
@@ -69,8 +67,7 @@ include "inc/header.php";
                 <p><strong class="post_cat_title"><?= $subCategoriesTitle; ?></strong></p>
               </a>
             </div><!-- post-content -->
-            <!-- </div> -->
-            <!-- /.blog-post -->
+
           </a><!-- post link -->
         </div><!-- card -->
       <?php } ?>

@@ -81,6 +81,55 @@ include "inc/header.php";
           </a><!-- post link -->
         </div><!-- card -->
       <?php } ?>
+      <?php
+
+      $limit =  20;
+      $query = "SELECT * FROM `sub_categories_posts` ORDER BY `sub_categories_posts`.`post_date` DESC LIMIT ?";
+      $statement = mysqli_prepare($connection, $query);
+      mysqli_stmt_bind_param($statement, 'i', $limit);
+      mysqli_stmt_execute($statement);
+      $getResult = mysqli_stmt_get_result($statement);
+
+      ?>
+
+      <?php
+      while ($row = mysqli_fetch_array($getResult)) {
+
+        $subCategoryID = $row['subCategoryID'];
+        $post_title = $row['post_title'];
+        $post_author = $row['post_author'];
+        $post_date = $row['post_date'];
+        $post_image = $row['post_image'];
+
+      ?>
+        <div class="card">
+          <a class="post_link" href="post.php?p_id=<?= $row['post_id']; ?>">
+            <figure class="d-flex flex-column">
+              <img class="card-img-top post_img" src="img/<?= $post_image; ?>" alt="Card image cap">
+            </figure>
+            <div class="post-content card-body">
+              <h1 class="post_title"><?= $post_title;  ?></h1>
+              <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author;  ?></a></p>
+              <?php
+              // $query = "SELECT * FROM sub_categories WHERE subCategoriesID = ?";
+              // $statement = mysqli_prepare($connection, $query);
+              // mysqli_stmt_bind_param($statement, 'i', $post_category_id);
+              // mysqli_stmt_execute($statement);
+              // $result = mysqli_stmt_get_result($statement);
+              // foreach ($result as $number_key) :
+              //   $cat_id = $number_key['cat_id'];
+              //   $cat_title = $number_key['cat_title'];
+              // endforeach;
+              ?>
+              <!-- <a class="post_cat_title" href="category.php?category=<?//= $cat_id;  ?>"> -->
+              <!-- <p class="card-text"><strong><? //$cat_title;  ?></strong></p> -->
+              <!-- </a> -->
+            </div><!-- post-content -->
+          </a><!-- post link -->
+        </div><!-- card -->
+      <?php } ?>
+
+
 
     </div><!-- alignment and main blog -->
 
