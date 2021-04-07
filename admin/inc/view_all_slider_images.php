@@ -1,4 +1,4 @@
-<div id="bulkOptionContainer" class="col-xs-4 col-lg-2">
+<div id="bulkOptionContainer" class="col-xs-4">
   <h1 class="mt-4">All Slides Images</h1>
 
   <!-- <select class="form-control" name="bulk_options" id="">

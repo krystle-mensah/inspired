@@ -40,13 +40,12 @@
 
     // UPDATE CATEGORY QUERY
 
-    // If post because we are posting a value form submit
+    // check for update sub category
     if (isset($_POST['update_sub_category'])) {
 
       // then we get the title
       $get_subCategoriesTitle = $_POST['subCategoriesTitle'];
 
-      // query to update categories and set cat title to variable from form
       $updateQry = "UPDATE sub_categories SET subCategoriesTitle = ? WHERE subCategoriesID = ?";
       $updateStatement = mysqli_prepare($connection, $updateQry);
       mysqli_stmt_bind_param($updateStatement, 'si', $get_subCategoriesTitle, $subCategoriesID);

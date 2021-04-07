@@ -55,33 +55,7 @@
                       <label for="title">Add sub Category</label>
                       <input type="text" class="form-control" name="subCategoriesTitle">
                     </div>
-                    <!--  CAT ID -->
-                    <!-- <div class="form-group">
-                      <label for="title">select a category</label>
-                      <select name="subCategoriesCatID" id="">
-                        <?php
-                        // $query = "SELECT * FROM categories";
-                        // $select_categories = mysqli_query($connection, $query);
 
-                        // confirmQuery($select_categories);
-
-                        // while ($row = mysqli_fetch_assoc($select_categories)) {
-                        //   $cat_id = $row['cat_id'];
-                        //   $cat_title = $row['cat_title'];
-                        //   //set chapter cat id to the cat id
-                        //   if ($cat_id == $chapter_cat) {
-                        //     //when we click the title we get the catid of that title
-                        //     echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
-                        //   } else {
-
-                        //     echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                        //   }
-                        // }
-
-                        ?>
-                      </select>
-                    </div> -->
-                    <!-- form-group -->
                     <!-- SUBMIT BUTTON -->
                     <div class="form-group">
                       <input class="btn btn-primary" type="submit" name="submit" value="Publish Sub category">
@@ -94,7 +68,6 @@
 
                 if (isset($_GET['edit'])) {
 
-                  //$subCategoriesID = $connection->real_escape_string($_GET['edit']);
                   $subCategoriesID = mysqli_real_escape_string($connection, $_GET['edit']);
 
                   include "inc/update_sub_categories.php";
@@ -123,16 +96,20 @@
 
                     ?>
 
-                    <?php foreach ($select_all_sub_categories as $row) : ?>
+                    <?php foreach ($select_all_sub_categories as $row) :
+                      $subCategoriesID = $row['subCategoriesID'];
+                      $subCategoriesTitle = $row['subCategoriesTitle'];
+                      $subCategoriesCatID = $row['subCategoriesCatID'];
+                    ?>
+
                       <tr>
-                        <td><?= $row['subCategoriesID']; ?></td>
-                        <td><?= $row['subCategoriesTitle']; ?></td>
+                        <td><?= $subCategoriesID; ?></td>
+                        <td><?= $subCategoriesTitle; ?></td>
 
                         <?php
-                        $query = "SELECT * FROM categories WHERE cat_id = ? ";
-
+                        $query = "SELECT * FROM categories WHERE cat_id = ?";
                         $statement = mysqli_prepare($connection, $query);
-                        mysqli_stmt_bind_param($statement, 'i', $row['subCategoriesCatID']);
+                        mysqli_stmt_bind_param($statement, 'i', $subCategoriesCatID);
                         mysqli_stmt_execute($statement);
                         $select_all_categories_by_id = mysqli_stmt_get_result($statement);
 

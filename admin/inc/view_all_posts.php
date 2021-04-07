@@ -1,22 +1,7 @@
 <div class="table_header">
   <div class="col-xs-4">
+
     <h1 class="mt-4">Posts</h1>
-
-    <input type="submit" name="submit" class="btn btn-success" value="Apply">
-    <a class="btn btn-primary" href="posts.php?source=add_post">New Post</a>
-
-    <!-- <div id="bulkOptionContainer" class=""> -->
-
-    <!-- <select class="form-control" name="bulk_options" id="">
-      <option value="">Select Options</option>
-      <option value="published">Publish</option>
-      <option value="draft">Draft</option>
-      <option value="delete">Delete</option>
-      <option value="clone">Clone</option>
-    </select> -->
-
-    <!-- </div> -->
-    <!-- bulkOptionContainer -->
 
   </div>
 
@@ -33,7 +18,6 @@
         <th>Author</th>
         <th>Title</th>
         <th>Category</th>
-        <!-- <th>Sub Category</th> -->
         <th>Status</th>
         <th>Image</th>
         <th>Tags</th>
@@ -55,12 +39,10 @@ $getResult = mysqli_stmt_get_result($allPostStatment);
 
 foreach ($getResult as $row) {
 
-  // values we bring back and assign to variable
   $post_id = $row['post_id'];
   $post_author = $row['post_author'];
   $post_title = $row['post_title'];
   $post_category_id = $row['post_category_id'];
-  //$postSubCatID = $row['postSubCatID'];
   $post_status = $row['post_status'];
   $post_image = $row['post_image'];
   $post_tags = $row['post_tags'];
@@ -88,19 +70,7 @@ foreach ($getResult as $row) {
     // display the cat title 
     echo "<td>{$cat_title}</td>";
   }
-  //SUB CATEGORY
-  // $query = "SELECT * FROM sub_categories WHERE subCategoriesID = ?";
-  // $statement = mysqli_prepare($connection, $query);
-  // mysqli_stmt_bind_param($statement, 'i', $postSubCatID);
-  // mysqli_stmt_execute($statement);
-  // $result = mysqli_stmt_get_result($statement);
 
-  // foreach ($result as $row) {
-  //   $subCategoriesID = $row['subCategoriesID'];
-  //   $subCategoriesTitle = $row['subCategoriesTitle'];
-  //   // display the cat title 
-  //   echo "<td>{$subCategoriesTitle}</td>";
-  // }
   echo "<td>$post_status</td>";
   echo "<td><img width='100' src='../img/$post_image' alt='image'></td>";
   echo "<td>$post_tags</td>";

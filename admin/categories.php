@@ -31,7 +31,7 @@
 											<input type="text" name="cat_title" class="form-control">
 										</div><!-- form-group -->
 
-										<!-- SUBIT BUTTON -->
+										<!-- SUBMIT BUTTON -->
 										<div class="form-group">
 											<input class="btn btn-primary" type="submit" name="submit" value="Add Category">
 										</div><!-- form-group -->
