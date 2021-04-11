@@ -69,7 +69,7 @@
 											$select_categories = mysqli_stmt_get_result($statement);
 
 											while ($row = mysqli_fetch_array($select_categories)) {
-												$cat_id = $row['cat_id'];
+												$cat_id    = $row['cat_id'];
 												$cat_title = $row['cat_title'];
 
 												echo "<tr>";

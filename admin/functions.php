@@ -61,3 +61,32 @@ function insert_categories()
   } // isset function
 
 }
+
+function insert_sub_categories()
+{
+  global $connection;
+  //check post set to submit
+  if (isset($_POST['submit'])) {
+
+    // post sub categorie title Here
+    $subCategoriesTitle = $_POST['subCategoriesTitle'];
+
+    // check variable is equal to empty string OR varible is empty
+    if ($subCategoriesTitle == "" || empty($subCategoriesTitle)) {
+      echo "This field should not empty";
+    } else {
+      $query = "INSERT INTO sub_categories(subCategoriesTitle)";
+      $query .= "VALUES(?)";
+
+      $insertQry = mysqli_prepare($connection, $query);
+      mysqli_stmt_bind_param($insertQry, "s", $subCategoriesTitle,);
+      mysqli_stmt_execute($insertQry);
+      if (!$insertQry) {
+
+        // Print a message and terminate the current script:
+        die("QUERY FAILED" . mysqli_error($connection));
+      }
+    }
+  } // isset function
+
+}
