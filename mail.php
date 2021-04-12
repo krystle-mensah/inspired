@@ -16,7 +16,7 @@ require 'vendor/autoload.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
-include "inc/db.php";
+include "admin/inc/db.php";
 
 //Instantiation and passing `true` enables exceptions
 // create instance of php mailer

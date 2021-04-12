@@ -1,11 +1,9 @@
 <!-- The Include function is used to put data of one PHP file into another PHP file. If errors occur then the include function produces a warning but does not stop the execution of the script i.e. the script will continue to execute.  -->
-<?php include "inc/db.php" ?>
-
-<!-- include head.php page here -->
-<?php include "inc/head.php"; ?>
-
-<!-- HEADER -->
-<?php include "inc/header.php"; ?>
+<?php
+include "admin/inc/db.php";
+include "inc/head.php";
+include "inc/header.php";
+?>
 
 <div class="container">
 
@@ -20,8 +18,7 @@
       <?php
       //Check whether this variable is empty or set/declared on the index.
       if (isset($_GET['s_id'])) {
-        // if it is get it.
-        //$GETslide_id =  $connection->real_escape_string($_GET['p_id']); // output
+
         $GETslide_id = mysqli_real_escape_string($connection, $_GET['p_id']);
       }
       ?>
@@ -48,7 +45,7 @@
 
         <div class="card">
           <div class="card-body d-flex flex-column align-items-start">
-            <!-- / = means current directory -->
+
             <img class="flex-auto d-none d-md-block post-image img-fluid" src="img/<?= $slide_image; ?>" alt="Card image cap">
           </div>
         </div><!-- card -->
@@ -69,12 +66,6 @@
     </div><!-- alignment and main blog -->
 
   </div><!-- row -->
-
-  <!-- PAGEINATION -->
-  <!-- <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-      </nav> -->
 
 </main><!-- /.container -->
 

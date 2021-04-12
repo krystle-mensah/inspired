@@ -1,8 +1,8 @@
 <?php
 
-include "db.php";
-
 session_start();
+
+include "../admin/inc/db.php";
 
 ?>
 

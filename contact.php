@@ -1,5 +1,5 @@
 <?php
-include "inc/db.php";
+include "admin/inc/db.php";
 include "inc/head.php";
 include "inc/header.php";
 ?>
@@ -30,11 +30,6 @@ include "inc/header.php";
             }
             ?>
 
-            <!-- <ul>
-              <li><i class="fa fa-road"></i> 44 Something st</li>
-              <li><i class="fa fa-phone"></i> (555) 555-5555</li>
-              <li><i class="fa fa-envelope"></i> kofi@acme.test</li>
-            </ul> -->
           </div>
           <div class="contact">
             <h3>Email Us</h3>

@@ -1,5 +1,5 @@
 <?php
-include "inc/db.php";
+include "admin/inc/db.php";
 include "inc/head.php";
 include "inc/header.php";
 ?>

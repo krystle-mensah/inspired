@@ -1,5 +1,5 @@
 <!-- The Include function is used to put data of one PHP file into another PHP file. If errors occur then the include function produces a warning but does not stop the execution of the script i.e. the script will continue to execute.  -->
-<?php include "inc/db.php" ?>
+<?php include "admin/inc/db.php"; ?>
 
 <!-- include head.php page here -->
 <?php include "inc/head.php"; ?>
@@ -18,10 +18,9 @@
   <div class="row">
     <div class="col-md-8">
       <?php
-      //Check whether this variable is empty or set/declared on the index.
+      //Check whether this variable is empty or set/declared on the index. - I like this
       if (isset($_GET['p_id'])) {
 
-        //$the_post_id =  $connection->real_escape_string($_GET['p_id']);
         $the_post_id = mysqli_real_escape_string($connection, $_GET['p_id']);
       }
 

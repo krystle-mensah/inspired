@@ -2,7 +2,7 @@
 
 session_start();
 
-include "../inc/db.php";
+include "db.php";
 
 // outwould buffering
 ob_start();

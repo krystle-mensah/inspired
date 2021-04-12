@@ -1,5 +1,5 @@
 <?php
-include "inc/db.php";
+include "admin/inc/db.php";
 include "inc/head.php";
 include "inc/header.php";
 ?>
@@ -18,7 +18,6 @@ include "inc/header.php";
 
       if (isset($_GET['category'])) {
 
-        // $post_category_id = $connection->real_escape_string($_GET['category']);
         $post_category_id = mysqli_real_escape_string($connection, $_GET['category']);
       } else {
 
@@ -82,7 +81,7 @@ include "inc/header.php";
               <h1 class="post_title"><?= $post_title; ?></h1>
               <p class="post_date"><?= $post_date;  ?> by <a class="post_author" href="#"><?= $post_author; ?></a></p>
 
-              <!-- REQUST CATEGOROY TITLES -->
+              <!-- CATEGOROY TITLES -->
               <?php
               $query = "SELECT * FROM categories WHERE cat_id = ?";
               $statement = mysqli_prepare($connection, $query);

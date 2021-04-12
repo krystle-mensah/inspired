@@ -135,18 +135,6 @@ button:focus {
 	content: '\f002';
 	/* position: absolute; */
 }
-/* 
-.input_button_mobile:hover {
-	width: 100%;
-} */
-
-/* input:focus,
-input {
-	border: none;
-	padding: 0;
-	width: 100%;
-	outline: none;
-} */
 
 /* END HEADER LAYOUT */
 
@@ -335,10 +323,7 @@ a.post_cat_title {
 	background: #de5133;
 	transition: 0.3s;
 }
-/* padding-top
-padding-right
-padding-bottom
-padding-left */
+
 .card {
 	display: inline-flex;
 	width: 45%;
@@ -403,7 +388,7 @@ ul {
 	color: #262626;
 }
 
-/* FORM STYLES */
+/* Form styles */
 .contact form {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -448,9 +433,7 @@ ul {
 	transition: background-color 2s ease-out;
 }
 
-/*============
-END FRONT CONTACT FORM
-=================================*/
+/* END FRONT CONTACT FORM */
 
 /*============
 SIDEBAR LAYOUT

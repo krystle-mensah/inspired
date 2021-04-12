@@ -1,5 +1,5 @@
-<?php include "inc/db.php" ?>
-<!-- include head.php page here -->
+<?php include "admin/inc/db.php"; ?>
+
 <?php include "inc/head.php"; ?>
 <!-- HEADER -->
 <?php include "inc/header.php"; ?>
@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-8 blog_main">
       <?php
-      //Detect the button click by the name attribute submit from the user 
+      //check post submitted
       if (isset($_POST['submit'])) {
         // then grap the user input by the name attribute and save it here
         $search = $_POST['search'];
