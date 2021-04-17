@@ -68,7 +68,7 @@
 
 </main><!-- /.container -->
 
-<section class="post_footer">
+<section class="post_footer hide_on_small">
 
   <!-- LOGO -->
   <div>
