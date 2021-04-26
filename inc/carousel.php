@@ -47,7 +47,7 @@ $getResult = mysqli_stmt_get_result($statement);
     ?>
 
       <div class="carousel-item <?= $actives; ?>">
-        <img class="first-slide" src="img/<?= $carousel_image; ?>">
+        <img class="first-slide d-block w-100" src="img/<?= $carousel_image; ?>">
         <div class="container slide_content">
           <div class="carousel-caption">
             <a class="carousel_cat_link" href="slide_category.php?category=<?= $cat_id; ?>">News</a>
